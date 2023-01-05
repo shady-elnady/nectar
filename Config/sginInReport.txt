@@ -1,0 +1,23 @@
+Flutter is already up to date on channel beta
+Flutter 3.7.0-1.2.pre • channel beta • https://github.com/flutter/flutter.git
+Framework • revision c29b09b878 (12 days ago) • 2022-12-19 18:30:12 -0600
+Engine • revision 8c99b0feaf
+Tools • Dart 2.19.0 (build 2.19.0-444.2.beta) • DevTools 2.20.0
+
+----------------------------------------------------------------------
+
+Task :app:signingReport
+Variant: debug
+Config: debug
+Store: /Users/shady/.android/debug.keystore
+Alias: AndroidDebugKey
+MD5: 08:08:93:BA:7D:C1:5F:54:00:54:D5:F4:24:3E:09:38
+SHA1: C7:6B:22:91:EF:D4:54:C1:77:0B:60:60:0F:A4:3A:7F:CB:A7:36:D2
+SHA-256: 3A:E0:EE:55:03:48:CA:5E:98:9A:07:55:A8:C7:F8:26:8D:0A:8F:9E:1D:9E:E6:DA:55:6A:BA:94:40:5B:92:ED
+Valid until: Thursday, August 8, 2052
+
+----------------------------------------------------------------------
+Bundel ID:
+    com.example.nectarMac
+
+----------------------------------------------------------------------

@@ -1,0 +1,19 @@
+{
+  "sign_In": "Sign In",
+  "sign_In_EmailPassword": "Sign In by E-mail",
+  "sign_In_Google": "Sign In by Google",
+  "sign_In_FaceBook": "Sign In by FaceBook",
+  "sign_In_Twitter": "Sign In by Twitter",
+  "sign_In_Apple": "Sign In by Apple",
+  "sign_Out": "Sign Out",
+  "sign_Up": "Sign Up",
+  "forgot_Password": "Sign In",
+  "name": "Name",
+  "age": "Age",
+  "password": "Password",
+  "e_mail": "E-mail",
+  "title": "Title",
+  "wellcome": "WellCome",
+  "nadyLab": "El Nady Lab",
+  "shady": "Dr./ Shady El Nady"
+}

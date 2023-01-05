@@ -1,0 +1,19 @@
+{
+  "sign_In": "S'identifier",
+  "sign_In_EmailPassword": "S'Se Connecter par E-mail Mot de Passe",
+  "sign_In_Google": "Se Connecter par Google",
+  "sign_In_FaceBook": "Se Connecter par FaceBook",
+  "sign_In_Twitter": "Se Connecter par Twitter",
+  "sign_In_Apple": "Se Connecter par Apple",
+  "sign_Out": "Se déconnecter",
+  "sign_Up": "S'inscrire",
+  "forgot_Password": "j'ai Oublie Le Mot de Passe",
+  "name": "Le Nom",
+  "age": "âge",
+  "password": "Le Mot de Passe",
+  "e_mail": "E-mail",
+  "title": "Title",
+  "wellcome": "Bienvenu",
+  "nadyLab": "Laboratoire El Nady",
+  "shady": "Dr./ Shady El Nady"
+}

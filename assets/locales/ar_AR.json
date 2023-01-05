@@ -1,0 +1,19 @@
+{
+  "sign_In": "دخول",
+  "sign_In_EmailPassword": "دخول ب الإيميل",
+  "sign_In_Google": "دخول ب جوجل",
+  "sign_In_FaceBook": "دخول ب قيس بوك",
+  "sign_In_Twitter": "دخول ب تويتر",
+  "sign_In_Apple": "دخول ب أبل",
+  "sign_Out": "خروج",
+  "sign_Up": "تسجيل",
+  "forgot_Password": "نسيت كلمه السر",
+  "name": "الأسم",
+  "age": "العمر",
+  "password": "كلمه السر",
+  "e_mail": "الإيميل",
+  "title": "اللقب",
+  "wellcome": "مرحبا",
+  "nadyLab": "معمـل النـادى",
+  "shady": "د./ شـادى النـادى"
+}

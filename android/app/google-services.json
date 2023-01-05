@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "35758590813",
+    "project_id": "nectar-mac",
+    "storage_bucket": "nectar-mac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35758590813:android:325f8dbc545144e7ee76b4",
+        "android_client_info": {
+          "package_name": "com.example.nectar_mac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35758590813-00fo62n2eui7gtqm0m38qclup2c2a7l2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nectar_mac",
+            "certificate_hash": "c76b2291efd454c1770b60600fa43a7fcba736d2"
+          }
+        },
+        {
+          "client_id": "35758590813-mi7h4pucee290vdfc778p0gcehdt0pod.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdd2pBzPymYq0d0paMLg5QOmVCBbNPwys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35758590813-mi7h4pucee290vdfc778p0gcehdt0pod.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
