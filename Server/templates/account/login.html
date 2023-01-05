@@ -1,0 +1,63 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+	<div class="m-3 m-lg-5">
+		{% get_providers as socialaccount_providers %}
+
+		<div class="text-center mt-4">
+			<h1 class="h3">{% trans "Sign In" %}</h1>
+			<p class="lead">
+			</p>
+		</div>
+
+		<form class="login" method="POST" action="{% url 'account_login' %}">
+			{% csrf_token %}
+			{{ form|crispy }}
+			<!--
+			<div class="form-floating mb-3">
+				<input type="email" class="form-control transparent-input" id="floatingInput" placeholder="name@example.com">
+				<label for="floatingInput">Email address</label>
+			</div>
+			<div class="form-floating">
+				<input type="password" class="form-control transparent-input" id="floatingPassword" placeholder="Password">
+				<label for="floatingPassword">Password</label>
+			</div>-->
+			{% if redirect_field_value %}
+				<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+			{% endif %}
+			<div class="row mt-4">
+				<div class="col d-flex align-items-center">
+					<a class="button secondaryAction text-muted text-light" href="{% url 'account_reset_password' %}"><small>{% trans "Forgot Password?" %}</small></a>
+				</div>
+				<div class="col text-end">
+					{% if not socialaccount_providers %}
+						<a class="btn btn-outline-primary rounded-pill py-2 px-5" href="{{ signup_url }}">{% trans "Sign Up" %}</a>
+					{% endif %}
+					<button type="submit" class="btn btn-primary rounded-pill py-2 px-5">{% trans "Sign In" %}</button>
+				</div>
+			</div>
+		</form>
+
+
+		{% if socialaccount_providers %}
+			<div class="row">
+				<div class="col-12 text-center">
+					<p class="m-4 text-black-50">- or continue with -</p>
+					<div class="socialaccount_ballot">
+						<ul class="socialaccount_providers">
+							{% include "socialaccount/snippets/provider_list.html" with process="login" %}
+						</ul>
+						<div class="m-4 text-black-50">{% trans 'or' %}</div>
+						{% include "socialaccount/snippets/login_extra.html" %}
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends './base_generic.html' %}
+{% load static %}
+
+{% block Title %}
+    Sgin Up
+{% endblock Title %}
+{% block Content %}
+    <h3>Sign up</h3>
+    <hr>
+
+    <form method="post">
+    {% csrf_token %}
+    {% form %}
+    <input type="submit" value="Sgin Up" />
+    </form>
+
+{% endblock Content %}

@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>معمـل النـادى</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'Images\favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    {% comment %} <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"> {% endcomment %}
+
+    <!-- Libraries Stylesheet -->
+    {% comment %} <link href="{% static 'Services/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet"> {% endcomment %}
+
+    <!-- Bootstrap v5.3.0-alpha1 Stylesheet -->
+    <link href="{% static 'CSS\bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Stylesheet -->
+    {% block MyStyles %}{% endblock MyStyles %}
+</head>
+
+<body>    
+
+    {% block Content %}{% endblock Content %}
+
+    <!-- jquery v3.6.3 -->
+    <script src="{% static 'JS\jquery-3.6.3.min.js' %}"></script>
+
+    <!-- popper v2.11.6 -->
+    {% comment %} <script src="{% static 'JS\popper-2.11.6.min.js' %}"></script> {% endcomment %}
+
+    <!-- Bootstrap v5.3.0-alpha1 -->
+    <script src="{% static 'JS\bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Contact Javascript File -->
+    {% comment %} <script src="{% static 'Services/mail/jqBootstrapValidation.min.js' %}"></script> {% endcomment %}
+
+    <!-- Customized Javascript -->
+    {% block MyScripts %}{% endblock MyScripts %}
+</body>
+
+</html>

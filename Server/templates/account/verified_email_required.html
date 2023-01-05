@@ -1,0 +1,41 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
+
+{% block content %}
+<h1>{% trans "Verify Your E-mail Address" %}</h1>
+
+{% url 'account_email' as email_url %}
+
+<p>{% blocktrans %}This part of the site requires us to verify that
+you are who you claim to be. For this purpose, we require that you
+verify ownership of your e-mail address. {% endblocktrans %}</p>
+
+<p>{% blocktrans %}We have sent an e-mail to you for
+verification. Please click on the link inside this e-mail. Please
+contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+
+<p>{% blocktrans %}<strong>Note:</strong> you can still <a href="{{ email_url }}">change your e-mail address</a>.{% endblocktrans %}</p>
+
+<div class="m-3 m-lg-5">
+	<div class="text-center mt-4">
+		<h1 class="h3">{% trans "Verify Your E-mail Address" %}</h1>
+		<div class="m-3">
+			{% url 'account_email' as email_url %}
+		</div>
+		<p class="m-3 text-black-50">
+			{% blocktrans %}This part of the site requires us to verify that
+			you are who you claim to be. For this purpose, we require that you
+			verify ownership of your e-mail address. {% endblocktrans %}
+		</p>
+		<p class="m-3 text-black-50">
+			{% blocktrans %}We have sent an e-mail to you for
+			verification. Please click on the link inside this e-mail. Please
+			contact us if you do not receive it within a few minutes.{% endblocktrans %}
+		</p>
+		<a class="btn btn-outline-primary rounded-pill mt-3 py-2 px-5" href="{{ email_url }}">{% trans "Update your e-mail address" %}</a>
+	</div>
+</div>
+{% endblock %}

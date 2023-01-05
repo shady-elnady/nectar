@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block head_title %}{% endblock %}</title>
+
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+    <meta name="author" content="AdminKit">
+    <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="{% static 'img/icon-48x48.png' %}" />
+  
+    <link href="{% static 'css/app.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+
+    {% block extra_head %}
+    {% endblock %}
+  </head>
+  <body>
+    {% block body %}
+
+		{% if messages %}
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			<div class="p-3">
+				<ul>
+					{% for message in messages %}
+					<li>{{message}}</li>
+					{% endfor %}
+				</ul>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class="row">
+			<div class="col-12 col-lg-6 align-self-center">
+				<div class="m-3 m-lg-5 text-end text-uppercase">
+					<ul class="list-inline">
+						{% if user.is_authenticated %}
+							<li class="list-inline-item{% if not '/accounts/email/' in request.path %}"><a href="{% url 'account_email' %}" class="text-muted"><strong>Change E-mail</strong></a>{% else %} text-primary"><strong>Change E-mail</strong>{% endif %}</li>
+							<li class="list-inline-item{% if not '/accounts/logout/' in request.path %}"><a href="{% url 'account_logout' %}" class="text-muted"><strong>Sign Out</strong></a>{% else %} text-primary"><strong>Sign Out</strong>{% endif %}</li>
+						{% else %}
+							<li class="list-inline-item{% if not '/accounts/signup/' in request.path %}"><a href="{% url 'account_signup' %}" class="text-muted"><strong>Sign Up</strong></a>{% else %} text-primary"><strong>Sign Up</strong>{% endif %}</li>
+							<li class="list-inline-item{% if not '/accounts/login/' in request.path %}"><a href="{% url 'account_login' %}" class="text-muted"><strong>Sign In</strong></a>{% else %} text-primary"><strong>Sign In</strong>{% endif %}</li>
+						{% endif %}
+					</ul>
+				</div>
+				{% block content %}
+				{% endblock %}
+			</div>
+			<div class="col-12 col-lg-6 d-none d-lg-flex vh-100 pe-0">
+				<img class="cover" src="{% static 'img/photos/unsplash-3.jpg' %}"/>
+			</div>
+		</div>
+
+    {% endblock %}
+    {% block extra_body %}
+    {% endblock %}
+
+  <script src="{% static 'js/app.js' %}"></script>
+  </body>
+</html>
