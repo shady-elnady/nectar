@@ -16,15 +16,12 @@ from Product.models import Product, ProductImage
 
 app_name= "Product"
 
-context = {
-    "app_name": app_name,
-}
-
+context= {}
 
 @login_required
 def product(request):   
     context["products"]= Product.objects.all()
-    return render(request, f"{app_name}/product.html", context)
+    return render(request, f"{app_name}/product.html", context=context)
 
 
 ## Class Based View
@@ -33,9 +30,9 @@ class NewProductView(View):
         form = ProductForm(request.post)
         if form.valid():
             form.save()
-            return redirect(reverse_lazy(f"home{app_name}"))
+            return redirect(reverse_lazy(f"{app_name}:Home"))
         context["form"]= form
-        return render(request=request, template_name=f"home{app_name}", context=context)
+        return render(request=request, template_name=f"{app_name}/home.html", context=context)
 
 
     def get(self, request):
@@ -48,7 +45,7 @@ class NewProductView(View):
 class ProductView(CreateView): 
     model= Product
     form_class= ProductForm
-    success_url: reverse_lazy(f"product{app_name}")
+    success_url: reverse_lazy(f"{app_name}:Home")
     template_name: "{}/product.html".format(app_name)
 
 
@@ -101,7 +98,7 @@ def post(request):
         productForm = ProductForm()
         formset = ImageFormSet(queryset=ProductImage.objects.none())
     return render(request, 'index.html',
-                  {'vegetableForm': productForm, 'formset': formset})
+                  {'productForm': productForm, 'formset': formset})
 
 # Templete
 """

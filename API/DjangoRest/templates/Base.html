@@ -21,11 +21,11 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="{% static app_name|add:'/css/bootstrap.css' %}"
+      href="{% static 'css/bootstrap.css' %}"
     />
     <!-- font awesome style -->
     <link
-      href="{% static app_name|add:'/css/font-awesome.min.css' %}"
+      href="{% static 'css/font-awesome.min.css' %}"
       rel="stylesheet"
     />
     <!-- fonts style -->
@@ -34,17 +34,17 @@
       rel="stylesheet"
     />
     <!-- Custom styles for this template -->
-    <link href="{% static app_name|add:'/css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
     <!-- responsive style -->
     <link
-      href="{% static app_name|add:'/css/responsive.css' %}"
+      href="{% static 'css/responsive.css' %}"
       rel="stylesheet"
     />
     {% block Link %}{% endblock Link %}
   </head>
 
   <body
-    class="nav-link {% if request.resolver_match.view_name != app_name|add:':home'|add:app_name %}sub_page{% endif %}"
+    class="nav-link {% if request.resolver_match.view_name != 'Nectar:Home' %}sub_page{% endif %}"
   >
     {% if messages %}
     <div class="alert alert-success" role="alert">
@@ -54,7 +54,7 @@
 
     <div class="hero_area">
       <div class="hero_bg_box">
-        <img src="{% static app_name|add:'/images/hero-bg.jpg' %}" alt="" />
+        <img src="{% static 'images/hero-bg.jpg' %}" alt="" />
       </div>
       <!-- header section strats -->
       <header class="header_section">
@@ -62,7 +62,7 @@
           <nav class="navbar navbar-expand-lg custom_nav-container">
             <a
               class="navbar-brand"
-              href="{% url app_name|add:':Home' %}"
+              href="{% url 'Nectar:Home' %}"
             >
               <span> Eatveg </span>
             </a>
@@ -99,17 +99,17 @@
 
                 <div id="myNav" class="overlay">
                   <div class="overlay-content">
-                    <a href="{% url app_name|add:':Home' %}"
+                    <a href="{% url 'Nectar:Home' %}"
                       >HOME</a
                     >
-                    <a href="{% url app_name|add:':About' %}"
+                    <a href="{% url 'Nectar:About' %}"
                       >ABOUT</a
                     >
-                    <a href="{% url app_name|add:':Contact' %}"
+                    <a href="{% url 'Nectar:Contact' %}"
                       >CONTACT US</a
                     >
                     <a href="{% url 'Product:All' %}"
-                      >VEGETABLES</a
+                      >PRODUCTS</a
                     >
                   </div>
                 </div>
@@ -198,15 +198,15 @@
 
     <script
       type="text/javascript"
-      src="{% static app_name|add:'/js/jquery-3.4.1.min.js' %}"
+      src="{% static 'js/jquery-3.4.1.min.js' %}"
     ></script>
     <script
       type="text/javascript"
-      src="{% static app_name|add:'/js/bootstrap.js' %}"
+      src="{% static 'js/bootstrap.js' %}"
     ></script>
     <script
       type="text/javascript"
-      src="{% static app_name|add:'/js/custom.js' %}"
+      src="{% static 'js/custom.js' %}"
     ></script>
     {% block Scripts %}{% endblock Scripts %}
     <!-- Google Map -->
