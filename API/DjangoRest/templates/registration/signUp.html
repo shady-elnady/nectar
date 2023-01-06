@@ -1,0 +1,21 @@
+{% extends '../base.html' %}
+{% load static %}
+{# Load the tag library #}
+{% load bootstrap5 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+{% block Title %}
+    Sgin Up
+{% endblock Title %}
+{% block Content %}
+    <form method="post">
+        {% csrf_token %} {% bootstrap_form form %}
+        {% buttons %}
+        <input type="submit" value="Sgin Up" class="btn btn-primary" />
+        {% endbuttons %}
+    </form>
+
+{% endblock Content %}

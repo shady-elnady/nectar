@@ -1,0 +1,40 @@
+python -V
+python -m venv venv
+Venv/Scripts/activate
+python.exe -m pip install --upgrade pip
+pip install django
+pip install djongo
+pip install pytz
+pip install pymongo==3.12.3
+django-admin startproject Config .
+python manage.py runserver
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py startapp 
+
+pip freeze > requirements.txt
+python -m pip freeze > requirements.txt
+python -m pip install -r requirements.txt
+pip freeze
+
+pymongo 3.12.3
+pytz
+
+python manage.py loaddata currencies.json
+python manage.py loaddata genders.yam
+pip install pyyaml
+pip install django-bootstrap5
+pip uninstall django-bootstrap5
+pip install django django-bootstrap-v5
+pip install numpy
+pip install keras
+pip install opencv-python
+tensorflow install :
+    1- CUDA Toolkit 11.7
+    2- cuDNN    https://developer.nvidia.com/rdp/cudnn-archive
+        Install cuDNN.
+        Download cuDNN v7.6.4 for CUDA 10.1. This will require you to sign up to the NVIDIA Developer Program.
+        Unzip to a suitable location and add the bin directory to your PATH.
+    3- pip install tensorflow
+    4 -pip install tf-nightly-gpu

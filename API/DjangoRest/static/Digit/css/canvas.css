@@ -1,0 +1,84 @@
+.colorButtons {
+  display: block;
+  margin: 10px 0;
+}
+
+canvas {
+  cursor: crosshair;
+}
+
+div#sidebar {
+  position: absolute;
+  left: 0;
+  width: 150px;
+  padding: 20px 20px;
+  top: 0;
+}
+
+canvas#canvas {
+  left: 150px;
+  top: 45px;
+}
+
+.btn {
+  margin-bottom: 10px;
+  width: 100%;
+}
+input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* .input-group {
+  margin-bottom: 10px;
+} */
+
+.toolsButtons .btn {
+  width: 48%;
+}
+
+.sizeButtons .btn {
+  width: 48%;
+}
+
+.colorpicker {
+  background: transparent;
+  height: 40px;
+}
+
+#drawer_container {
+  position: relative;
+  background-color: blue;
+  padding: 10px 10px 10px 10px;
+  margin: 10px;
+}
+
+dialog {
+  display: block;
+  position: absolute;
+  left: 40%;
+  top: 40%;
+  background-color: white;
+  width: 400px;
+  height: 300px;
+  border-radius: 15%;
+  padding: 20px;
+  border: 2px solid #000000;
+  z-index: 10100;
+}
+
+.outDialog {
+  margin: 0;
+  padding: 0;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(89, 196, 18);
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  opacity: 0.9;
+}
