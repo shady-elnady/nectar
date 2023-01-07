@@ -41,6 +41,7 @@ SITE_ID = 1
 
 ## Application definition
 THIRD_LIBRARIES= [
+    'rest_framework',
 ]
 
 MY_APP= [
@@ -185,3 +186,14 @@ LOGOUT_REDIRECT_URL = reverse_lazy('login')
 # ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 # ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS =True
 # SOCIALACCOUNT_LOGIN_ON_GET = True
+
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5,
+}

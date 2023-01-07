@@ -3,7 +3,7 @@ from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 
-from Nectar.models import BaseModelNameSVG, BaseModelNative, BaseModelSVG
+from Nectar.models import  BaseModelNative, BaseModelSVG
 from Language.models import Language
 from Payment.models import Currency
 
@@ -45,8 +45,9 @@ class Country(BaseModelNative, BaseModelSVG):
         related_name= _("Countries"),
         verbose_name= _("Currency"),
     )
-    languages= models.ManyToManyField(
+    languages= models.ForeignKey(
         Language,
+        on_delete= models.CASCADE,
         related_name= _("Countries"),
         verbose_name= _("languages"),
     )
@@ -155,6 +156,7 @@ class Address(BaseModelNative):
     geo= models.ForeignKey(
         Geo,
         on_delete=models.CASCADE,
+        related_name= _("Address"),
         verbose_name= _("Location"),
     )
 

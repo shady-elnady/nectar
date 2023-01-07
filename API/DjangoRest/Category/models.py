@@ -22,7 +22,7 @@ class Category(BaseModelImage):
         blank= True,
         limit_choices_to= {"category_parent__isnull": True},
         on_delete= models.CASCADE,
-        related_name= _("Sub Categories+"),
+        related_name= _("Sub_Categories+"),
         verbose_name= _("Category Parent"),
     )
 

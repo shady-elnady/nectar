@@ -8,6 +8,10 @@ from Nectar.models import BaseModelName
 
 
 class Department(BaseModelName):
+    products = models.ManyToManyField(
+        "Product.Product",
+        verbose_name= _("Products"),
+    )
 
     class Meta:
         verbose_name= _("Category")

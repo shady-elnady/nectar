@@ -94,6 +94,7 @@ class ProductImage(BaseModelImage):
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
+        related_name= _("Images"),
         verbose_name=_("Product"),
     )
 
