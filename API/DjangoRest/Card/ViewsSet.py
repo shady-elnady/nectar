@@ -6,7 +6,7 @@ from .Serializer import CardSerializer, LineInCardSerializer, CouponSerializer
 
 
 class CardViewSet(ModelViewSet):
-    queryset = Card.objects.all().order_by('created_date')
+    queryset = Card.objects.all()
     serializer_class = CardSerializer
     # permission_classes = [permissions.IsAuthenticated]
 

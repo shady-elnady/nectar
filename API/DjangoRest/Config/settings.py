@@ -49,6 +49,7 @@ MY_APP= [
     "Unit",
     "Language",
     "Location",
+    "Department",
     "Category",
     "Payment",
     "User",

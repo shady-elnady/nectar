@@ -47,6 +47,8 @@ class Country(BaseModelNative, BaseModelSVG):
     )
     languages= models.ForeignKey(
         Language,
+        null= True,
+        blank= True,
         on_delete= models.CASCADE,
         related_name= _("Countries"),
         verbose_name= _("languages"),
