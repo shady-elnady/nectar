@@ -29,6 +29,8 @@ class Country(BaseModelNative, BaseModelSVG):
     )
     capital= models.OneToOneField(
         to="City",
+        null= True,
+        blank= True,
         on_delete= models.CASCADE,
         related_name= _("Capital To +"),
         verbose_name= _("Capital"),
@@ -41,6 +43,8 @@ class Country(BaseModelNative, BaseModelSVG):
     )
     currency= models.ForeignKey(
         Currency,
+        null= True,
+        blank= True,
         on_delete= models.CASCADE,
         related_name= _("Countries"),
         verbose_name= _("Currency"),
@@ -151,12 +155,16 @@ class Geo(models.Model) :
 class Address(BaseModelNative):
     street= models.ForeignKey(
         Street,
+        null= True,
+        blank= True,
         on_delete= models.CASCADE,
         related_name= _("Address"),
         verbose_name= _("Street"),
     )    
     geo= models.ForeignKey(
         Geo,
+        null= True,
+        blank= True,
         on_delete=models.CASCADE,
         related_name= _("Address"),
         verbose_name= _("Location"),

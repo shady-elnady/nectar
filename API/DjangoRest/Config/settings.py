@@ -58,6 +58,8 @@ MY_APP= [
     "Basket",
     "Invoice",
     "Utils",
+    "API",
+    "GraphQL",
 ]
 
 INSTALLED_APPS = [
