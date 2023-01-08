@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'Components/index.dart';
+import 'Pages/index.dart';
+import 'Pages/shop_page.dart';
 import 'model/page_model.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
   final List<PageTab> _pages = [
     PageTab(
       widget: const ShopTab(),
@@ -21,22 +22,14 @@ class _HomeScreenState extends State<HomeScreen> {
       label: "Shop",
     ),
     PageTab(
-      widget: const Icon(
-        Icons.camera,
-        size: 150,
-        color: Colors.red,
-      ),
+      widget: const ShopTabWidget(),
       icon: const Icon(
         Icons.camera,
       ),
       label: "Explore",
     ),
     PageTab(
-      widget: const Icon(
-        Icons.chat,
-        size: 150,
-        color: Colors.red,
-      ),
+      widget: const ShopPage(),
       icon: const Icon(
         Icons.chat,
       ),
@@ -79,7 +72,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
       body: SafeArea(
         child: Center(
           child: _pages.elementAt(_selectedIndex).widget,

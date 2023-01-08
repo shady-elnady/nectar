@@ -27,17 +27,18 @@ Product banana = Product(
   ],
 );
 Product apple = Product(
-    name: "filfil",
-    unit: kg,
-    amount: 1,
-    price: 4.99,
-    currency: dolar,
-    images: [
-      ProductImage(
-        product: beef,
-        image: AppImages.apple,
-      ),
-    ]);
+  name: "filfil",
+  unit: kg,
+  amount: 1,
+  price: 4.99,
+  currency: dolar,
+  images: [
+    ProductImage(
+      product: beef,
+      image: AppImages.apple,
+    ),
+  ],
+);
 Product filfil = Product(
   name: "filfil",
   unit: kg,
@@ -78,17 +79,18 @@ Product chicken = Product(
   ],
 );
 Product pngfuel = Product(
-    name: "Broiler Chicken",
-    unit: kg,
-    amount: 1,
-    price: 4.99,
-    currency: dolar,
-    images: [
-      ProductImage(
-        product: beef,
-        image: AppImages.pngfuel,
-      ),
-    ]);
+  name: "Broiler Chicken",
+  unit: kg,
+  amount: 1,
+  price: 4.99,
+  currency: dolar,
+  images: [
+    ProductImage(
+      product: beef,
+      image: AppImages.pngfuel,
+    ),
+  ],
+);
 Product beef = Product(
   name: "Beef Bone",
   unit: kg,
@@ -103,7 +105,7 @@ Product beef = Product(
   ],
 );
 
-List<Department> department = [
+List<Department> departments = [
   Department(
     title: "Exclusive Offer",
     products: [

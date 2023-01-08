@@ -1,8 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
 import 'package:banner_carousel/banner_carousel.dart';
 
 import '../../../../config/index.dart';
+import '../../../components/index.dart';
 
 class ShopTab extends StatefulWidget {
   const ShopTab({super.key});
@@ -16,6 +19,9 @@ class _ShopTabState extends State<ShopTab> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     int intialBannerCarousel = 0;
+    PageController controller = PageController(
+      initialPage: intialBannerCarousel,
+    );
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -57,6 +63,7 @@ class _ShopTabState extends State<ShopTab> {
             ),
             // Carousel Customized
             BannerCarousel(
+              pageController: controller,
               banners: BannerImages.listBanners,
               customizedIndicators: const IndicatorModel.animation(
                 width: 5,
@@ -69,14 +76,21 @@ class _ShopTabState extends State<ShopTab> {
               disableColor: Theme.of(context).dialogBackgroundColor,
               animation: true,
               borderRadius: 8,
-              onTap: (id) => intialBannerCarousel = int.parse(id),
-              onPageChanged: (id) => intialBannerCarousel = id,
+              onTap: (id) => print(id),
+              onPageChanged: (id) => setState(() {
+                intialBannerCarousel = id;
+              }),
               width: size.width,
               indicatorBottom: false,
               margin: const EdgeInsets.all(0),
               initialPage: intialBannerCarousel,
             ),
             //
+
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 25),
+              child: DepartmentsWidget(),
+            ),
           ],
         ),
       ),

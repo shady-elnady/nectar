@@ -10,4 +10,4 @@ export './textFields/custom_text_field.dart';
 export './textFields/custom_drop_menu.dart';
 
 // Custom Utils Widgets
-export './Utils/index.dart';
+export '../Utils/constant.dart';
