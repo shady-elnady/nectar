@@ -14,5 +14,5 @@ class Department(BaseModelName):
     )
 
     class Meta:
-        verbose_name= _("Category")
-        verbose_name_plural= _("Categories")
+        verbose_name= _("Department")
+        verbose_name_plural= _("Departments")

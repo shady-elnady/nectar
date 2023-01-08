@@ -13,7 +13,7 @@ from Location.ViewsSet import (
     GovernorateViewSet, AddressViewSet,
     GeoViewSet, CountryViewSet,
 )
-from Invoice.ViewsSet import RefundViewSet, OrderViewSet, InvoiceViewSet
+from Order.ViewsSet import RefundViewSet, OrderViewSet
 
 
 ## User App
@@ -49,9 +49,8 @@ router.register('productImages', ProductImageViewSet)
 router.register('prefixes', ProductImageViewSet)
 router.register('units', PrefixViewSet)
 
-## Invoice App
+## Order App
 router.register('orders', OrderViewSet)
-router.register('invoices', InvoiceViewSet)
 router.register('refunds', RefundViewSet)
 
 ## Loction App

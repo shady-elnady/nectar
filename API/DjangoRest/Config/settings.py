@@ -56,7 +56,7 @@ MY_APP= [
     "Product",
     "Card",
     "Basket",
-    "Invoice",
+    "Order",
     "Utils",
     "API",
     "GraphQL",

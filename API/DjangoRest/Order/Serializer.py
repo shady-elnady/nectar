@@ -1,6 +1,6 @@
 from rest_framework.serializers import HyperlinkedModelSerializer
 
-from .models import Order, Refund, Invoice
+from .models import Order, Refund 
 
 
 # Serializers define the API representation.
@@ -16,11 +16,4 @@ class OrderSerializer(HyperlinkedModelSerializer):
     Refunds =RefundSerializer(many= True) 
     class Meta:
         model = Order
-        fields = "__all__" 
-
-
-class InvoiceSerializer(HyperlinkedModelSerializer):
-
-    class Meta:
-        model = Invoice
         fields = "__all__" 
