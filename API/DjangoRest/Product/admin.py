@@ -9,7 +9,7 @@ class ProductImageAdmin(admin.StackedInline):
     model = ProductImage
  
 @admin.register(Product)
-class VegetableAdmin(admin.ModelAdmin):
+class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImageAdmin]
  
     class Meta:

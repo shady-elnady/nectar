@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.urls import reverse
 
-from Nectar.models import BaseModelImage 
+from Nectar.models import BaseModelImage, BaseModelImageOnly 
 from Unit.models import Unit 
 from Payment.models import Currency
 from Category.models import Brand, Category
@@ -21,12 +21,6 @@ class Product(BaseModelImage):
         null= True,
         blank =True,
         verbose_name= _("Nutritions"),
-    )
-    describtion = models.TextField(
-        max_length= 500,
-        null= True,
-        blank= True,
-        verbose_name= _("Describtion"),
     )
     amount = models.FloatField(
         null= True,
@@ -80,9 +74,13 @@ class Product(BaseModelImage):
         null= True,
         verbose_name= _("Detail"),
     )
+    is_favorite = models.BooleanField(
+        default= False,
+        verbose_name= _("is Favorite"),
+    )
     
-    def get_absolute_url(self):
-        return reverse("Product:Product_Detail", args=[self.slug])
+    # def get_absolute_url(self):
+    #     return reverse("Product:Product_Detail", args=[self.slug])
 
     class Meta:
         verbose_name= _("Product")
@@ -90,7 +88,7 @@ class Product(BaseModelImage):
 
 
 
-class ProductImage(BaseModelImage):
+class ProductImage(BaseModelImageOnly):
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,

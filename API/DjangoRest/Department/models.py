@@ -12,6 +12,10 @@ class Department(BaseModelName):
         "Product.Product",
         verbose_name= _("Products"),
     )
+    is_favorite = models.BooleanField(
+        default= False,
+        verbose_name= _("is Favorite"),
+    )
 
     class Meta:
         verbose_name= _("Department")

@@ -7,22 +7,7 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = [
-            "name",
-            "image",
-            "nutritions",
-            "describtion",
-            "amount",
-            "reviews",
-            "brand",
-            "category",
-            "unit",
-            "serial",
-            "currency",
-            "price",
-            "detail",
-        ]
-
+        fields = "__all__" 
 
 class ProductImageForm(forms.ModelForm):
     image = forms.ImageField(
@@ -32,7 +17,4 @@ class ProductImageForm(forms.ModelForm):
 
     class Meta:
         model = ProductImage
-        fields = (
-            "image",
-            "product",
-        )
+        fields = "__all__" 
