@@ -1,5 +1,5 @@
-import 'package:banner_carousel/banner_carousel.dart';
 import 'package:flutter/material.dart';
+import 'package:banner_carousel/banner_carousel.dart';
 import 'package:nectar_mac/config/index.dart';
 import 'package:nectar_mac/views/Utils/constant.dart';
 
@@ -7,7 +7,7 @@ import 'Components/categories_card.dart';
 import 'Components/data/categories_data.dart';
 import 'Components/category_item.dart';
 import 'Components/data/friends_data.dart';
-import 'Components/data/restaurants_data.dart';
+import 'Components/data/departments_data.dart';
 import 'Components/search_card.dart';
 import 'Components/slider_item.dart';
 import 'Components/trend_section.dart';
@@ -44,9 +44,9 @@ class ShopPage extends StatelessWidget {
             ),
             //
             UtilsWidget.sizedBox15,
-            buildRestaurantRow('Trending Restaurants', context),
+            buildDepartmentRow('Exclusive Offer', context),
             UtilsWidget.sizedBox15,
-            buildRestaurantList(context),
+            buildDepartmentProductsList(context),
             UtilsWidget.sizedBox15,
             buildCategoryRow('Category', context),
             UtilsWidget.sizedBox15,
@@ -62,23 +62,27 @@ class ShopPage extends StatelessWidget {
     );
   }
 
-  buildRestaurantRow(String restaurant, BuildContext context) {
+  buildDepartmentRow(String departmentName, BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Text(
-          restaurant,
-          style: const TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.w800,
+          departmentName,
+          style: TextStyle(
+            fontSize: 26.0,
+            fontWeight: FontWeight.w600,
+            fontStyle: FontStyle.normal,
+            color: Theme.of(context).primaryColorDark,
           ),
         ),
         TextButton(
           child: Text(
-            "See all (9)",
+            "See all",
             style: TextStyle(
-              color: Theme.of(context).colorScheme.secondary,
-              fontSize: 15,
+              color: Theme.of(context).primaryColor,
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              fontStyle: FontStyle.normal,
             ),
           ),
           onPressed: () {
@@ -159,26 +163,26 @@ class ShopPage extends StatelessWidget {
     );
   }
 
-  buildRestaurantList(BuildContext context) {
+  buildDepartmentProductsList(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 2.4,
-      width: MediaQuery.of(context).size.width,
+      height: 250,
+      width: 175,
       child: ListView.builder(
         primary: false,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         // ignore: unnecessary_null_comparison
-        itemCount: restaurantsList == null ? 0 : restaurantsList.length,
+        itemCount: departmentsList == null ? 0 : departmentsList.length,
         itemBuilder: (BuildContext context, int index) {
-          Map restaurant = restaurantsList[index];
+          Map product = departmentsList[index];
 
           return Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: SliderItem(
-              img: restaurant["img"],
-              title: restaurant["title"],
-              address: restaurant["address"],
-              rating: restaurant["rating"],
+              img: product["img"],
+              name: product["title"],
+              currency: product["address"],
+              price: product["rating"],
             ),
           );
         },

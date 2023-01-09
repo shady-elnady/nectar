@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'data/restaurants_data.dart';
 import 'search_card.dart';
 import 'trend_item.dart';
 
@@ -29,9 +28,9 @@ class TrendSection extends StatelessWidget {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               // ignore: unnecessary_null_comparison
-              itemCount: restaurantsList == null ? 0 : restaurantsList.length,
+              itemCount: departmentsList == null ? 0 : departmentsList.length,
               itemBuilder: (BuildContext context, int index) {
-                Map restaurant = restaurantsList[index];
+                Map restaurant = departmentsList[index];
 
                 return TrendItem(
                   img: restaurant["img"],

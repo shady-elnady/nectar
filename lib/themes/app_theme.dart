@@ -11,8 +11,8 @@ class AppTheme {
   static Color primarySwatch = const Color(0xff53B175);
   static Color themeColor = const Color(0xffFFFFFF);
   static Color darkBgColor = const Color(0xffF2F3F2);
-  static Color titleColor = const Color(0xff030303);
-  static Color subTitleColor = const Color(0xff7C7C7C);
+  static Color primaryColorDark = const Color(0xff030303);
+  static Color primaryColorLight = const Color(0xff7C7C7C);
   // Dark Theme Colors
   // old
   static Color lightPrimary = const Color(0xfffcfcff);
@@ -26,6 +26,8 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: primarySwatch,
+    primaryColorDark: primaryColorDark,
+    primaryColorLight: primaryColorLight,
     scaffoldBackgroundColor: themeColor,
     canvasColor: themeColor,
     indicatorColor: primarySwatch,
@@ -59,7 +61,7 @@ class AppTheme {
       ),
       fillColor: darkBgColor,
       filled: true,
-      prefixIconColor: titleColor,
+      prefixIconColor: primaryColorDark,
       border: const OutlineInputBorder(
         borderSide: BorderSide.none,
         borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -75,14 +77,14 @@ class AppTheme {
       ),
       unselectedLabelStyle: TextStyle(
         fontSize: 12,
-        color: titleColor,
+        color: primaryColorDark,
         fontWeight: FontWeight.normal,
       ),
       unselectedIconTheme: IconThemeData(
-        color: titleColor,
+        color: primaryColorDark,
         size: 20,
       ),
-      unselectedItemColor: titleColor,
+      unselectedItemColor: primaryColorDark,
       selectedItemColor: primarySwatch,
       selectedLabelStyle: TextStyle(
         fontSize: 12,
