@@ -10,4 +10,10 @@ class DepartmentSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Department
-        fields = "__all__"
+        fields = [
+            "url",
+            "name",
+            "products",
+            "is_favorite",
+            "slug",
+        ] 

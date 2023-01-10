@@ -1,6 +1,7 @@
 from django.contrib.auth.models import Group
 from rest_framework.serializers import HyperlinkedModelSerializer
 
+from Language.Serializer import LanguageSerializer
 from .models import User, Following, Profile
 
 
@@ -8,7 +9,15 @@ from .models import User, Following, Profile
 class UserSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ['url', 'username', 'email', 'is_staff']
+        fields = [
+            "url",
+            "username",
+            "email",
+            "is_active",
+            "is_staff",
+            "is_superuser",
+            "slug",
+        ]
 
 
 class GroupSerializer(HyperlinkedModelSerializer):
@@ -20,11 +29,13 @@ class GroupSerializer(HyperlinkedModelSerializer):
 class FollowingSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Following
-        fields = "___all__"
+        fields = "__all__"
 
 
 class ProfileSerializer(HyperlinkedModelSerializer):
+    user = UserSerializer(many= False)
+    language = LanguageSerializer(many= False)
     class Meta:
         model = Profile
-        fields = "___all__"
+        fields = "__all__"
 

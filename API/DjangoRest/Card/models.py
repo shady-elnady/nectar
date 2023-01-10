@@ -5,6 +5,7 @@ from django.conf import settings
 
 from Nectar.models import PaymentMethod
 from Product.models import Product
+from Unit.models import Unit
 
 # Create your models here.
 
@@ -41,19 +42,17 @@ class Card(models.Model):
         to_field= 'username',
         verbose_name= _("Customer"),
     ) 
-    products = models.ManyToManyField(
-        Product,
-        through= "LineInCard",
-        verbose_name= _("Products"),
-    )
+    # lines_in_card = models.ManyToManyField(
+    #     "LineInCard",
+    #     through= "LineInCard",
+    #     # related_name= "+",
+    #     verbose_name= _("Lines In Card"),
+    # )
     payment_method= models.CharField(
         max_length= 2,
         choices= PaymentMethod.choices,
         verbose_name= _("Payment Method"),
     )
-    total_cost = models.FloatField(
-        verbose_name= _("Total Cost"),
-    ) 
     promo_code = models.ForeignKey(
         Coupon,
         on_delete=models.SET_NULL,
@@ -67,7 +66,7 @@ class Card(models.Model):
     )
 
     @property
-    def total_price(self) -> float:
+    def total_cost(self) -> float:
         total = 0
         for lineInCard in self.products.all():
             total += lineInCard.total_line_price()
@@ -91,23 +90,25 @@ class Card(models.Model):
 
 
 class LineInCard(models.Model):
-    card= models.ForeignKey(
+    container_card= models.ForeignKey(
         Card,
         on_delete= models.CASCADE,
+        related_name= "lines_in_cards",
         verbose_name= _("Card"),
     )
     product= models.ForeignKey(
         Product,
         on_delete= models.CASCADE,
+        related_name= "In_Cards",
         verbose_name= _("Product"),
     ) 
     amount = models.FloatField(
         verbose_name= _("Amount"),
-    )   
+    )
 
     @property
     def total_line_price(self) -> float:
-        return self.product.price() * self.amount
+        return self.product.price * self.amount
     
     @property
     def slug(self):
@@ -122,7 +123,7 @@ class LineInCard(models.Model):
     class Meta:
         unique_together = [
             [
-                "card",
+                "container_card",
                 "product",
             ]
         ]

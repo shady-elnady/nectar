@@ -37,7 +37,18 @@ class Unit(BaseModelNative):
         related_name= _("Units"),
         verbose_name= _("Prefix"),
     )
+    base_unit= models.ForeignKey(
+        "self",
+        null= True,
+        blank= True,
+        limit_choices_to= {"prefix__isnull": True},
+        on_delete= models.CASCADE,
+        related_name= _("Sub_Units"),
+        verbose_name= _("Base Unit"),
+    )
     measurement= models.CharField(
+        null= True,
+        blank= True,
         max_length= 2,
         choices= Measurements.choices,
         verbose_name= _("Measurement"),

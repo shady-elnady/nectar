@@ -36,7 +36,7 @@ router.register('categories', CategoryViewSet)
 router.register('departments', DepartmentViewSet)
 
 ## Language App
-router.register('departments', LanguageViewSet)
+router.register('languages', LanguageViewSet)
 
 ## Payment App
 router.register('Currencies', CurrencyViewSet)
@@ -46,8 +46,8 @@ router.register('products', ProductViewSet)
 router.register('productImages', ProductImageViewSet)
 
 ## Unit App
-router.register('prefixes', ProductImageViewSet)
-router.register('units', PrefixViewSet)
+router.register('prefixes', PrefixViewSet)
+router.register('units', UnitViewSet)
 
 ## Order App
 router.register('orders', OrderViewSet)
@@ -55,8 +55,8 @@ router.register('refunds', RefundViewSet)
 
 ## Loction App
 router.register('streets', StreetViewSet)
-router.register('cities', RegionViewSet)
-router.register('regions', CityViewSet)
+router.register('cities', CityViewSet)
+router.register('regions', RegionViewSet)
 router.register('governorates', GovernorateViewSet)
 router.register('address', AddressViewSet)
 router.register('geo', GeoViewSet)

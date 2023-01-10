@@ -11,6 +11,7 @@ class CategorySerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Category
         fields = (
+            "url",
             'name',
             'image',
             'slug',
@@ -23,8 +24,10 @@ class CategorySerializer(HyperlinkedModelSerializer):
 
   
 class BrandSerializer(HyperlinkedModelSerializer):
-    
     class Meta:
         model = Brand 
-        fields = "__all__" 
+        fields = [
+            "name",
+            "image",
+        ] 
 
