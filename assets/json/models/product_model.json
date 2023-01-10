@@ -1,0 +1,384 @@
+[
+  {
+    "url": "http://127.0.0.1:8000/api/products/Beef%20Bone/",
+    "name": "Beef Bone",
+    "image": "http://127.0.0.1:8000/media/images/Product/Beef_Bone.png",
+    "nutritions": "100gr",
+    "amount": 1.0,
+    "reviews": 5.0,
+    "brand": {
+      "name": "Kazi Farmas",
+      "image": "http://127.0.0.1:8000/media/images/Brand/Kazi_Farmas.png"
+    },
+    "category": {
+      "url": "http://127.0.0.1:8000/api/categories/Meat/",
+      "name": "Meat",
+      "image": "http://127.0.0.1:8000/media/images/Category/Meat.jpg",
+      "slug": "meat",
+      "category_parent": {
+        "url": "http://127.0.0.1:8000/api/categories/Meat%20&%20Fish/",
+        "name": "Meat & Fish",
+        "image": "http://127.0.0.1:8000/media/images/Category/Meat__Fish.png",
+        "slug": "meat-fish",
+        "category_parent": null
+      }
+    },
+    "unit": {
+      "url": "http://127.0.0.1:8000/api/units/KeloGram/",
+      "name": "KeloGram",
+      "native": "كيلو جرام",
+      "symbol": "Kg",
+      "prefix": {
+        "url": "http://127.0.0.1:8000/api/prefixes/Kelo/",
+        "name": "Kelo",
+        "native": "كيلو",
+        "symbol": "K",
+        "power": 1000,
+        "slug": "kelo"
+      },
+      "base_unit": {
+        "url": "http://127.0.0.1:8000/api/units/Gram/",
+        "name": "Gram",
+        "native": "جرام",
+        "symbol": "g",
+        "prefix": null,
+        "base_unit": null,
+        "measurement": "M",
+        "slug": "gram"
+      },
+      "measurement": "M",
+      "slug": "kelogram"
+    },
+    "serial": "1",
+    "currency": {
+      "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+      "name": "Dolar",
+      "native": "دولار",
+      "code": "$",
+      "emoji": "💲",
+      "slug": "dolar"
+    },
+    "price": 4.99,
+    "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+    "is_favorite": false,
+    "product_images": [
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/1/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None.png",
+        "product": "http://127.0.0.1:8000/api/products/Beef%20Bone/"
+      },
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/2/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_fwob8RR.png",
+        "product": "http://127.0.0.1:8000/api/products/Beef%20Bone/"
+      },
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/3/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_7UJRn71.png",
+        "product": "http://127.0.0.1:8000/api/products/Beef%20Bone/"
+      }
+    ],
+    "slug": "beef-bone"
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/products/Broiler%20Chicken/",
+    "name": "Broiler Chicken",
+    "image": "http://127.0.0.1:8000/media/images/Product/Broiler_Chicken.png",
+    "nutritions": "100gr",
+    "amount": 1.0,
+    "reviews": 5.0,
+    "brand": {
+      "name": "Kazi Farmas",
+      "image": "http://127.0.0.1:8000/media/images/Brand/Kazi_Farmas.png"
+    },
+    "category": {
+      "url": "http://127.0.0.1:8000/api/categories/Chicken/",
+      "name": "Chicken",
+      "image": "http://127.0.0.1:8000/media/images/Category/Chicken.png",
+      "slug": "chicken",
+      "category_parent": {
+        "url": "http://127.0.0.1:8000/api/categories/Birds/",
+        "name": "Birds",
+        "image": "http://127.0.0.1:8000/media/images/Category/Birds.png",
+        "slug": "birds",
+        "category_parent": null
+      }
+    },
+    "unit": {
+      "url": "http://127.0.0.1:8000/api/units/KeloGram/",
+      "name": "KeloGram",
+      "native": "كيلو جرام",
+      "symbol": "Kg",
+      "prefix": {
+        "url": "http://127.0.0.1:8000/api/prefixes/Kelo/",
+        "name": "Kelo",
+        "native": "كيلو",
+        "symbol": "K",
+        "power": 1000,
+        "slug": "kelo"
+      },
+      "base_unit": {
+        "url": "http://127.0.0.1:8000/api/units/Gram/",
+        "name": "Gram",
+        "native": "جرام",
+        "symbol": "g",
+        "prefix": null,
+        "base_unit": null,
+        "measurement": "M",
+        "slug": "gram"
+      },
+      "measurement": "M",
+      "slug": "kelogram"
+    },
+    "serial": "2",
+    "currency": {
+      "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+      "name": "Dolar",
+      "native": "دولار",
+      "code": "$",
+      "emoji": "💲",
+      "slug": "dolar"
+    },
+    "price": 4.99,
+    "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+    "is_favorite": false,
+    "product_images": [
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/4/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_CEYKNZE.png",
+        "product": "http://127.0.0.1:8000/api/products/Broiler%20Chicken/"
+      },
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/5/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_FbdK1bV.png",
+        "product": "http://127.0.0.1:8000/api/products/Broiler%20Chicken/"
+      },
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/6/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_LpPMTT8.png",
+        "product": "http://127.0.0.1:8000/api/products/Broiler%20Chicken/"
+      }
+    ],
+    "slug": "broiler-chicken"
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/products/Organic%20Bananas/",
+    "name": "Organic Bananas",
+    "image": "http://127.0.0.1:8000/media/images/Product/Organic_Bananas.png",
+    "nutritions": "100gr",
+    "amount": 7.0,
+    "reviews": 5.0,
+    "brand": {
+      "name": "Individual Callection",
+      "image": "http://127.0.0.1:8000/media/images/Brand/Individual_Callection.png"
+    },
+    "category": {
+      "url": "http://127.0.0.1:8000/api/categories/Fruits/",
+      "name": "Fruits",
+      "image": "http://127.0.0.1:8000/media/images/Category/Fruits.png",
+      "slug": "fruits",
+      "category_parent": {
+        "url": "http://127.0.0.1:8000/api/categories/Frash%20Fruits%20&%20Vegetable/",
+        "name": "Frash Fruits & Vegetable",
+        "image": "http://127.0.0.1:8000/media/images/Category/Frash_Fruits__Vegetable.png",
+        "slug": "frash-fruits-vegetable",
+        "category_parent": null
+      }
+    },
+    "unit": {
+      "url": "http://127.0.0.1:8000/api/units/pcs/",
+      "name": "pcs",
+      "native": "قطعه",
+      "symbol": "pcs",
+      "prefix": null,
+      "base_unit": null,
+      "measurement": "P",
+      "slug": "pcs"
+    },
+    "serial": "3",
+    "currency": {
+      "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+      "name": "Dolar",
+      "native": "دولار",
+      "code": "$",
+      "emoji": "💲",
+      "slug": "dolar"
+    },
+    "price": 4.999,
+    "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+    "is_favorite": false,
+    "product_images": [
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/7/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_lqQGQrb.png",
+        "product": "http://127.0.0.1:8000/api/products/Organic%20Bananas/"
+      },
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/8/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_iSKQzB3.png",
+        "product": "http://127.0.0.1:8000/api/products/Organic%20Bananas/"
+      },
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/9/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_8WG1L3v.png",
+        "product": "http://127.0.0.1:8000/api/products/Organic%20Bananas/"
+      }
+    ],
+    "slug": "organic-bananas"
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/products/Red%20Apple/",
+    "name": "Red Apple",
+    "image": "http://127.0.0.1:8000/media/images/Product/Red_Apple.png",
+    "nutritions": "100gr",
+    "amount": 1.0,
+    "reviews": 4.0,
+    "brand": {
+      "name": "Individual Callection",
+      "image": "http://127.0.0.1:8000/media/images/Brand/Individual_Callection.png"
+    },
+    "category": {
+      "url": "http://127.0.0.1:8000/api/categories/Fruits/",
+      "name": "Fruits",
+      "image": "http://127.0.0.1:8000/media/images/Category/Fruits.png",
+      "slug": "fruits",
+      "category_parent": {
+        "url": "http://127.0.0.1:8000/api/categories/Frash%20Fruits%20&%20Vegetable/",
+        "name": "Frash Fruits & Vegetable",
+        "image": "http://127.0.0.1:8000/media/images/Category/Frash_Fruits__Vegetable.png",
+        "slug": "frash-fruits-vegetable",
+        "category_parent": null
+      }
+    },
+    "unit": {
+      "url": "http://127.0.0.1:8000/api/units/KeloGram/",
+      "name": "KeloGram",
+      "native": "كيلو جرام",
+      "symbol": "Kg",
+      "prefix": {
+        "url": "http://127.0.0.1:8000/api/prefixes/Kelo/",
+        "name": "Kelo",
+        "native": "كيلو",
+        "symbol": "K",
+        "power": 1000,
+        "slug": "kelo"
+      },
+      "base_unit": {
+        "url": "http://127.0.0.1:8000/api/units/Gram/",
+        "name": "Gram",
+        "native": "جرام",
+        "symbol": "g",
+        "prefix": null,
+        "base_unit": null,
+        "measurement": "M",
+        "slug": "gram"
+      },
+      "measurement": "M",
+      "slug": "kelogram"
+    },
+    "serial": "4",
+    "currency": {
+      "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+      "name": "Dolar",
+      "native": "دولار",
+      "code": "$",
+      "emoji": "💲",
+      "slug": "dolar"
+    },
+    "price": 4.99,
+    "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+    "is_favorite": false,
+    "product_images": [
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/10/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_ipaZ3Jz.png",
+        "product": "http://127.0.0.1:8000/api/products/Red%20Apple/"
+      },
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/11/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_8wlTXhs.png",
+        "product": "http://127.0.0.1:8000/api/products/Red%20Apple/"
+      },
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/12/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None.jpeg",
+        "product": "http://127.0.0.1:8000/api/products/Red%20Apple/"
+      }
+    ],
+    "slug": "red-apple"
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/products/Diet%20Coke/",
+    "name": "Diet Coke",
+    "image": "http://127.0.0.1:8000/media/images/Product/Diet_Coke.png",
+    "nutritions": "100gr",
+    "amount": 355.0,
+    "reviews": 5.0,
+    "brand": {
+      "name": "Cocola",
+      "image": "http://127.0.0.1:8000/media/images/Brand/Cocola.png"
+    },
+    "category": {
+      "url": "http://127.0.0.1:8000/api/categories/Soda/",
+      "name": "Soda",
+      "image": "http://127.0.0.1:8000/media/images/Category/Soda.png",
+      "slug": "soda",
+      "category_parent": {
+        "url": "http://127.0.0.1:8000/api/categories/Beverages/",
+        "name": "Beverages",
+        "image": "http://127.0.0.1:8000/media/images/Category/Beverages.png",
+        "slug": "beverages",
+        "category_parent": null
+      }
+    },
+    "unit": {
+      "url": "http://127.0.0.1:8000/api/units/MilLiter/",
+      "name": "MilLiter",
+      "native": "ملي لتر",
+      "symbol": "mL",
+      "prefix": null,
+      "base_unit": {
+        "url": "http://127.0.0.1:8000/api/units/Liter/",
+        "name": "Liter",
+        "native": "لتر",
+        "symbol": "L",
+        "prefix": null,
+        "base_unit": null,
+        "measurement": "V",
+        "slug": "liter"
+      },
+      "measurement": "V",
+      "slug": "milliter"
+    },
+    "serial": "7",
+    "currency": {
+      "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+      "name": "Dolar",
+      "native": "دولار",
+      "code": "$",
+      "emoji": "💲",
+      "slug": "dolar"
+    },
+    "price": 1.49,
+    "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+    "is_favorite": true,
+    "product_images": [
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/19/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_rXPxJ5F.png",
+        "product": "http://127.0.0.1:8000/api/products/Diet%20Coke/"
+      },
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/20/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_DFxdqgy.png",
+        "product": "http://127.0.0.1:8000/api/products/Diet%20Coke/"
+      },
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/21/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_RCuLAxY.png",
+        "product": "http://127.0.0.1:8000/api/products/Diet%20Coke/"
+      }
+    ],
+    "slug": "diet-coke"
+  }
+]

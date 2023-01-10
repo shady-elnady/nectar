@@ -1,6 +1,7 @@
 // To parse this JSON data, do
 //
-//     final department = departmentFromMap(jsonString);
+//     final product = productFromMap(jsonString);
+
 import 'dart:convert';
 
 import 'brand_model.dart';
@@ -10,73 +11,151 @@ import 'unit_model.dart';
 
 class Product {
   Product({
+    this.url,
     required this.name,
-    this.detail,
-    this.review,
+    this.image,
     this.nutritions,
-    required this.unit,
     required this.amount,
-    required this.price,
-    required this.currency,
+    this.reviews,
     this.brand,
     this.category,
-    required this.images,
+    this.unit,
+    this.serial,
+    required this.currency,
+    required this.price,
+    this.detail,
+    this.isFavorite,
+    this.productImages,
+    this.slug,
   });
 
+  final String? url;
   final String name;
-  final String? detail;
-  final double? review;
+  final String? image;
   final String? nutritions;
-  final Unit unit;
-  final double amount;
-  final double price;
-  final Currency currency;
+  final int amount;
+  final int? reviews;
   final Brand? brand;
   final Category? category;
-  final List<ProductImage> images;
+  final Unit? unit;
+  final String? serial;
+  final Currency currency;
+  final double price;
+  final String? detail;
+  final bool? isFavorite;
+  final List<ProductImage?>? productImages;
+  final String? slug;
+
+  Product copyWith({
+    String? url,
+    String? name,
+    String? image,
+    String? nutritions,
+    int? amount,
+    int? reviews,
+    Brand? brand,
+    Category? category,
+    Unit? unit,
+    String? serial,
+    Currency? currency,
+    double? price,
+    String? detail,
+    bool? isFavorite,
+    List<ProductImage?>? productImages,
+    String? slug,
+  }) =>
+      Product(
+        url: url ?? this.url,
+        name: name ?? this.name,
+        image: image ?? this.image,
+        nutritions: nutritions ?? this.nutritions,
+        amount: amount ?? this.amount,
+        reviews: reviews ?? this.reviews,
+        brand: brand ?? this.brand,
+        category: category ?? this.category,
+        unit: unit ?? this.unit,
+        serial: serial ?? this.serial,
+        currency: currency ?? this.currency,
+        price: price ?? this.price,
+        detail: detail ?? this.detail,
+        isFavorite: isFavorite ?? this.isFavorite,
+        productImages: productImages ?? this.productImages,
+        slug: slug ?? this.slug,
+      );
 
   factory Product.fromJson(String str) => Product.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
   factory Product.fromMap(Map<String, dynamic> json) => Product(
+        url: json["url"],
         name: json["name"],
-        detail: json["detail"],
-        review: json["review"].toDouble(),
+        image: json["image"],
         nutritions: json["nutritions"],
-        unit: Unit.fromMap(json["unit"]),
-        amount: json["amount"].toDouble(),
-        price: json["price"].toDouble(),
-        currency: Currency.fromMap(json["currency"]),
-        brand: Brand.fromMap(json["brand"]),
-        category: Category.fromMap(json["category"]),
-        images: List<ProductImage>.from(
-            json["images"].map((x) => ProductImage.fromMap(x))),
+        amount: json["amount"],
+        reviews: json["reviews"],
+        brand: json["brand"],
+        category: json["category"],
+        unit: json["unit"],
+        serial: json["serial"],
+        currency: json["currency"],
+        price: json["price"],
+        detail: json["detail"],
+        isFavorite: json["is_favorite"],
+        productImages: json["product_images"] == null
+            ? []
+            : json["product_images"] == null
+                ? []
+                : List<ProductImage?>.from(json["product_images"]!
+                    .map((x) => ProductImage.fromMap(x))),
+        slug: json["slug"],
       );
 
   Map<String, dynamic> toMap() => {
+        "url": url,
         "name": name,
-        "detail": detail,
-        "review": review,
+        "image": image,
         "nutritions": nutritions,
-        "unit": unit.toMap(),
         "amount": amount,
+        "reviews": reviews,
+        "brand": brand,
+        "category": category,
+        "unit": unit,
+        "serial": serial,
+        "currency": currency,
         "price": price,
-        "currency": currency.toMap(),
-        "brand": brand!.toMap(),
-        "category": category!.toMap(),
-        "images": List<dynamic>.from(images.map((x) => x.toMap())),
+        "detail": detail,
+        "is_favorite": isFavorite,
+        "product_images": productImages == null
+            ? []
+            : productImages == null
+                ? []
+                : List<dynamic>.from(productImages!.map((x) => x!.toMap())),
+        "slug": slug,
       };
 }
 
 class ProductImage {
   ProductImage({
-    required this.product,
+    this.url,
     required this.image,
+    required this.product,
   });
 
-  final Product product;
+  final String? url;
   final String image;
+  final String product;
+
+  ProductImage copyWith({
+    String? url,
+    String? image,
+    String? product,
+  }) =>
+      ProductImage(
+        url: url ?? this.url,
+        image: image ?? this.image,
+        product: product ?? this.product,
+      );
 
   factory ProductImage.fromJson(String str) =>
       ProductImage.fromMap(json.decode(str));
@@ -84,12 +163,14 @@ class ProductImage {
   String toJson() => json.encode(toMap());
 
   factory ProductImage.fromMap(Map<String, dynamic> json) => ProductImage(
-        product: Product.fromMap(json["product"]),
+        url: json["url"],
         image: json["image"],
+        product: json["product"],
       );
 
   Map<String, dynamic> toMap() => {
-        "product": product.toMap(),
+        "url": url,
         "image": image,
+        "product": product,
       };
 }

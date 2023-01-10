@@ -11,4 +11,11 @@ class LanguageSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Language
-        fields = "__all__" 
+        fields = [
+             "url",
+             "name",
+            "native",
+            "iso_639_1",
+            "is_rtl",
+            "slug",
+        ]

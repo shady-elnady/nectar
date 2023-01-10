@@ -16,7 +16,7 @@ class ProductImageSerializer(HyperlinkedModelSerializer):
 
 
 class ProductSerializer(HyperlinkedModelSerializer):
-    # images = ProductImageSerializer(many= True) 
+    product_images = ProductImageSerializer(many= True) 
     brand = BrandSerializer(many= False) 
     category = CategorySerializer(many= False) 
     unit = UnitSerializer(many= False) 
@@ -38,5 +38,6 @@ class ProductSerializer(HyperlinkedModelSerializer):
             "price",
             "detail",
             "is_favorite",
+            "product_images",
             "slug",
         ] 

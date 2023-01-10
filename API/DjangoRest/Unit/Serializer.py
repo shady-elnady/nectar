@@ -8,7 +8,14 @@ class PrefixSerializer(HyperlinkedModelSerializer):
     
     class Meta:
         model = Prefix
-        fields = "__all__"
+        fields = [
+            "url",
+            "name",
+            "native",
+            "symbol",
+            "power",
+            "slug",
+        ]
 
 
 

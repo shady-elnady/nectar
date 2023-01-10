@@ -42,12 +42,11 @@ class Card(models.Model):
         to_field= 'username',
         verbose_name= _("Customer"),
     ) 
-    # lines_in_card = models.ManyToManyField(
-    #     "LineInCard",
-    #     through= "LineInCard",
-    #     # related_name= "+",
-    #     verbose_name= _("Lines In Card"),
-    # )
+    lines_in_card = models.ManyToManyField(
+        Product,
+        through= "LineInCard",
+        verbose_name= _("Lines In Card"),
+    )
     payment_method= models.CharField(
         max_length= 2,
         choices= PaymentMethod.choices,
@@ -65,11 +64,20 @@ class Card(models.Model):
         verbose_name=_("Cearted At"),
     )
 
+    # @property
+    # def total_cost(self) -> float:
+    #     total = 0
+    #     for lineInCard in self.lines_in_card.all():
+    #         total += lineInCard.total_line_price
+    #     if self.promo_code:
+    #         total -= self.promo_code.discount
+    #     return total
+    
     @property
-    def total_cost(self) -> float:
+    def Total_Cost(self) -> float:
         total = 0
-        for lineInCard in self.products.all():
-            total += lineInCard.total_line_price()
+        for lineInCard in self.Lines_In_Card.all():
+            total += lineInCard.total_line_price
         if self.promo_code:
             total -= self.promo_code.discount
         return total
@@ -90,10 +98,10 @@ class Card(models.Model):
 
 
 class LineInCard(models.Model):
-    container_card= models.ForeignKey(
+    card= models.ForeignKey(
         Card,
         on_delete= models.CASCADE,
-        related_name= "lines_in_cards",
+        related_name= "Lines_In_Card",
         verbose_name= _("Card"),
     )
     product= models.ForeignKey(
@@ -123,7 +131,7 @@ class LineInCard(models.Model):
     class Meta:
         unique_together = [
             [
-                "container_card",
+                "card",
                 "product",
             ]
         ]

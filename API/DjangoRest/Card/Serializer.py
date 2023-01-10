@@ -1,19 +1,9 @@
-from rest_framework.serializers import HyperlinkedModelSerializer, StringRelatedField, RelatedField
-
-
+from rest_framework.serializers import HyperlinkedModelSerializer, StringRelatedField
 
 from .models import Card, Coupon, LineInCard
 from User.Serializer import UserSerializer
 from Product.Serializer import ProductSerializer
 # Serializers define the API representation.
-
-
-
-class TagListingField(RelatedField):
- 
-    def to_representation(self, value):
-        print(value)
-        return value
 
 
 class CouponSerializer(HyperlinkedModelSerializer):
@@ -45,19 +35,20 @@ class LineInCardSerializer(HyperlinkedModelSerializer):
 
 class CardSerializer(HyperlinkedModelSerializer):
     customer = UserSerializer(many= False) 
-    # lines_in_card = LineInCardSerializer(many= True)
-    lines_in_card = TagListingField(many= True, queryset= LineInCard.objects.all())
+    Lines_In_Card = LineInCardSerializer(many= True)
     promo_code = CouponSerializer(many= False)
     class Meta:
         model = Card
         fields = [
             "url",
             "customer",
-            "lines_in_card",
+            # "lines_in_card",
+            "Lines_In_Card",
             "payment_method",
             "promo_code",
             "created_at",
-            "total_cost",
+            # "total_cost",
+            "Total_Cost",
             "slug",
         ]
     

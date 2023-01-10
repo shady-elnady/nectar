@@ -1,11 +1,14 @@
 from django.contrib.auth.models import Group
-from rest_framework.serializers import HyperlinkedModelSerializer
+from rest_framework.serializers import HyperlinkedModelSerializer, RelatedField
 
-from Language.Serializer import LanguageSerializer
 from .models import User, Following, Profile
+# from Nectar.Serializer import AgeSerializer
+from Language.Serializer import LanguageSerializer
+from Location.Serializer import AddressSerializer
 
 
 # Serializers define the API representation.
+
 class UserSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = User
@@ -35,7 +38,20 @@ class FollowingSerializer(HyperlinkedModelSerializer):
 class ProfileSerializer(HyperlinkedModelSerializer):
     user = UserSerializer(many= False)
     language = LanguageSerializer(many= False)
+    address = AddressSerializer(many= False)
     class Meta:
         model = Profile
-        fields = "__all__"
-
+        fields = [
+            "url",
+            "image",
+            "user",
+            "phone_number",
+            "full_name",
+            "family_name",
+            "birth_date",
+            "gender",
+            "language",
+            "address",
+            "age",
+            "slug",
+        ]

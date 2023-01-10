@@ -4,55 +4,103 @@ from .models import (
     Country, Governorate,Geo,
     City, Region, Street, Address,
 )
+from Payment.Serializer import CurrencySerializer
+from Language.Serializer import LanguageSerializer
 
-
-class StreetSerializer(HyperlinkedModelSerializer):
-    
-    class Meta:
-        model = Street
-        fields = "__all__" 
-
-
-class RegionSerializer(HyperlinkedModelSerializer):
-    Streets = StreetSerializer(many= True)
-
-    class Meta:
-        model = Region
-        fields = "__all__" 
-
-
-class CitySerializer(HyperlinkedModelSerializer):
-    Regions = RegionSerializer(many= True) 
-    class Meta:
-        model = City
-        fields = "__all__"
-
-
-class GovernorateSerializer(HyperlinkedModelSerializer):
-    Cities = CitySerializer(many= True)
-    class Meta:
-        model = Governorate
-        fields = "__all__" 
 
 
 class CountrySerializer(HyperlinkedModelSerializer):
-    Cities = CitySerializer(many= True)
-    Governorates = GovernorateSerializer(many= True) 
-
+    currency = CurrencySerializer(many= False)
+    languages = LanguageSerializer(many= False)
     class Meta:
         model = Country
-        fields = "__all__"
+        fields = [
+            "url",
+            "name",
+            "native",
+            "svg_img",
+            "continent",
+            "capital",
+            "flag_emoji",
+            "currency",
+            "languages",
+            "tel_code",
+            "slug",
+        ]
 
-class AddressSerializer(HyperlinkedModelSerializer):
-    
+class GovernorateSerializer(HyperlinkedModelSerializer):
+    country = CountrySerializer(many= False)
     class Meta:
-        model = Address
-        fields = "__all__" 
+        model = Governorate
+        fields = [
+            "url",
+            "name",
+            "native",
+            "tel_code",
+            "country",
+            "slug",
+        ] 
 
+class CitySerializer(HyperlinkedModelSerializer):
+    governorate = GovernorateSerializer(many= False) 
+    class Meta:
+        model = City
+        fields = [
+            "url",
+            "name",
+            "native",
+            "country",
+            "governorate",
+            "slug",
+        ] 
+
+class RegionSerializer(HyperlinkedModelSerializer):
+    city = CitySerializer(many= False)
+    class Meta:
+        model = Region
+        fields = [
+            "url",
+            "name",
+            "native",
+            "city",
+            "slug",
+        ]  
+
+class StreetSerializer(HyperlinkedModelSerializer):
+    region = RegionSerializer(many= False)
+    class Meta:
+        model = Street
+        fields = [
+            "url",
+            "name",
+            "native",
+            "region",
+            "slug",
+        ]
 
 class GeoSerializer(HyperlinkedModelSerializer):
-    Address = AddressSerializer(many= True)
-
     class Meta:
         model = Geo
-        fields = "__all__" 
+        fields = [
+            "lat",
+            "lang",
+        ] 
+
+class AddressSerializer(HyperlinkedModelSerializer):
+    street = StreetSerializer(many= False)
+    geo = GeoSerializer(many= False)
+    class Meta:
+        model = Address
+        fields = [
+            "url",
+            "name",
+            "native",
+            "street",
+            "geo",
+            "slug",
+        ]
+
+
+
+
+

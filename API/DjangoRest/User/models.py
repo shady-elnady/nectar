@@ -7,9 +7,11 @@ from PIL import Image
 from datetime import date
 import calendar
 
+
 from .managers import FollowingManager, UsersManager
 from Nectar.models import BaseModel, BaseModelImageOnly, Genders
 from Language.models import Language
+from Location.models import Address
 
 
 
@@ -136,10 +138,17 @@ class Profile(BaseModelImageOnly):
         blank=True,
         default="en",
         verbose_name= _("Language"),
-    )    
+    )
+    address = models.ForeignKey(
+        Address,
+        on_delete=models.SET("Deleted"),
+        null=True,
+        blank=True,
+        verbose_name= _("Address"),
+    )
 
     @property
-    def age(self):
+    def age(self) -> dict:
         born = self.birth_date
         calendar.setfirstweekday(calendar.SUNDAY)
         today = date.today()
@@ -162,7 +171,11 @@ class Profile(BaseModelImageOnly):
             else:
                 month += 1
             age_months += 1
-        return f"{age_years} {age_months} {age_days}"
+        return {
+            "year": age_years,
+            "month": age_months,
+            "day": age_days,
+        }
 
     @property
     def slug(self):

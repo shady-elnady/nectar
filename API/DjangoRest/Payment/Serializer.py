@@ -8,4 +8,11 @@ class CurrencySerializer(HyperlinkedModelSerializer):
     
     class Meta:
         model = Currency
-        fields = "__all__" 
+        fields = [
+            "url",
+            "name",
+            "native",
+            "code",
+            "emoji",
+            "slug",
+        ] 
