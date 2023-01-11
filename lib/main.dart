@@ -41,7 +41,8 @@ class _AuthExampleAppState extends State<AuthExampleApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppTheme.appName,
-      home: const HomeScreen(),
+      home: const MyWidget(),
+      // home: const HomeScreen(),
       theme: AppTheme.lightTheme,
       // darkTheme: AppTheme.darkTheme,
       scrollBehavior: MyCustomScrollBehavior(),
@@ -59,6 +60,21 @@ class MyCustomScrollBehavior extends MaterialScrollBehavior {
       };
 }
 
+class MyWidget extends StatelessWidget {
+  const MyWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: Text(
+          "Hi",
+          style: TextStyle(fontSize: 50),
+        ),
+      ),
+    );
+  }
+}
 // class FireBaseHelp extends StatelessWidget {
 //   const FireBaseHelp({
 //     super.key,

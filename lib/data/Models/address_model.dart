@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 import 'geo_model.dart';
+import 'result_model.dart';
 import 'street_model.dart';
 
-class Address {
+class Address extends Result {
   Address({
     this.url,
     required this.name,
@@ -11,15 +12,18 @@ class Address {
     this.street,
     this.geo,
     this.slug,
-  });
+  }) : super();
 
+  @override
   final String? url;
   final String name;
   final String? native;
   final Street? street;
   final Geo? geo;
+  @override
   final String? slug;
 
+  @override
   Address copyWith({
     String? url,
     String? name,
@@ -39,6 +43,7 @@ class Address {
 
   factory Address.fromJson(String str) => Address.fromMap(json.decode(str));
 
+  @override
   String toJson() => json.encode(toMap());
 
   factory Address.fromMap(Map<String, dynamic> json) => Address(
@@ -50,6 +55,7 @@ class Address {
         slug: json["slug"],
       );
 
+  @override
   Map<String, dynamic> toMap() => {
         "url": url,
         "name": name,

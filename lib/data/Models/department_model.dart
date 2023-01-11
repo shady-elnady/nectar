@@ -5,8 +5,9 @@
 import 'dart:convert';
 
 import 'product_model.dart';
+import 'result_model.dart';
 
-class Department {
+class Department extends Result {
   Department({
     this.url,
     required this.name,
@@ -15,12 +16,15 @@ class Department {
     this.slug,
   });
 
+  @override
   final String? url;
   final String name;
   final List<Product?>? products;
   final bool? isFavorite;
+  @override
   final String? slug;
 
+  @override
   Department copyWith({
     String? url,
     String? name,
@@ -39,6 +43,7 @@ class Department {
   factory Department.fromJson(String str) =>
       Department.fromMap(json.decode(str));
 
+  @override
   String toJson() => json.encode(toMap());
 
   factory Department.fromMap(Map<String, dynamic> json) => Department(
@@ -54,6 +59,7 @@ class Department {
         slug: json["slug"],
       );
 
+  @override
   Map<String, dynamic> toMap() => {
         "url": url,
         "name": name,
