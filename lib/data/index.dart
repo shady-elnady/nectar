@@ -1,6 +1,6 @@
-export './Models/category_model.dart';
-export './Models/department_model.dart';
-export './Models/unit_model.dart';
-export './Models/product_model.dart';
-export './Models/currency_model.dart';
-export './Models/brand_model.dart';
+export './Models/category.dart';
+export './Models/department.dart';
+export './Models/unit.dart';
+export './Models/product.dart';
+export './Models/currency.dart';
+export './Models/brand.dart';

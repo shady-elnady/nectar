@@ -40,13 +40,32 @@
         "serial": "3",
         "currency": {
           "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+          "name": "Dolar",
           "native": "دولار",
           "code": "$",
-          "emoji": "💲"
+          "emoji": "💲",
+          "slug": "dolar"
         },
         "price": 4.999,
         "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
         "is_favorite": false,
+        "product_images": [
+          {
+            "url": "http://127.0.0.1:8000/api/productImages/7/",
+            "image": "http://127.0.0.1:8000/media/images/ProductImage/None_lqQGQrb.png",
+            "product": "http://127.0.0.1:8000/api/products/Organic%20Bananas/"
+          },
+          {
+            "url": "http://127.0.0.1:8000/api/productImages/8/",
+            "image": "http://127.0.0.1:8000/media/images/ProductImage/None_iSKQzB3.png",
+            "product": "http://127.0.0.1:8000/api/products/Organic%20Bananas/"
+          },
+          {
+            "url": "http://127.0.0.1:8000/api/productImages/9/",
+            "image": "http://127.0.0.1:8000/media/images/ProductImage/None_8WG1L3v.png",
+            "product": "http://127.0.0.1:8000/api/products/Organic%20Bananas/"
+          }
+        ],
         "slug": "organic-bananas"
       },
       {
@@ -80,9 +99,11 @@
           "symbol": "Kg",
           "prefix": {
             "url": "http://127.0.0.1:8000/api/prefixes/Kelo/",
+            "name": "Kelo",
             "native": "كيلو",
             "symbol": "K",
-            "power": 1000
+            "power": 1000,
+            "slug": "kelo"
           },
           "base_unit": {
             "url": "http://127.0.0.1:8000/api/units/Gram/",
@@ -100,13 +121,32 @@
         "serial": "4",
         "currency": {
           "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+          "name": "Dolar",
           "native": "دولار",
           "code": "$",
-          "emoji": "💲"
+          "emoji": "💲",
+          "slug": "dolar"
         },
         "price": 4.99,
         "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
         "is_favorite": false,
+        "product_images": [
+          {
+            "url": "http://127.0.0.1:8000/api/productImages/10/",
+            "image": "http://127.0.0.1:8000/media/images/ProductImage/None_ipaZ3Jz.png",
+            "product": "http://127.0.0.1:8000/api/products/Red%20Apple/"
+          },
+          {
+            "url": "http://127.0.0.1:8000/api/productImages/11/",
+            "image": "http://127.0.0.1:8000/media/images/ProductImage/None_8wlTXhs.png",
+            "product": "http://127.0.0.1:8000/api/products/Red%20Apple/"
+          },
+          {
+            "url": "http://127.0.0.1:8000/api/productImages/12/",
+            "image": "http://127.0.0.1:8000/media/images/ProductImage/None.jpeg",
+            "product": "http://127.0.0.1:8000/api/products/Red%20Apple/"
+          }
+        ],
         "slug": "red-apple"
       }
     ],

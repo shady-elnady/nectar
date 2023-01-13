@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:banner_carousel/banner_carousel.dart';
 import 'package:nectar_mac/config/index.dart';
+import 'package:nectar_mac/data/Providers/department_provider.dart';
+import 'package:nectar_mac/data/Providers/product_provider.dart';
+import 'package:nectar_mac/data/index.dart';
 import 'package:nectar_mac/views/Utils/constant.dart';
+import 'package:nectar_mac/views/widgets/Utils/slider_product_item.dart';
 
 import 'Components/categories_card.dart';
 import 'Components/data/categories_data.dart';
 import 'Components/category_item.dart';
 import 'Components/data/friends_data.dart';
-import 'Components/data/departments_data.dart';
 import 'Components/search_card.dart';
-import 'Components/slider_item.dart';
 import 'Components/trend_section.dart';
 
 class ShopPage extends StatelessWidget {
@@ -43,19 +45,13 @@ class ShopPage extends StatelessWidget {
               margin: const EdgeInsets.all(0),
             ),
             //
+            const DepartmentsList(),
+            //
             UtilsWidget.sizedBox15,
-            buildDepartmentRow('Exclusive Offer', context),
-            UtilsWidget.sizedBox15,
-            buildDepartmentProductsList(context),
-            UtilsWidget.sizedBox15,
-            buildCategoryRow('Category', context),
-            UtilsWidget.sizedBox15,
-            buildCategoryList(context),
-            UtilsWidget.sizedBox15,
-            buildCategoryRow('Friends', context),
-            UtilsWidget.sizedBox15,
-            buildFriendsList(),
-            UtilsWidget.sizedBox15,
+            const MainTitle(
+              title: "Groceries",
+            ),
+            const Groceries(),
           ],
         ),
       ),
@@ -151,7 +147,7 @@ class ShopPage extends StatelessWidget {
         primary: false,
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
-        itemCount: categoriesList == null ? 0 : categoriesList.length,
+        itemCount: categoriesList.length,
         itemBuilder: (BuildContext context, int index) {
           Map cat = categoriesList[index];
 
@@ -163,32 +159,32 @@ class ShopPage extends StatelessWidget {
     );
   }
 
-  buildDepartmentProductsList(BuildContext context) {
-    return SizedBox(
-      height: 250,
-      width: 175,
-      child: ListView.builder(
-        primary: false,
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        // ignore: unnecessary_null_comparison
-        itemCount: departmentsList == null ? 0 : departmentsList.length,
-        itemBuilder: (BuildContext context, int index) {
-          Map product = departmentsList[index];
+  // buildDepartmentProductsList(BuildContext context) {
+  //   return SizedBox(
+  //     height: 250,
+  //     width: 175,
+  //     child: ListView.builder(
+  //       primary: false,
+  //       shrinkWrap: true,
+  //       scrollDirection: Axis.horizontal,
+  //       // ignore: unnecessary_null_comparison
+  //       itemCount: departmentsList == null ? 0 : departmentsList.length,
+  //       itemBuilder: (BuildContext context, int index) {
+  //         Map product = departmentsList[index];
 
-          return Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: SliderItem(
-              img: product["img"],
-              name: product["title"],
-              currency: product["address"],
-              price: product["rating"],
-            ),
-          );
-        },
-      ),
-    );
-  }
+  //         return Padding(
+  //           padding: const EdgeInsets.only(right: 10.0),
+  //           child: SliderItem(
+  //             img: product["img"],
+  //             name: product["title"],
+  //             currency: product["address"],
+  //             price: product["rating"],
+  //           ),
+  //         );
+  //       },
+  //     ),
+  //   );
+  // }
 
   buildFriendsList() {
     return SizedBox(
@@ -217,6 +213,129 @@ class ShopPage extends StatelessWidget {
   }
 }
 
+class DepartmentsList extends StatelessWidget {
+  const DepartmentsList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<Department>>(
+      future: DepartmentApi().getAll(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.none:
+          case ConnectionState.waiting:
+            return const Center(child: CircularProgressIndicator());
+          default:
+            if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ...snapshot.data.map(
+                    (Department department) => DepartmentContainer(
+                      department: department,
+                    ),
+                  ),
+                ],
+              );
+            }
+        }
+      },
+    );
+  }
+}
+
+class DepartmentContainer extends StatelessWidget {
+  const DepartmentContainer({
+    super.key,
+    required this.department,
+  });
+  final Department department;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 25.0),
+          child: MainTitle(title: department.name),
+        ),
+        //
+        // Loop For Department Products
+        SizedBox(
+          height: 250,
+          width: double.infinity,
+          child: ListView.builder(
+            primary: false,
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            // ignore: unnecessary_null_comparison
+            itemCount: department.products?.length ?? 0,
+            itemBuilder: (BuildContext context, int index) {
+              return Padding(
+                padding: const EdgeInsets.only(right: 10.0),
+                child: SliderProductItem(
+                  product: department.products![index],
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class MainTitle extends StatelessWidget {
+  const MainTitle({
+    super.key,
+    required this.title,
+  });
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 26.0,
+            fontWeight: FontWeight.w600,
+            fontStyle: FontStyle.normal,
+            color: Theme.of(context).primaryColorDark,
+          ),
+        ),
+        TextButton(
+          child: Text(
+            "See all",
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              fontStyle: FontStyle.normal,
+            ),
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return const TrendSection();
+                },
+              ),
+            );
+          },
+        ),
+      ],
+    );
+  }
+}
+
 class BannerImages {
   // static const String banner1 =
   //     "https://picjumbo.com/wp-content/uploads/the-golden-gate-bridge-sunset-1080x720.jpg";
@@ -229,4 +348,108 @@ class BannerImages {
     BannerModel(imagePath: AppImages.carouselImage2, id: "2"),
     BannerModel(imagePath: AppImages.carouselImage3, id: "3"),
   ];
+}
+
+class Groceries extends StatelessWidget {
+  const Groceries({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<Product>>(
+      future: ProductApi().getAll(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.none:
+          case ConnectionState.waiting:
+            return const Center(child: CircularProgressIndicator());
+          default:
+            if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else {
+              List<Product> products = snapshot.data;
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  //
+                  SizedBox(
+                    height: 150,
+                    width: double.infinity,
+                    child: ListView(
+                      primary: false,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        ...products.map(
+                          (Product product) => Container(
+                            alignment: Alignment.centerLeft,
+                            height: 150,
+                            width: 250,
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            margin: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 20,
+                            ),
+                            decoration: BoxDecoration(
+                              color: const Color.fromRGBO(248, 164, 76, 0.15),
+                              borderRadius: BorderRadius.circular(18),
+                              // border: Border.all(
+                              //   color: Colors.transparent,
+                              //   width: 1,
+                              //   style: BorderStyle.solid,
+                              // ),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.network(
+                                  product.category!.image,
+                                  width: 80,
+                                  height: 80,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 15.0),
+                                  child: Text(
+                                    product.category!.name,
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      color: Theme.of(context).primaryColorDark,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  //
+                  SizedBox(
+                    height: 250,
+                    width: double.infinity,
+                    child: ListView.builder(
+                      primary: false,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: products.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: SliderProductItem(
+                            product: products[index],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              );
+            }
+        }
+      },
+    );
+  }
 }

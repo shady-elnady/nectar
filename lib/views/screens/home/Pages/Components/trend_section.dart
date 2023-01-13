@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'data/departments_data.dart';
 import 'search_card.dart';
 import 'trend_item.dart';
 

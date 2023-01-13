@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'Pages/index.dart';
 import 'Pages/shop_page.dart';
 import 'model/page_model.dart';
 
@@ -12,24 +11,32 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 0;
   final List<PageTab> _pages = [
     PageTab(
-      widget: const ShopTab(),
+      widget: const ShopPage(),
       icon: const Icon(
         Icons.call,
       ),
       label: "Shop",
     ),
     PageTab(
-      widget: const ShopTabWidget(),
+      widget: const Icon(
+        Icons.camera,
+        size: 150,
+        color: Colors.red,
+      ),
       icon: const Icon(
         Icons.camera,
       ),
       label: "Explore",
     ),
     PageTab(
-      widget: const ShopPage(),
+      widget: const Icon(
+        Icons.camera,
+        size: 150,
+        color: Colors.red,
+      ),
       icon: const Icon(
         Icons.chat,
       ),

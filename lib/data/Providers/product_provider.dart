@@ -2,16 +2,16 @@ import 'package:http/http.dart' as http;
 import 'package:nectar_mac/config/app_api.dart';
 
 import '../Models/body.dart';
-import '../Models/department.dart';
+import '../Models/product.dart';
 
-class DepartmentApi {
-  final String _departmentsUrl = "/api/departments/";
+class ProductApi {
+  final String _productsUrl = "/api/products/";
 
-  // Get All Departments
-  Future<List<Department>> getAll() async {
+  // Get All products
+  Future<List<Product>> getAll() async {
     http.Response res = await http.get(
       Uri.parse(
-        AppAPI.appBaseUrl + _departmentsUrl,
+        AppAPI.appBaseUrl + _productsUrl,
       ),
     );
 
@@ -20,32 +20,32 @@ class DepartmentApi {
 
       List<dynamic> results = body.results;
 
-      List<Department> departments = results.map(
-        (dynamic department) {
-          return Department.fromMap(department);
+      List<Product> products = results.map(
+        (dynamic product) {
+          return Product.fromMap(product);
         },
       ).toList();
 
-      return departments;
+      return products;
     } else {
       throw "Unable to retrieve departments.";
     }
   }
 
-  // Get One Department
-  Future<Department> getOne({required String slug}) async {
+  // Get One product
+  Future<Product> getOne({required String slug}) async {
     http.Response res = await http.get(
       Uri.parse(
-        "${AppAPI.appBaseUrl}$_departmentsUrl$slug/",
+        "${AppAPI.appBaseUrl}$_productsUrl$slug/",
         // "http://127.0.0.1:8000/api/departments/Exclusive%20Offer/",
       ),
     );
     if (res.statusCode == 200) {
-      Department department = Department.fromJson(res.body);
+      Product product = Product.fromJson(res.body);
 
-      return department;
+      return product;
     } else {
-      throw "Unable to retrieve departments.";
+      throw "Unable to retrieve products.";
     }
   }
 

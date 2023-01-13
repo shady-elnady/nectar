@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 
 class UtilsWidget {
   // SizedBox
-  static const sizedBox15 = SizedBox(
+  static const SizedBox sizedBox15 = SizedBox(
     height: 15,
   );
-  static const sizedBox25 = SizedBox(
+  static const SizedBox sizedBox25 = SizedBox(
     height: 25,
   );
-  static const sizedBox35 = SizedBox(
+  static const SizedBox sizedBox35 = SizedBox(
     height: 35,
   );
-  static const sizedBox45 = SizedBox(
+  static const SizedBox sizedBox45 = SizedBox(
     height: 45,
   );
-  static const sizedBox55 = SizedBox(
+  static const SizedBox sizedBox55 = SizedBox(
     height: 55,
   );
-  static const sizedBox65 = SizedBox(
+  static const SizedBox sizedBox65 = SizedBox(
     height: 65,
   );
 
@@ -31,15 +31,15 @@ class UtilsWidget {
       );
 
   // Padding
-  static const paddingV20 = EdgeInsets.symmetric(
+  static const EdgeInsets paddingV20 = EdgeInsets.symmetric(
     vertical: 20,
   );
 
-  static const paddingH20 = EdgeInsets.symmetric(
+  static const EdgeInsets paddingH20 = EdgeInsets.symmetric(
     horizontal: 20,
   );
 
-  static const paddingVH20 = EdgeInsets.symmetric(
+  static const EdgeInsets paddingVH20 = EdgeInsets.symmetric(
     horizontal: 20,
     vertical: 20,
   );
@@ -52,4 +52,10 @@ class UtilsWidget {
         horizontal: horizontal,
         vertical: vertical,
       );
+
+  // Divider
+  static const Divider divider = Divider(
+    height: 50,
+    thickness: 1,
+  );
 }

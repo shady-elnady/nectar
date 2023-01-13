@@ -4,9 +4,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:nectar_mac/data/Providers/product_provider.dart';
 
+import 'data/Models/currency.dart';
+import 'data/Models/department.dart';
+import 'data/Models/product.dart';
+import 'data/Providers/department_provider.dart';
 import 'themes/app_theme.dart';
 import 'views/screens/home/home_screen.dart';
+import 'views/screens/product/product_details.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,8 +47,18 @@ class _AuthExampleAppState extends State<AuthExampleApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppTheme.appName,
-      home: const MyWidget(),
       // home: const HomeScreen(),
+      home: const ProductDetail(
+        product: Product(
+          name: "meet",
+          image: "http://127.0.0.1:8000/media/images/Product/Beef_Bone.png",
+          amount: 1,
+          price: 5,
+          currency: Currency(
+            name: "D",
+          ),
+        ),
+      ),
       theme: AppTheme.lightTheme,
       // darkTheme: AppTheme.darkTheme,
       scrollBehavior: MyCustomScrollBehavior(),
@@ -65,108 +81,18 @@ class MyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text(
-          "Hi",
-          style: TextStyle(fontSize: 50),
-        ),
+        child: FutureBuilder<List<Department>>(
+            future: DepartmentApi().getAll(),
+            builder: (context, snapshot) {
+              print("snapshot.error : ${snapshot.error}");
+              return Text(
+                snapshot.data![0].name,
+                style: const TextStyle(fontSize: 50),
+              );
+            }),
       ),
     );
   }
 }
-// class FireBaseHelp extends StatelessWidget {
-//   const FireBaseHelp({
-//     super.key,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//           children: [
-//             const Text("hii"),
-//             ElevatedButton(
-//               onPressed: () async {
-//                 print("Clicked");
-//                 try {
-//                   await FirebaseAuth.instance.createUserWithEmailAndPassword(
-//                     email: "shady@gmail.com",
-//                     password: "123456789",
-//                   );
-//                 } on FirebaseAuthException catch (e) {
-//                   if (e.code == 'weak-password') {
-//                     print('The password provided is too weak.');
-//                   } else if (e.code == 'email-already-in-use') {
-//                     print('The account already exists for that email.');
-//                   }
-//                 } catch (e) {
-//                   print(e);
-//                 }
-//               },
-//               child: const Text("Sign Up With Email"),
-//             ),
-//             ElevatedButton(
-//               onPressed: () async {
-//                 print("signIn");
-//                 try {
-//                   final credential = await FirebaseAuth.instance
-//                       .signInWithEmailAndPassword(
-//                           email: "shady@gmail.com", password: "123sssssss45");
-//                   print(credential);
-//                 } on FirebaseAuthException catch (e) {
-//                   if (e.code == 'user-not-found') {
-//                     print('No user found for that email.');
-//                   } else if (e.code == 'wrong-password') {
-//                     print('Wrong password provided for that user.');
-//                   }
-//                 }
-//               },
-//               child: const Text("SignIn With Email"),
-//             ),
-//             ElevatedButton(
-//               onPressed: () async {
-//                 try {
-//                   await FirebaseAuth.instance.signInAnonymously();
-//                   print("Signed in with temporary account.");
-//                 } on FirebaseAuthException catch (e) {
-//                   switch (e.code) {
-//                     case "operation-not-allowed":
-//                       print(
-//                           "Anonymous auth hasn't been enabled for this project.");
-//                       break;
-//                     default:
-//                       print("Unknown error.");
-//                       print(e);
-//                   }
-//                 }
-//               },
-//               child: const Text("signInAnonymously"),
-//             ),
-//             ElevatedButton(
-//               onPressed: () async {
-//                 try {
-//                   await FirebaseAuth.instance.signOut();
-//                   print("Sign Out");
-//                 } on FirebaseAuthException catch (e) {
-//                   switch (e.code) {
-//                     case "operation-not-allowed":
-//                       print(
-//                           "Anonymous auth hasn't been enabled for this project.");
-//                       break;
-//                     default:
-//                       print("Unknown error.");
-//                       print(e);
-//                   }
-//                 }
-//               },
-//               child: const Text("Sign Out"),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }

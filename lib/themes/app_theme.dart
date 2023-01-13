@@ -11,7 +11,7 @@ class AppTheme {
   static Color primarySwatch = const Color(0xff53B175);
   static Color themeColor = const Color(0xffFFFFFF);
   static Color darkBgColor = const Color(0xffF2F3F2);
-  static Color primaryColorDark = const Color(0xff030303);
+  static Color primaryColorDark = const Color(0xff181725);
   static Color primaryColorLight = const Color(0xff7C7C7C);
   // Dark Theme Colors
   // old
@@ -32,6 +32,7 @@ class AppTheme {
     canvasColor: themeColor,
     indicatorColor: primarySwatch,
     fontFamily: AppFonts.gilroy,
+    //AppBar
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
       centerTitle: true,
@@ -42,6 +43,7 @@ class AppTheme {
           color: darkBG,
           fontSize: 18.0,
           fontWeight: FontWeight.w800,
+          fontFamily: AppFonts.gilroy,
         ),
       ).bodyMedium,
       titleTextStyle: TextTheme(
@@ -49,6 +51,7 @@ class AppTheme {
           color: darkBG,
           fontSize: 18.0,
           fontWeight: FontWeight.w800,
+          fontFamily: AppFonts.gilroy,
         ),
       ).titleLarge,
     ),
@@ -92,30 +95,69 @@ class AppTheme {
         fontWeight: FontWeight.normal,
       ),
     ),
+    // Text
+    textTheme: TextTheme(
+      titleLarge: TextStyle(
+        fontSize: 26,
+        fontFamily: AppFonts.gilroy,
+        fontWeight: FontWeight.w800,
+        fontStyle: FontStyle.normal,
+        color: primaryColorDark,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 16,
+        fontFamily: AppFonts.gilroy,
+        fontWeight: FontWeight.w600,
+        fontStyle: FontStyle.normal,
+        color: primaryColorDark,
+      ),
+      titleSmall: TextStyle(
+        fontSize: 12,
+        fontFamily: AppFonts.gilroy,
+        fontWeight: FontWeight.w600,
+        fontStyle: FontStyle.normal,
+        color: primaryColorDark,
+      ),
+      bodyLarge: TextStyle(
+        fontSize: 24,
+        fontFamily: AppFonts.gilroy,
+        fontWeight: FontWeight.w600,
+        fontStyle: FontStyle.normal,
+        color: primaryColorLight,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 16,
+        fontFamily: AppFonts.gilroy,
+        fontWeight: FontWeight.w600,
+        fontStyle: FontStyle.normal,
+        color: primaryColorLight,
+      ),
+      bodySmall: TextStyle(
+        fontSize: 13,
+        fontFamily: AppFonts.gilroy,
+        fontWeight: FontWeight.w600,
+        fontStyle: FontStyle.normal,
+        color: primaryColorLight,
+      ),
+    ),
+    //
+    iconTheme: const IconThemeData(),
+    //
+    buttonTheme: const ButtonThemeData(),
+    //
+    textButtonTheme: TextButtonThemeData(
+      style: ButtonStyle(
+        iconColor: MaterialStateProperty.resolveWith<Color?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.pressed) |
+                states.contains(MaterialState.hovered)) {
+              return primarySwatch;
+            }
+            // Use the component's default.
+            return primaryColorLight;
+          },
+        ),
+      ),
+    ),
   );
-
-  // static ThemeData darkTheme = ThemeData(
-  //   brightness: Brightness.dark,
-  //   canvasColor: darkBG,
-  //   primaryColor: darkPrimary,
-  //   scaffoldBackgroundColor: darkBG,
-  //   indicatorColor: darkAccent,
-  //   appBarTheme: AppBarTheme(
-  //     toolbarTextStyle: TextTheme(
-  //       titleSmall: TextStyle(
-  //         color: lightBG,
-  //         fontSize: 18.0,
-  //         fontWeight: FontWeight.w800,
-  //       ),
-  //     ).bodyMedium,
-  //     titleTextStyle: TextTheme(
-  //       titleSmall: TextStyle(
-  //         color: lightBG,
-  //         fontSize: 18.0,
-  //         fontWeight: FontWeight.w800,
-  //       ),
-  //     ).titleLarge,
-  //   ),
-  //   colorScheme: ColorScheme.fromSwatch().copyWith(secondary: darkAccent),
-  // );
 }
