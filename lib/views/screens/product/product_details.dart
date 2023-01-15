@@ -1,9 +1,7 @@
-import 'package:banner_carousel/banner_carousel.dart';
 import 'package:flutter/material.dart';
-import 'package:nectar_mac/config/app_images.dart';
 
 import 'package:nectar_mac/data/Models/product.dart';
-import 'package:nectar_mac/views/Utils/constant.dart';
+import 'package:nectar_mac/views/widgets/caursel_slider.dart';
 import 'package:nectar_mac/views/widgets/index.dart';
 
 class ProductDetail extends StatelessWidget {
@@ -15,66 +13,48 @@ class ProductDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Theme.of(context).primaryColorDark,
-            size: 20,
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.arrow_upward_rounded,
-              color: Theme.of(context).primaryColorDark,
-              size: 20,
-            ),
-          ),
-        ],
-      ),
       body: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            BannerCarousel(
-              banners: [
-                BannerModel(
-                  imagePath: AppImages.apple,
-                  id: "1",
-                  boxFit: BoxFit.contain,
-                ),
-                BannerModel(
-                  imagePath: AppImages.banana,
-                  id: "2",
-                  boxFit: BoxFit.contain,
-                ),
-                BannerModel(
-                  imagePath: AppImages.apple,
-                  id: "3",
-                  boxFit: BoxFit.contain,
-                ),
-              ],
-              customizedIndicators: const IndicatorModel.animation(
-                width: 5,
-                height: 5,
-                spaceBetween: 2.5,
-                widthAnimation: 17,
-              ),
-              // width: double.infinity,
-              height: 340,
-              activeColor: Theme.of(context).primaryColor,
-              disableColor: Theme.of(context).dialogBackgroundColor,
-              animation: true,
-              borderRadius: 35,
-              indicatorBottom: false,
-              margin: const EdgeInsets.all(0),
-            ),
-            //
+            // //
+            // BannerCarousel(
+            //   banners: [
+            //     BannerModel(
+            //       imagePath: AppImages.coursal,
+            //       id: "1",
+            //       boxFit: BoxFit.contain,
+            //     ),
+            //     BannerModel(
+            //       imagePath: AppImages.banana,
+            //       id: "2",
+            //       boxFit: BoxFit.contain,
+            //     ),
+            //     BannerModel(
+            //       imagePath: AppImages.apple,
+            //       id: "3",
+            //       boxFit: BoxFit.contain,
+            //     ),
+            //   ],
+            //   customizedIndicators: const IndicatorModel.animation(
+            //     width: 5,
+            //     height: 5,
+            //     spaceBetween: 2.5,
+            //     widthAnimation: 17,
+            //   ),
+            //   // width: double.infinity,
+            //   height: 340,
+            //   activeColor: Theme.of(context).primaryColor,
+            //   disableColor: Theme.of(context).dialogBackgroundColor,
+            //   animation: true,
+            //   borderRadius: 35,
+            //   indicatorBottom: false,
+            //   margin: const EdgeInsets.all(0),
+            // ),
+            // //
+            const CaurselSlider(),
             Padding(
               padding: const EdgeInsets.fromLTRB(25, 20, 25, 0),
               child: Row(
@@ -97,6 +77,7 @@ class ProductDetail extends StatelessWidget {
                     onPressed: () {},
                     icon: Icon(
                       Icons.favorite_border,
+                      size: 30,
                       color: Theme.of(context).primaryColorLight,
                     ),
                   ),
@@ -138,8 +119,19 @@ class ProductDetail extends StatelessWidget {
                         ),
                       ),
                       TextButton(
+                        autofocus: true,
                         onPressed: () {},
-                        style: Theme.of(context).textButtonTheme.style,
+                        style: ButtonStyle(
+                          iconColor: MaterialStateProperty.resolveWith<Color?>(
+                            (Set<MaterialState> states) {
+                              if (states.contains(MaterialState.focused)) {
+                                return Theme.of(context).primaryColor;
+                              }
+                              // Use the component's default.
+                              return Theme.of(context).primaryColorLight;
+                            },
+                          ),
+                        ),
                         child: const Icon(Icons.add),
                       ),
                     ],

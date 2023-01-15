@@ -1,5 +1,5 @@
 // Intro Screens
-export './01.intro/splash_screen.dart';
+export 'splash/splash_screen.dart';
 export './01.intro/welcome_screen.dart';
 export './01.intro/location_screen.dart';
 

@@ -40,8 +40,8 @@ class SliderProductItem extends StatelessWidget {
               child: Image.network(
                 product.image,
                 alignment: Alignment.center,
-                width: 100,
-                height: 80,
+                width: 120,
+                height: 110,
                 fit: BoxFit.contain,
               ),
             ),

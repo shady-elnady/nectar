@@ -29,6 +29,7 @@ class AppTheme {
     primaryColorDark: primaryColorDark,
     primaryColorLight: primaryColorLight,
     scaffoldBackgroundColor: themeColor,
+    hintColor: darkBgColor,
     canvasColor: themeColor,
     indicatorColor: primarySwatch,
     fontFamily: AppFonts.gilroy,
@@ -95,19 +96,20 @@ class AppTheme {
         fontWeight: FontWeight.normal,
       ),
     ),
+    //
     // Text
     textTheme: TextTheme(
       titleLarge: TextStyle(
         fontSize: 26,
         fontFamily: AppFonts.gilroy,
-        fontWeight: FontWeight.w800,
+        fontWeight: FontWeight.w900,
         fontStyle: FontStyle.normal,
         color: primaryColorDark,
       ),
       titleMedium: TextStyle(
-        fontSize: 16,
+        fontSize: 22,
         fontFamily: AppFonts.gilroy,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w800,
         fontStyle: FontStyle.normal,
         color: primaryColorDark,
       ),
@@ -133,11 +135,25 @@ class AppTheme {
         color: primaryColorLight,
       ),
       bodySmall: TextStyle(
-        fontSize: 13,
+        fontSize: 14,
         fontFamily: AppFonts.gilroy,
         fontWeight: FontWeight.w600,
         fontStyle: FontStyle.normal,
         color: primaryColorLight,
+      ),
+      // For Button
+      labelMedium: TextStyle(
+        fontSize: 18,
+        fontFamily: AppFonts.gilroy,
+        fontStyle: FontStyle.normal,
+        color: themeColor,
+      ),
+      labelSmall: TextStyle(
+        fontSize: 16,
+        fontFamily: AppFonts.gilroy,
+        fontWeight: FontWeight.w900,
+        fontStyle: FontStyle.normal,
+        color: primaryColorDark,
       ),
     ),
     //
@@ -149,8 +165,10 @@ class AppTheme {
       style: ButtonStyle(
         iconColor: MaterialStateProperty.resolveWith<Color?>(
           (Set<MaterialState> states) {
-            if (states.contains(MaterialState.pressed) |
-                states.contains(MaterialState.hovered)) {
+            if (
+                // states.contains(MaterialState.pressed) ||
+                //   states.contains(MaterialState.hovered) ||
+                states.contains(MaterialState.focused)) {
               return primarySwatch;
             }
             // Use the component's default.
@@ -159,5 +177,29 @@ class AppTheme {
         ),
       ),
     ),
+    //
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+          (states) => TextStyle(
+            fontSize: 18,
+            fontFamily: AppFonts.gilroy,
+            fontStyle: FontStyle.normal,
+            color: themeColor,
+          ),
+        ),
+      ),
+    ),
   );
 }
+
+
+/*
+add_shopping_cart_outlined → const IconData
+add_shopping_cart — material icon named "add shopping cart" (outlined).
+
+
+shopping_cart_outlined 
+
+
+*/

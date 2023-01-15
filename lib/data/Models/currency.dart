@@ -6,17 +6,17 @@ import 'package:flutter/material.dart';
 @immutable
 class Currency {
   final String? url;
-  final String? name;
+  final String name;
   final String? native;
-  final String? code;
+  final String code;
   final String? emoji;
   final String? slug;
 
   const Currency({
     this.url,
-    this.name,
+    required this.name,
     this.native,
-    this.code,
+    required this.code,
     this.emoji,
     this.slug,
   });
@@ -28,9 +28,9 @@ class Currency {
 
   factory Currency.fromMap(Map<String, dynamic> data) => Currency(
         url: data['url'] as String?,
-        name: data['name'] as String?,
+        name: data['name'] as String,
         native: data['native'] as String?,
-        code: data['code'] as String?,
+        code: data['code'] as String,
         emoji: data['emoji'] as String?,
         slug: data['slug'] as String?,
       );
@@ -58,17 +58,17 @@ class Currency {
 
   Currency copyWith({
     String? url,
-    String? name,
+    required String name,
     String? native,
-    String? code,
+    required String code,
     String? emoji,
     String? slug,
   }) {
     return Currency(
       url: url ?? this.url,
-      name: name ?? this.name,
+      name: this.name,
       native: native ?? this.native,
-      code: code ?? this.code,
+      code: this.code,
       emoji: emoji ?? this.emoji,
       slug: slug ?? this.slug,
     );

@@ -4,15 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:nectar_mac/data/Providers/product_provider.dart';
 
-import 'data/Models/currency.dart';
 import 'data/Models/department.dart';
-import 'data/Models/product.dart';
 import 'data/Providers/department_provider.dart';
 import 'themes/app_theme.dart';
-import 'views/screens/home/home_screen.dart';
-import 'views/screens/product/product_details.dart';
+import 'views/screens/explorer_tab/products_search.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,16 +44,8 @@ class _AuthExampleAppState extends State<AuthExampleApp> {
       debugShowCheckedModeBanner: false,
       title: AppTheme.appName,
       // home: const HomeScreen(),
-      home: const ProductDetail(
-        product: Product(
-          name: "meet",
-          image: "http://127.0.0.1:8000/media/images/Product/Beef_Bone.png",
-          amount: 1,
-          price: 5,
-          currency: Currency(
-            name: "D",
-          ),
-        ),
+      home: const ProductSearch(
+        searchWord: "Egg",
       ),
       theme: AppTheme.lightTheme,
       // darkTheme: AppTheme.darkTheme,
@@ -84,14 +72,15 @@ class MyWidget extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: FutureBuilder<List<Department>>(
-            future: DepartmentApi().getAll(),
-            builder: (context, snapshot) {
-              print("snapshot.error : ${snapshot.error}");
-              return Text(
-                snapshot.data![0].name,
-                style: const TextStyle(fontSize: 50),
-              );
-            }),
+          future: DepartmentApi().getAll(),
+          builder: (context, snapshot) {
+            print("snapshot.error : ${snapshot.error}");
+            return Text(
+              snapshot.data![0].name,
+              style: const TextStyle(fontSize: 50),
+            );
+          },
+        ),
       ),
     );
   }

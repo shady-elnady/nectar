@@ -5,11 +5,12 @@ import 'package:flutter/material.dart';
 
 @immutable
 class ProductImage {
-  final String? url;
-  final String? image;
-  final String? product;
+  final String url;
+  final String image;
+  final String product;
 
-  const ProductImage({this.url, this.image, this.product});
+  const ProductImage(
+      {required this.url, required this.image, required this.product});
 
   @override
   String toString() {
@@ -17,9 +18,9 @@ class ProductImage {
   }
 
   factory ProductImage.fromMap(Map<String, dynamic> data) => ProductImage(
-        url: data['url'] as String?,
-        image: data['image'] as String?,
-        product: data['product'] as String?,
+        url: data['url'] as String,
+        image: data['image'] as String,
+        product: data['product'] as String,
       );
 
   Map<String, dynamic> toMap() => {
@@ -41,14 +42,14 @@ class ProductImage {
   String toJson() => json.encode(toMap());
 
   ProductImage copyWith({
-    String? url,
-    String? image,
-    String? product,
+    required String url,
+    required String image,
+    required String product,
   }) {
     return ProductImage(
-      url: url ?? this.url,
-      image: image ?? this.image,
-      product: product ?? this.product,
+      url: this.url,
+      image: this.image,
+      product: this.product,
     );
   }
 }

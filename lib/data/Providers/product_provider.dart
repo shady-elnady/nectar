@@ -32,8 +32,36 @@ class ProductApi {
     }
   }
 
-  // Get One product
-  Future<Product> getOne({required String slug}) async {
+  // Get One Name
+  Future<List<Product>> getOneByName({String? name}) async {
+    http.Response res = await http.get(
+      Uri.parse(
+        "${AppAPI.appBaseUrl}$_productsUrl?name=$name",
+      ),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+
+    if (res.statusCode == 200) {
+      Body body = Body.fromJson(res.body);
+
+      List<dynamic> results = body.results;
+
+      List<Product> products = results.map(
+        (dynamic product) {
+          return Product.fromMap(product);
+        },
+      ).toList();
+
+      return products;
+    } else {
+      throw "Unable to retrieve departments.";
+    }
+  }
+
+  // Get One product by Slug
+  Future<Product> getOneBySlug({required String slug}) async {
     http.Response res = await http.get(
       Uri.parse(
         "${AppAPI.appBaseUrl}$_productsUrl$slug/",

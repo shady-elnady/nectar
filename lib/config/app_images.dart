@@ -25,4 +25,5 @@ class AppImages {
   static const pulses = "${_imagePath}products/pulses.png";
   static const pngfuel = "${_imagePath}products/pngfuel.png";
   static const filfil = "${_imagePath}products/filfil.png";
+  static const coursal = "${_imagePath}products/coursal.png";
 }

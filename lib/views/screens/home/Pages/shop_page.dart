@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:banner_carousel/banner_carousel.dart';
 import 'package:nectar_mac/config/index.dart';
+import 'package:nectar_mac/data/Models/department.dart';
+import 'package:nectar_mac/data/Models/product.dart';
 import 'package:nectar_mac/data/Providers/department_provider.dart';
 import 'package:nectar_mac/data/Providers/product_provider.dart';
-import 'package:nectar_mac/data/index.dart';
 import 'package:nectar_mac/views/Utils/constant.dart';
 import 'package:nectar_mac/views/widgets/Utils/slider_product_item.dart';
 
