@@ -46,6 +46,7 @@ class CardSerializer(HyperlinkedModelSerializer):
             "Lines_In_Card",
             "payment_method",
             "promo_code",
+            "is_finished",
             "created_at",
             # "total_cost",
             "Total_Cost",

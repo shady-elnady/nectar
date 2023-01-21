@@ -16,3 +16,11 @@ class CategoryViewSet(ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     # permission_classes = [permissions.IsAuthenticated]
+
+
+    def get_queryset(self):
+        queryset = Category.objects.all()
+        name = self.request.query_params.get('name')
+        if name:
+            queryset = queryset.filter(name__contains=name) ## objects.filter(firstname__contains='bias').values()
+        return queryset

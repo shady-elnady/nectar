@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
@@ -6,8 +8,8 @@ import 'package:flutter/material.dart';
 @immutable
 class Body {
   final int? count;
-  final dynamic next;
-  final dynamic previous;
+  final String? next;
+  final String? previous;
   final List<dynamic> results;
 
   const Body({
@@ -24,8 +26,8 @@ class Body {
 
   factory Body.fromMap(Map<String, dynamic> data) => Body(
         count: data['count'] as int?,
-        next: data['next'] as dynamic,
-        previous: data['previous'] as dynamic,
+        next: data['next'] as String?,
+        previous: data['previous'] as String?,
         results: data['results'] as List<dynamic>,
       );
 
@@ -50,8 +52,8 @@ class Body {
 
   Body copyWith({
     int? count,
-    dynamic next,
-    dynamic previous,
+    String? next,
+    String? previous,
     required List<dynamic> results,
   }) {
     return Body(

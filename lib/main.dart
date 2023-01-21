@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'data/Models/department.dart';
 import 'data/Providers/department_provider.dart';
 import 'themes/app_theme.dart';
-import 'views/screens/explorer_tab/products_search.dart';
+import 'views/screens/splash/splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,10 +43,7 @@ class _AuthExampleAppState extends State<AuthExampleApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppTheme.appName,
-      // home: const HomeScreen(),
-      home: const ProductSearch(
-        searchWord: "Egg",
-      ),
+      home: const SplashScreen(),
       theme: AppTheme.lightTheme,
       // darkTheme: AppTheme.darkTheme,
       scrollBehavior: MyCustomScrollBehavior(),

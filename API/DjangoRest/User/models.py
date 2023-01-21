@@ -39,6 +39,10 @@ class User(AbstractBaseUser, BaseModel, PermissionsMixin):
         default=True,
         verbose_name= _("is Active"),
     )
+    is_verified = models.BooleanField(
+        default=False,
+        verbose_name= _("is Verfied"),
+    )
     is_staff = models.BooleanField(
         default=False,
         verbose_name= _("is Staff"),

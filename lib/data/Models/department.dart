@@ -1,6 +1,8 @@
-import 'dart:convert';
+// ignore_for_file: depend_on_referenced_packages
 
 import 'package:collection/collection.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import 'product.dart';

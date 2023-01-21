@@ -19,7 +19,7 @@ class CustomText extends StatelessWidget {
         // Title
         Text(
           title,
-          style: Theme.of(context).textTheme.displayLarge,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(
           height: 10,
@@ -28,7 +28,7 @@ class CustomText extends StatelessWidget {
         Text(
           subTitle,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.displayMedium,
+          style: Theme.of(context).textTheme.bodySmall,
         ),
       ],
     );

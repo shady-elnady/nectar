@@ -30,16 +30,24 @@ class UtilsWidget {
         height: height,
       );
 
-  // Padding
-  static const EdgeInsets paddingV20 = EdgeInsets.symmetric(
+  // EdgeInsets
+  static const EdgeInsets edgeInsetsV20 = EdgeInsets.symmetric(
     vertical: 20,
   );
 
-  static const EdgeInsets paddingH20 = EdgeInsets.symmetric(
+  static const EdgeInsets edgeInsetsV30 = EdgeInsets.symmetric(
+    vertical: 30,
+  );
+
+  static const EdgeInsets edgeInsetsH20 = EdgeInsets.symmetric(
     horizontal: 20,
   );
 
-  static const EdgeInsets paddingVH20 = EdgeInsets.symmetric(
+  static const EdgeInsets edgeInsetsH30 = EdgeInsets.symmetric(
+    horizontal: 30,
+  );
+
+  static const EdgeInsets edgeInsetsVH20 = EdgeInsets.symmetric(
     horizontal: 20,
     vertical: 20,
   );
@@ -58,4 +66,10 @@ class UtilsWidget {
     height: 50,
     thickness: 1,
   );
+
+  // BorderRadius
+  static BorderRadius borderRadius20 = BorderRadius.circular(20);
+
+  // Duration
+  static const durationS2 = Duration(seconds: 2);
 }

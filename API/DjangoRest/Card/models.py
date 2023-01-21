@@ -49,6 +49,8 @@ class Card(models.Model):
     )
     payment_method= models.CharField(
         max_length= 2,
+        null= True,
+        blank= True,
         choices= PaymentMethod.choices,
         verbose_name= _("Payment Method"),
     )
@@ -58,6 +60,10 @@ class Card(models.Model):
         blank= True,
         null= True,
         verbose_name= _("Promo Code"),
+    )
+    is_finished = models.BooleanField(
+        default= False,
+        verbose_name= _("is Finished"),
     )
     created_at = models.DateTimeField(
         auto_now_add= True,
@@ -110,7 +116,7 @@ class LineInCard(models.Model):
         related_name= "In_Cards",
         verbose_name= _("Product"),
     ) 
-    amount = models.FloatField(
+    amount = models.SmallIntegerField(
         verbose_name= _("Amount"),
     )
 

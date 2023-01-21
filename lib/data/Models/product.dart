@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages, unused_import
+
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
@@ -88,7 +90,7 @@ class Product {
         'category': category?.toMap(),
         'unit': unit?.toMap(),
         'serial': serial,
-        'currency': currency?.toMap(),
+        'currency': currency.toMap(),
         'price': price,
         'detail': detail,
         'is_favorite': isFavorite,

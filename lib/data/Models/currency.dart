@@ -1,7 +1,9 @@
+// ignore_for_file: depend_on_referenced_packages, unused_import
+
+import 'package:flutter/material.dart';
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
 
 @immutable
 class Currency {

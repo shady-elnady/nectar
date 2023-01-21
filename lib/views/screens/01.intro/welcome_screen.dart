@@ -1,73 +1,78 @@
-// ignore_for_file: unused_local_variable
-
 import 'package:flutter/material.dart';
+import 'package:nectar_mac/views/Utils/constant.dart';
 
 import '../../../config/app_images.dart';
-import '../../../themes/app_fonts.dart';
+import '../../widgets/Buttons/animated_button.dart';
 import '../../widgets/Buttons/main_button.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
   @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  bool _start = false;
+  @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    var size = MediaQuery.of(context).size;
+
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(AppImages.bg),
-            fit: BoxFit.cover,
-          ),
-        ),
+      body: Stack(
         alignment: Alignment.bottomCenter,
-        child: SafeArea(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.asset(
-                AppImages.carotWhite,
-                width: 48,
-                height: 56,
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              const Text(
-                "Welcome\nto our store",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: AppFonts.gilroy,
-                  color: Colors.white,
-                  fontSize: 48,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                "Ger your groceries in as fast as one hour",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: AppFonts.gilroy,
-                  color: Color(0xB3FCFCFC),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              const MainButton(
-                title: "Get Started",
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-            ],
+        children: [
+          Image.asset(
+            AppImages.bg,
+            fit: BoxFit.cover,
+            width: size.width,
+            height: size.height,
           ),
-        ),
+          SafeArea(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  AppImages.carotWhite,
+                  width: 48,
+                  height: 56,
+                ),
+                UtilsWidget.sizedBox25,
+                Text(
+                  "Welcome\nto our store",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.labelLarge!,
+                ),
+                // const SizedBox(
+                //   height: 5,
+                // ),
+                Text(
+                  "Ger your groceries in as fast as one hour",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelMedium!
+                      .copyWith(fontSize: 15, fontWeight: FontWeight.w200),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 30, 0, 75),
+                  child: !_start
+                      ? InkWell(
+                          onTap: () => setState(() {
+                            _start = true;
+                          }),
+                          child: const MainButton(
+                            title: "Get Started",
+                          ),
+                        )
+                      : AnimatedTransButton(
+                          start: _start,
+                        ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

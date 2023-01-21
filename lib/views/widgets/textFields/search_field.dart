@@ -13,7 +13,7 @@ class SearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: UtilsWidget.paddingVH20,
+      padding: UtilsWidget.edgeInsetsV20,
       child: TextField(
         style: TextStyle(
           fontSize: 14,
@@ -31,7 +31,7 @@ class SearchField extends StatelessWidget {
           ),
           prefixIcon: Icon(
             Icons.search,
-            size: 30,
+            size: 25,
             color: Theme.of(context).primaryColorDark,
           ),
           suffixIcon: Icon(

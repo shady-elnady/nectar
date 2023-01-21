@@ -7,6 +7,11 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView
 
+from rest_framework_simplejwt.tokens import RefreshToken
+from .Serializer import LogInSerialcer
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from .models import User, Profile
 from .forms import RegistrationForm, SignUpForm
 
@@ -72,3 +77,41 @@ def signUp(req):
 
     return render(req, "registration/signUp.html", context=context)
 
+## Rest FramWork
+
+class LogInApi(APIView):
+    def post(self, request):
+        try:
+            data= request.data
+            serialzer = LogInSerialcer(data= data)
+            if serialzer.is_valid():
+                email = serialzer.data["email"]
+                password = serialzer.data["password"]
+                user = authenticate(email= email, password= password) 
+                if user is None:
+                    return Response({
+                        "status": 400,
+                        "message": "Some Thing went Wrong",
+                        "data": serialzer.errors,
+                    })
+                if user.is_verified is False:
+                    return Response({
+                        "status": 400,
+                        "message": "Your Account is Not Verified Yeit",
+                        "data": {},
+                    })
+
+                refresh = RefreshToken.for_user(user)
+                return {
+                    'refresh': str(refresh),
+                    'access': str(refresh.access_token),
+                }
+            
+            return Response({
+                "status": 400,
+                "message": "Some Thing went Wrong",
+                "data": serialzer.errors,
+            })
+        
+        except Exception as e:
+            print(e)

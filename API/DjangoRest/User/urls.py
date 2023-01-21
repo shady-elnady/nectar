@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import signUp
+from .views import LogInApi, signUp
 
 
 app_name = "User"
@@ -8,6 +8,8 @@ app_name = "User"
 
 urlpatterns = [
     path("signUp/", signUp, name="SignUp"),
+    path("logInRest/", LogInApi.as_view(), name="LogIn"),
+
     # path('login/', name="login"),
     # path("logout/" ,name="logout"),
     # path("password_change/",name="password_change"),

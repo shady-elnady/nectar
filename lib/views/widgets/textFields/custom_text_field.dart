@@ -29,8 +29,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       children: [
         Text(
           widget.label,
-          style: Theme.of(context).inputDecorationTheme.labelStyle,
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
+        // UtilsWidget.sizedBox15,
         TextField(
           focusNode: widget.foucNode,
           autofocus: widget.foucNode != null,
@@ -50,6 +51,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                 _passwordVisible
                                     ? Icons.visibility
                                     : Icons.visibility_off,
+                                size: 20,
                                 // color: Theme.of(context).textTheme.titleMedium,
                               ),
                             ),
@@ -61,7 +63,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         },
                       )),
             hintText: widget.label == "Password" ? "........" : widget.hint,
-            hintStyle: Theme.of(context).inputDecorationTheme.hintStyle,
+            hintStyle: Theme.of(context).textTheme.titleMedium,
+            border: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: Theme.of(context).primaryColorDark.withOpacity(0.5),
+              ),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: Theme.of(context).primaryColorLight.withOpacity(0.5),
+              ),
+            ),
+            filled: false,
           ),
         ),
       ],

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nectar_mac/themes/app_colors.dart';
 
 import '../../../config/app_images.dart';
 import '../../widgets/index.dart';
+import 'loging_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -17,7 +17,7 @@ class SignUpScreen extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.center,
-            height: size.height / 3.6,
+            height: size.height / 3.8,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(AppImages.authBg),
@@ -68,22 +68,23 @@ class SignUpScreen extends StatelessWidget {
                   child: RichText(
                     text: TextSpan(
                       text: 'By continuing you agree to our ',
-                      style: Theme.of(context).textTheme.displaySmall,
-                      children: const <TextSpan>[
+                      style: Theme.of(context).textTheme.bodySmall,
+                      children: <TextSpan>[
                         TextSpan(
                           text: 'Terms of Service ',
                           style: TextStyle(
                             fontSize: 14,
-                            color: AppColors.primarySwatch,
+                            color: Theme.of(context).primaryColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        TextSpan(text: 'and '),
+                        const TextSpan(
+                            text: '\n and ', style: TextStyle(height: 2)),
                         TextSpan(
                           text: 'Privacy Policy.',
                           style: TextStyle(
                             fontSize: 14,
-                            color: AppColors.primarySwatch,
+                            color: Theme.of(context).primaryColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -94,27 +95,32 @@ class SignUpScreen extends StatelessWidget {
                 //
                 const MainButton(
                   title: "Sing Up",
+                  margin: 0,
                 ),
                 //
                 Padding(
                   padding: const EdgeInsets.only(top: 35),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text(
                         "Already have an account? ",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: AppColors.titleColor,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).textTheme.titleSmall,
                       ),
-                      Text(
-                        "Sign In",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: AppColors.primarySwatch,
-                          fontWeight: FontWeight.bold,
+                      InkWell(
+                        onTap: () => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LogingScreen(),
+                          ),
+                        ),
+                        child: Text(
+                          "Sign In",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],

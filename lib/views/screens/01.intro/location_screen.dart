@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../components/index.dart';
 import '../../widgets/index.dart';
+import '../auth/loging_screen.dart';
 
 class LocationScreen extends StatelessWidget {
   const LocationScreen({super.key});
@@ -38,10 +39,10 @@ class LocationScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 UtilsWidget.sizedBox35,
                 // Text Container
-                 CustomText(
+                const CustomText(
                   center: true,
                   title: "Select Your Location",
                   subTitle:
@@ -51,13 +52,13 @@ class LocationScreen extends StatelessWidget {
                 UtilsWidget.sizedBox55,
                 UtilsWidget.sizedBox55,
                 // Your Zone
-                 CustomDropMenu(
+                const CustomDropMenu(
                   label: "Your Zone",
                 ),
                 //
                 UtilsWidget.sizedBox35,
                 // Your Area
-                 CustomDropMenu(
+                const CustomDropMenu(
                   label: "Your Area",
                   hint: "Types of your area",
                 ),
@@ -65,8 +66,17 @@ class LocationScreen extends StatelessWidget {
                 //
                 UtilsWidget.sizedBox35,
 
-                MainButton(
-                  title: "Submit",
+                InkWell(
+                  onTap: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LogingScreen(),
+                    ),
+                  ),
+                  child: const MainButton(
+                    title: "Submit",
+                    margin: 0,
+                  ),
                 ),
                 //
               ],

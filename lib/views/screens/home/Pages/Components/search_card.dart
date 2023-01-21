@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nectar_mac/config/app_images.dart';
+import 'package:nectar_mac/views/Utils/constant.dart';
 
 import '../../../../widgets/textFields/search_field.dart';
 
@@ -12,6 +13,7 @@ class SearchCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
+      padding: UtilsWidget.edgeInsetsH20,
       decoration: BoxDecoration(
         color: Theme.of(context).canvasColor,
         borderRadius: const BorderRadius.all(

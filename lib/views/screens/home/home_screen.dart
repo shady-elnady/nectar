@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'Pages/shop_page.dart';
+import 'Pages/cart_tab.dart';
+import 'Pages/explorer_tab.dart';
+import 'Pages/shop_tab.dart';
 import 'model/page_model.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,31 +16,23 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   final List<PageTab> _pages = [
     PageTab(
-      widget: const ShopPage(),
+      widget: const ShopTab(),
       icon: const Icon(
         Icons.call,
       ),
       label: "Shop",
     ),
     PageTab(
-      widget: const Icon(
-        Icons.camera,
-        size: 150,
-        color: Colors.red,
-      ),
+      widget: const ExplorerTab(searchWord: "Egg"),
       icon: const Icon(
-        Icons.camera,
+        Icons.search_outlined,
       ),
       label: "Explore",
     ),
     PageTab(
-      widget: const Icon(
-        Icons.camera,
-        size: 150,
-        color: Colors.red,
-      ),
+      widget: const MyCrat(),
       icon: const Icon(
-        Icons.chat,
+        Icons.shopping_basket_outlined,
       ),
       label: "Cart",
     ),
@@ -49,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
         color: Colors.red,
       ),
       icon: const Icon(
-        Icons.camera,
+        Icons.favorite_border_outlined,
       ),
       label: "Favourite",
     ),
@@ -60,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
         color: Colors.red,
       ),
       icon: const Icon(
-        Icons.chat,
+        Icons.account_balance_outlined,
       ),
       label: "Account",
     ),

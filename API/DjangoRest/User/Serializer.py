@@ -1,5 +1,6 @@
 from django.contrib.auth.models import Group
-from rest_framework.serializers import HyperlinkedModelSerializer, RelatedField
+from rest_framework.serializers import HyperlinkedModelSerializer, RelatedField, EmailField, CharField
+
 
 from .models import User, Following, Profile
 # from Nectar.Serializer import AgeSerializer
@@ -17,6 +18,7 @@ class UserSerializer(HyperlinkedModelSerializer):
             "username",
             "email",
             "is_active",
+            "is_verified",
             "is_staff",
             "is_superuser",
             "slug",
@@ -55,3 +57,8 @@ class ProfileSerializer(HyperlinkedModelSerializer):
             "age",
             "slug",
         ]
+
+
+class LogInSerialcer(HyperlinkedModelSerializer):
+    email = EmailField()
+    password =  CharField()

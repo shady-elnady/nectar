@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:nectar_mac/themes/app_fonts.dart';
 
 import 'package:nectar_mac/views/widgets/textFields/custom_text_field.dart';
 
 import '../../components/index.dart';
+import '../01.intro/location_screen.dart';
 
 class VerificationScreen extends StatelessWidget {
   const VerificationScreen({super.key});
@@ -31,7 +33,7 @@ class VerificationScreen extends StatelessWidget {
         children: [
           //
           IntroHeader(
-            height: size.height / 4,
+            height: size.height / 4.5,
             // width: size.width / 1.6,
             aligment: Alignment.bottomLeft,
             child: Padding(
@@ -39,13 +41,13 @@ class VerificationScreen extends StatelessWidget {
               child: Text(
                 "Enter your 4-digit code",
                 textAlign: TextAlign.left,
-                style: Theme.of(context).textTheme.displayLarge,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
           ),
           //
           Padding(
-            padding: const EdgeInsets.all(25.0),
+            padding: const EdgeInsets.fromLTRB(25.0, 0, 25, 25),
             child: CustomTextField(
               label: "Code",
               hint: "- - - -",
@@ -64,7 +66,12 @@ class VerificationScreen extends StatelessWidget {
             ),
             child: Text(
               "Resend Code",
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontFamily: AppFonts.gilroy,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
           Padding(
@@ -77,11 +84,19 @@ class VerificationScreen extends StatelessWidget {
               height: 70,
               child: FittedBox(
                 child: FloatingActionButton(
+                  backgroundColor: Theme.of(context).primaryColor,
                   child: const Icon(
                     Icons.keyboard_arrow_right_outlined,
                     size: 25,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LocationScreen(),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),

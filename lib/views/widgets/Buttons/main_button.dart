@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
 
+import '../../Utils/constant.dart';
+
 class MainButton extends StatelessWidget {
   final String title;
   final Widget? widgetIcon;
   final Color? color;
+  final double? margin;
 
   const MainButton({
     super.key,
     this.title = "Get Started",
     this.widgetIcon,
     this.color,
+    this.margin = 30,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      margin: const EdgeInsets.symmetric(horizontal: 30),
+      margin: EdgeInsets.symmetric(horizontal: margin!),
       width: double.infinity,
       height: 65,
       decoration: BoxDecoration(
         color: color ?? Theme.of(context).primaryColor,
-        borderRadius: BorderRadius.circular(13),
+        borderRadius: UtilsWidget.borderRadius20,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nectar_mac/themes/app_colors.dart';
 
 import '../../../config/app_images.dart';
 import '../../widgets/index.dart';
+import '../home/home_screen.dart';
+import 'sign_up.dart';
 
 class LogingScreen extends StatelessWidget {
   const LogingScreen({super.key});
@@ -17,7 +18,7 @@ class LogingScreen extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.center,
-            height: size.height / 3.6,
+            height: size.height / 3.8,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(AppImages.authBg),
@@ -52,42 +53,52 @@ class LogingScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 25),
                   child: SizedBox(
                     width: size.width,
-                    child: const InkWell(
+                    child: InkWell(
                       child: Text(
                         "Forgot Password ?",
                         textAlign: TextAlign.end,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: Theme.of(context).textTheme.titleSmall,
                       ),
                     ),
                   ),
                 ),
                 //
-                const MainButton(
-                  title: "Sing In",
+                InkWell(
+                  onTap: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen(),
+                    ),
+                  ),
+                  child: const MainButton(
+                    title: "Sgin In",
+                    margin: 0,
+                  ),
                 ),
                 //
                 Padding(
                   padding: const EdgeInsets.only(top: 35),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text(
                         "Don’t have an account? ",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: AppColors.titleColor,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).textTheme.titleSmall,
                       ),
-                      Text(
-                        "Singup",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: AppColors.primarySwatch,
-                          fontWeight: FontWeight.bold,
+                      InkWell(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignUpScreen(),
+                          ),
+                        ),
+                        child: Text(
+                          "Singup",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],

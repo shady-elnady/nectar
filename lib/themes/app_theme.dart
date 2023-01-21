@@ -11,7 +11,8 @@ class AppTheme {
   static Color primarySwatch = const Color(0xff53B175);
   static Color themeColor = const Color(0xffFFFFFF);
   static Color darkBgColor = const Color(0xffF2F3F2);
-  static Color primaryColorDark = const Color(0xff181725);
+  // static Color primaryColorDark = const Color(0xff181725);
+  static Color primaryColorDark = Colors.black;
   static Color primaryColorLight = const Color(0xff7C7C7C);
   // Dark Theme Colors
   // old
@@ -24,6 +25,7 @@ class AppTheme {
   static Color? ratingBG = Colors.yellow[600];
 
   static ThemeData lightTheme = ThemeData(
+    visualDensity: VisualDensity.adaptivePlatformDensity,
     brightness: Brightness.light,
     primaryColor: primarySwatch,
     primaryColorDark: primaryColorDark,
@@ -142,6 +144,13 @@ class AppTheme {
         color: primaryColorLight,
       ),
       // For Button
+      labelLarge: TextStyle(
+        fontSize: 48,
+        fontFamily: AppFonts.gilroy,
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.w600,
+        color: themeColor,
+      ),
       labelMedium: TextStyle(
         fontSize: 18,
         fontFamily: AppFonts.gilroy,
@@ -190,6 +199,7 @@ class AppTheme {
         ),
       ),
     ),
+    //
   );
 }
 

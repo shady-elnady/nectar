@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:nectar_mac/data/Models/product.dart';
 import 'package:nectar_mac/themes/app_fonts.dart';
 
+import '../../screens/product/product_details.dart';
+
 class SliderProductItem extends StatelessWidget {
   const SliderProductItem({
     super.key,
@@ -88,7 +90,16 @@ class SliderProductItem extends StatelessWidget {
                   color: Theme.of(context).primaryColor,
                 ),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductDetail(
+                          product: product,
+                        ),
+                      ),
+                    );
+                  },
                   icon: Icon(
                     Icons.add,
                     color: Theme.of(context).canvasColor,

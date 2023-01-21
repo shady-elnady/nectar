@@ -5,13 +5,39 @@ import '../Models/body.dart';
 import '../Models/product.dart';
 
 class ProductApi {
-  final String _productsUrl = "/api/products/";
+  final String _productsUrl = "/products";
 
   // Get All products
   Future<List<Product>> getAll() async {
     http.Response res = await http.get(
       Uri.parse(
         AppAPI.appBaseUrl + _productsUrl,
+      ),
+    );
+
+    if (res.statusCode == 200) {
+      Body body = Body.fromJson(res.body);
+
+      List<dynamic> results = body.results;
+
+      List<Product> products = results.map(
+        (dynamic product) {
+          return Product.fromMap(product);
+        },
+      ).toList();
+
+      return products;
+    } else {
+      throw "Unable to retrieve departments.";
+    }
+  }
+
+  // Get All products By Category Name
+  Future<List<Product>> getCategoryProducts(
+      {required String categoryName}) async {
+    http.Response res = await http.get(
+      Uri.parse(
+        "${AppAPI.appBaseUrl}$_productsUrl?category_name=$categoryName",
       ),
     );
 

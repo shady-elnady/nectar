@@ -32,10 +32,7 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
       children: [
         Text(
           widget.label,
-          style: Theme.of(context)
-              .dropdownMenuTheme
-              .inputDecorationTheme!
-              .labelStyle,
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         DropdownButton(
           isExpanded: true,
@@ -45,30 +42,29 @@ class _CustomDropMenuState extends State<CustomDropMenu> {
               ? null
               : Text(
                   widget.hint!,
-                  style: Theme.of(context)
-                      .dropdownMenuTheme
-                      .inputDecorationTheme!
-                      .hintStyle,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
 
           // Down Arrow Icon
           icon:
               widget.isExpanded! ? const Icon(Icons.keyboard_arrow_down) : null,
-          style: Theme.of(context).dropdownMenuTheme.textStyle,
+          style: Theme.of(context).textTheme.titleMedium,
 
           // Array list of items
-          items: widget.items.map((String items) {
+          items: widget.items.map((String item) {
             return DropdownMenuItem(
-              value: items,
-              child: Text(items),
+              value: item,
+              child: Text(item),
             );
           }).toList(),
           // After selecting the desired option,it will
           // change button value to selected value
           onChanged: (String? newValue) {
-            setState(() {
-              selectedValue = newValue!;
-            });
+            setState(
+              () {
+                selectedValue = newValue!;
+              },
+            );
           },
         ),
       ],
