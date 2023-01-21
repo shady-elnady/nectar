@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'Pages/cart_tab.dart';
-import 'Pages/explorer_tab.dart';
-import 'Pages/shop_tab.dart';
+import '../../../data/Models/lines_in_card.dart';
+import 'Components/my_cart_icon.dart';
+import 'Pages/cart/my_cart.dart';
+import 'Pages/explorer/explorer_tab.dart';
+import 'Pages/shop/shop_tab.dart';
 import 'model/page_model.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,51 +16,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  final List<PageTab> _pages = [
-    PageTab(
-      widget: const ShopTab(),
-      icon: const Icon(
-        Icons.call,
-      ),
-      label: "Shop",
-    ),
-    PageTab(
-      widget: const ExplorerTab(searchWord: "Egg"),
-      icon: const Icon(
-        Icons.search_outlined,
-      ),
-      label: "Explore",
-    ),
-    PageTab(
-      widget: const MyCrat(),
-      icon: const Icon(
-        Icons.shopping_basket_outlined,
-      ),
-      label: "Cart",
-    ),
-    PageTab(
-      widget: const Icon(
-        Icons.camera,
-        size: 150,
-        color: Colors.red,
-      ),
-      icon: const Icon(
-        Icons.favorite_border_outlined,
-      ),
-      label: "Favourite",
-    ),
-    PageTab(
-      widget: const Icon(
-        Icons.chat,
-        size: 150,
-        color: Colors.red,
-      ),
-      icon: const Icon(
-        Icons.account_balance_outlined,
-      ),
-      label: "Account",
-    ),
-  ];
+  static List<LinesInCard?> myCart = [];
+
   @override
   void initState() {
     super.initState();
@@ -72,10 +31,55 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final List<PageTab> pages = [
+      PageTab(
+        widget: const ShopTab(),
+        icon: const Icon(
+          Icons.call,
+        ),
+        label: "Shop",
+      ),
+      PageTab(
+        widget: const ExplorerTab(searchWord: "Egg"),
+        icon: const Icon(
+          Icons.search_outlined,
+        ),
+        label: "Explore",
+      ),
+      PageTab(
+        widget: MyCart(),
+        icon: MyCartIcon(
+          count: myCart.length,
+        ),
+        label: "Cart",
+      ),
+      PageTab(
+        widget: const Icon(
+          Icons.camera,
+          size: 150,
+          color: Colors.red,
+        ),
+        icon: const Icon(
+          Icons.favorite_border_outlined,
+        ),
+        label: "Favourite",
+      ),
+      PageTab(
+        widget: const Icon(
+          Icons.chat,
+          size: 150,
+          color: Colors.red,
+        ),
+        icon: const Icon(
+          Icons.account_balance_outlined,
+        ),
+        label: "Account",
+      ),
+    ];
     return Scaffold(
       body: SafeArea(
         child: Center(
-          child: _pages.elementAt(_selectedIndex).widget,
+          child: pages.elementAt(_selectedIndex).widget,
         ),
       ),
       bottomNavigationBar: ClipRRect(
@@ -99,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
           selectedLabelStyle:
               Theme.of(context).bottomNavigationBarTheme.selectedLabelStyle,
           items: <BottomNavigationBarItem>[
-            ..._pages
+            ...pages
                 .map(
                   (PageTab page) => BottomNavigationBarItem(
                     icon: page.icon,

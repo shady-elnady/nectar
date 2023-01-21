@@ -1,0 +1,373 @@
+{
+  "url": "http://127.0.0.1:8000/api/users/1/",
+  "username": "shady",
+  "email": "s@s.com",
+  "is_active": true,
+  "is_verified": true,
+  "is_staff": true,
+  "is_superuser": true,
+  "favorites_products": [
+    {
+      "url": "http://127.0.0.1:8000/api/products/Apple%20&%20Grape%20%20Juice/",
+      "name": "Apple & Grape  Juice",
+      "image": "http://127.0.0.1:8000/media/images/Product/Apple__Grape__Juice.png",
+      "nutritions": "100gr",
+      "amount": 1.0,
+      "reviews": 1.0,
+      "brand": {
+        "name": "Kazi Farmas",
+        "image": "http://127.0.0.1:8000/media/images/Brand/Kazi_Farmas.png"
+      },
+      "category": {
+        "url": "http://127.0.0.1:8000/api/categories/Joices/",
+        "name": "Joices",
+        "image": "http://127.0.0.1:8000/media/images/Category/Joices.png",
+        "slug": "joices",
+        "category_parent": {
+          "url": "http://127.0.0.1:8000/api/categories/Beverages/",
+          "name": "Beverages",
+          "image": "http://127.0.0.1:8000/media/images/Category/Beverages.png",
+          "slug": "beverages",
+          "category_parent": null
+        }
+      },
+      "unit": {
+        "url": "http://127.0.0.1:8000/api/units/Liter/",
+        "name": "Liter",
+        "native": "لتر",
+        "symbol": "L",
+        "prefix": null,
+        "base_unit": null,
+        "measurement": "V",
+        "slug": "liter"
+      },
+      "serial": "9",
+      "currency": {
+        "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+        "name": "Dolar",
+        "native": "دولار",
+        "code": "$",
+        "emoji": "💲",
+        "slug": "dolar"
+      },
+      "price": 15.1,
+      "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+      "is_favorite": true,
+      "product_images": [
+        {
+          "url": "http://127.0.0.1:8000/api/productImages/55/",
+          "image": "http://127.0.0.1:8000/media/images/ProductImage/None_keLvlNs.png",
+          "product": "http://127.0.0.1:8000/api/products/Apple%20&%20Grape%20%20Juice/"
+        },
+        {
+          "url": "http://127.0.0.1:8000/api/productImages/56/",
+          "image": "http://127.0.0.1:8000/media/images/ProductImage/None_tVFmLCL.png",
+          "product": "http://127.0.0.1:8000/api/products/Apple%20&%20Grape%20%20Juice/"
+        },
+        {
+          "url": "http://127.0.0.1:8000/api/productImages/57/",
+          "image": "http://127.0.0.1:8000/media/images/ProductImage/None_twUBF1M.png",
+          "product": "http://127.0.0.1:8000/api/products/Apple%20&%20Grape%20%20Juice/"
+        }
+      ],
+      "slug": "apple-grape-juice"
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/products/Coca%20Cola%20Can/",
+      "name": "Coca Cola Can",
+      "image": "http://127.0.0.1:8000/media/images/Product/Coca_Cola_Can.png",
+      "nutritions": "100gr",
+      "amount": 350.0,
+      "reviews": 5.0,
+      "brand": {
+        "name": "Cocola",
+        "image": "http://127.0.0.1:8000/media/images/Brand/Cocola.png"
+      },
+      "category": {
+        "url": "http://127.0.0.1:8000/api/categories/Soda/",
+        "name": "Soda",
+        "image": "http://127.0.0.1:8000/media/images/Category/Soda.png",
+        "slug": "soda",
+        "category_parent": {
+          "url": "http://127.0.0.1:8000/api/categories/Beverages/",
+          "name": "Beverages",
+          "image": "http://127.0.0.1:8000/media/images/Category/Beverages.png",
+          "slug": "beverages",
+          "category_parent": null
+        }
+      },
+      "unit": {
+        "url": "http://127.0.0.1:8000/api/units/MilLiter/",
+        "name": "MilLiter",
+        "native": "ملي لتر",
+        "symbol": "mL",
+        "prefix": null,
+        "base_unit": {
+          "url": "http://127.0.0.1:8000/api/units/Liter/",
+          "name": "Liter",
+          "native": "لتر",
+          "symbol": "L",
+          "prefix": null,
+          "base_unit": null,
+          "measurement": "V",
+          "slug": "liter"
+        },
+        "measurement": "V",
+        "slug": "milliter"
+      },
+      "serial": "11",
+      "currency": {
+        "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+        "name": "Dolar",
+        "native": "دولار",
+        "code": "$",
+        "emoji": "💲",
+        "slug": "dolar"
+      },
+      "price": 1.7,
+      "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+      "is_favorite": true,
+      "product_images": [
+        {
+          "url": "http://127.0.0.1:8000/api/productImages/28/",
+          "image": "http://127.0.0.1:8000/media/images/ProductImage/None_hzgNA91.png",
+          "product": "http://127.0.0.1:8000/api/products/Coca%20Cola%20Can/"
+        },
+        {
+          "url": "http://127.0.0.1:8000/api/productImages/29/",
+          "image": "http://127.0.0.1:8000/media/images/ProductImage/None_X8YiBNd.png",
+          "product": "http://127.0.0.1:8000/api/products/Coca%20Cola%20Can/"
+        },
+        {
+          "url": "http://127.0.0.1:8000/api/productImages/30/",
+          "image": "http://127.0.0.1:8000/media/images/ProductImage/None_g1becVc.png",
+          "product": "http://127.0.0.1:8000/api/products/Coca%20Cola%20Can/"
+        }
+      ],
+      "slug": "coca-cola-can"
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/products/Diet%20Coke/",
+      "name": "Diet Coke",
+      "image": "http://127.0.0.1:8000/media/images/Product/Diet_Coke.png",
+      "nutritions": "100gr",
+      "amount": 355.0,
+      "reviews": 5.0,
+      "brand": {
+        "name": "Cocola",
+        "image": "http://127.0.0.1:8000/media/images/Brand/Cocola.png"
+      },
+      "category": {
+        "url": "http://127.0.0.1:8000/api/categories/Soda/",
+        "name": "Soda",
+        "image": "http://127.0.0.1:8000/media/images/Category/Soda.png",
+        "slug": "soda",
+        "category_parent": {
+          "url": "http://127.0.0.1:8000/api/categories/Beverages/",
+          "name": "Beverages",
+          "image": "http://127.0.0.1:8000/media/images/Category/Beverages.png",
+          "slug": "beverages",
+          "category_parent": null
+        }
+      },
+      "unit": {
+        "url": "http://127.0.0.1:8000/api/units/MilLiter/",
+        "name": "MilLiter",
+        "native": "ملي لتر",
+        "symbol": "mL",
+        "prefix": null,
+        "base_unit": {
+          "url": "http://127.0.0.1:8000/api/units/Liter/",
+          "name": "Liter",
+          "native": "لتر",
+          "symbol": "L",
+          "prefix": null,
+          "base_unit": null,
+          "measurement": "V",
+          "slug": "liter"
+        },
+        "measurement": "V",
+        "slug": "milliter"
+      },
+      "serial": "7",
+      "currency": {
+        "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+        "name": "Dolar",
+        "native": "دولار",
+        "code": "$",
+        "emoji": "💲",
+        "slug": "dolar"
+      },
+      "price": 1.49,
+      "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+      "is_favorite": true,
+      "product_images": [
+        {
+          "url": "http://127.0.0.1:8000/api/productImages/19/",
+          "image": "http://127.0.0.1:8000/media/images/ProductImage/None_rXPxJ5F.png",
+          "product": "http://127.0.0.1:8000/api/products/Diet%20Coke/"
+        },
+        {
+          "url": "http://127.0.0.1:8000/api/productImages/20/",
+          "image": "http://127.0.0.1:8000/media/images/ProductImage/None_DFxdqgy.png",
+          "product": "http://127.0.0.1:8000/api/products/Diet%20Coke/"
+        },
+        {
+          "url": "http://127.0.0.1:8000/api/productImages/21/",
+          "image": "http://127.0.0.1:8000/media/images/ProductImage/None_RCuLAxY.png",
+          "product": "http://127.0.0.1:8000/api/products/Diet%20Coke/"
+        }
+      ],
+      "slug": "diet-coke"
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/products/Pepsi%20Can/",
+      "name": "Pepsi Can",
+      "image": "http://127.0.0.1:8000/media/images/Product/Pepsi_Can.png",
+      "nutritions": "100gr",
+      "amount": 300.0,
+      "reviews": 5.0,
+      "brand": {
+        "name": "Pepsi",
+        "image": "http://127.0.0.1:8000/media/images/Brand/Pepsi.png"
+      },
+      "category": {
+        "url": "http://127.0.0.1:8000/api/categories/Soda/",
+        "name": "Soda",
+        "image": "http://127.0.0.1:8000/media/images/Category/Soda.png",
+        "slug": "soda",
+        "category_parent": {
+          "url": "http://127.0.0.1:8000/api/categories/Beverages/",
+          "name": "Beverages",
+          "image": "http://127.0.0.1:8000/media/images/Category/Beverages.png",
+          "slug": "beverages",
+          "category_parent": null
+        }
+      },
+      "unit": {
+        "url": "http://127.0.0.1:8000/api/units/MilLiter/",
+        "name": "MilLiter",
+        "native": "ملي لتر",
+        "symbol": "mL",
+        "prefix": null,
+        "base_unit": {
+          "url": "http://127.0.0.1:8000/api/units/Liter/",
+          "name": "Liter",
+          "native": "لتر",
+          "symbol": "L",
+          "prefix": null,
+          "base_unit": null,
+          "measurement": "V",
+          "slug": "liter"
+        },
+        "measurement": "V",
+        "slug": "milliter"
+      },
+      "serial": "12",
+      "currency": {
+        "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+        "name": "Dolar",
+        "native": "دولار",
+        "code": "$",
+        "emoji": "💲",
+        "slug": "dolar"
+      },
+      "price": 1.9,
+      "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+      "is_favorite": false,
+      "product_images": [
+        {
+          "url": "http://127.0.0.1:8000/api/productImages/31/",
+          "image": "http://127.0.0.1:8000/media/images/ProductImage/None_58bXYmq.png",
+          "product": "http://127.0.0.1:8000/api/products/Pepsi%20Can/"
+        },
+        {
+          "url": "http://127.0.0.1:8000/api/productImages/32/",
+          "image": "http://127.0.0.1:8000/media/images/ProductImage/None_gTY6sb6.png",
+          "product": "http://127.0.0.1:8000/api/products/Pepsi%20Can/"
+        },
+        {
+          "url": "http://127.0.0.1:8000/api/productImages/33/",
+          "image": "http://127.0.0.1:8000/media/images/ProductImage/None_Gpqiack.png",
+          "product": "http://127.0.0.1:8000/api/products/Pepsi%20Can/"
+        }
+      ],
+      "slug": "pepsi-can"
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/products/Sprite%20Can/",
+      "name": "Sprite Can",
+      "image": "http://127.0.0.1:8000/media/images/Product/Sprite_Can.png",
+      "nutritions": "100gr",
+      "amount": 1.0,
+      "reviews": 5.0,
+      "brand": {
+        "name": "Cocola",
+        "image": "http://127.0.0.1:8000/media/images/Brand/Cocola.png"
+      },
+      "category": {
+        "url": "http://127.0.0.1:8000/api/categories/Soda/",
+        "name": "Soda",
+        "image": "http://127.0.0.1:8000/media/images/Category/Soda.png",
+        "slug": "soda",
+        "category_parent": {
+          "url": "http://127.0.0.1:8000/api/categories/Beverages/",
+          "name": "Beverages",
+          "image": "http://127.0.0.1:8000/media/images/Category/Beverages.png",
+          "slug": "beverages",
+          "category_parent": null
+        }
+      },
+      "unit": {
+        "url": "http://127.0.0.1:8000/api/units/MilLiter/",
+        "name": "MilLiter",
+        "native": "ملي لتر",
+        "symbol": "mL",
+        "prefix": null,
+        "base_unit": {
+          "url": "http://127.0.0.1:8000/api/units/Liter/",
+          "name": "Liter",
+          "native": "لتر",
+          "symbol": "L",
+          "prefix": null,
+          "base_unit": null,
+          "measurement": "V",
+          "slug": "liter"
+        },
+        "measurement": "V",
+        "slug": "milliter"
+      },
+      "serial": "8",
+      "currency": {
+        "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+        "name": "Dolar",
+        "native": "دولار",
+        "code": "$",
+        "emoji": "💲",
+        "slug": "dolar"
+      },
+      "price": 1.5,
+      "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+      "is_favorite": true,
+      "product_images": [
+        {
+          "url": "http://127.0.0.1:8000/api/productImages/22/",
+          "image": "http://127.0.0.1:8000/media/images/ProductImage/None_090jpyJ.png",
+          "product": "http://127.0.0.1:8000/api/products/Sprite%20Can/"
+        },
+        {
+          "url": "http://127.0.0.1:8000/api/productImages/23/",
+          "image": "http://127.0.0.1:8000/media/images/ProductImage/None_S4Ha28n.png",
+          "product": "http://127.0.0.1:8000/api/products/Sprite%20Can/"
+        },
+        {
+          "url": "http://127.0.0.1:8000/api/productImages/24/",
+          "image": "http://127.0.0.1:8000/media/images/ProductImage/None_qZIeWxd.png",
+          "product": "http://127.0.0.1:8000/api/products/Sprite%20Can/"
+        }
+      ],
+      "slug": "sprite-can"
+    }
+  ],
+  "slug": "shady"
+}

@@ -1,21 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:nectar_mac/data/Models/lines_in_card.dart';
-import 'package:nectar_mac/views/widgets/index.dart';
 
-import '../../../../data/Models/cart.dart';
-import '../../../../data/Providers/cart_provider.dart';
-import '../../../../data/Providers/line_in_cart_provider.dart';
-import '../../../widgets/Buttons/round_out_line.dart';
-import '../../../widgets/Utils/error_widget.dart';
+import '../../../../../data/Models/cart.dart';
+import '../../../../../data/Providers/cart_provider.dart';
+import '../../../../Utils/constant.dart';
+import '../../../../widgets/Buttons/round_out_line.dart';
+import '../../../../widgets/Utils/error_widget.dart';
 
-class MyCrat extends StatefulWidget {
-  const MyCrat({super.key});
+class MyCart extends StatelessWidget {
+  MyCart({
+    super.key,
+  });
+  late List<LinesInCard?> _myCart;
 
-  @override
-  State<MyCrat> createState() => _MyCratState();
-}
+  void addToCart({
+    required LinesInCard oneLine,
+  }) {
+    _myCart.add(oneLine);
+  }
 
-class _MyCratState extends State<MyCrat> {
+  void removeLineInCart({
+    required int index,
+  }) {
+    _myCart.removeAt(index);
+  }
+
+  void updateAmount({
+    required int amount,
+    required int index,
+  }) {
+    LinesInCard newLine = LinesInCard(
+      card: _myCart[index]!.card,
+      product: _myCart[index]!.product,
+      amount: amount,
+      totalLinePrice: _myCart[index]!.product!.price * amount,
+      slug: _myCart[index]!.slug,
+    );
+    _myCart.removeAt(index);
+    _myCart.insert(index, newLine);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,8 +48,9 @@ class _MyCratState extends State<MyCrat> {
           toolbarHeight: 110,
           title: Text(
             "My Cart",
-            style:
-                Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 20),
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  fontSize: 20,
+                ),
           ),
           bottom: const PreferredSize(
             preferredSize: Size(double.infinity, 30),
@@ -48,8 +73,7 @@ class _MyCratState extends State<MyCrat> {
                   return const ErrorConnection(
                       title: "", message: "No Card Yiet");
                 } else {
-                  List<LinesInCard>? linesInCard =
-                      snapshot.data![0]!.linesInCard;
+                  _myCart = snapshot.data![0]!.linesInCard;
                   return ListView.separated(
                     shrinkWrap: true,
                     separatorBuilder: (context, index) {
@@ -57,7 +81,7 @@ class _MyCratState extends State<MyCrat> {
                         height: 80,
                       );
                     },
-                    itemCount: linesInCard!.length,
+                    itemCount: _myCart.length,
                     itemBuilder: (BuildContext context, int index) {
                       return ListTile(
                         isThreeLine: true,
@@ -65,7 +89,7 @@ class _MyCratState extends State<MyCrat> {
                         visualDensity:
                             const VisualDensity(horizontal: 3, vertical: 3),
                         title: Text(
-                          linesInCard[index].product!.name,
+                          _myCart[index]!.product!.name,
                           style: Theme.of(context)
                               .textTheme
                               .titleMedium!
@@ -77,7 +101,7 @@ class _MyCratState extends State<MyCrat> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Text(
-                              "${linesInCard[index].product!.amount}${linesInCard[index].product!.unit!.symbol}, Price",
+                              "${_myCart[index]!.product!.amount}${_myCart[index]!.product!.unit!.symbol}, Price",
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
                             //
@@ -87,17 +111,15 @@ class _MyCratState extends State<MyCrat> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 RoundOutlineButton(
-                                  fun: () => linesInCard[index].amount > 1
-                                      ? LineInCartApi().updateOne(
-                                          url: linesInCard[index].url,
-                                          amount: linesInCard[index].amount - 1,
-                                        )
-                                      : null,
+                                  fun: () => updateAmount(
+                                    index: index,
+                                    amount: _myCart[index]!.amount - 1,
+                                  ),
                                 ),
                                 Padding(
                                   padding: UtilsWidget.edgeInsetsH20,
                                   child: Text(
-                                    "${linesInCard[index].amount}",
+                                    "${_myCart[index]!.amount}",
                                     style: TextStyle(
                                       fontSize: 18,
                                       color: Theme.of(context).primaryColorDark,
@@ -105,16 +127,16 @@ class _MyCratState extends State<MyCrat> {
                                     ),
                                   ),
                                 ),
-                                InkWell(
-                                  onTap: () => LineInCartApi().updateOne(
-                                    url: linesInCard[index].url,
-                                    amount: linesInCard[index].amount + 1,
-                                  ),
-                                  child: RoundOutlineButton(
-                                    child: Icon(
-                                      Icons.add,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
+                                RoundOutlineButton(
+                                  fun: () {
+                                    updateAmount(
+                                      index: index,
+                                      amount: _myCart[index]!.amount + 1,
+                                    );
+                                  },
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Theme.of(context).primaryColor,
                                   ),
                                 ),
                               ],
@@ -123,7 +145,7 @@ class _MyCratState extends State<MyCrat> {
                           ],
                         ),
                         leading: Image.network(
-                          linesInCard[index].product!.image,
+                          _myCart[index]!.product!.image,
                           width: 95,
                           // height: 65,
                         ),
@@ -132,9 +154,14 @@ class _MyCratState extends State<MyCrat> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            const InkWell(child: Icon(Icons.close)),
+                            InkWell(
+                              onTap: () {
+                                removeLineInCart(index: index);
+                              },
+                              child: const Icon(Icons.close),
+                            ),
                             Text(
-                              "${linesInCard[index].product!.currency.code}${linesInCard[index].product!.price}",
+                              "${_myCart[index]!.product!.currency.code}${_myCart[index]!.product!.price}",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium!

@@ -6,11 +6,13 @@ from .models import User, Following, Profile
 # from Nectar.Serializer import AgeSerializer
 from Language.Serializer import LanguageSerializer
 from Location.Serializer import AddressSerializer
+from Product.Serializer import ProductSerializer
 
 
 # Serializers define the API representation.
 
 class UserSerializer(HyperlinkedModelSerializer):
+    favorites_products = ProductSerializer(many= True)
     class Meta:
         model = User
         fields = [
@@ -21,6 +23,7 @@ class UserSerializer(HyperlinkedModelSerializer):
             "is_verified",
             "is_staff",
             "is_superuser",
+            "favorites_products",
             "slug",
         ]
 
@@ -59,6 +62,6 @@ class ProfileSerializer(HyperlinkedModelSerializer):
         ]
 
 
-class LogInSerialcer(HyperlinkedModelSerializer):
+class LogInSerialzer(HyperlinkedModelSerializer):
     email = EmailField()
     password =  CharField()

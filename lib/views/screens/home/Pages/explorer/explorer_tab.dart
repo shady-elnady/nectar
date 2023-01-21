@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../../data/Models/product.dart';
-import '../../../../data/Providers/product_provider.dart';
-import '../../../widgets/Utils/slider_product_item.dart';
-import '../../../widgets/textFields/search_field.dart';
+import '../../../../../data/Models/product.dart';
+import '../../../../../data/Providers/product_provider.dart';
+import '../../../../widgets/Utils/slider_product_item.dart';
+import '../../../../widgets/textFields/search_field.dart';
 
 class ExplorerTab extends StatelessWidget {
   const ExplorerTab({

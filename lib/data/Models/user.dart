@@ -5,38 +5,48 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 
+import 'product.dart';
+
 @immutable
 class User {
   final String? url;
   final String? username;
-  final String? email;
+  final String email;
   final bool? isActive;
+  final bool? isVerified;
   final bool? isStaff;
   final bool? isSuperuser;
+  final List<Product>? favoritesProducts;
   final String? slug;
 
   const User({
     this.url,
     this.username,
-    this.email,
+    required this.email,
     this.isActive,
+    this.isVerified,
     this.isStaff,
     this.isSuperuser,
+    this.favoritesProducts,
     this.slug,
   });
 
   @override
   String toString() {
-    return 'User(url: $url, username: $username, email: $email, isActive: $isActive, isStaff: $isStaff, isSuperuser: $isSuperuser, slug: $slug)';
+    return 'User(url: $url, username: $username, email: $email, isActive: $isActive, isVerified: $isVerified, isStaff: $isStaff, isSuperuser: $isSuperuser, favoritesProducts: $favoritesProducts, slug: $slug)';
   }
 
   factory User.fromMap(Map<String, dynamic> data) => User(
         url: data['url'] as String?,
         username: data['username'] as String?,
-        email: data['email'] as String?,
+        email: data['email'] as String,
         isActive: data['is_active'] as bool?,
+        isVerified: data['is_verified'] as bool?,
         isStaff: data['is_staff'] as bool?,
         isSuperuser: data['is_superuser'] as bool?,
+        favoritesProducts: (data['favorites_products'] as List<dynamic>?)
+            ?.map((e) => Product.fromMap(e as Map<String, dynamic>))
+            .toList(),
         slug: data['slug'] as String?,
       );
 
@@ -45,8 +55,10 @@ class User {
         'username': username,
         'email': email,
         'is_active': isActive,
+        'is_verified': isVerified,
         'is_staff': isStaff,
         'is_superuser': isSuperuser,
+        'favorites_products': favoritesProducts?.map((e) => e.toMap()).toList(),
         'slug': slug,
       };
 
@@ -65,19 +77,23 @@ class User {
   User copyWith({
     String? url,
     String? username,
-    String? email,
+    required String email,
     bool? isActive,
+    bool? isVerified,
     bool? isStaff,
     bool? isSuperuser,
+    List<Product>? favoritesProducts,
     String? slug,
   }) {
     return User(
       url: url ?? this.url,
       username: username ?? this.username,
-      email: email ?? this.email,
+      email: this.email,
       isActive: isActive ?? this.isActive,
+      isVerified: isVerified ?? this.isVerified,
       isStaff: isStaff ?? this.isStaff,
       isSuperuser: isSuperuser ?? this.isSuperuser,
+      favoritesProducts: favoritesProducts ?? this.favoritesProducts,
       slug: slug ?? this.slug,
     );
   }
@@ -96,7 +112,9 @@ class User {
       username.hashCode ^
       email.hashCode ^
       isActive.hashCode ^
+      isVerified.hashCode ^
       isStaff.hashCode ^
       isSuperuser.hashCode ^
+      favoritesProducts.hashCode ^
       slug.hashCode;
 }

@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView
 
 from rest_framework_simplejwt.tokens import RefreshToken
-from .Serializer import LogInSerialcer
+from .Serializer import LogInSerialzer
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -83,7 +83,7 @@ class LogInApi(APIView):
     def post(self, request):
         try:
             data= request.data
-            serialzer = LogInSerialcer(data= data)
+            serialzer = LogInSerialzer(data= data)
             if serialzer.is_valid():
                 email = serialzer.data["email"]
                 password = serialzer.data["password"]

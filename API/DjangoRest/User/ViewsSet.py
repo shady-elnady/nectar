@@ -1,4 +1,5 @@
 from django.contrib.auth.models import Group
+from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework import permissions
 
@@ -16,6 +17,15 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('created_date')
     serializer_class = UserSerializer
     # permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        querySet = User.objects.all()
+        username = self.request.query_params.get('username')
+        # user = get_object_or_404(User, username= username)
+        if (username ):
+            # return querySet.filter( username = username).order_by('created_at')
+            return querySet.filter( username = username)
+        return querySet
 
 
 class GroupViewSet(viewsets.ModelViewSet):

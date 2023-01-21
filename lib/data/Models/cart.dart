@@ -13,7 +13,7 @@ import 'promo_code.dart';
 class Cart {
   final String? url;
   final User? customer;
-  final List<LinesInCard>? linesInCard;
+  final List<LinesInCard?> linesInCard;
   final String? paymentMethod;
   final PromoCode? promoCode;
   final bool? isFinished;
@@ -24,7 +24,7 @@ class Cart {
   const Cart({
     this.url,
     this.customer,
-    this.linesInCard,
+    required this.linesInCard,
     this.paymentMethod,
     this.promoCode,
     this.isFinished,
@@ -43,8 +43,8 @@ class Cart {
         customer: data['customer'] == null
             ? null
             : User.fromMap(data['customer'] as Map<String, dynamic>),
-        linesInCard: (data['Lines_In_Card'] as List<dynamic>?)
-            ?.map((e) => LinesInCard.fromMap(e as Map<String, dynamic>))
+        linesInCard: (data['Lines_In_Card'] as List<dynamic>)
+            .map((e) => LinesInCard.fromMap(e as Map<String, dynamic>))
             .toList(),
         paymentMethod: data['payment_method'] as String?,
         promoCode: data['promo_code'] == null
@@ -61,7 +61,7 @@ class Cart {
   Map<String, dynamic> toMap() => {
         'url': url,
         'customer': customer?.toMap(),
-        'Lines_In_Card': linesInCard?.map((e) => e.toMap()).toList(),
+        'Lines_In_Card': linesInCard?.map((e) => e!.toMap()).toList(),
         'payment_method': paymentMethod,
         'promo_code': promoCode?.toMap(),
         'is_finished': isFinished,
@@ -85,7 +85,7 @@ class Cart {
   Cart copyWith({
     String? url,
     User? customer,
-    List<LinesInCard>? linesInCard,
+    required List<LinesInCard?> linesInCard,
     String? paymentMethod,
     PromoCode? promoCode,
     bool? isFinished,
@@ -96,7 +96,7 @@ class Cart {
     return Cart(
       url: url ?? this.url,
       customer: customer ?? this.customer,
-      linesInCard: linesInCard ?? this.linesInCard,
+      linesInCard: this.linesInCard,
       paymentMethod: paymentMethod ?? this.paymentMethod,
       promoCode: promoCode ?? this.promoCode,
       isFinished: isFinished ?? this.isFinished,

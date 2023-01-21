@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class PageTab {
   final String label;
-  final Icon icon;
+  final Widget icon;
   final Widget widget;
 
   PageTab({

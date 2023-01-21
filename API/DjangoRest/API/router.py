@@ -1,6 +1,9 @@
 from rest_framework import routers
 
-from User.ViewsSet import UserViewSet, GroupViewSet, FollowingViewSet, ProfileViewSet
+from User.ViewsSet import (
+    UserViewSet, GroupViewSet,
+    FollowingViewSet, ProfileViewSet,
+)
 from Card.ViewsSet import CardViewSet, CouponViewSet, LineInCardViewSet
 from Category.ViewsSet import CategoryViewSet, BrandViewSet 
 from Department.ViewsSet import DepartmentViewSet

@@ -7,11 +7,11 @@ import 'package:nectar_mac/data/Providers/product_provider.dart';
 import 'package:nectar_mac/views/Utils/constant.dart';
 import 'package:nectar_mac/views/widgets/Utils/slider_product_item.dart';
 
-import '../../../widgets/Utils/error_widget.dart';
-import '../../../widgets/caursel_slider.dart';
-import '../../category/categories.dart';
-import 'Components/search_card.dart';
-import 'Components/trend_section.dart';
+import '../../../../widgets/Utils/error_widget.dart';
+import '../../../../widgets/caursel_slider.dart';
+import '../../../category/categories.dart';
+import '../Components/search_card.dart';
+import '../Components/trend_section.dart';
 
 class ShopTab extends StatelessWidget {
   const ShopTab({super.key});
@@ -159,7 +159,7 @@ class DepartmentTitle extends StatelessWidget {
             onTap: () => Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => Categories(),
+                builder: (context) => const Categories(),
               ),
             ),
             child: Text(

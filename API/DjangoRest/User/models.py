@@ -8,10 +8,12 @@ from datetime import date
 import calendar
 
 
+
 from .managers import FollowingManager, UsersManager
 from Nectar.models import BaseModel, BaseModelImageOnly, Genders
 from Language.models import Language
 from Location.models import Address
+from Product.models import Product
 
 
 
@@ -50,6 +52,10 @@ class User(AbstractBaseUser, BaseModel, PermissionsMixin):
     is_superuser = models.BooleanField(
         default=False,
         verbose_name= _("is Super User"),
+    )
+    favorites_products = models.ManyToManyField(
+        Product,
+        verbose_name= _("Favorite Products"),
     )
 
     @property
