@@ -1,9 +1,12 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:nectar_mac/data/Models/lines_in_card.dart';
 
 import '../../../../../data/Models/cart.dart';
 import '../../../../../data/Providers/cart_provider.dart';
 import '../../../../Utils/constant.dart';
+import '../../../../widgets/Buttons/main_button.dart';
 import '../../../../widgets/Buttons/round_out_line.dart';
 import '../../../../widgets/Utils/error_widget.dart';
 
@@ -45,7 +48,7 @@ class MyCart extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          toolbarHeight: 110,
+          toolbarHeight: 90,
           title: Text(
             "My Cart",
             style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -55,7 +58,7 @@ class MyCart extends StatelessWidget {
           bottom: const PreferredSize(
             preferredSize: Size(double.infinity, 30),
             child: Divider(
-              height: 40,
+              height: 30,
             ),
           ),
         ),
@@ -175,6 +178,12 @@ class MyCart extends StatelessWidget {
                 }
             }
           },
+        ),
+        bottomSheet: const Padding(
+          padding: EdgeInsets.only(bottom: 20),
+          child: MainButton(
+            title: "Go to Checkout",
+          ),
         ),
       ),
     );

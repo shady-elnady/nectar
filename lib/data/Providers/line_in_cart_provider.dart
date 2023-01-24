@@ -57,20 +57,15 @@ class LineInCartApi {
     Map<String, String>? headers = {
       "Accept": "application/json",
     };
-    print("Shady Obj =======> $amount");
-    print("Shady URL =======> $url");
     try {
       http.Response res = await http.put(
         Uri.parse(url!),
         headers: headers,
         body: {"amount": amount},
       );
-      print("statusCode : ${res.body}");
-      print("statusCode : ${res.statusCode}");
       return res.statusCode == 204;
     } catch (e) {
-      print(e);
-      return false;
+       return false;
     }
   }
 }

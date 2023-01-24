@@ -7,16 +7,16 @@ import 'package:collection/collection.dart';
 
 @immutable
 class Brand {
-  final String? name;
+  final String name;
   final String? image;
 
-  const Brand({this.name, this.image});
+  const Brand({required this.name, this.image});
 
   @override
   String toString() => 'Brand(name: $name, image: $image)';
 
   factory Brand.fromMap(Map<String, dynamic> data) => Brand(
-        name: data['name'] as String?,
+        name: data['name'] as String,
         image: data['image'] as String?,
       );
 
@@ -38,11 +38,11 @@ class Brand {
   String toJson() => json.encode(toMap());
 
   Brand copyWith({
-    String? name,
+    required String name,
     String? image,
   }) {
     return Brand(
-      name: name ?? this.name,
+      name: this.name,
       image: image ?? this.image,
     );
   }

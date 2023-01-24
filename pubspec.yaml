@@ -11,8 +11,9 @@ dependencies:
     firebase_core: ^2.4.1
     firebase_auth: ^4.2.4
     intl_phone_field: ^3.1.0
-    banner_carousel: ^1.2.1
+    # banner_carousel: ^1.2.1
     http: ^0.13.5
+    sliding_up_panel2: ^3.2.2
 dev_dependencies:
     flutter_test:
         sdk: flutter

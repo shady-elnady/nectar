@@ -74,6 +74,7 @@ class CategoryProducts extends StatelessWidget {
                       itemBuilder: (BuildContext ctx, index) {
                         return SliderProductItem(
                           product: snapshot.data![index],
+                          heroTag: categoryName,
                         );
                       },
                     );
@@ -86,13 +87,3 @@ class CategoryProducts extends StatelessWidget {
     );
   }
 }
-
-/*
-add_shopping_cart_outlined → const IconData
-add_shopping_cart — material icon named "add shopping cart" (outlined).
-
-
-shopping_cart_outlined 
-
-
-*/

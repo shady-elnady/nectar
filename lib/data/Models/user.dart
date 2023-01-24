@@ -16,7 +16,7 @@ class User {
   final bool? isVerified;
   final bool? isStaff;
   final bool? isSuperuser;
-  final List<Product>? favoritesProducts;
+  final List<Product?> favoritesProducts;
   final String? slug;
 
   const User({
@@ -27,7 +27,7 @@ class User {
     this.isVerified,
     this.isStaff,
     this.isSuperuser,
-    this.favoritesProducts,
+    required this.favoritesProducts,
     this.slug,
   });
 
@@ -44,8 +44,8 @@ class User {
         isVerified: data['is_verified'] as bool?,
         isStaff: data['is_staff'] as bool?,
         isSuperuser: data['is_superuser'] as bool?,
-        favoritesProducts: (data['favorites_products'] as List<dynamic>?)
-            ?.map((e) => Product.fromMap(e as Map<String, dynamic>))
+        favoritesProducts: (data['favorites_products'] as List<dynamic>)
+            .map((e) => Product.fromMap(e as Map<String, dynamic>))
             .toList(),
         slug: data['slug'] as String?,
       );
@@ -58,7 +58,7 @@ class User {
         'is_verified': isVerified,
         'is_staff': isStaff,
         'is_superuser': isSuperuser,
-        'favorites_products': favoritesProducts?.map((e) => e.toMap()).toList(),
+        'favorites_products': favoritesProducts.map((e) => e!.toMap()).toList(),
         'slug': slug,
       };
 
@@ -82,7 +82,7 @@ class User {
     bool? isVerified,
     bool? isStaff,
     bool? isSuperuser,
-    List<Product>? favoritesProducts,
+    required List<Product?> favoritesProducts,
     String? slug,
   }) {
     return User(
@@ -93,7 +93,7 @@ class User {
       isVerified: isVerified ?? this.isVerified,
       isStaff: isStaff ?? this.isStaff,
       isSuperuser: isSuperuser ?? this.isSuperuser,
-      favoritesProducts: favoritesProducts ?? this.favoritesProducts,
+      favoritesProducts: this.favoritesProducts,
       slug: slug ?? this.slug,
     );
   }

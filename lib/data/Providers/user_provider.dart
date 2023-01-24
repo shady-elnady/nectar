@@ -1,15 +1,15 @@
 import 'package:http/http.dart' as http;
 import 'package:nectar_mac/config/app_api.dart';
 
-import '../Models/User.dart';
-import '../Models/body.dart';
 import '../Models/product.dart';
+import '../Models/user.dart';
+import '../Models/body.dart';
 
 class UserApi {
   final String _usersUrl = "/users";
 
-  // Get one User
-  Future<User> getUser({
+  // Get one User in List
+  Future<List<User?>> getUser({
     String userName = "shady",
   }) async {
     http.Response res = await http.get(
@@ -23,20 +23,19 @@ class UserApi {
 
       List<dynamic> results = body.results;
 
-      List<User> users = results.map(
+      List<User?> users = results.map(
         (dynamic user) {
           return User.fromMap(user);
         },
       ).toList();
-
-      return users[0];
+      return users;
     } else {
       throw "Unable to retrieve departments.";
     }
   }
 
-  // Get User Favorite Products
-  Future<List<Product>> getUserFavoriteProducts({
+  // Get one User in List
+  Future<List<Product?>> getFavoriteProduct({
     String userName = "shady",
   }) async {
     http.Response res = await http.get(
@@ -50,13 +49,12 @@ class UserApi {
 
       List<dynamic> results = body.results;
 
-      List<User> users = results.map(
+      List<User?> users = results.map(
         (dynamic user) {
           return User.fromMap(user);
         },
       ).toList();
-
-      return users[0].favoritesProducts;
+      return users[0]!.favoritesProducts;
     } else {
       throw "Unable to retrieve departments.";
     }

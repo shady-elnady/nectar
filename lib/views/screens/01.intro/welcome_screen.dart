@@ -32,10 +32,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset(
-                  AppImages.carotWhite,
-                  width: 48,
-                  height: 56,
+                Hero(
+                  tag: "CarotImage",
+                  child: Image.asset(
+                    AppImages.carotWhite,
+                    width: 48,
+                    height: 56,
+                  ),
                 ),
                 UtilsWidget.sizedBox25,
                 Text(

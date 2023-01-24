@@ -122,6 +122,7 @@ class DepartmentContainer extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 10.0),
                 child: SliderProductItem(
                   product: department.products![index],
+                  heroTag: department.name,
                 ),
               );
             },
@@ -277,6 +278,7 @@ class Groceries extends StatelessWidget {
                           padding: const EdgeInsets.only(right: 10.0),
                           child: SliderProductItem(
                             product: products[index],
+                            heroTag: products[index].category!.name,
                           ),
                         );
                       },

@@ -61,7 +61,7 @@ class Cart {
   Map<String, dynamic> toMap() => {
         'url': url,
         'customer': customer?.toMap(),
-        'Lines_In_Card': linesInCard?.map((e) => e!.toMap()).toList(),
+        'Lines_In_Card': linesInCard.map((e) => e!.toMap()).toList(),
         'payment_method': paymentMethod,
         'promo_code': promoCode?.toMap(),
         'is_finished': isFinished,

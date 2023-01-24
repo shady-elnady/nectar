@@ -13,6 +13,9 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   late AnimationController _vibratedController;
+  late AnimationController _scaleController;
+
+  late Animation<double> _scaleAnimation;
 
   void startAnimation() async {
     await Future.doWhile(
@@ -28,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen>
             }
           },
         );
-        await Future.delayed(const Duration(seconds: 2), () {
+        await Future.delayed(const Duration(seconds: 1), () {
           _vibratedController.reset();
         });
         await Future.delayed(
@@ -51,18 +54,34 @@ class _SplashScreenState extends State<SplashScreen>
 
     _vibratedController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 100),
+      duration: const Duration(milliseconds: 50),
+    );
+    _scaleController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 20),
+      reverseDuration: const Duration(milliseconds: 400),
     );
 
-    Tween<double>(begin: 0, end: 1)
+    Tween<double>(begin: 1, end: 2)
         .animate(_vibratedController)
         .addStatusListener(
       (status) {
         if (status == AnimationStatus.completed) {
           _vibratedController.repeat(reverse: true);
+          _scaleController.forward();
         }
       },
     );
+    _scaleAnimation = Tween<double>(begin: 1, end: 2).animate(_scaleController)
+      ..addStatusListener(
+        (status) async {
+          if (status == AnimationStatus.completed) {
+            await Future.delayed(const Duration(microseconds: 100));
+            _scaleController.reverse();
+            // _scaleController.repeat(reverse: true);
+          }
+        },
+      );
 
     startAnimation();
   }
@@ -82,15 +101,26 @@ class _SplashScreenState extends State<SplashScreen>
         children: [
           AnimatedBuilder(
             animation: _vibratedController,
-            child: Image.asset(
-              AppImages.logo,
-              width: size.width * 0.55,
+            child: AnimatedBuilder(
+              animation: _scaleController,
+              child: Hero(
+                tag: "CarotImage",
+                child: Image.asset(
+                  AppImages.logo,
+                  width: size.width / 2,
+                ),
+              ),
+              builder: (BuildContext context, Widget? child) => Transform.scale(
+                scale: _scaleAnimation.value,
+                child: child!,
+              ),
             ),
             builder: (BuildContext context, Widget? child) =>
                 Transform.translate(
               offset: Offset(
-                (size.width / 6) + (size.width / 6 * _vibratedController.value),
-                size.height / 2.2,
+                (size.width / 4.5) +
+                    (size.width / 8 * _vibratedController.value),
+                size.height / 2.3,
               ),
               child: child!,
             ),

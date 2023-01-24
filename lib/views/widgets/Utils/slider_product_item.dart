@@ -11,10 +11,12 @@ class SliderProductItem extends StatelessWidget {
     required this.product,
     this.width = 175,
     this.height = 250,
+    required this.heroTag,
   });
   final Product product;
   final double width;
   final double height;
+  final String heroTag;
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +41,15 @@ class SliderProductItem extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(18),
-              child: Image.network(
-                product.image,
-                alignment: Alignment.center,
-                width: 120,
-                height: 110,
-                fit: BoxFit.contain,
+              child: Hero(
+                tag: "$heroTag-${product.name}",
+                child: Image.network(
+                  product.image,
+                  alignment: Alignment.center,
+                  width: 120,
+                  height: 110,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
           ),
@@ -96,6 +101,7 @@ class SliderProductItem extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => ProductDetail(
                           product: product,
+                          heroTag: "$heroTag-${product.name}",
                         ),
                       ),
                     );

@@ -10,8 +10,10 @@ class ProductDetail extends StatefulWidget {
   const ProductDetail({
     super.key,
     required this.product,
+    required this.heroTag,
   });
   final Product product;
+  final String heroTag;
 
   @override
   State<ProductDetail> createState() => _ProductDetailState();
@@ -50,13 +52,16 @@ class _ProductDetailState extends State<ProductDetail> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CaurselSlider(
-              images: [
-                widget.product.image,
-                ...widget.product.productImages!
-                    .map((ProductImage pImg) => pImg.image)
-                    .toList(),
-              ],
+            Hero(
+              tag: widget.heroTag,
+              child: CaurselSlider(
+                images: [
+                  widget.product.image,
+                  ...widget.product.productImages!
+                      .map((ProductImage pImg) => pImg.image)
+                      .toList(),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(25, 20, 25, 0),

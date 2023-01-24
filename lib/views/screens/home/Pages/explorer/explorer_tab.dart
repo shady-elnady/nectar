@@ -95,6 +95,7 @@ class ExplorerTab extends StatelessWidget {
                           } else {
                             return SliderProductItem(
                               product: snapshot.data![index],
+                              heroTag: searchWord ?? "ExplorerPage",
                             );
                           }
                       }

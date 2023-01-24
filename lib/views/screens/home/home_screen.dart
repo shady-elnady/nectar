@@ -4,6 +4,7 @@ import '../../../data/Models/lines_in_card.dart';
 import 'Components/my_cart_icon.dart';
 import 'Pages/cart/my_cart.dart';
 import 'Pages/explorer/explorer_tab.dart';
+import 'Pages/favorite/favorite_tab.dart';
 import 'Pages/shop/shop_tab.dart';
 import 'model/page_model.dart';
 
@@ -54,11 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
         label: "Cart",
       ),
       PageTab(
-        widget: const Icon(
-          Icons.camera,
-          size: 150,
-          color: Colors.red,
-        ),
+        widget: const FavoriteTab(),
         icon: const Icon(
           Icons.favorite_border_outlined,
         ),
@@ -82,26 +79,40 @@ class _HomeScreenState extends State<HomeScreen> {
           child: pages.elementAt(_selectedIndex).widget,
         ),
       ),
-      bottomNavigationBar: ClipRRect(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(15.0),
-          topRight: Radius.circular(15.0),
+      bottomNavigationBar: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 3),
+        decoration: BoxDecoration(
+          // boxShadow: const [
+          //   BoxShadow(
+          //     color: Colors.green,
+          //     spreadRadius: 0,
+          //     offset: Offset(0, 3),
+          //   ),
+          // ],
+          border: Border.all(
+            color: Theme.of(context).primaryColorLight.withOpacity(0.3),
+            width: 2,
+          ),
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20.0),
+            topRight: Radius.circular(20.0),
+          ),
         ),
         child: BottomNavigationBar(
           type: Theme.of(context).bottomNavigationBarTheme.type,
-          elevation: Theme.of(context).bottomNavigationBarTheme.elevation,
+          elevation: 0,
           iconSize: 20,
           selectedFontSize: 20,
-          selectedIconTheme:
-              Theme.of(context).bottomNavigationBarTheme.selectedIconTheme,
-          unselectedIconTheme:
-              Theme.of(context).bottomNavigationBarTheme.unselectedIconTheme,
-          unselectedItemColor:
-              Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
-          selectedItemColor:
-              Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
-          selectedLabelStyle:
-              Theme.of(context).bottomNavigationBarTheme.selectedLabelStyle,
+          // selectedIconTheme:
+          //     Theme.of(context).bottomNavigationBarTheme.selectedIconTheme,
+          // unselectedIconTheme:
+          //     Theme.of(context).bottomNavigationBarTheme.unselectedIconTheme,
+          // unselectedItemColor:
+          //     Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
+          // selectedItemColor:
+          //     Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
+          // selectedLabelStyle:
+          //     Theme.of(context).bottomNavigationBarTheme.selectedLabelStyle,
           items: <BottomNavigationBarItem>[
             ...pages
                 .map(

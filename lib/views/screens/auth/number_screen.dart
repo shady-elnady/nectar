@@ -39,10 +39,13 @@ class NumberScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Icon(
-                          Icons.keyboard_arrow_left_outlined,
-                          size: 35,
-                          color: Theme.of(context).primaryColorDark,
+                        IconButton(
+                          icon: Icon(
+                            Icons.keyboard_arrow_left_outlined,
+                            size: 35,
+                            color: Theme.of(context).primaryColorDark,
+                          ),
+                          onPressed: () => Navigator.pop(context),
                         ),
                       ],
                     ),

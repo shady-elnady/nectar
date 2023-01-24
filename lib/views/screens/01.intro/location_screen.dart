@@ -21,7 +21,7 @@ class LocationScreen extends StatelessWidget {
             Icons.keyboard_arrow_left_outlined,
             size: 45,
           ),
-          onPressed: () {},
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Column(

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nectar_mac/data/Models/lines_in_card.dart';
+import 'package:nectar_mac/views/widgets/index.dart';
 
-import '../../../../../data/Models/cart.dart';
-import '../../../../../data/Models/product.dart';
-import '../../../../../data/Providers/cart_provider.dart';
-import '../../../../Utils/constant.dart';
-import '../../../../widgets/Buttons/round_out_line.dart';
+import '../../../../../data/Models/user.dart';
+import '../../../../../data/Providers/user_provider.dart';
 import '../../../../widgets/Utils/error_widget.dart';
 
 class FavoriteTab extends StatelessWidget {
@@ -18,7 +15,7 @@ class FavoriteTab extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          toolbarHeight: 110,
+          toolbarHeight: 70,
           title: Text(
             "Favorurite",
             style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -32,10 +29,11 @@ class FavoriteTab extends StatelessWidget {
             ),
           ),
         ),
-        body: FutureBuilder<List<Cart?>>(
-          future: CartApi().getMyCart(),
-          builder: (BuildContext context, AsyncSnapshot<List<Cart?>> snapshot) {
-            switch (snapshot.connectionState) {
+        body: FutureBuilder<List<User?>>(
+          future: UserApi().getUser(),
+          builder:
+              (BuildContext context, AsyncSnapshot<List<User?>?>? snapshot) {
+            switch (snapshot!.connectionState) {
               case ConnectionState.none:
               case ConnectionState.waiting:
                 return const Center(child: CircularProgressIndicator());
@@ -44,9 +42,8 @@ class FavoriteTab extends StatelessWidget {
                   return ErrorConnection(message: "${snapshot.error}");
                 } else if (snapshot.data!.isEmpty) {
                   return const ErrorConnection(
-                      title: "", message: "No Card Yiet");
+                      title: "", message: "No User Found");
                 } else {
-                  _myCart = snapshot.data![0]!.linesInCard;
                   return ListView.separated(
                     shrinkWrap: true,
                     separatorBuilder: (context, index) {
@@ -54,91 +51,58 @@ class FavoriteTab extends StatelessWidget {
                         height: 80,
                       );
                     },
-                    itemCount: _myCart.length,
+                    itemCount: snapshot.data![0]!.favoritesProducts.length,
                     itemBuilder: (BuildContext context, int index) {
                       return ListTile(
-                        isThreeLine: true,
+                        // isThreeLine: true,
                         dense: false,
                         visualDensity:
                             const VisualDensity(horizontal: 3, vertical: 3),
                         title: Text(
-                          _myCart[index]!.product!.name,
+                          "${snapshot.data![0]!.favoritesProducts[index]!.name}.",
                           style: Theme.of(context)
                               .textTheme
                               .titleMedium!
                               .copyWith(fontSize: 16),
                         ),
-                        subtitle: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              "${_myCart[index]!.product!.amount}${_myCart[index]!.product!.unit!.symbol}, Price",
-                              style: Theme.of(context).textTheme.bodySmall,
-                            ),
-                            //
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                RoundOutlineButton(
-                                  fun: () => updateAmount(
-                                    index: index,
-                                    amount: _myCart[index]!.amount - 1,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: UtilsWidget.edgeInsetsH20,
-                                  child: Text(
-                                    "${_myCart[index]!.amount}",
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: Theme.of(context).primaryColorDark,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                                RoundOutlineButton(
-                                  fun: () {
-                                    updateAmount(
-                                      index: index,
-                                      amount: _myCart[index]!.amount + 1,
-                                    );
-                                  },
-                                  child: Icon(
-                                    Icons.add,
-                                    color: Theme.of(context).primaryColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            //
-                          ],
+                        subtitle: Text(
+                          "${snapshot.data![0]!.favoritesProducts[index]!.amount}${snapshot.data![0]!.favoritesProducts[index]!.unit!.symbol}, Price",
+                          style: Theme.of(context).textTheme.bodySmall,
                         ),
                         leading: Image.network(
-                          _myCart[index]!.product!.image,
+                          snapshot.data![0]!.favoritesProducts[index]!.image,
                           width: 95,
                           // height: 65,
                         ),
                         trailing: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            InkWell(
-                              onTap: () {
-                                removeLineInCart(index: index);
-                              },
-                              child: const Icon(Icons.close),
-                            ),
-                            Text(
-                              "${_myCart[index]!.product!.currency.code}${_myCart[index]!.product!.price}",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(fontSize: 18),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  "${snapshot.data![0]!.favoritesProducts[index]!.currency.code}${snapshot.data![0]!.favoritesProducts[index]!.price}",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium!
+                                      .copyWith(fontSize: 18),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 12, bottom: 4),
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: const Icon(
+                                      Icons.arrow_forward_ios,
+                                      size: 16,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -148,6 +112,12 @@ class FavoriteTab extends StatelessWidget {
                 }
             }
           },
+        ),
+        bottomSheet: const Padding(
+          padding: EdgeInsets.only(bottom: 20),
+          child: MainButton(
+            title: "Add All To Cart",
+          ),
         ),
       ),
     );
