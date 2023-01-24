@@ -49,7 +49,7 @@ class Country(BaseModelNative, BaseModelSVG):
         related_name= _("Countries"),
         verbose_name= _("Currency"),
     )
-    languages= models.ForeignKey(
+    language= models.ForeignKey(
         Language,
         null= True,
         blank= True,

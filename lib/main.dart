@@ -1,34 +1,26 @@
-// ignore_for_file: avoid_print
-
+import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'data/Models/department.dart';
-import 'data/Providers/department_provider.dart';
+import 'config/app_localizations.dart';
 import 'themes/app_theme.dart';
-import 'views/screens/filteer/filter_panel.dart';
-// import 'views/screens/splash/splash_screen.dart';
+import 'views/screens/splash/splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
       // options: DefaultFirebaseOptions.currentPlatform,
       );
-  runApp(const AuthExampleApp());
+  runApp(const MyApp());
 }
 
-class AuthExampleApp extends StatefulWidget {
-  const AuthExampleApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
-  State<AuthExampleApp> createState() => _AuthExampleAppState();
-}
-
-class _AuthExampleAppState extends State<AuthExampleApp> {
-  @override
-  void initState() {
+  Widget build(BuildContext context) {
     FirebaseAuth.instance.userChanges().listen((User? user) {
       if (user == null) {
         print('User is currently signed out!');
@@ -36,19 +28,37 @@ class _AuthExampleAppState extends State<AuthExampleApp> {
         print('User is signed in! \n User: $user');
       }
     });
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppTheme.appName,
-      home: const Filter(),
-      // home: const SplashScreen(),
+      home: const SplashScreen(),
+      // Theme Parameter
       theme: AppTheme.lightTheme,
       // darkTheme: AppTheme.darkTheme,
       scrollBehavior: MyCustomScrollBehavior(),
+      // Languages Parameter
+      supportedLocales: const [
+        Locale('en'), // English
+        Locale('ar'),
+        Locale('fr'),
+        Locale('es'), // Spanish
+      ],
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate
+      ],
+      localeResolutionCallback: (deviceLocale, supportedLocales) {
+        for (var locale in supportedLocales) {
+          if (deviceLocale != null &&
+              deviceLocale.languageCode == locale.languageCode) {
+            return deviceLocale;
+          }
+        }
+
+        return supportedLocales.first;
+      },
     );
   }
 }
@@ -61,26 +71,4 @@ class MyCustomScrollBehavior extends MaterialScrollBehavior {
         PointerDeviceKind.mouse,
         // etc.
       };
-}
-
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: FutureBuilder<List<Department>>(
-          future: DepartmentApi().getAll(),
-          builder: (context, snapshot) {
-            print("snapshot.error : ${snapshot.error}");
-            return Text(
-              snapshot.data![0].name,
-              style: const TextStyle(fontSize: 50),
-            );
-          },
-        ),
-      ),
-    );
-  }
 }

@@ -4,6 +4,7 @@ import 'package:nectar_mac/views/Utils/constant.dart';
 import '../../../config/app_images.dart';
 import '../../widgets/Buttons/animated_button.dart';
 import '../../widgets/Buttons/main_button.dart';
+import 'Widgets/botom_sheet.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
   bool _start = false;
+  bool _showLanguages = false;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -32,12 +34,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Hero(
-                  tag: "CarotImage",
-                  child: Image.asset(
-                    AppImages.carotWhite,
-                    width: 48,
-                    height: 56,
+                Tooltip(
+                  message: "Double Click > Languages",
+                  child: InkWell(
+                    onDoubleTap: () => setState(() {
+                      _showLanguages = !_showLanguages;
+                    }),
+                    child: Hero(
+                      tag: "CarotImage",
+                      child: Image.asset(
+                        AppImages.carotWhite,
+                        width: 48,
+                        height: 56,
+                      ),
+                    ),
                   ),
                 ),
                 UtilsWidget.sizedBox25,
@@ -46,9 +56,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.labelLarge!,
                 ),
-                // const SizedBox(
-                //   height: 5,
-                // ),
                 Text(
                   "Ger your groceries in as fast as one hour",
                   textAlign: TextAlign.center,
@@ -75,6 +82,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ],
             ),
           ),
+          if (_showLanguages) const BottomSheetTransition(),
         ],
       ),
     );

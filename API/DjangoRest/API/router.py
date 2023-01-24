@@ -8,6 +8,7 @@ from Card.ViewsSet import CardViewSet, CouponViewSet, LineInCardViewSet
 from Category.ViewsSet import CategoryViewSet, BrandViewSet 
 from Department.ViewsSet import DepartmentViewSet
 from Language.ViewsSet import LanguageViewSet
+from Application.ViewsSet import ApplicationViewSet, PlatformViewSet
 from Payment.ViewsSet import CurrencyViewSet
 from Product.ViewsSet import ProductViewSet, ProductImageViewSet
 from Unit.ViewsSet import PrefixViewSet, UnitViewSet
@@ -40,6 +41,10 @@ router.register('departments', DepartmentViewSet)
 
 ## Language App
 router.register('languages', LanguageViewSet)
+
+## Application App
+router.register('platforms', PlatformViewSet)
+router.register('applications', ApplicationViewSet)
 
 ## Payment App
 router.register('Currencies', CurrencyViewSet)

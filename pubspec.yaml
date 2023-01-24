@@ -7,6 +7,9 @@ environment:
 dependencies:
     flutter:
         sdk: flutter
+    flutter_localizations: # Add this line
+        sdk: flutter         # Add this line
+    intl: ^0.17.0 # Add this line
     cupertino_icons: ^1.0.2
     firebase_core: ^2.4.1
     firebase_auth: ^4.2.4
@@ -34,6 +37,7 @@ flutter:
         - assets/sounds/
         - assets/videos/
         - assets/svg/
+        - assets/languages/
     fonts:
         -
             family: Gilroy

@@ -6,7 +6,7 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 
 import 'currency.dart';
-import 'languages.dart';
+import 'language.dart';
 
 @immutable
 class Country {
@@ -18,7 +18,7 @@ class Country {
   final String? capital;
   final dynamic flagEmoji;
   final Currency? currency;
-  final Languages? languages;
+  final Language? language;
   final String? telCode;
   final String? slug;
 
@@ -31,14 +31,14 @@ class Country {
     this.capital,
     this.flagEmoji,
     this.currency,
-    this.languages,
+    this.language,
     this.telCode,
     this.slug,
   });
 
   @override
   String toString() {
-    return 'Country(url: $url, name: $name, native: $native, svgImg: $svgImg, continent: $continent, capital: $capital, flagEmoji: $flagEmoji, currency: $currency, languages: $languages, telCode: $telCode, slug: $slug)';
+    return 'Country(url: $url, name: $name, native: $native, svgImg: $svgImg, continent: $continent, capital: $capital, flagEmoji: $flagEmoji, currency: $currency, language: $language, telCode: $telCode, slug: $slug)';
   }
 
   factory Country.fromMap(Map<String, dynamic> data) => Country(
@@ -52,9 +52,9 @@ class Country {
         currency: data['currency'] == null
             ? null
             : Currency.fromMap(data['currency'] as Map<String, dynamic>),
-        languages: data['languages'] == null
+        language: data['language'] == null
             ? null
-            : Languages.fromMap(data['languages'] as Map<String, dynamic>),
+            : Language.fromMap(data['language'] as Map<String, dynamic>),
         telCode: data['tel_code'] as String?,
         slug: data['slug'] as String?,
       );
@@ -68,7 +68,7 @@ class Country {
         'capital': capital,
         'flag_emoji': flagEmoji,
         'currency': currency?.toMap(),
-        'languages': languages?.toMap(),
+        'languages': language?.toMap(),
         'tel_code': telCode,
         'slug': slug,
       };
@@ -94,7 +94,7 @@ class Country {
     String? capital,
     dynamic flagEmoji,
     Currency? currency,
-    Languages? languages,
+    Language? language,
     String? telCode,
     String? slug,
   }) {
@@ -107,7 +107,7 @@ class Country {
       capital: capital ?? this.capital,
       flagEmoji: flagEmoji ?? this.flagEmoji,
       currency: currency ?? this.currency,
-      languages: languages ?? this.languages,
+      language: language ?? this.language,
       telCode: telCode ?? this.telCode,
       slug: slug ?? this.slug,
     );
@@ -131,7 +131,7 @@ class Country {
       capital.hashCode ^
       flagEmoji.hashCode ^
       currency.hashCode ^
-      languages.hashCode ^
+      language.hashCode ^
       telCode.hashCode ^
       slug.hashCode;
 }

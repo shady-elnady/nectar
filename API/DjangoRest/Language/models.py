@@ -3,6 +3,7 @@ from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 from Nectar.models import BaseModelNative
+from Application.models import Application
 
 # Create your models here.
 
@@ -16,6 +17,11 @@ class Language(BaseModelNative):
     is_rtl = models.BooleanField(
         default= False,
         verbose_name= _("is RightToLeft"),
+    )
+    applicatins_support = models.ManyToManyField(
+        Application,
+        related_name= _("Language_Supported"),
+       verbose_name= _("Applicatins Support"),        
     )
 
     class Meta:

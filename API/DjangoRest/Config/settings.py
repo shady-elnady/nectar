@@ -47,6 +47,7 @@ THIRD_LIBRARIES= [
 
 MY_APP= [
     "Nectar",
+    "Application",
     "Unit",
     "Language",
     "Location",

@@ -11,7 +11,7 @@ from Language.Serializer import LanguageSerializer
 
 class CountrySerializer(HyperlinkedModelSerializer):
     currency = CurrencySerializer(many= False)
-    languages = LanguageSerializer(many= False)
+    language = LanguageSerializer(many= False)
     class Meta:
         model = Country
         fields = [
@@ -23,7 +23,7 @@ class CountrySerializer(HyperlinkedModelSerializer):
             "capital",
             "flag_emoji",
             "currency",
-            "languages",
+            "language",
             "tel_code",
             "slug",
         ]
