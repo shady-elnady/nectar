@@ -18,6 +18,12 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView ,
+    TokenVerifyView,
+)
+
 from API.router import router
 
 
@@ -26,6 +32,11 @@ urlpatterns = [
     path("", include("Nectar.urls", namespace="Nectar")),
     path("", include("django.contrib.auth.urls")),
     path("", include("User.urls", namespace="User")),
+    ## Simple JWT Authentication Default URL
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    # allow API users to verify HMAC-signed tokens without having access to your signing key
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     ## Rest Framwork URL
     path('api/', include((router.urls))),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
