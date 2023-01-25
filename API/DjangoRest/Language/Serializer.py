@@ -9,7 +9,7 @@ from Application.Serializer import ApplicationSerializer
 
 
 class LanguageSerializer(HyperlinkedModelSerializer):
-    applicatins_support = ApplicationSerializer(many= True)
+    applications_support = ApplicationSerializer(many= True)
     class Meta:
         model = Language
         fields = [
@@ -17,7 +17,8 @@ class LanguageSerializer(HyperlinkedModelSerializer):
              "name",
             "native",
             "iso_639_1",
+            "emoji",
             "is_rtl",
-            "applicatins_support",
+            "applications_support",
             "slug",
         ]

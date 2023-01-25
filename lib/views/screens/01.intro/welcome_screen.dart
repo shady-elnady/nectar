@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nectar_mac/config/app_localizations.dart';
 import 'package:nectar_mac/views/Utils/constant.dart';
 
 import '../../../config/app_images.dart';
@@ -32,10 +33,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
           SafeArea(
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Tooltip(
-                  message: "Double Click > Languages",
+                  message: _showLanguages
+                      ? "Double Click\nhide > Languages"
+                      : "Double Click\nShow > Languages",
                   child: InkWell(
                     onDoubleTap: () => setState(() {
                       _showLanguages = !_showLanguages;
@@ -52,7 +56,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
                 UtilsWidget.sizedBox25,
                 Text(
-                  "Welcome\nto our store",
+                  // "Welcome\nto our store",
+                  "Welcome_msg".tr(context),
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.labelLarge!,
                 ),
@@ -65,7 +70,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       .copyWith(fontSize: 15, fontWeight: FontWeight.w200),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 30, 0, 75),
+                  padding:
+                      EdgeInsets.fromLTRB(0, 30, 0, _showLanguages ? 140 : 70),
                   child: !_start
                       ? InkWell(
                           onTap: () => setState(() {

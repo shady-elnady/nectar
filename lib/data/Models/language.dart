@@ -5,13 +5,17 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 
+import 'applicatins_support.dart';
+
 @immutable
 class Language {
   final String? url;
   final String? name;
   final String? native;
   final String? iso6391;
+  final String? emoji;
   final bool? isRtl;
+  final List<Application>? applicatinsSupport;
   final String? slug;
 
   const Language({
@@ -19,13 +23,15 @@ class Language {
     this.name,
     this.native,
     this.iso6391,
+    this.emoji,
     this.isRtl,
+    this.applicatinsSupport,
     this.slug,
   });
 
   @override
   String toString() {
-    return 'Language(url: $url, name: $name, native: $native, iso6391: $iso6391, isRtl: $isRtl, slug: $slug)';
+    return 'Language(url: $url, name: $name, native: $native, iso6391: $iso6391, emoji: $emoji, isRtl: $isRtl, applicatinsSupport: $applicatinsSupport, slug: $slug)';
   }
 
   factory Language.fromMap(Map<String, dynamic> data) => Language(
@@ -33,7 +39,11 @@ class Language {
         name: data['name'] as String?,
         native: data['native'] as String?,
         iso6391: data['iso_639_1'] as String?,
+        emoji: data['emoji'] as String?,
         isRtl: data['is_rtl'] as bool?,
+        applicatinsSupport: (data['applicatins_support'] as List<dynamic>?)
+            ?.map((e) => Application.fromMap(e as Map<String, dynamic>))
+            .toList(),
         slug: data['slug'] as String?,
       );
 
@@ -42,7 +52,10 @@ class Language {
         'name': name,
         'native': native,
         'iso_639_1': iso6391,
+        'emoji': emoji,
         'is_rtl': isRtl,
+        'applicatins_support':
+            applicatinsSupport?.map((e) => e.toMap()).toList(),
         'slug': slug,
       };
 
@@ -63,7 +76,9 @@ class Language {
     String? name,
     String? native,
     String? iso6391,
+    String? emoji,
     bool? isRtl,
+    List<Application>? applicatinsSupport,
     String? slug,
   }) {
     return Language(
@@ -71,7 +86,9 @@ class Language {
       name: name ?? this.name,
       native: native ?? this.native,
       iso6391: iso6391 ?? this.iso6391,
+      emoji: emoji ?? this.emoji,
       isRtl: isRtl ?? this.isRtl,
+      applicatinsSupport: applicatinsSupport ?? this.applicatinsSupport,
       slug: slug ?? this.slug,
     );
   }
@@ -90,6 +107,8 @@ class Language {
       name.hashCode ^
       native.hashCode ^
       iso6391.hashCode ^
+      emoji.hashCode ^
       isRtl.hashCode ^
+      applicatinsSupport.hashCode ^
       slug.hashCode;
 }

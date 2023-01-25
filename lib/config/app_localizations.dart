@@ -18,6 +18,8 @@ class AppLocalizations {
   static List<Locale> supportedLocales =
       appLanguages.map((String lang) => Locale(lang)).toList();
 
+  static const Locale? defaultLocale = Locale("es");
+
   static AppLocalizations? of(BuildContext context) {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }

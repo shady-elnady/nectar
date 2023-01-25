@@ -14,14 +14,20 @@ class Language(BaseModelNative):
         unique= True,
         verbose_name= _("ISO_639_1"),
     )
+    emoji= models.CharField(
+        max_length= 3,
+        null= True,
+        blank= True,
+        verbose_name= _("Emoji"),
+    )
     is_rtl = models.BooleanField(
         default= False,
         verbose_name= _("is RightToLeft"),
     )
-    applicatins_support = models.ManyToManyField(
+    applications_support = models.ManyToManyField(
         Application,
         related_name= _("Language_Supported"),
-       verbose_name= _("Applicatins Support"),        
+       verbose_name= _("Applications Support"),        
     )
 
     class Meta:

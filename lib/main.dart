@@ -36,13 +36,8 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       // darkTheme: AppTheme.darkTheme,
       scrollBehavior: MyCustomScrollBehavior(),
-      // Languages Parameter
-      supportedLocales: const [
-        Locale('en'), // English
-        Locale('ar'),
-        Locale('fr'),
-        Locale('es'), // Spanish
-      ],
+      // Languages supported
+      supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -50,14 +45,18 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate
       ],
       localeResolutionCallback: (deviceLocale, supportedLocales) {
-        for (var locale in supportedLocales) {
-          if (deviceLocale != null &&
-              deviceLocale.languageCode == locale.languageCode) {
-            return deviceLocale;
+        if (AppLocalizations.defaultLocale != null) {
+          return AppLocalizations.defaultLocale;
+        } else {
+          for (var locale in supportedLocales) {
+            if (deviceLocale != null &&
+                deviceLocale.languageCode == locale.languageCode) {
+              return deviceLocale;
+            }
           }
-        }
 
-        return supportedLocales.first;
+          return supportedLocales.first;
+        }
       },
     );
   }

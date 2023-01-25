@@ -16,7 +16,7 @@ class _BottomSheetTransitionState extends State<BottomSheetTransition>
   late AnimationController _controller;
   double get maxHeight => MediaQuery.of(context).size.height - 200;
   double songImgStartSize = 45;
-  double songImgEndSize = 120;
+  double songImgEndSize = 80;
   double songVerticalSpace = 25;
   double songHorizontalSpace = 15;
 
@@ -104,7 +104,7 @@ class _BottomSheetTransitionState extends State<BottomSheetTransition>
           left: 0,
           right: 0,
           bottom: 0,
-          height: lerp(80, maxHeight),
+          height: lerp(110, maxHeight),
           child: GestureDetector(
             onTap: toggle,
             onVerticalDragUpdate: verticalDragUpdate,
@@ -209,6 +209,10 @@ class LangContainer extends StatelessWidget {
           Container(
             height: imgSize,
             width: imgSize,
+            decoration: BoxDecoration(
+              color: Theme.of(context).canvasColor,
+              borderRadius: BorderRadius.circular(imgSize! / 2),
+            ),
             child: langWidget.icon,
           ),
           Expanded(
@@ -217,8 +221,9 @@ class LangContainer extends StatelessWidget {
                     color: Colors.transparent,
                     padding: const EdgeInsets.only(left: 20),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
                       children: [
                         Text(
                           langWidget.language.native!,
@@ -227,14 +232,15 @@ class LangContainer extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
-                        // const SizedBox(height: 10),
-                        // Text(
-                        //   song.year,
-                        //   style: const TextStyle(
-                        //     fontSize: 15,
-                        //     color: Colors.white,
-                        //   ),
-                        // ),
+                        const SizedBox(height: 10),
+                        Text(
+                          langWidget.language.name!,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Colors.yellow,
+                          ),
+                          textAlign: TextAlign.right,
+                        ),
                       ],
                     ),
                   )
