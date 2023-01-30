@@ -29,9 +29,9 @@ from API.router import router
 
 urlpatterns = [
     ##
-    path("", include("Nectar.urls", namespace="Nectar")),
     path("", include("django.contrib.auth.urls")),
     path("", include("User.urls", namespace="User")),
+    path("", include("Nectar.urls", namespace="Nectar")),
     ## Simple JWT Authentication Default URL
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

@@ -24,10 +24,7 @@
       href="{% static 'css/bootstrap.css' %}"
     />
     <!-- font awesome style -->
-    <link
-      href="{% static 'css/font-awesome.min.css' %}"
-      rel="stylesheet"
-    />
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
     <!-- fonts style -->
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap"
@@ -36,10 +33,7 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
     <!-- responsive style -->
-    <link
-      href="{% static 'css/responsive.css' %}"
-      rel="stylesheet"
-    />
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
     {% block Link %}{% endblock Link %}
   </head>
 
@@ -60,10 +54,7 @@
       <header class="header_section">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container">
-            <a
-              class="navbar-brand"
-              href="{% url 'Nectar:Home' %}"
-            >
+            <a class="navbar-brand" href="{% url 'Nectar:Home' %}">
               <span> Nectar </span>
             </a>
             <div class="" id="">
@@ -99,18 +90,10 @@
 
                 <div id="myNav" class="overlay">
                   <div class="overlay-content">
-                    <a href="{% url 'Nectar:Home' %}"
-                      >HOME</a
-                    >
-                    <a href="{% url 'Nectar:About' %}"
-                      >ABOUT</a
-                    >
-                    <a href="{% url 'Nectar:Contact' %}"
-                      >CONTACT US</a
-                    >
-                    <a href="{% url 'Product:All' %}"
-                      >PRODUCTS</a
-                    >
+                    <a href="{% url 'Nectar:Home' %}">HOME</a>
+                    <a href="{% url 'Nectar:About' %}">ABOUT</a>
+                    <a href="{% url 'Nectar:Contact' %}">CONTACT US</a>
+                    <a href="{% url 'Product:All' %}">PRODUCTS</a>
                   </div>
                 </div>
                 <div class="custom_card">
@@ -204,10 +187,7 @@
       type="text/javascript"
       src="{% static 'js/bootstrap.js' %}"
     ></script>
-    <script
-      type="text/javascript"
-      src="{% static 'js/custom.js' %}"
-    ></script>
+    <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
     {% block Scripts %}{% endblock Scripts %}
     <!-- Google Map -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>

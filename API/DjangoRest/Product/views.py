@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View, CreateView
 from django.urls import reverse_lazy
 from django.forms import modelformset_factory
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required, permission_required
@@ -18,7 +17,7 @@ app_name= "Product"
 
 context= {}
 
-# @login_required
+@login_required
 def product(request):   
     context["products"]= Product.objects.all()
     return render(request, f"{app_name}/product.html", context=context)
@@ -51,7 +50,7 @@ class ProductView(CreateView):
 
 
 ## 
-# @login_required
+@login_required
 def post(request):
  
     ImageFormSet = modelformset_factory(
@@ -128,7 +127,7 @@ def post(request):
 #  https://github.com/veryacademy/yt-django-4-baseline-multiple-image-form
 
 #@permission_required("project.view_project")
-# @login_required
+@login_required
 def project_listing(request):
     # project_data = get_objects_for_user(
     #     request.user, "project.dg_view_project", klass=Vegetable
@@ -144,7 +143,7 @@ def product_detail(request, id):
     return render(request, f"{app_name}/detail.html", {"detail": project})
 
 
-# @login_required
+@login_required
 def add_product(request):
 
     if request.method == "POST":

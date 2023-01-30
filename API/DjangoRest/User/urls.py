@@ -1,14 +1,29 @@
 from django.urls import path
+# from django.contrib.auth import views
 
-from .views import LogInApi, signUp
+from .views import LogView, SignUpView
+# from .forms import UserLoginForm
 
 
 app_name = "User"
 
 
 urlpatterns = [
-    path("signUp/", signUp, name="SignUp"),
-    path("logInRest/", LogInApi.as_view(), name="LogIn"),
+    path(
+        'logIn/',
+        LogView.as_view(),
+        name='LogIn'
+    ),
+    # path(
+    #     'logIn/',
+    #     views.LoginView.as_view(
+    #         template_name="Log/log_in_up.html",
+    #         authentication_form=UserLoginForm
+    #     ),
+    #     name='LogIn'
+    # ),
+    path("signUp/", SignUpView.as_view(), name="SignUp"),
+    # path("signUp/", signUp, name="SignUp"),
 
     # path('login/', name="login"),
     # path("logout/" ,name="logout"),

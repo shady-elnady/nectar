@@ -14,13 +14,16 @@ from django.contrib.auth.decorators import login_required, permission_required
 app_name= "Nectar"
 
 
+@login_required
 def home(req):    
     return render(req, f"{app_name}/home.html" )
 
 
+@login_required
 def about(req):
     return render(req, f"{app_name}/about.html" )
 
 
+@login_required
 def contact(req):
     return render(req, f"{app_name}/contact.html" )

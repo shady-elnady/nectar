@@ -93,40 +93,56 @@
                     <div class="center-wrap">
                       <div class="section text-center">
                         <h4 class="mb-4 pb-3">Sign Up</h4>
-                        <div class="form-group">
-                          <input
-                            type="text"
-                            name="logname"
-                            class="form-style"
-                            placeholder="Your Full Name"
-                            id="logname"
-                            autocomplete="off"
-                          />
-                          <i class="input-icon uil uil-user"></i>
-                        </div>
-                        <div class="form-group mt-2">
-                          <input
-                            type="email"
-                            name="logemail"
-                            class="form-style"
-                            placeholder="Your Email"
-                            id="logemail"
-                            autocomplete="off"
-                          />
-                          <i class="input-icon uil uil-at"></i>
-                        </div>
-                        <div class="form-group mt-2">
-                          <input
-                            type="password"
-                            name="logpass"
-                            class="form-style"
-                            placeholder="Your Password"
-                            id="logpass"
-                            autocomplete="off"
-                          />
-                          <i class="input-icon uil uil-lock-alt"></i>
-                        </div>
-                        <a href="#" class="btn mt-4">submit</a>
+                        <form method="post" action="{% url 'User:SignUp' %}">
+                          {% csrf_token %}
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              name="username"
+                              class="form-style"
+                              placeholder="User Name"
+                              id="logname"
+                              autocomplete="off"
+                            />
+                            <i class="input-icon uil uil-user"></i>
+                          </div>
+                          <div class="form-group mt-2">
+                            <input
+                              type="email"
+                              name="email"
+                              class="form-style"
+                              placeholder="Your Email"
+                              id="logemail"
+                              autocomplete="off"
+                            />
+                            <i class="input-icon uil uil-at"></i>
+                          </div>
+                          <div class="form-group mt-2">
+                            <input
+                              type="password1"
+                              name="logpass"
+                              class="form-style"
+                              placeholder="Your Password"
+                              id="logpass"
+                              autocomplete="off"
+                            />
+                            <i class="input-icon uil uil-lock-alt"></i>
+                          </div>
+                          <div class="form-group mt-2">
+                            <input
+                              type="password2"
+                              name="logpass"
+                              class="form-style"
+                              placeholder="Confirm Your Password"
+                              id="logpass"
+                              autocomplete="off"
+                            />
+                            <i class="input-icon uil uil-lock-alt"></i>
+                          </div>
+                          {% comment %} <a href="#" class="btn mt-4">submit</a> {% endcomment %}
+                          <input type="submit" value="Sign Up" class="btn mt-4" />
+                          <input type="hidden" name="next" value="{{ next }}" />
+                        </form>
                       </div>
                     </div>
                   </div>
