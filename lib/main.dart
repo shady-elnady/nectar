@@ -23,10 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     FirebaseAuth.instance.userChanges().listen((User? user) {
       if (user == null) {
-        print('User is currently signed out!');
-      } else {
-        print('User is signed in! \n User: $user');
-      }
+      } else {}
     });
     return MaterialApp(
       debugShowCheckedModeBanner: false,

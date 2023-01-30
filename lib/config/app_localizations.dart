@@ -18,6 +18,7 @@ class AppLocalizations {
   static List<Locale> supportedLocales =
       appLanguages.map((String lang) => Locale(lang)).toList();
 
+  // ignore: unnecessary_nullable_for_final_variable_declarations
   static const Locale? defaultLocale = Locale("es");
 
   static AppLocalizations? of(BuildContext context) {

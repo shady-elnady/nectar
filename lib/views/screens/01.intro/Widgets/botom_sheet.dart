@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:math' as math;
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -156,7 +158,7 @@ class _BottomSheetTransitionState extends State<BottomSheetTransition>
                       physics: const BouncingScrollPhysics(
                         parent: AlwaysScrollableScrollPhysics(),
                       ),
-                      child: Container(
+                      child: SizedBox(
                         height: (songImgEndSize + songVerticalSpace) *
                             langWidgets.length,
                         width: (songImgStartSize + songHorizontalSpace) *
