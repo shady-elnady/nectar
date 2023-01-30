@@ -1,7 +1,7 @@
 from django.contrib.auth.models import Group
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated, AdminAuthenticationPermission 
+from rest_framework.permissions import IsAuthenticated, IsAdminUser 
 from .models import User, Following, Profile
 from .Serializer import (
     UserSerializer, GroupSerializer,
@@ -15,7 +15,7 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all().order_by('created_date')
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated, AdminAuthenticationPermission]
+    permission_classes = [IsAuthenticated, IsAdminUser]
 
     def get_queryset(self):
         querySet = User.objects.all()

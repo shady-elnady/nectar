@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import IsAuthenticated, AdminAuthenticationPermission 
+from rest_framework.permissions import IsAuthenticated 
 
 # from django_filters import DjangoFilterBackend
 # from rest_framework import viewsets, filters
