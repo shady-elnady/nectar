@@ -1,6 +1,6 @@
 from django.db.models import Q
 from rest_framework.viewsets import ModelViewSet
-# from rest_framework import permissions
+from rest_framework.permissions import IsAuthenticated
 # from rest_framework import filters
 
 from .models import Product, ProductImage
@@ -11,7 +11,7 @@ class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     # filter_backends = (filters.DjangoFilterBackend,)
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         queryset = Product.objects.all()
@@ -29,6 +29,6 @@ class ProductImageViewSet(ModelViewSet):
     queryset = ProductImage.objects.all()
     serializer_class = ProductImageSerializer
     # filter_backends = (filters.DjangoFilterBackend,)
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 

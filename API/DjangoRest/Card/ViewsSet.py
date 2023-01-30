@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.viewsets import ModelViewSet
-# from rest_framework.permissions import IsAuthenticated, AdminAuthenticationPermission 
+from rest_framework.permissions import IsAuthenticated, AdminAuthenticationPermission 
 
 # from django_filters import DjangoFilterBackend
 # from rest_framework import viewsets, filters
@@ -15,7 +15,7 @@ class CardViewSet(ModelViewSet):
     serializer_class = CardSerializer
     # filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
     ordering_fields = ('created_at')
-    # permission_classes = [ IsAuthenticated, AdminAuthenticationPermission,]
+    permission_classes = [ IsAuthenticated]
 
     # def perform_create(self, serializer):
     #     serializer.save(user_id=self.request.user)
@@ -33,24 +33,13 @@ class CardViewSet(ModelViewSet):
 class CouponViewSet(ModelViewSet):
     queryset = Coupon.objects.all()
     serializer_class = CouponSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 
 class LineInCardViewSet(ModelViewSet):
     queryset = LineInCard.objects.all()
     serializer_class = LineInCardSerializer
-    # permission_classes = [permissions.IsAuthenticated]
-
-    # def update(self, request, *args, **kwargs):
-    #     instance = self.get_object()
-    #     instance.amount = request.data.get("amount")
-    #     instance.save()
-
-    #     serializer = self.get_serializer(instance)
-    #     serializer.is_valid()
-    #     self.perform_update(serializer)
-
-    #     return Response(serializer.data)
+    permission_classes = [IsAuthenticated]
     
     def update(self, request, pk=None, *args, **kwargs):
         instance = self.get_object()
