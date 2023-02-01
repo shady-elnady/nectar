@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nectar_mac/config/index.dart';
-import 'package:nectar_mac/data/Models/department.dart';
+import 'package:nectar_mac/Modules/Department/domain/Entities/department.dart';
 import 'package:nectar_mac/data/Models/product.dart';
 import 'package:nectar_mac/data/Providers/department_provider.dart';
 import 'package:nectar_mac/data/Providers/product_provider.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nectar_mac/views/Utils/constant.dart';
 
 import '../../../data/Models/brand.dart';
-import '../../../data/Models/category.dart';
+import '../../../Modules/Category/domain/Entities/category.dart';
 import '../../../data/Providers/brand_provider.dart';
 import '../../../data/Providers/category_provider.dart';
 import '../../widgets/Buttons/main_button.dart';

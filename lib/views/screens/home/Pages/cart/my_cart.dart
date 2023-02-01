@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:nectar_mac/data/Models/lines_in_card.dart';
 
-import '../../../../../data/Models/cart.dart';
+import '../../../../../Modules/Cart/data/Models/cart_model.dart';
 import '../../../../../data/Providers/cart_provider.dart';
 import '../../../../Utils/constant.dart';
 import '../../../../widgets/Buttons/main_button.dart';

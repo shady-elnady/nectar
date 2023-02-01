@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'package:nectar_mac/config/app_api.dart';
 
 import '../Models/body.dart';
-import '../Models/cart.dart';
+import '../../Modules/Cart/data/Models/cart_model.dart';
 
 class CartApi {
   final String _cartsUrl = "/cards";

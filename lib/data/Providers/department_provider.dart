@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'package:nectar_mac/config/app_api.dart';
 
 import '../Models/body.dart';
-import '../Models/department.dart';
+import '../../Modules/Department/domain/Entities/department.dart';
 
 class DepartmentApi {
   final String _departmentsUrl = "/departments";

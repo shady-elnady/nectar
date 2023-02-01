@@ -44,7 +44,7 @@ urlpatterns = [
     ## GraphQL URL
     path("graphql/", include("GraphQL.urls", namespace="GraphQL")),
     ##
-    path("product", include("Product.urls", namespace="Product")),
+    path("product/", include("Product.urls", namespace="Product")),
     path("payment/", include("Payment.urls", namespace="Payment")),
     ##
     path("admin/", admin.site.urls),

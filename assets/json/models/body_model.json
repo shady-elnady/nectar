@@ -1,0 +1,331 @@
+{
+  "count": 2,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "url": "http://127.0.0.1:8000/api/departments/Exclusive%20Offer/",
+      "name": "Exclusive Offer",
+      "products": [
+        {
+          "url": "http://127.0.0.1:8000/api/products/Organic%20Bananas/",
+          "name": "Organic Bananas",
+          "image": "http://127.0.0.1:8000/media/images/Product/Organic_Bananas.png",
+          "nutritions": "100gr",
+          "amount": 7.0,
+          "reviews": 5.0,
+          "brand": {
+            "name": "Individual Callection",
+            "image": "http://127.0.0.1:8000/media/images/Brand/Individual_Callection.png"
+          },
+          "category": {
+            "url": "http://127.0.0.1:8000/api/categories/Fruits/",
+            "name": "Fruits",
+            "image": "http://127.0.0.1:8000/media/images/Category/Fruits.png",
+            "slug": "fruits",
+            "category_parent": {
+              "url": "http://127.0.0.1:8000/api/categories/Frash%20Fruits%20&%20Vegetable/",
+              "name": "Frash Fruits & Vegetable",
+              "image": "http://127.0.0.1:8000/media/images/Category/Frash_Fruits__Vegetable.png",
+              "slug": "frash-fruits-vegetable",
+              "category_parent": null
+            }
+          },
+          "unit": {
+            "url": "http://127.0.0.1:8000/api/units/pcs/",
+            "name": "pcs",
+            "native": "قطعه",
+            "symbol": "pcs",
+            "prefix": null,
+            "base_unit": null,
+            "measurement": "P",
+            "slug": "pcs"
+          },
+          "serial": "3",
+          "currency": {
+            "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+            "name": "Dolar",
+            "native": "دولار",
+            "code": "$",
+            "emoji": "💲",
+            "slug": "dolar"
+          },
+          "price": 4.999,
+          "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+          "is_favorite": false,
+          "product_images": [
+            {
+              "url": "http://127.0.0.1:8000/api/productImages/7/",
+              "image": "http://127.0.0.1:8000/media/images/ProductImage/None_lqQGQrb.png",
+              "product": "http://127.0.0.1:8000/api/products/Organic%20Bananas/"
+            },
+            {
+              "url": "http://127.0.0.1:8000/api/productImages/8/",
+              "image": "http://127.0.0.1:8000/media/images/ProductImage/None_iSKQzB3.png",
+              "product": "http://127.0.0.1:8000/api/products/Organic%20Bananas/"
+            },
+            {
+              "url": "http://127.0.0.1:8000/api/productImages/9/",
+              "image": "http://127.0.0.1:8000/media/images/ProductImage/None_8WG1L3v.png",
+              "product": "http://127.0.0.1:8000/api/products/Organic%20Bananas/"
+            }
+          ],
+          "slug": "organic-bananas"
+        },
+        {
+          "url": "http://127.0.0.1:8000/api/products/Red%20Apple/",
+          "name": "Red Apple",
+          "image": "http://127.0.0.1:8000/media/images/Product/Red_Apple.png",
+          "nutritions": "100gr",
+          "amount": 1.0,
+          "reviews": 4.0,
+          "brand": {
+            "name": "Individual Callection",
+            "image": "http://127.0.0.1:8000/media/images/Brand/Individual_Callection.png"
+          },
+          "category": {
+            "url": "http://127.0.0.1:8000/api/categories/Fruits/",
+            "name": "Fruits",
+            "image": "http://127.0.0.1:8000/media/images/Category/Fruits.png",
+            "slug": "fruits",
+            "category_parent": {
+              "url": "http://127.0.0.1:8000/api/categories/Frash%20Fruits%20&%20Vegetable/",
+              "name": "Frash Fruits & Vegetable",
+              "image": "http://127.0.0.1:8000/media/images/Category/Frash_Fruits__Vegetable.png",
+              "slug": "frash-fruits-vegetable",
+              "category_parent": null
+            }
+          },
+          "unit": {
+            "url": "http://127.0.0.1:8000/api/units/KeloGram/",
+            "name": "KeloGram",
+            "native": "كيلو جرام",
+            "symbol": "Kg",
+            "prefix": {
+              "url": "http://127.0.0.1:8000/api/prefixes/Kelo/",
+              "name": "Kelo",
+              "native": "كيلو",
+              "symbol": "K",
+              "power": 1000,
+              "slug": "kelo"
+            },
+            "base_unit": {
+              "url": "http://127.0.0.1:8000/api/units/Gram/",
+              "name": "Gram",
+              "native": "جرام",
+              "symbol": "g",
+              "prefix": null,
+              "base_unit": null,
+              "measurement": "M",
+              "slug": "gram"
+            },
+            "measurement": "M",
+            "slug": "kelogram"
+          },
+          "serial": "4",
+          "currency": {
+            "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+            "name": "Dolar",
+            "native": "دولار",
+            "code": "$",
+            "emoji": "💲",
+            "slug": "dolar"
+          },
+          "price": 4.99,
+          "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+          "is_favorite": false,
+          "product_images": [
+            {
+              "url": "http://127.0.0.1:8000/api/productImages/10/",
+              "image": "http://127.0.0.1:8000/media/images/ProductImage/None_ipaZ3Jz.png",
+              "product": "http://127.0.0.1:8000/api/products/Red%20Apple/"
+            },
+            {
+              "url": "http://127.0.0.1:8000/api/productImages/11/",
+              "image": "http://127.0.0.1:8000/media/images/ProductImage/None_8wlTXhs.png",
+              "product": "http://127.0.0.1:8000/api/products/Red%20Apple/"
+            },
+            {
+              "url": "http://127.0.0.1:8000/api/productImages/12/",
+              "image": "http://127.0.0.1:8000/media/images/ProductImage/None.jpeg",
+              "product": "http://127.0.0.1:8000/api/products/Red%20Apple/"
+            }
+          ],
+          "slug": "red-apple"
+        }
+      ],
+      "is_favorite": false,
+      "slug": "exclusive-offer"
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/departments/Best%20Selling/",
+      "name": "Best Selling",
+      "products": [
+        {
+          "url": "http://127.0.0.1:8000/api/products/Bell%20Pepper%20Red/",
+          "name": "Bell Pepper Red",
+          "image": "http://127.0.0.1:8000/media/images/Product/Bell_Pepper_Red.png",
+          "nutritions": "100gr",
+          "amount": 1.0,
+          "reviews": 4.0,
+          "brand": {
+            "name": "Kazi Farmas",
+            "image": "http://127.0.0.1:8000/media/images/Brand/Kazi_Farmas.png"
+          },
+          "category": {
+            "url": "http://127.0.0.1:8000/api/categories/Vegetable/",
+            "name": "Vegetable",
+            "image": "http://127.0.0.1:8000/media/images/Category/Vegetable.png",
+            "slug": "vegetable",
+            "category_parent": {
+              "url": "http://127.0.0.1:8000/api/categories/Frash%20Fruits%20&%20Vegetable/",
+              "name": "Frash Fruits & Vegetable",
+              "image": "http://127.0.0.1:8000/media/images/Category/Frash_Fruits__Vegetable.png",
+              "slug": "frash-fruits-vegetable",
+              "category_parent": null
+            }
+          },
+          "unit": {
+            "url": "http://127.0.0.1:8000/api/units/KeloGram/",
+            "name": "KeloGram",
+            "native": "كيلو جرام",
+            "symbol": "Kg",
+            "prefix": {
+              "url": "http://127.0.0.1:8000/api/prefixes/Kelo/",
+              "name": "Kelo",
+              "native": "كيلو",
+              "symbol": "K",
+              "power": 1000,
+              "slug": "kelo"
+            },
+            "base_unit": {
+              "url": "http://127.0.0.1:8000/api/units/Gram/",
+              "name": "Gram",
+              "native": "جرام",
+              "symbol": "g",
+              "prefix": null,
+              "base_unit": null,
+              "measurement": "M",
+              "slug": "gram"
+            },
+            "measurement": "M",
+            "slug": "kelogram"
+          },
+          "serial": "5",
+          "currency": {
+            "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+            "name": "Dolar",
+            "native": "دولار",
+            "code": "$",
+            "emoji": "💲",
+            "slug": "dolar"
+          },
+          "price": 4.99,
+          "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+          "is_favorite": false,
+          "product_images": [
+            {
+              "url": "http://127.0.0.1:8000/api/productImages/49/",
+              "image": "http://127.0.0.1:8000/media/images/ProductImage/None_XMFkLOU.png",
+              "product": "http://127.0.0.1:8000/api/products/Bell%20Pepper%20Red/"
+            },
+            {
+              "url": "http://127.0.0.1:8000/api/productImages/50/",
+              "image": "http://127.0.0.1:8000/media/images/ProductImage/None_nKaGqNC.jpeg",
+              "product": "http://127.0.0.1:8000/api/products/Bell%20Pepper%20Red/"
+            },
+            {
+              "url": "http://127.0.0.1:8000/api/productImages/51/",
+              "image": "http://127.0.0.1:8000/media/images/ProductImage/None_Z1Fx2G3.jpeg",
+              "product": "http://127.0.0.1:8000/api/products/Bell%20Pepper%20Red/"
+            }
+          ],
+          "slug": "bell-pepper-red"
+        },
+        {
+          "url": "http://127.0.0.1:8000/api/products/Ginger/",
+          "name": "Ginger",
+          "image": "http://127.0.0.1:8000/media/images/Product/Ginger.png",
+          "nutritions": "100gr",
+          "amount": 1.0,
+          "reviews": 4.0,
+          "brand": {
+            "name": "Kazi Farmas",
+            "image": "http://127.0.0.1:8000/media/images/Brand/Kazi_Farmas.png"
+          },
+          "category": {
+            "url": "http://127.0.0.1:8000/api/categories/Pulses/",
+            "name": "Pulses",
+            "image": "http://127.0.0.1:8000/media/images/Category/Pulses_hUl5mr7.png",
+            "slug": "pulses",
+            "category_parent": {
+              "url": "http://127.0.0.1:8000/api/categories/Meat%20&%20Fish/",
+              "name": "Meat & Fish",
+              "image": "http://127.0.0.1:8000/media/images/Category/Meat__Fish.png",
+              "slug": "meat-fish",
+              "category_parent": null
+            }
+          },
+          "unit": {
+            "url": "http://127.0.0.1:8000/api/units/KeloGram/",
+            "name": "KeloGram",
+            "native": "كيلو جرام",
+            "symbol": "Kg",
+            "prefix": {
+              "url": "http://127.0.0.1:8000/api/prefixes/Kelo/",
+              "name": "Kelo",
+              "native": "كيلو",
+              "symbol": "K",
+              "power": 1000,
+              "slug": "kelo"
+            },
+            "base_unit": {
+              "url": "http://127.0.0.1:8000/api/units/Gram/",
+              "name": "Gram",
+              "native": "جرام",
+              "symbol": "g",
+              "prefix": null,
+              "base_unit": null,
+              "measurement": "M",
+              "slug": "gram"
+            },
+            "measurement": "M",
+            "slug": "kelogram"
+          },
+          "serial": "6",
+          "currency": {
+            "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+            "name": "Dolar",
+            "native": "دولار",
+            "code": "$",
+            "emoji": "💲",
+            "slug": "dolar"
+          },
+          "price": 4.99,
+          "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+          "is_favorite": false,
+          "product_images": [
+            {
+              "url": "http://127.0.0.1:8000/api/productImages/52/",
+              "image": "http://127.0.0.1:8000/media/images/ProductImage/None_QzX9xlz.png",
+              "product": "http://127.0.0.1:8000/api/products/Ginger/"
+            },
+            {
+              "url": "http://127.0.0.1:8000/api/productImages/53/",
+              "image": "http://127.0.0.1:8000/media/images/ProductImage/None_cEipGfy.png",
+              "product": "http://127.0.0.1:8000/api/products/Ginger/"
+            },
+            {
+              "url": "http://127.0.0.1:8000/api/productImages/54/",
+              "image": "http://127.0.0.1:8000/media/images/ProductImage/None_rxSuE7F.jpeg",
+              "product": "http://127.0.0.1:8000/api/products/Ginger/"
+            }
+          ],
+          "slug": "ginger"
+        }
+      ],
+      "is_favorite": false,
+      "slug": "best-selling"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nectar_mac/views/widgets/index.dart';
 
-import '../../../data/Models/category.dart';
+import '../../../Modules/Category/domain/Entities/category.dart';
 import '../../../data/Providers/category_provider.dart';
 import '../../widgets/Utils/error_widget.dart';
 import '../../widgets/textFields/search_field.dart';
