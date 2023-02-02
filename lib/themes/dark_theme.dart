@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'app_fonts.dart';
+import '../App/Utils/Assets/app_fonts.dart';
 
 final ThemeData darkThemeData = ThemeData(
   brightness: Brightness.dark,

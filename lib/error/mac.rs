@@ -1,4 +1,0 @@
-/Users/shady/Desktop/Projects/Flutter/nectar_mac/macos/Pods/Pods.xcodeproj: warning: The macOS deployment target 'MACOSX_DEPLOYMENT_TARGET' is set to 10.10, but the range of supported deployment target versions is 10.13 to 13.1.99. (in target 'PromisesObjC' from project 'Pods')
-/Users/shady/Desktop/Projects/Flutter/nectar_mac/macos/Pods/Pods.xcodeproj: warning: The macOS deployment target 'MACOSX_DEPLOYMENT_TARGET' is set to 10.12, but the range of supported deployment target versions is 10.13 to 13.1.99. (in target 'GoogleUtilities' from project 'Pods')
-/Users/shady/Desktop/Projects/Flutter/nectar_mac/macos/Pods/Pods.xcodeproj: warning: The macOS deployment target 'MACOSX_DEPLOYMENT_TARGET' is set to 10.12, but the range of supported deployment target versions is 10.13 to 13.1.99. (in target 'GTMSessionFetcher' from project 'Pods')
-

@@ -20,6 +20,7 @@ class Department extends BaseEntity {
     return 'Department(url: $url, name: $name, products: $products, isFavorite: $isFavorite, slug: $slug)';
   }
 
+  @override
   Map<String, dynamic> toMap() => {
         'url': url,
         'name': name,
@@ -31,6 +32,7 @@ class Department extends BaseEntity {
   /// `dart:convert`
   ///
   /// Converts [Department] to a JSON string.
+  @override
   String toJson() => json.encode(toMap());
 
   Department copyWith({

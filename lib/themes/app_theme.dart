@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nectar_mac/themes/app_fonts.dart';
+import 'package:nectar_mac/App/Utils/Assets/app_fonts.dart';
 
 class AppTheme {
   //App name

@@ -4,12 +4,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'config/app_localizations.dart';
+import 'App/Services/services_locator.dart';
+import 'Config/app_localizations.dart';
 import 'themes/app_theme.dart';
-import 'views/screens/splash/splash_screen.dart';
+import 'Modules/log/presentation/Pages/splash/splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  ServicesLocator().init();
   await Firebase.initializeApp(
       // options: DefaultFirebaseOptions.currentPlatform,
       );

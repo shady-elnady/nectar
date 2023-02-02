@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
-
-class BodyModel<BaseModel> extends Equatable {
+class BodyModel //<BaseModel>
+{
   final int? count;
   final String? next;
   final String? previous;
-  final List<BaseModel?> results;
+  // final List<BaseModel?> results;
+  final List<dynamic> results;
 
   const BodyModel({
     this.count,
@@ -19,9 +19,12 @@ class BodyModel<BaseModel> extends Equatable {
         count: data['count'] as int?,
         next: data['next'] as String?,
         previous: data['previous'] as String?,
+        // results: (data['results'])
+        //     .map((Map<String, dynamic>? e) =>
+        //         BaseModel.fromMap(e as Map<String, dynamic>))
+        //     .toList(),
         results: (data['results'])
-            .map((Map<String, dynamic>? e) =>
-                BaseModel.fromMap(e as Map<String, dynamic>))
+            .map((Map<String, dynamic>? e) => e as Map<String, dynamic>)
             .toList(),
       );
 
@@ -29,7 +32,8 @@ class BodyModel<BaseModel> extends Equatable {
         'count': count,
         'next': next,
         'previous': previous,
-        'results': results.map((BaseModel? e) => e!.toMap()).toList(),
+        // 'results': results.map((BaseModel? e) => e!.toMap()).toList(),
+        'results': results.map((e) => e!.toMap()).toList(),
       };
 
   /// `dart:convert`
@@ -48,7 +52,7 @@ class BodyModel<BaseModel> extends Equatable {
     int? count,
     String? next,
     String? previous,
-    required List<BaseModel?> results,
+    required List<dynamic> results,
   }) {
     return BodyModel(
       count: count ?? this.count,
@@ -58,10 +62,8 @@ class BodyModel<BaseModel> extends Equatable {
     );
   }
 
-  @override
   bool get stringify => true;
 
-  @override
   List<Object?> get props => [
         count,
         next,

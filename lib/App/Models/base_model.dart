@@ -1,17 +1,15 @@
-abstract class BaseModel {
-  BaseModel();
+import 'package:nectar_mac/App/Entities/base_entity.dart';
 
-  BaseModel.fromMap(Map<String, dynamic> data);
+abstract class BaseModel extends BaseEntity {
+  const BaseModel({
+    required super.url,
+    required super.name,
+    required super.slug,
+  });
 
-  Map<String, dynamic> toMap();
+  factory BaseModel.fromMap(Map<String, dynamic> data);
 
   /// `dart:convert`
   /// Parses the string and returns the resulting Json object as [BaseModel].
-  BaseModel.fromJson(String data);
-
-  /// `dart:convert`
-  /// Converts [BaseModel] to a JSON string.
-  String toJson();
-
-  BaseModel copyWith();
+  factory BaseModel.fromJson(String data);
 }
