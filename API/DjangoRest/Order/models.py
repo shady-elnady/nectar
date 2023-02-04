@@ -3,10 +3,9 @@ from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 from Location.models import Address
-from Card.models import Card
+from Cart.models import Cart
 
 # Create your models here.
-
 
 
 class Order(models.Model):
@@ -15,10 +14,11 @@ class Order(models.Model):
         primary_key= True,
         verbose_name= _("Serial Number"),
     )
-    card = models.OneToOneField(
-        Card,
+    cart = models.OneToOneField(
+        Cart,
         on_delete= models.CASCADE,
-        verbose_name= _("Customer"),
+        related_name= _("Order"),
+        verbose_name= _("Cart"),
     )
     received_date = models.DateTimeField(
         auto_now_add= True,
@@ -40,7 +40,7 @@ class Order(models.Model):
     ) # تم رد الأموال الممنوحة
     shipping_address = models.ForeignKey(
         Address,
-        related_name= 'shipping_address',
+        related_name= _('Orders'),
         on_delete= models.SET_NULL,
         blank= True,
         null= True,
@@ -48,7 +48,7 @@ class Order(models.Model):
     ) # عنوان الشحن
     billing_address = models.ForeignKey(
         Address,
-        related_name= 'billing_address',
+        related_name= _('Orders'),
         on_delete= models.SET_NULL,
         blank= True,
         null= True,
@@ -57,13 +57,13 @@ class Order(models.Model):
     
     @property
     def slug(self):
-        return slugify(f"{self.serial_no}_{self.card.customer.username}")
+        return slugify(f"{self.serial_no}_{self.cart.customer.username}")
 
     def __str__(self) -> str:
-        return f"{self.serial_no}_{self.card.customer.username}"
+        return f"{self.serial_no}_{self.cart.customer.username}"
 
     def __str__(self):
-        return f"{self.serial_no}_{self.card.customer.username}"
+        return f"{self.serial_no}_{self.cart.customer.username}"
 
     class Meta:
         verbose_name= _("Order")

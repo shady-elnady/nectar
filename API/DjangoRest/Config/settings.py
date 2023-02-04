@@ -62,6 +62,7 @@ MY_APP= [
     "User",
     "Product",
     "Card",
+    "Cart",
     "Basket",
     "Order",
     "Utils",

@@ -4,7 +4,8 @@ from User.ViewsSet import (
     UserViewSet, GroupViewSet,
     FollowingViewSet, MyProfileViewSet,
 )
-from Card.ViewsSet import CardViewSet, CouponViewSet, LineInCardViewSet
+# from Card.ViewsSet import CardViewSet, CouponViewSet, LineInCardViewSet
+from Cart.ViewsSet import MyCartViewSet, CouponViewSet, LineInMyCartViewSet
 from Category.ViewsSet import CategoryViewSet, BrandViewSet 
 from Department.ViewsSet import DepartmentViewSet
 from Language.ViewsSet import LanguageViewSet
@@ -27,10 +28,15 @@ router.register('groups', GroupViewSet)
 router.register('followings', FollowingViewSet)
 router.register('my_profiles', MyProfileViewSet)
 
-## Card App
-router.register('cards', CardViewSet)
+# ## Card App
+# router.register('cards', CardViewSet)
+# router.register('coupons', CouponViewSet)
+# router.register('linesInCard', LineInCardViewSet)
+
+## Cart App
+router.register('my_carts', MyCartViewSet)
 router.register('coupons', CouponViewSet)
-router.register('linesInCard', LineInCardViewSet)
+router.register('lines_In_myCart', LineInMyCartViewSet)
 
 ## Category App
 router.register('brands', BrandViewSet)

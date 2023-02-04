@@ -55,9 +55,9 @@ class FollowingSerializer(HyperlinkedModelSerializer):
 
 class MyProfileSerializer(HyperlinkedModelSerializer):
     # user = UserSerializer(many= False)
-    favorites_products = ProductSerializer(many= True)
     language = LanguageSerializer(many= False)
     address = AddressSerializer(many= False)
+    favorites_products = ProductSerializer(many= True)
     class Meta:
         model = Profile
         fields = [
