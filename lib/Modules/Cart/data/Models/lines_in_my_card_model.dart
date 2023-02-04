@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import '../../../Product/data/Models/product_model.dart';
-import '../../domain/Entities/lines_in_card.dart';
+import '../../../Department/data/Models/product_model.dart';
+import '../../domain/Entities/lines_in_my_card.dart';
 
-class LinesInCardModel extends LinesInCard {
-  const LinesInCardModel({
+class LinesInMyCardModel extends LinesInMyCard {
+  const LinesInMyCardModel({
     required super.url,
     required super.card,
     required super.product,
@@ -13,8 +13,8 @@ class LinesInCardModel extends LinesInCard {
     required super.slug,
   });
 
-  factory LinesInCardModel.fromMap(Map<String, dynamic> data) =>
-      LinesInCardModel(
+  factory LinesInMyCardModel.fromMap(Map<String, dynamic> data) =>
+      LinesInMyCardModel(
         url: data['url'] as String,
         card: data['card'] as String,
         product: ProductModel.fromMap(data['product'] as Map<String, dynamic>),
@@ -25,8 +25,9 @@ class LinesInCardModel extends LinesInCard {
 
   /// `dart:convert`
   ///
-  /// Parses the string and returns the resulting Json object as [LinesInCardModel].
-  factory LinesInCardModel.fromJson(String data) {
-    return LinesInCardModel.fromMap(json.decode(data) as Map<String, dynamic>);
+  /// Parses the string and returns the resulting Json object as [LinesInMyCardModel].
+  factory LinesInMyCardModel.fromJson(String data) {
+    return LinesInMyCardModel.fromMap(
+        json.decode(data) as Map<String, dynamic>);
   }
 }

@@ -4,13 +4,13 @@ import 'package:nectar_mac/App/Entities/original_entity.dart';
 
 import '../../../Department/domain/Entities/product.dart';
 
-class LinesInCard extends OriginalEntity {
+class LinesInMyCard extends OriginalEntity {
   final String card;
   final Product product;
   final int amount;
   final double totalLinePrice;
 
-  const LinesInCard({
+  const LinesInMyCard({
     required super.url,
     required this.card,
     required this.product,
@@ -36,11 +36,11 @@ class LinesInCard extends OriginalEntity {
 
   /// `dart:convert`
   ///
-  /// Converts [LinesInCard] to a JSON string.
+  /// Converts [LinesInMyCard] to a JSON string.
   @override
   String toJson() => json.encode(toMap());
 
-  LinesInCard copyWith({
+  LinesInMyCard copyWith({
     required String url,
     required String card,
     required Product product,
@@ -48,7 +48,7 @@ class LinesInCard extends OriginalEntity {
     required double totalLinePrice,
     required String slug,
   }) {
-    return LinesInCard(
+    return LinesInMyCard(
       url: this.url,
       card: this.card,
       product: this.product,

@@ -6,15 +6,17 @@ import '../../../../../../../views/Utils/constant.dart';
 import '../../../../../../../views/widgets/Buttons/main_button.dart';
 import '../../../../../../../views/widgets/Buttons/round_out_line.dart';
 import '../../../../../../../views/widgets/Utils/error_widget.dart';
+import '../../domain/Entities/lines_in_my_card.dart';
+import '../../domain/Entities/my_cart.dart';
 
-class MyCart extends StatelessWidget {
-  MyCart({
+class MyCartTab extends StatelessWidget {
+  MyCartTab({
     super.key,
   });
-  late List<LinesInCard?> _myCart;
+  late List<LinesInMyCard?> _myCart;
 
   void addToCart({
-    required LinesInCard oneLine,
+    required LinesInMyCard oneLine,
   }) {
     _myCart.add(oneLine);
   }
@@ -29,12 +31,13 @@ class MyCart extends StatelessWidget {
     required int amount,
     required int index,
   }) {
-    LinesInCard newLine = LinesInCard(
+    LinesInMyCard newLine = LinesInMyCard(
       card: _myCart[index]!.card,
       product: _myCart[index]!.product,
       amount: amount,
-      totalLinePrice: _myCart[index]!.product!.price * amount,
+      totalLinePrice: _myCart[index]!.product.price * amount,
       slug: _myCart[index]!.slug,
+      url: '',
     );
     _myCart.removeAt(index);
     _myCart.insert(index, newLine);
@@ -59,9 +62,10 @@ class MyCart extends StatelessWidget {
             ),
           ),
         ),
-        body: FutureBuilder<List<Cart?>>(
+        body: FutureBuilder<List<MyCart?>>(
           future: CartApi().getMyCart(),
-          builder: (BuildContext context, AsyncSnapshot<List<Cart?>> snapshot) {
+          builder:
+              (BuildContext context, AsyncSnapshot<List<MyCart?>> snapshot) {
             switch (snapshot.connectionState) {
               case ConnectionState.none:
               case ConnectionState.waiting:
@@ -73,7 +77,7 @@ class MyCart extends StatelessWidget {
                   return const ErrorConnection(
                       title: "", message: "No Card Yiet");
                 } else {
-                  _myCart = snapshot.data![0]!.linesInCard;
+                  _myCart = snapshot.data![0]!.linesInMyCard;
                   return ListView.separated(
                     shrinkWrap: true,
                     separatorBuilder: (context, index) {
@@ -89,7 +93,7 @@ class MyCart extends StatelessWidget {
                         visualDensity:
                             const VisualDensity(horizontal: 3, vertical: 3),
                         title: Text(
-                          _myCart[index]!.product!.name,
+                          _myCart[index]!.product.name,
                           style: Theme.of(context)
                               .textTheme
                               .titleMedium!
@@ -101,7 +105,7 @@ class MyCart extends StatelessWidget {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Text(
-                              "${_myCart[index]!.product!.amount}${_myCart[index]!.product!.unit!.symbol}, Price",
+                              "${_myCart[index]!.product.amount}${_myCart[index]!.product.unit!.symbol}, Price",
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
                             //
@@ -145,7 +149,7 @@ class MyCart extends StatelessWidget {
                           ],
                         ),
                         leading: Image.network(
-                          _myCart[index]!.product!.image,
+                          _myCart[index]!.product.image,
                           width: 95,
                           // height: 65,
                         ),
@@ -161,7 +165,7 @@ class MyCart extends StatelessWidget {
                               child: const Icon(Icons.close),
                             ),
                             Text(
-                              "${_myCart[index]!.product!.currency.code}${_myCart[index]!.product!.price}",
+                              "${_myCart[index]!.product.currency.code}${_myCart[index]!.product.price}",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium!

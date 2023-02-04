@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../Cart/domain/Entities/lines_in_card.dart';
-import '../../../Cart/presentation/Pages/my_cart.dart';
+import '../../../Cart/domain/Entities/lines_in_my_card.dart';
+import '../../../Cart/presentation/Pages/my_cart_tab.dart';
 import 'explorer_tab.dart';
 import 'favorite_tab.dart';
 import 'model/page_model.dart';

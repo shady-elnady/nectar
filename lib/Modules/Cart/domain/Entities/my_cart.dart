@@ -2,22 +2,20 @@ import 'dart:convert';
 
 import 'package:nectar_mac/App/Entities/original_entity.dart';
 
-import 'lines_in_card.dart';
+import 'lines_in_my_card.dart';
 import 'promo_code.dart';
 
-class Cart extends OriginalEntity {
-  final User customer;
-  final List<LinesInCard?> linesInCard;
+class MyCart extends OriginalEntity {
+  final List<LinesInMyCard?> linesInMyCard;
   final String? paymentMethod;
   final PromoCode? promoCode;
   final bool isFinished;
   final DateTime createdAt;
   final double totalCost;
 
-  const Cart({
+  const MyCart({
     required super.url,
-    required this.customer,
-    required this.linesInCard,
+    required this.linesInMyCard,
     this.paymentMethod,
     this.promoCode,
     required this.isFinished,
@@ -28,20 +26,19 @@ class Cart extends OriginalEntity {
 
   @override
   String toString() {
-    return 'Cart(url: $url, customer: $customer, linesInCard: $linesInCard, paymentMethod: $paymentMethod, promoCode: $promoCode, isFinished: $isFinished, createdAt: $createdAt, totalCost: $totalCost, slug: $slug)';
+    return 'MyCart(url: $url, linesInMyCard: $linesInMyCard, paymentMethod: $paymentMethod, promoCode: $promoCode, isFinished: $isFinished, createdAt: $createdAt, totalCost: $totalCost, slug: $slug)';
   }
 
   /// `dart:convert`
   ///
-  /// Converts [Cart] to a JSON string.
+  /// Converts [MyCart] to a JSON string.
   @override
   String toJson() => json.encode(toMap());
 
   @override
   Map<String, dynamic> toMap() => {
         'url': url,
-        'customer': customer.toMap(),
-        'Lines_In_Card': linesInCard.map((e) => e!.toMap()).toList(),
+        'Lines_In_Card': linesInMyCard.map((e) => e!.toMap()).toList(),
         'payment_method': paymentMethod,
         'promo_code': promoCode?.toMap(),
         'is_finished': isFinished,
@@ -50,10 +47,9 @@ class Cart extends OriginalEntity {
         'slug': slug,
       };
 
-  Cart copyWith({
+  MyCart copyWith({
     required String url,
-    required User customer,
-    required List<LinesInCard?> linesInCard,
+    required List<LinesInMyCard?> linesInMyCard,
     String? paymentMethod,
     PromoCode? promoCode,
     required bool isFinished,
@@ -61,10 +57,9 @@ class Cart extends OriginalEntity {
     required double totalCost,
     required String slug,
   }) {
-    return Cart(
+    return MyCart(
       url: this.url,
-      customer: this.customer,
-      linesInCard: this.linesInCard,
+      linesInMyCard: this.linesInMyCard,
       paymentMethod: paymentMethod ?? this.paymentMethod,
       promoCode: promoCode ?? this.promoCode,
       isFinished: this.isFinished,
@@ -77,8 +72,7 @@ class Cart extends OriginalEntity {
   @override
   List<Object?> get props => [
         url,
-        customer,
-        linesInCard,
+        linesInMyCard,
         paymentMethod,
         promoCode,
         isFinished,

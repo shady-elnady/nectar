@@ -565,7 +565,7 @@ img[src="assets/images/blank.gif"] {
   margin-bottom: 20px;
 }
 
-.special-product .product .image img {width:60%}
+.special-product .product .image img {width:100%}
 .special-product .product .col {padding-right:0px}
 .special-product .product .btn-primary {background:none; padding:0px; color:#157ed2; text-decoration:underline; margin-top:5px;}
 
@@ -2955,7 +2955,7 @@ font-family: FontAwesome;
   right: 40%;
 }
 .product-micro .product-image .image a .zoom-overlay {
-  height: 60%;
+  height: 100%;
   left: 0;
   opacity: 0;
   position: absolute;
@@ -3476,7 +3476,7 @@ font-family: FontAwesome;
   position: relative;
 }
 .hot-deals .hot-deal-wrapper .image img{
-  width: 60%;
+  width: 100%;
 }
 
 .item .products .image a{
@@ -3486,7 +3486,7 @@ font-family: FontAwesome;
     padding-top: 125%;
 }
 .item .products .image a img {
-    width: 60%;
+    width: 100%;
     position: absolute;
     height: 60%;
     top: 0;
@@ -3517,8 +3517,8 @@ font-family: FontAwesome;
 
 .item .products .image a:before {
 	position: absolute;
-	width: 60%;
-	height: 60%;
+	width: 100%;
+	height: 100%;
 	top: 0px;
 	left: 0px;
 	z-index: 1;
@@ -6433,7 +6433,7 @@ display: none !important;
     margin-bottom: 10px;
   }
   .product .product-image .image img {
-    width: 60%;
+    width: 100%;
     height: auto;
     display: block;
   }
@@ -6483,7 +6483,7 @@ display: none !important;
     padding:0px 12px;
 }
   .hot-deal-wrapper .image img {
-    width: 60%;
+    width: 100%;
     height: auto;
     display: block;
   }
@@ -6871,12 +6871,12 @@ td.cart-product-sub-total span {
     margin-bottom: 30px;
   }
   .product .product-image .image img {
-    width: 60%;
+    width: 100%;
     height: auto;
     display: block;
   }
   .blog-slider .image img {
-    width: 60%;
+    width: 100%;
     height: auto;
     display: block;
   }
@@ -6897,7 +6897,7 @@ td.cart-product-sub-total span {
     padding: 0px;
   }
   .hot-deal-wrapper .image img {
-    width: 60%;
+    width: 100%;
     height: auto;
     display: block;
   }

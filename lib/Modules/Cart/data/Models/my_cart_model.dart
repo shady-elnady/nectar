@@ -1,15 +1,13 @@
 import 'dart:convert';
 
-import '../../../log/data/Models/user_model.dart';
-import '../../domain/Entities/cart.dart';
-import 'lines_in_card_model.dart';
+import '../../domain/Entities/my_cart.dart';
+import 'lines_in_my_card_model.dart';
 import 'promo_code_model.dart';
 
-class CartModel extends Cart {
-  const CartModel({
+class MyCartModel extends MyCart {
+  const MyCartModel({
     required super.url,
-    required super.customer,
-    required super.linesInCard,
+    required super.linesInMyCard,
     super.paymentMethod,
     super.promoCode,
     required super.isFinished,
@@ -18,11 +16,10 @@ class CartModel extends Cart {
     required super.slug,
   });
 
-  factory CartModel.fromMap(Map<String, dynamic> data) => CartModel(
+  factory MyCartModel.fromMap(Map<String, dynamic> data) => MyCartModel(
         url: data['url'] as String,
-        customer: UserModel.fromMap(data['customer'] as Map<String, dynamic>),
-        linesInCard: (data['Lines_In_Card'] as List<dynamic>)
-            .map((e) => LinesInCardModel.fromMap(e as Map<String, dynamic>))
+        linesInMyCard: (data['Lines_In_Card'] as List<dynamic>)
+            .map((e) => LinesInMyCardModel.fromMap(e as Map<String, dynamic>))
             .toList(),
         paymentMethod: data['payment_method'] as String?,
         promoCode: data['promo_code'] == null
@@ -37,8 +34,8 @@ class CartModel extends Cart {
 
   /// `dart:convert`
   ///
-  /// Parses the string and returns the resulting Json object as [CartModel].
-  factory CartModel.fromJson(String data) {
-    return CartModel.fromMap(json.decode(data) as Map<String, dynamic>);
+  /// Parses the string and returns the resulting Json object as [MyCartModel].
+  factory MyCartModel.fromJson(String data) {
+    return MyCartModel.fromMap(json.decode(data) as Map<String, dynamic>);
   }
 }

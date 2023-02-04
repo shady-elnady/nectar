@@ -40,7 +40,7 @@ class Order(models.Model):
     ) # تم رد الأموال الممنوحة
     shipping_address = models.ForeignKey(
         Address,
-        related_name= _('Orders'),
+        related_name= _('Shipping_Orders'),
         on_delete= models.SET_NULL,
         blank= True,
         null= True,
@@ -48,7 +48,7 @@ class Order(models.Model):
     ) # عنوان الشحن
     billing_address = models.ForeignKey(
         Address,
-        related_name= _('Orders'),
+        related_name= _('Billing_Orders'),
         on_delete= models.SET_NULL,
         blank= True,
         null= True,
