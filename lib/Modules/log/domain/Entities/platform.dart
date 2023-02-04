@@ -20,8 +20,10 @@ class Platform extends BaseEntity {
   /// `dart:convert`
   ///
   /// Converts [Platform] to a JSON string.
+  @override
   String toJson() => json.encode(toMap());
 
+  @override
   Map<String, dynamic> toMap() => {
         'url': url,
         'name': name,

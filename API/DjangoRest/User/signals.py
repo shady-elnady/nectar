@@ -15,11 +15,6 @@ def create_user_profile(sender, instance, created, **kwargs):
         Profile.save()
 
 
-# @receiver(post_save, sender=User)
-# def save_user_profile(sender, instance, **kwargs):
-#     instance.profile.save()
-
-
 @override_settings(
     AUTH_USER_MODEL = 'User.User'
 )
@@ -30,3 +25,11 @@ def user_model_swapped(**kwargs):
         apps.clear_cache()
         from .models import User
         User = get_user_model()
+
+
+## Other Method
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         Profile.objects.create(user=instance)
+
+# post_save.connect(create_user_profile, sender=User)

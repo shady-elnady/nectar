@@ -53,10 +53,6 @@ class User(AbstractBaseUser, BaseModel, PermissionsMixin):
         default=False,
         verbose_name= _("is Super User"),
     )
-    favorites_products = models.ManyToManyField(
-        Product,
-        verbose_name= _("Favorite Products"),
-    )
 
     @property
     def slug(self):
@@ -103,6 +99,7 @@ class Profile(BaseModelImageOnly):
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
+        related_name= _("Profile"),
         verbose_name= _("User"),
     )
     phone_regex = RegexValidator(
@@ -155,6 +152,10 @@ class Profile(BaseModelImageOnly):
         null=True,
         blank=True,
         verbose_name= _("Address"),
+    )
+    favorites_products = models.ManyToManyField(
+        Product,
+        verbose_name= _("Favorite Products"),
     )
 
     @property

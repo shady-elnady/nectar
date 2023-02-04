@@ -1,9 +1,12 @@
 from django.contrib.auth.models import Group
-from rest_framework.serializers import HyperlinkedModelSerializer, RelatedField, EmailField, CharField
-
+from rest_framework.serializers import (
+    HyperlinkedModelSerializer,
+    EmailField,
+    CharField,
+    RelatedField,
+)
 
 from .models import User, Following, Profile
-# from Nectar.Serializer import AgeSerializer
 from Language.Serializer import LanguageSerializer
 from Location.Serializer import AddressSerializer
 from Product.Serializer import ProductSerializer
@@ -12,7 +15,6 @@ from Product.Serializer import ProductSerializer
 # Serializers define the API representation.
 
 class UserSerializer(HyperlinkedModelSerializer):
-    favorites_products = ProductSerializer(many= True)
     class Meta:
         model = User
         fields = [
@@ -23,7 +25,7 @@ class UserSerializer(HyperlinkedModelSerializer):
             "is_verified",
             "is_staff",
             "is_superuser",
-            "favorites_products",
+            "Profile",
             "slug",
         ]
         extra_kwargs = {
@@ -51,8 +53,9 @@ class FollowingSerializer(HyperlinkedModelSerializer):
         fields = "__all__"
 
 
-class ProfileSerializer(HyperlinkedModelSerializer):
-    user = UserSerializer(many= False)
+class MyProfileSerializer(HyperlinkedModelSerializer):
+    # user = UserSerializer(many= False)
+    favorites_products = ProductSerializer(many= True)
     language = LanguageSerializer(many= False)
     address = AddressSerializer(many= False)
     class Meta:
@@ -60,7 +63,7 @@ class ProfileSerializer(HyperlinkedModelSerializer):
         fields = [
             "url",
             "image",
-            "user",
+            # "user",
             "phone_number",
             "full_name",
             "family_name",
@@ -69,6 +72,7 @@ class ProfileSerializer(HyperlinkedModelSerializer):
             "language",
             "address",
             "age",
+            "favorites_products",
             "slug",
         ]
 

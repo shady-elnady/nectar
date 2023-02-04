@@ -1,24 +1,22 @@
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
+import 'package:nectar_mac/App/Entities/original_entity.dart';
 
-import '../../../Product/domain/Entities/product.dart';
+import '../../../Department/domain/Entities/product.dart';
 
-class LinesInCard extends Equatable {
-  final String url;
+class LinesInCard extends OriginalEntity {
   final String card;
   final Product product;
   final int amount;
   final double totalLinePrice;
-  final String slug;
 
   const LinesInCard({
-    required this.url,
+    required super.url,
     required this.card,
     required this.product,
     required this.amount,
     required this.totalLinePrice,
-    required this.slug,
+    required super.slug,
   });
 
   @override
@@ -26,6 +24,7 @@ class LinesInCard extends Equatable {
     return 'LinesInCard(url: $url, card: $card, product: $product, amount: $amount, totalLinePrice: $totalLinePrice, slug: $slug)';
   }
 
+  @override
   Map<String, dynamic> toMap() => {
         'url': url,
         'card': card,
@@ -38,6 +37,7 @@ class LinesInCard extends Equatable {
   /// `dart:convert`
   ///
   /// Converts [LinesInCard] to a JSON string.
+  @override
   String toJson() => json.encode(toMap());
 
   LinesInCard copyWith({

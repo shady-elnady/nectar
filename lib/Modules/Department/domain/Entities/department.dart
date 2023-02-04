@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import '../../../../App/Entities/base_entity.dart';
-import '../../../Product/domain/Entities/product.dart';
+import 'product.dart';
 
 class Department extends BaseEntity {
   final List<Product?> products;

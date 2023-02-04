@@ -3,12 +3,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:nectar_mac/config/index.dart';
+import 'package:nectar_mac/App/Utils/Assets/app_images.dart';
 import 'package:nectar_mac/themes/app_colors.dart';
 import 'package:nectar_mac/App/Utils/Assets/app_fonts.dart';
+import 'package:nectar_mac/views/components/intro_header.dart';
 import 'package:nectar_mac/views/widgets/index.dart';
 
-import '../../components/index.dart';
 import 'number_screen.dart';
 
 class SingInScreen extends StatelessWidget {

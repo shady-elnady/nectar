@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .models import User, Following, Profile
 from .Serializer import (
     UserSerializer, GroupSerializer,
-    FollowingSerializer, ProfileSerializer,
+    FollowingSerializer, MyProfileSerializer,
 )
 
 
@@ -19,18 +19,15 @@ class UserViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         querySet = User.objects.all()
-        username = self.request.query_params.get('username')
-        # user = get_object_or_404(User, username= username)
-        if (username ):
-            # return querySet.filter( username = username).order_by('created_at')
-            return querySet.filter( username = username)
+        if (self.request.query_params.get('username') ):
+            return querySet.filter( username = self.request.query_params.get('username'))
         return querySet
 
 
 class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsAdminUser]
 
 
 class FollowingViewSet(viewsets.ModelViewSet):
@@ -39,7 +36,11 @@ class FollowingViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
 
-class ProfileViewSet(viewsets.ModelViewSet):
+class MyProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
-    serializer_class = ProfileSerializer
+    serializer_class = MyProfileSerializer
     permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Profile.objects.all().filter(user=self.request.user)
+

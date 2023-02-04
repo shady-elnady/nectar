@@ -20,6 +20,7 @@ class Application extends BaseEntity {
     return 'Application(url: $url, name: $name, native: $native, platform: $platform, slug: $slug)';
   }
 
+  @override
   Map<String, dynamic> toMap() => {
         'url': url,
         'name': name,
@@ -31,6 +32,7 @@ class Application extends BaseEntity {
   /// `dart:convert`
   ///
   /// Converts [Application] to a JSON string.
+  @override
   String toJson() => json.encode(toMap());
 
   Application copyWith({

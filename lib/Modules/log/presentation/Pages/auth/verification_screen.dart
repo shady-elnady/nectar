@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nectar_mac/App/Utils/Assets/app_fonts.dart';
+import 'package:nectar_mac/views/components/intro_header.dart';
 
 import 'package:nectar_mac/views/widgets/textFields/custom_text_field.dart';
 
-import '../../components/index.dart';
 import '../01.intro/location_screen.dart';
 
 class VerificationScreen extends StatelessWidget {

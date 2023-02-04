@@ -53,7 +53,6 @@ class MyApp extends StatelessWidget {
               return deviceLocale;
             }
           }
-
           return supportedLocales.first;
         }
       },

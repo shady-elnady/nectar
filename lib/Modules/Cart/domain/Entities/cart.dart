@@ -1,13 +1,11 @@
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
+import 'package:nectar_mac/App/Entities/original_entity.dart';
 
-import '../../../log/domain/Entities/user.dart';
 import 'lines_in_card.dart';
 import 'promo_code.dart';
 
-class Cart extends Equatable {
-  final String url;
+class Cart extends OriginalEntity {
   final User customer;
   final List<LinesInCard?> linesInCard;
   final String? paymentMethod;
@@ -15,10 +13,9 @@ class Cart extends Equatable {
   final bool isFinished;
   final DateTime createdAt;
   final double totalCost;
-  final String slug;
 
   const Cart({
-    required this.url,
+    required super.url,
     required this.customer,
     required this.linesInCard,
     this.paymentMethod,
@@ -26,7 +23,7 @@ class Cart extends Equatable {
     required this.isFinished,
     required this.createdAt,
     required this.totalCost,
-    required this.slug,
+    required super.slug,
   });
 
   @override
@@ -37,8 +34,10 @@ class Cart extends Equatable {
   /// `dart:convert`
   ///
   /// Converts [Cart] to a JSON string.
+  @override
   String toJson() => json.encode(toMap());
 
+  @override
   Map<String, dynamic> toMap() => {
         'url': url,
         'customer': customer.toMap(),

@@ -146,6 +146,16 @@ class Geo(models.Model) :
     lang= models.FloatField(
         verbose_name= _("Lang"),
     )
+
+    @property
+    def slug(self) -> str:
+        return slugify(f"{self.lat}-{self.lang}")
+
+    def __str__(self) -> str:
+        return f"{self.lat}-{self.lang}"
+
+    def __decode__(self) -> str:
+        return f"{self.lat}-{self.lang}"
    
     class Meta:
         verbose_name= _("Geo")

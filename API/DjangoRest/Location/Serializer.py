@@ -82,8 +82,10 @@ class GeoSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Geo
         fields = [
+            "url",
             "lat",
             "lang",
+            "slug",
         ] 
 
 class AddressSerializer(HyperlinkedModelSerializer):

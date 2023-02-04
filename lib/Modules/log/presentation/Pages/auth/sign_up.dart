@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:nectar_mac/App/Utils/Assets/app_images.dart';
+import 'package:nectar_mac/views/Utils/constant.dart';
+import 'package:nectar_mac/views/widgets/Buttons/main_button.dart';
+import 'package:nectar_mac/views/widgets/text/custom_text.dart';
+import 'package:nectar_mac/views/widgets/textFields/custom_text_field.dart';
 
-import '../../../config/app_images.dart';
-import '../../widgets/index.dart';
 import 'loging_screen.dart';
 
 class SignUpScreen extends StatelessWidget {

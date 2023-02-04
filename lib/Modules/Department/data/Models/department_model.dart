@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import '../../../Product/data/Models/product_model.dart';
 import '../../domain/Entities/department.dart';
+import 'product_model.dart';
 
 class DepartmentModel extends Department {
   const DepartmentModel({

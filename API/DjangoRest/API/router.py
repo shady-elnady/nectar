@@ -2,7 +2,7 @@ from rest_framework import routers
 
 from User.ViewsSet import (
     UserViewSet, GroupViewSet,
-    FollowingViewSet, ProfileViewSet,
+    FollowingViewSet, MyProfileViewSet,
 )
 from Card.ViewsSet import CardViewSet, CouponViewSet, LineInCardViewSet
 from Category.ViewsSet import CategoryViewSet, BrandViewSet 
@@ -25,7 +25,7 @@ router = routers.DefaultRouter()
 router.register('users', UserViewSet)
 router.register('groups', GroupViewSet)
 router.register('followings', FollowingViewSet)
-router.register('profiles', ProfileViewSet)
+router.register('my_profiles', MyProfileViewSet)
 
 ## Card App
 router.register('cards', CardViewSet)

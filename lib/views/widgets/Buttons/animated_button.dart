@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../screens/auth/sing_in_screen.dart';
+import 'package:nectar_mac/Modules/log/presentation/Pages/auth/sing_in_screen.dart';
 
 class AnimatedTransButton extends StatefulWidget {
   final String? routeName;

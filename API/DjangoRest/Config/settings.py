@@ -37,6 +37,8 @@ ALLOWED_HOSTS = [
 ]
 
 AUTH_USER_MODEL = "User.User"
+# for Access User Profile example(profile = request.user.get_profile())
+AUTH_PROFILE_MODULE = "User.Profile"
 
 
 SITE_ID = 1
@@ -63,7 +65,7 @@ MY_APP= [
     "Basket",
     "Order",
     "Utils",
-    "API",
+    # "API",
     "GraphQL",
 ]
 
@@ -232,13 +234,13 @@ REST_FRAMEWORK = {
     # 'DEFAULT_PERMISSION_CLASSES': [
     #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
     # ],
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.IsAuthenticated',
-    # ],
-    ### for Simple JWT
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    ## for Simple JWT
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'rest_framework_simplejwt.authentication.JWTAuthentication',
+    # ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
 }

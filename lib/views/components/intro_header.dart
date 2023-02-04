@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../config/index.dart';
+import 'package:nectar_mac/App/Utils/Assets/app_images.dart';
 
 class IntroHeader extends StatelessWidget {
   const IntroHeader({

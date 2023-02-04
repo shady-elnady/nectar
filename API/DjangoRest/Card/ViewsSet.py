@@ -22,10 +22,9 @@ class CardViewSet(ModelViewSet):
     
     def get_queryset(self):
         querySet = Card.objects.all()
-        is_finished = self.request.query_params.get('is_finished')
-        if (is_finished ):
-            return querySet.filter( is_finished = is_finished).order_by('created_at')
-            # return querySet.filter(customer=self.request.user, is_finished = is_finished).order_by('created_at')
+        querySet = querySet.filter(customer=self.request.user).order_by('created_at')
+        if (self.request.query_params.get('is_finished') ):
+            return querySet.filter( is_finished = self.request.query_params.get('is_finished')).order_by('created_at')
         return querySet
 
 

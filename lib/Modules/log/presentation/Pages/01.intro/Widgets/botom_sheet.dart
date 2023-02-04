@@ -4,7 +4,7 @@ import 'dart:math' as math;
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-import '../../../../data/Models/language.dart';
+import '../../../../domain/Entities/language.dart';
 
 class BottomSheetTransition extends StatefulWidget {
   const BottomSheetTransition({super.key});
@@ -228,7 +228,7 @@ class LangContainer extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Text(
-                          langWidget.language.native!,
+                          langWidget.language.native,
                           style: const TextStyle(
                             fontSize: 22,
                             color: Colors.white,
@@ -236,7 +236,7 @@ class LangContainer extends StatelessWidget {
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          langWidget.language.name!,
+                          langWidget.language.name,
                           style: const TextStyle(
                             fontSize: 14,
                             color: Colors.yellow,
@@ -273,6 +273,8 @@ final List<LangWidget> langWidgets = [
       native: "English",
       iso6391: "en",
       isRtl: false,
+      slug: '',
+      url: '',
     ),
     icon: const Icon(Icons.abc),
   ),
@@ -282,6 +284,8 @@ final List<LangWidget> langWidgets = [
       native: "العربيه",
       iso6391: "ar",
       isRtl: true,
+      url: '',
+      slug: '',
     ),
     icon: const Icon(Icons.abc),
   ),
@@ -291,6 +295,8 @@ final List<LangWidget> langWidgets = [
       native: "Français",
       iso6391: "fr",
       isRtl: false,
+      slug: '',
+      url: '',
     ),
     icon: const Icon(Icons.abc),
   ),
@@ -300,6 +306,8 @@ final List<LangWidget> langWidgets = [
       native: "español",
       iso6391: "es",
       isRtl: false,
+      slug: '',
+      url: '',
     ),
     icon: const Icon(Icons.abc),
   ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:nectar_mac/App/Utils/Assets/app_images.dart';
 import 'package:nectar_mac/Config/app_localizations.dart';
 import 'package:nectar_mac/views/Utils/constant.dart';
+import 'package:nectar_mac/views/widgets/Buttons/animated_button.dart';
+import 'package:nectar_mac/views/widgets/Buttons/main_button.dart';
 
-import '../../../config/app_images.dart';
-import '../../widgets/Buttons/animated_button.dart';
-import '../../widgets/Buttons/main_button.dart';
 import 'Widgets/botom_sheet.dart';
 
 class WelcomeScreen extends StatefulWidget {

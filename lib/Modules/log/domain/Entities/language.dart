@@ -29,8 +29,10 @@ class Language extends BaseEntity {
   /// `dart:convert`
   ///
   /// Converts [Language] to a JSON string.
+  @override
   String toJson() => json.encode(toMap());
 
+  @override
   Map<String, dynamic> toMap() => {
         'url': url,
         'name': name,

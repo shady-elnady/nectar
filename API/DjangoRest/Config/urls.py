@@ -32,7 +32,7 @@ urlpatterns = [
     path("", include("django.contrib.auth.urls")),
     path("", include("User.urls", namespace="User")),
     path("", include("Nectar.urls", namespace="Nectar")),
-    path("my-api/", include("API.urls", namespace="API")),
+    # path("my-api/", include("API.urls", namespace="API")),
     ## Simple JWT Authentication Default URL
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

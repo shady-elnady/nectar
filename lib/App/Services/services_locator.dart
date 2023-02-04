@@ -18,7 +18,7 @@ class ServicesLocator {
     sl.registerLazySingleton<NetworkService>(() => NetworkConnection(sl()));
 
     /// Bloc
-    sl.registerFactory(() => DepartmentsBloc(sl(), sl(), sl()));
+    // sl.registerFactory(() => DepartmentsBloc(sl(), sl(), sl()));
 
     /// Use Cases
     sl.registerLazySingleton(() => GetAllDepartmentUseCase(sl()));

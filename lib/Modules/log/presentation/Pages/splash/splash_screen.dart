@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nectar_mac/App/Utils/Assets/app_images.dart';
+
+import '../01.intro/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

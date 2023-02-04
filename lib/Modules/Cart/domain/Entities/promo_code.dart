@@ -1,18 +1,16 @@
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
+import 'package:nectar_mac/App/Entities/original_entity.dart';
 
-class PromoCode extends Equatable {
-  final String url;
+class PromoCode extends OriginalEntity {
   final String promoCode;
   final double discount;
-  final String slug;
 
   const PromoCode({
-    required this.url,
+    required super.url,
     required this.promoCode,
     required this.discount,
-    required this.slug,
+    required super.slug,
   });
 
   @override
@@ -20,6 +18,7 @@ class PromoCode extends Equatable {
     return 'PromoCode(url: $url, promoCode: $promoCode, discount: $discount, slug: $slug)';
   }
 
+  @override
   Map<String, dynamic> toMap() => {
         'url': url,
         'promo_code': promoCode,
@@ -30,6 +29,7 @@ class PromoCode extends Equatable {
   /// `dart:convert`
   ///
   /// Converts [PromoCode] to a JSON string.
+  @override
   String toJson() => json.encode(toMap());
 
   PromoCode copyWith({

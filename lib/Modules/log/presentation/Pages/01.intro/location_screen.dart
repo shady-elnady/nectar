@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:nectar_mac/views/Utils/constant.dart';
+import 'package:nectar_mac/views/components/intro_header.dart';
+import 'package:nectar_mac/views/widgets/Buttons/main_button.dart';
+import 'package:nectar_mac/views/widgets/text/custom_text.dart';
+import 'package:nectar_mac/views/widgets/textFields/custom_drop_menu.dart';
 
-import '../../components/index.dart';
-import '../../widgets/index.dart';
 import '../auth/loging_screen.dart';
 
 class LocationScreen extends StatelessWidget {
