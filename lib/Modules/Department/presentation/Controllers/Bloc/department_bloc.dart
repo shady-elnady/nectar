@@ -6,8 +6,6 @@ part 'department_state.dart';
 
 class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
   DepartmentBloc() : super(DepartmentInitial()) {
-    on<DepartmentEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<DepartmentEvent>((event, emit) {});
   }
 }

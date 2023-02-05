@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  static List<LinesInCard?> myCart = [];
+  static List<LinesInMyCard?> myCart = [];
 
   @override
   void initState() {
@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
         label: "Explore",
       ),
       PageTab(
-        widget: MyCart(),
+        widget: MyCartTab(),
         icon: MyCartIcon(
           count: myCart.length,
         ),
