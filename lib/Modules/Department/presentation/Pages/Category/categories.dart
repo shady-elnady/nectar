@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:nectar_mac/views/widgets/Utils/error_widget.dart';
 import 'package:nectar_mac/views/widgets/index.dart';
+import 'package:nectar_mac/views/widgets/textFields/search_field.dart';
 
+import '../../../domain/Entities/category.dart';
 import 'category_products.dart';
 
 class Categories extends StatelessWidget {

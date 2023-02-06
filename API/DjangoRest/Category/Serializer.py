@@ -14,8 +14,8 @@ class CategorySerializer(HyperlinkedModelSerializer):
             "url",
             'name',
             'image',
-            'slug',
             'category_parent', 
+            'slug',
         )
     
     def to_representation(self, instance):
@@ -27,7 +27,9 @@ class BrandSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Brand 
         fields = [
+            "url",
             "name",
             "image",
+            "slug",
         ] 
 

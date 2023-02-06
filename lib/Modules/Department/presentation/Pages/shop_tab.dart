@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nectar_mac/App/Utils/Assets/app_images.dart';
 import 'package:nectar_mac/Modules/Department/domain/Entities/department.dart';
 import 'package:nectar_mac/views/Utils/constant.dart';
 import 'package:nectar_mac/views/widgets/Utils/slider_product_item.dart';
 
 import '../../../../../../views/widgets/Utils/error_widget.dart';
 import '../../../../../../views/widgets/caursel_slider.dart';
+import '../../domain/Entities/product.dart';
+import 'Category/categories.dart';
 import 'Components/search_card.dart';
 import 'Components/trend_section.dart';
 
@@ -13,31 +17,38 @@ class ShopTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildSearchBar(context),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
-        child: ListView(
-          children: const <Widget>[
-            CaurselSlider(
-              height: 115,
-              fromAssets: false,
-              images: [
-                AppImages.carouselImage1,
-                AppImages.carouselImage2,
-                AppImages.carouselImage3,
+    return BlocProvider(
+      create: (BuildContext context) => sl<MoviesBloc>()
+        ..add(GetNowPlayingMoviesEvent())
+      child: BlocBuilder<MoviesBloc, MoviesState>(
+        builder: (context, state) {
+          return Scaffold(
+          appBar: buildSearchBar(context),
+          body: Padding(
+            padding: const EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
+            child: ListView(
+              children: const <Widget>[
+                CaurselSlider(
+                  height: 115,
+                  fromAssets: false,
+                  images: [
+                    AppImages.carouselImage1,
+                    AppImages.carouselImage2,
+                    AppImages.carouselImage3,
+                  ],
+                ),
+                DepartmentsList(),
+                //
+                UtilsWidget.sizedBox15,
+                DepartmentTitle(
+                  title: "Groceries",
+                ),
+                Groceries(),
               ],
             ),
-            DepartmentsList(),
-            //
-            UtilsWidget.sizedBox15,
-            DepartmentTitle(
-              title: "Groceries",
-            ),
-            Groceries(),
-          ],
-        ),
-      ),
+          ),
+        );
+      }
     );
   }
 
@@ -110,13 +121,12 @@ class DepartmentContainer extends StatelessWidget {
             primary: false,
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            // ignore: unnecessary_null_comparison
-            itemCount: department.products?.length ?? 0,
+            itemCount: department.products.length,
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.only(right: 10.0),
                 child: SliderProductItem(
-                  product: department.products![index],
+                  product: department.products[index]!,
                   heroTag: department.name,
                 ),
               );

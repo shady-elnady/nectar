@@ -7,4 +7,6 @@ abstract class DepartmentEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class RefreshDepartmentsEvent extends DepartmentEvent {}
+
 class GetDepartmentsEvent extends DepartmentEvent {}

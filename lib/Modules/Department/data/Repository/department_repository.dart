@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:nectar_mac/App/Exceptions/exceptions.dart';
 import 'package:nectar_mac/App/Exceptions/failure.dart';
 import 'package:nectar_mac/App/Services/network_services.dart';
-import 'package:nectar_mac/App/Utils/Strings/failures.dart';
+import 'package:nectar_mac/App/Utils/Strings/messages.dart';
 
 import '../../domain/Entities/department.dart';
 import '../../domain/Repository/base_department_repository.dart';
@@ -39,7 +39,11 @@ class DepartmentRepository extends BaseDepartmentRepository {
             await localDepartmentDataSource.getCachedDepartments();
         return Right(localDepartments);
       } on EmptyCacheException {
-        return const Left(EmptyCacheFailure(FailureMeassage.emptyCacheData));
+        return const Left(
+          EmptyCacheFailure(
+            Meassages.emptyCacheData,
+          ),
+        );
       }
     }
   }

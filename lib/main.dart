@@ -6,8 +6,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'App/Services/services_locator.dart';
 import 'Config/app_localizations.dart';
+import 'Routes/index.dart';
 import 'themes/app_theme.dart';
-import 'Modules/log/presentation/Pages/splash/splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,12 +30,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppTheme.appName,
-      home: const SplashScreen(),
-      // Theme Parameter
+      initialRoute: RoutePages.intial,
+      onGenerateRoute: Routes.onGenerateRoute,
       theme: AppTheme.lightTheme,
-      // darkTheme: AppTheme.darkTheme,
       scrollBehavior: MyCustomScrollBehavior(),
-      // Languages supported
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: const [
         AppLocalizations.delegate,

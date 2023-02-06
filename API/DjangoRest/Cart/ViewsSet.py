@@ -6,6 +6,8 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Cart, Coupon, LineInCart
 from .Serializer import MyCartSerializer, LineInMyCartSerializer, CouponSerializer 
 
+from itertools import chain
+
 
 class MyCartViewSet(ModelViewSet):
     queryset = Cart.objects.all()
@@ -17,7 +19,7 @@ class MyCartViewSet(ModelViewSet):
         serializer.save(user_id=self.request.user)
     
     def get_queryset(self):
-        querySet = Cart.objects.all().filter(user=self.request.user).order_by('created_at')
+        querySet = Cart.objects.all().filter(customer=self.request.user).order_by('created_at')
         if (self.request.query_params.get('is_finished') ):
             return querySet.filter( is_finished = self.request.query_params.get('is_finished')).order_by('created_at')
         return querySet
@@ -64,6 +66,9 @@ class LineInMyCartViewSet(ModelViewSet):
                 data=serializer.errors,
                 status=status.HTTP_400_BAD_REQUEST,
             )
+    
+    def get_queryset(self):
+        return LineInCart.objects.filter(cart__in= Cart.objects.filter(customer=self.request.user))
 
 
 ### https://stackoverflow.com/questions/69210993/django-rest-framework-ordering-by-count-of-filtered-pre-fetched-related-objects

@@ -7,6 +7,7 @@ class ProductImageModel extends ProductImage {
     required super.url,
     required super.image,
     required super.product,
+    required super.slug,
   });
 
   @override
@@ -19,6 +20,7 @@ class ProductImageModel extends ProductImage {
         url: data['url'] as String,
         image: data['image'] as String,
         product: data['product'] as String,
+        slug: data['slug'] as String,
       );
 
   /// `dart:convert`

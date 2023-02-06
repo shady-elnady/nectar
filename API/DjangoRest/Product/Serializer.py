@@ -11,7 +11,12 @@ from Payment.Serializer import CurrencySerializer
 class ProductImageSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = ProductImage
-        fields = "__all__" 
+        fields = [
+            "url",
+            "product",
+            "image",
+            "slug",
+        ] 
 
 
 

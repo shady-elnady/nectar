@@ -1,11 +1,10 @@
 import 'dart:convert';
 
-class BodyModel //<BaseModel>
-{
+class BodyModel {
   final int? count;
   final String? next;
   final String? previous;
-  // final List<BaseModel?> results;
+  // final List<T?> results;
   final List<dynamic> results;
 
   const BodyModel({
@@ -21,7 +20,7 @@ class BodyModel //<BaseModel>
         previous: data['previous'] as String?,
         // results: (data['results'])
         //     .map((Map<String, dynamic>? e) =>
-        //         BaseModel.fromMap(e as Map<String, dynamic>))
+        //         T.fromMap(e as Map<String, dynamic>))
         //     .toList(),
         results: (data['results'])
             .map((Map<String, dynamic>? e) => e as Map<String, dynamic>)
