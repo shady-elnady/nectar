@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../../../../views/widgets/Utils/slider_product_item.dart';
+import '../../../Product/presentation/Pages/Components/slider_product_item.dart';
 import '../../../../../../views/widgets/textFields/search_field.dart';
 import '../../../Product/domain/Entities/product.dart';
 

@@ -6,7 +6,7 @@ import 'package:nectar_mac/Modules/Department/domain/Entities/department.dart';
 import 'package:nectar_mac/Routes/index.dart';
 import 'package:nectar_mac/views/Utils/constant.dart';
 import 'package:nectar_mac/views/Utils/loading_widget.dart';
-import 'package:nectar_mac/views/widgets/Utils/slider_product_item.dart';
+import 'package:nectar_mac/Modules/Product/presentation/Pages/Components/slider_product_item.dart';
 
 import '../../../../../../views/widgets/Utils/error_widget.dart';
 import '../../../../../../views/widgets/caursel_slider.dart';

@@ -15,7 +15,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final GetAllProductUseCase getAllProducts;
   ProductBloc({
     required this.getAllProducts,
-  }) : super(InitialProductState()) {
+  }) : super(InitialProductsState()) {
     on<ProductEvent>((event, emit) async {
       if (event is GetProductsEvent) {
         emit(LoadingProductsState());

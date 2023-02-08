@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nectar_mac/views/widgets/Utils/error_widget.dart';
-import 'package:nectar_mac/views/widgets/Utils/slider_product_item.dart';
+import 'package:nectar_mac/Modules/Product/presentation/Pages/Components/slider_product_item.dart';
 
 import '../../domain/Entities/product.dart';
 
