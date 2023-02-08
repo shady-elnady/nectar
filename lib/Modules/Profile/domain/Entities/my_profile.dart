@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:nectar_mac/App/Entities/original_entity.dart';
 
-import '../../../Department/domain/Entities/product.dart';
+import '../../../Product/domain/Entities/product.dart';
 import '../../../log/domain/Entities/language.dart';
 import 'address.dart';
 import 'age.dart';

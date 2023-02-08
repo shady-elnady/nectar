@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:nectar_mac/App/Utils/Assets/app_fonts.dart';
 import 'package:nectar_mac/Modules/Department/presentation/Pages/product/product_details.dart';
 
-import '../../../Modules/Department/domain/Entities/product.dart';
+import '../../../Modules/Product/domain/Entities/product.dart';
 
 class SliderProductItem extends StatelessWidget {
   const SliderProductItem({

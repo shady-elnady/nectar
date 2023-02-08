@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../../../Department/data/Models/product_model.dart';
+import '../../../Product/data/Models/product_model.dart';
 import '../../domain/Entities/lines_in_my_card.dart';
 
 class LinesInMyCardModel extends LinesInMyCard {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nectar_mac/Modules/log/presentation/Pages/auth/sing_in_screen.dart';
+
+import '../../../Routes/index.dart';
 
 class AnimatedTransButton extends StatefulWidget {
   final String? routeName;
@@ -99,11 +100,9 @@ class _AnimatedTransButtonState extends State<AnimatedTransButton>
                 await secondController!.forward();
               } else {
                 firstController.dispose();
-                Navigator.pushReplacement(
+                Navigator.pushReplacementNamed(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const SingInScreen(),
-                  ),
+                  RoutePages.wellcome,
                 );
               }
             }

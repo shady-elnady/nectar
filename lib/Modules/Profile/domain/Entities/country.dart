@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import '../../../../App/Entities/base_entity.dart';
-import '../../../Department/domain/Entities/currency.dart';
+import '../../../Product/domain/Entities/currency.dart';
 import '../../../log/domain/Entities/language.dart';
 
 class Country extends BaseEntity {

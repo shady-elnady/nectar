@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
+import 'package:nectar_mac/Modules/Department/presentation/Bloc/department_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -18,7 +19,7 @@ class ServicesLocator {
     sl.registerLazySingleton<NetworkService>(() => NetworkConnection(sl()));
 
     /// Bloc
-    // sl.registerFactory(() => DepartmentsBloc(sl(), sl(), sl()));
+    sl.registerFactory(() => DepartmentBloc(getAllDepartments: sl()));
 
     /// Use Cases
     sl.registerLazySingleton(() => GetAllDepartmentUseCase(sl()));

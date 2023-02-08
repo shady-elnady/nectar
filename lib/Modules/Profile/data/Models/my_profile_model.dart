@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../../../Department/data/Models/product_model.dart';
+import '../../../Product/data/Models/product_model.dart';
 import '../../../log/data/Models/language_model.dart';
 import '../../domain/Entities/my_profile.dart';
 import 'address_model.dart';
