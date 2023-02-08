@@ -1,31 +1,31 @@
-// part of 'department_bloc.dart';
+// part of 'brands_bloc.dart';
 
-// abstract class DepartmentState extends Equatable {
-//   const DepartmentState();
+// abstract class BrandsState extends Equatable {
+//   const BrandsState();
 
 //   @override
 //   List<Object> get props => [];
 // }
 
-// class InitialDepartmentState extends DepartmentState {}
+// class InitialBrandsState extends BrandsState {}
 
-// class LoadingDepartmentsState extends DepartmentState {}
+// class LoadingBrandsState extends BrandsState {}
 
-// class LoadedDepartmentsState extends DepartmentState {
-//   final List<Department> departments;
+// class LoadedBrandsState extends BrandsState {
+//   final List<Brands> brands;
 
-//   const LoadedDepartmentsState({required this.departments});
+//   const LoadedBrandsState({required this.brands});
 
 //   @override
 //   List<Object> get props => [
-//         departments,
+//         brands,
 //       ];
 // }
 
-// class ErrorDepartmentsState extends DepartmentState {
+// class ErrorBrandsState extends BrandsState {
 //   final String message;
 
-//   const ErrorDepartmentsState({required this.message});
+//   const ErrorBrandsState({required this.message});
 
 //   @override
 //   List<Object> get props => [

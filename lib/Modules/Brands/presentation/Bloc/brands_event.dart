@@ -1,12 +1,12 @@
-// part of 'department_bloc.dart';
+// part of 'brands_bloc.dart';
 
-// abstract class DepartmentEvent extends Equatable {
-//   const DepartmentEvent();
+// abstract class BrandsEvent extends Equatable {
+//   const BrandsEvent();
 
 //   @override
 //   List<Object> get props => [];
 // }
 
-// class RefreshDepartmentsEvent extends DepartmentEvent {}
+// class RefreshBrandsEvent extends BrandsEvent {}
 
-// class GetDepartmentsEvent extends DepartmentEvent {}
+// class GetBrandsEvent extends BrandsEvent {}

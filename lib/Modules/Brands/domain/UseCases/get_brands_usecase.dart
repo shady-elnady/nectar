@@ -1,20 +1,18 @@
-// import 'package:dartz/dartz.dart';
+import 'package:dartz/dartz.dart';
 
-// import 'package:nectar_mac/App/Exceptions/failure.dart';
-// import 'package:nectar_mac/App/Models/base_usecase.dart';
+import 'package:nectar_mac/App/Exceptions/failure.dart';
+import 'package:nectar_mac/App/Models/base_usecase.dart';
 
-// import '../Entities/department.dart';
-// import '../Repository/base_department_repository.dart';
+import '../Entities/brand.dart';
+import '../Repository/base_brands_repository.dart';
 
-// class GetAllDepartmentUseCase
-//     extends BaseUseCase<List<Department>, NoParameters> {
-//   final BaseDepartmentRepository baseDepartmentRepository;
+class GetAllBrandsUseCase extends BaseUseCase<List<Brand>, NoParameters> {
+  final BaseBrandsRepository baseBrandsRepository;
 
-//   GetAllDepartmentUseCase(this.baseDepartmentRepository);
+  GetAllBrandsUseCase(this.baseBrandsRepository);
 
-//   @override
-//   Future<Either<Failure, List<Department>>> call(
-//       NoParameters parameters) async {
-//     return await baseDepartmentRepository.getAllDepartments();
-//   }
-// }
+  @override
+  Future<Either<Failure, List<Brand>>> call(NoParameters parameters) async {
+    return await baseBrandsRepository.getAllBrands();
+  }
+}

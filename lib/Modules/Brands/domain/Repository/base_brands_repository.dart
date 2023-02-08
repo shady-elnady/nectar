@@ -1,8 +1,8 @@
-// import 'package:dartz/dartz.dart';
-// import 'package:nectar_mac/App/Exceptions/failure.dart';
+import 'package:dartz/dartz.dart';
+import 'package:nectar_mac/App/Exceptions/failure.dart';
 
-// import '../Entities/department.dart';
+import '../Entities/brand.dart';
 
-// abstract class BaseDepartmentRepository {
-//   Future<Either<Failure, List<Department>>> getAllDepartments();
-// }
+abstract class BaseBrandsRepository {
+  Future<Either<Failure, List<Brand>>> getAllBrands();
+}

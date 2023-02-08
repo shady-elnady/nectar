@@ -5,39 +5,39 @@
 // import 'package:nectar_mac/App/Models/base_usecase.dart';
 // import 'package:nectar_mac/App/Utils/Strings/messages.dart';
 
-// import '../../domain/Entities/department.dart';
-// import '../../domain/UseCases/get_departments_usecase.dart';
+// import '../../domain/Entities/brand.dart';
+// import '../../domain/UseCases/get_brands_usecase.dart';
 
-// part 'department_event.dart';
-// part 'department_state.dart';
+// part 'brands_event.dart';
+// part 'brands_state.dart';
 
-// class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
-//   final GetAllDepartmentUseCase getAllDepartments;
-//   DepartmentBloc({
-//     required this.getAllDepartments,
-//   }) : super(InitialDepartmentState()) {
-//     on<DepartmentEvent>((event, emit) async {
-//       if (event is GetDepartmentsEvent) {
-//         emit(LoadingDepartmentsState());
+// class BrandBloc extends Bloc<BrandEvent, BrandState> {
+//   final GetAllBrandsUseCase getAllBrands;
+//   BrandBloc({
+//     required this.getAllBrands,
+//   }) : super(InitialBrandsState()) {
+//     on<BrandsEvent>((event, emit) async {
+//       if (event is GetBrandsEvent) {
+//         emit(LoadingBrandsState());
 
-//         final failureOrPosts = await getAllDepartments(const NoParameters());
+//         final failureOrPosts = await getAllBrands(const NoParameters());
 //         emit(_mapFailureOrPostsToState(failureOrPosts));
-//       } else if (event is RefreshDepartmentsEvent) {
-//         emit(LoadingDepartmentsState());
+//       } else if (event is RefreshBrandsEvent) {
+//         emit(LoadingBrandsState());
 
-//         final failureOrPosts = await getAllDepartments(const NoParameters());
+//         final failureOrPosts = await getAllBrands(const NoParameters());
 //         emit(_mapFailureOrPostsToState(failureOrPosts));
 //       }
 //     });
 //   }
 
-//   DepartmentState _mapFailureOrPostsToState(
-//       Either<Failure, List<Department>> either) {
+//   BrandState _mapFailureOrPostsToState(
+//       Either<Failure, List<Brand>> either) {
 //     return either.fold(
 //       (failure) =>
-//           ErrorDepartmentsState(message: _mapFailureToMessage(failure)),
-//       (departments) => LoadedDepartmentsState(
-//         departments: departments,
+//           ErrorBrandsState(message: _mapFailureToMessage(failure)),
+//       (Brands) => LoadedBrandsState(
+//         Brands: Brands,
 //       ),
 //     );
 //   }

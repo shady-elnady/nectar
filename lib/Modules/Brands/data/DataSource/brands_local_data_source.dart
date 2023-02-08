@@ -1,44 +1,41 @@
-// import 'dart:convert';
+import 'dart:convert';
 
-// import 'package:dartz/dartz.dart';
-// import 'package:nectar_mac/App/Exceptions/exceptions.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
+import 'package:dartz/dartz.dart';
+import 'package:nectar_mac/App/Exceptions/exceptions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-// import '../Models/department_model.dart';
+import '../Models/brand_model.dart';
 
-// abstract class DepartmentLocalDataSource {
-//   Future<List<DepartmentModel>> getCachedDepartments();
-//   Future<Unit> cacheDepartments(List<DepartmentModel> departmentsList);
-// }
+abstract class BrandsLocalDataSource {
+  Future<List<BrandModel>> getCachedBrands();
+  Future<Unit> cacheBrands(List<BrandModel> brandsList);
+}
 
-// const cachedDepartment = "CACHED_DEPARTMENTS";
+const cachedBrands = "CACHED_BRANDS";
 
-// class DepartmentLocalDataSourceImpl implements DepartmentLocalDataSource {
-//   final SharedPreferences sharedPreferences;
+class BrandsLocalDataSourceImpl implements BrandsLocalDataSource {
+  final SharedPreferences sharedPreferences;
 
-//   DepartmentLocalDataSourceImpl({required this.sharedPreferences});
-//   @override
-//   Future<Unit> cacheDepartments(List<DepartmentModel> departmentsList) {
-//     List departmentsListToJson = departmentsList
-//         .map<Map<String, dynamic>>((department) => department.toMap())
-//         .toList();
-//     sharedPreferences.setString(
-//         cachedDepartment, json.encode(departmentsListToJson));
-//     return Future.value(unit);
-//   }
+  BrandsLocalDataSourceImpl({required this.sharedPreferences});
+  @override
+  Future<Unit> cacheBrands(List<BrandModel> brandsList) {
+    List brandsListToJson =
+        brandsList.map<Map<String, dynamic>>((brand) => brand.toMap()).toList();
+    sharedPreferences.setString(cachedBrands, json.encode(brandsListToJson));
+    return Future.value(unit);
+  }
 
-//   @override
-//   Future<List<DepartmentModel>> getCachedDepartments() {
-//     final jsonString = sharedPreferences.getString(cachedDepartment);
-//     if (jsonString != null) {
-//       List decodeJsonData = json.decode(jsonString);
-//       List<DepartmentModel> jsonToDepartmentsModel = decodeJsonData
-//           .map<DepartmentModel>(
-//               (jsonDepartment) => DepartmentModel.fromJson(jsonDepartment))
-//           .toList();
-//       return Future.value(jsonToDepartmentsModel);
-//     } else {
-//       throw EmptyCacheException();
-//     }
-//   }
-// }
+  @override
+  Future<List<BrandModel>> getCachedBrands() {
+    final jsonString = sharedPreferences.getString(cachedBrands);
+    if (jsonString != null) {
+      List decodeJsonData = json.decode(jsonString);
+      List<BrandModel> jsonToBrandsModel = decodeJsonData
+          .map<BrandModel>((jsonBrand) => BrandModel.fromJson(jsonBrand))
+          .toList();
+      return Future.value(jsonToBrandsModel);
+    } else {
+      throw EmptyCacheException();
+    }
+  }
+}

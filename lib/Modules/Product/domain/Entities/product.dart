@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import '../../../../App/Entities/base_entity.dart';
-import '../../../Brand/domain/Entities/brand.dart';
+import '../../../Brands/domain/Entities/brand.dart';
 import '../../../Category/domain/Entities/category.dart';
 import 'currency.dart';
 import 'product_image.dart';
