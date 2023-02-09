@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../../../Brands/data/Models/brand_model.dart';
+import '../../../Category/data/Models/brand_model.dart';
 import '../../../Category/data/Models/category_model.dart';
 import '../../domain/Entities/product.dart';
 import 'currency_model.dart';

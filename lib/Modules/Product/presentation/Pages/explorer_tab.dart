@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison
-
 import 'package:flutter/material.dart';
 
 import 'Components/slider_product_item.dart';
@@ -55,7 +53,6 @@ class ExplorerTab extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25),
-        // implement GridView.builder
         child: productSearchControl.text == null
             ? Center(
                 child: Text(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nectar_mac/themes/app_theme.dart';
 
 class TrendItem extends StatefulWidget {
   final String img;

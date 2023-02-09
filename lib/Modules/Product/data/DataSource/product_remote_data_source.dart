@@ -5,11 +5,16 @@ import 'package:nectar_mac/App/API/error_message_model.dart';
 import 'package:nectar_mac/App/Exceptions/exceptions.dart';
 import 'package:nectar_mac/App/Models/body_model.dart';
 
+import '../../domain/UseCases/product_search_by_name_usecase.dart';
 import '../Models/product_model.dart';
 
 abstract class BaseProductRemoteDataSource {
   // Get All Products
   Future<List<ProductModel>> getAllProducts();
+  // Search on Products by name
+  Future<List<ProductModel>> searchProductsByName({
+    required SearchProductsByNameParameters searchProductsByNameParameters,
+  });
   // Get One Product
   Future<ProductModel> getOneProduct({required String slug});
 }
@@ -25,6 +30,38 @@ class ProductRemoteDataSource implements BaseProductRemoteDataSource {
     http.Response response = await client.get(
       Uri.parse(
         ApiConstance.productsURL,
+      ),
+      headers: {"Content-Type": "application/json"},
+    );
+
+    if (response.statusCode == 200) {
+      BodyModel body = BodyModel.fromJson(response.body);
+
+      List<dynamic> results = body.results;
+
+      List<ProductModel> products = results.map(
+        (dynamic product) {
+          return ProductModel.fromMap(product);
+        },
+      ).toList();
+
+      return products;
+    } else {
+      throw ServerException(
+        errorMessageModel: ErrorMessageModel.fromJson(
+            const {"ServerException": "ServerException"}),
+      );
+    }
+  }
+
+  // Search on Products by name
+  @override
+  Future<List<ProductModel>> searchProductsByName({
+    required SearchProductsByNameParameters searchProductsByNameParameters,
+  }) async {
+    http.Response response = await client.get(
+      Uri.parse(
+        "${ApiConstance.productsURL}?contain_name=${searchProductsByNameParameters.searchName}",
       ),
       headers: {"Content-Type": "application/json"},
     );

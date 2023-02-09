@@ -30,9 +30,9 @@ class MyCartLocalDataSourceImpl implements MyCartLocalDataSource {
   Future<List<MyCartModel>> getCachedMyCarts() {
     final jsonString = sharedPreferences.getString(cachedMyCart);
     if (jsonString != null) {
-      List decodeJsonData = json.decode(jsonString);
+      List<Map<String, dynamic>> decodeJsonData = json.decode(jsonString);
       List<MyCartModel> jsonToMyCartsModel = decodeJsonData
-          .map<MyCartModel>((jsonMyCart) => MyCartModel.fromJson(jsonMyCart))
+          .map<MyCartModel>((jsonMyCart) => MyCartModel.fromMap(jsonMyCart))
           .toList();
       return Future.value(jsonToMyCartsModel);
     } else {

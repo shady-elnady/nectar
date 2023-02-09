@@ -31,10 +31,10 @@ class DepartmentLocalDataSourceImpl implements DepartmentLocalDataSource {
   Future<List<DepartmentModel>> getCachedDepartments() {
     final jsonString = sharedPreferences.getString(cachedDepartment);
     if (jsonString != null) {
-      List decodeJsonData = json.decode(jsonString);
+      List<Map<String, dynamic>> decodeJsonData = json.decode(jsonString);
       List<DepartmentModel> jsonToDepartmentsModel = decodeJsonData
           .map<DepartmentModel>(
-              (jsonDepartment) => DepartmentModel.fromJson(jsonDepartment))
+              (jsonDepartment) => DepartmentModel.fromMap(jsonDepartment))
           .toList();
       return Future.value(jsonToDepartmentsModel);
     } else {

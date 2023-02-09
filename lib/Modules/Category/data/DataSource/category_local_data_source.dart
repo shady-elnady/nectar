@@ -32,10 +32,10 @@ class CategoriesLocalDataSourceImpl implements CategoryLocalDataSource {
   Future<List<CategoryModel>> getCachedCategories() {
     final jsonString = sharedPreferences.getString(cachedCategories);
     if (jsonString != null) {
-      List decodeJsonData = json.decode(jsonString);
+      List<Map<String, dynamic>> decodeJsonData = json.decode(jsonString);
       List<CategoryModel> jsonToCategorysModel = decodeJsonData
           .map<CategoryModel>(
-              (jsonCategory) => CategoryModel.fromJson(jsonCategory))
+              (jsonCategory) => CategoryModel.fromMap(jsonCategory))
           .toList();
       return Future.value(jsonToCategorysModel);
     } else {

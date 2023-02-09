@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import '../../../../App/Entities/base_entity.dart';
-import '../../../Brands/domain/Entities/brand.dart';
+import '../../../Category/domain/Entities/brand.dart';
 import '../../../Category/domain/Entities/category.dart';
 import 'currency.dart';
 import 'product_image.dart';
@@ -49,8 +49,10 @@ class Product extends BaseEntity {
   /// `dart:convert`
   ///
   /// Converts [Product] to a JSON string.
+  @override
   String toJson() => json.encode(toMap());
 
+  @override
   Map<String, dynamic> toMap() => {
         'url': url,
         'name': name,

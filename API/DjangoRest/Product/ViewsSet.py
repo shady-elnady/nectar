@@ -15,10 +15,10 @@ class ProductViewSet(ModelViewSet):
 
     def get_queryset(self):
         queryset = Product.objects.all()
-        name = self.request.query_params.get('name')
+        contain_name = self.request.query_params.get('contain_name')
         category_name = self.request.query_params.get("category_name")
-        if name:
-            queryset = queryset.filter(name__contains=name)
+        if contain_name:
+            queryset = queryset.filter(name__contains=contain_name)
         if category_name:
             queryset = queryset.filter(Q(category__category_parent__name__contains=category_name) | Q(category__name__contains=category_name) )
         return queryset

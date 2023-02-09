@@ -70,15 +70,19 @@ class DepartmentsList extends StatelessWidget {
         if (state is LoadingDepartmentsState) {
           return const LoadingWidget();
         } else if (state is LoadedDepartmentsState) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ...state.departments.map(
-                (Department department) => DepartmentContainer(
-                  department: department,
+          return RefreshIndicator(
+            onRefresh: () async => BlocProvider.of<DepartmentBloc>(context)
+                .add(RefreshDepartmentsEvent()),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ...state.departments.map(
+                  (Department department) => DepartmentContainer(
+                    department: department,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         } else if (state is ErrorDepartmentsState) {
           return ErrorConnection(message: state.message);

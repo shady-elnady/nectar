@@ -4,6 +4,8 @@ import 'package:nectar_mac/App/Exceptions/exceptions.dart';
 import 'package:nectar_mac/App/Exceptions/failure.dart';
 import 'package:nectar_mac/App/Services/network_services.dart';
 import 'package:nectar_mac/App/Utils/Strings/messages.dart';
+import 'package:nectar_mac/Modules/Product/domain/UseCases/product_search_by_name_usecase.dart';
+import 'package:nectar_mac/Modules/Product/domain/Entities/product.dart';
 
 import '../../domain/Repository/base_product_repository.dart';
 import '../DataSource/Product_local_data_source.dart';
@@ -37,6 +39,35 @@ class ProductRepository extends BaseProductRepository {
         List<ProductModel> localProducts =
             await localProductDataSource.getCachedProducts();
         return Right(localProducts);
+      } on EmptyCacheException {
+        return const Left(
+          EmptyCacheFailure(
+            Meassages.emptyCacheData,
+          ),
+        );
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Product>>> searchProductsByName({
+    required SearchProductsByNameParameters searchProductsParameters,
+  }) async {
+    if (await networkService.isConnected) {
+      try {
+        List<ProductModel> remoteSearchProducts =
+            await remoteProductDataSource.searchProductsByName(
+                searchProductsByNameParameters: searchProductsParameters);
+        return Right(remoteSearchProducts);
+      } on ServerException catch (failure) {
+        return Left(ServerFailure(failure.errorMessageModel.statusMessage));
+      }
+    } else {
+      try {
+        List<ProductModel> localSearchProducts =
+            await localProductDataSource.getCachedProductsByName(
+                searchProductsByNameParameters: searchProductsParameters);
+        return Right(localSearchProducts);
       } on EmptyCacheException {
         return const Left(
           EmptyCacheFailure(

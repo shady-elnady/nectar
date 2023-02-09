@@ -29,9 +29,9 @@ class BrandsLocalDataSourceImpl implements BrandsLocalDataSource {
   Future<List<BrandModel>> getCachedBrands() {
     final jsonString = sharedPreferences.getString(cachedBrands);
     if (jsonString != null) {
-      List decodeJsonData = json.decode(jsonString);
+      List<Map<String, dynamic>> decodeJsonData = json.decode(jsonString);
       List<BrandModel> jsonToBrandsModel = decodeJsonData
-          .map<BrandModel>((jsonBrand) => BrandModel.fromJson(jsonBrand))
+          .map<BrandModel>((jsonBrand) => BrandModel.fromMap(jsonBrand))
           .toList();
       return Future.value(jsonToBrandsModel);
     } else {
