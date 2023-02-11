@@ -6,17 +6,17 @@ import '../../../../../../../views/Utils/constant.dart';
 import '../../../../../../../views/widgets/Buttons/main_button.dart';
 import '../../../../../../../views/widgets/Buttons/round_out_line.dart';
 import '../../../../../../../views/widgets/Utils/error_widget.dart';
-import '../../domain/Entities/lines_in_my_card.dart';
+import '../../domain/Entities/line_in_my_cart.dart';
 import '../../domain/Entities/my_cart.dart';
 
 class MyCartTab extends StatelessWidget {
   MyCartTab({
     super.key,
   });
-  late List<LinesInMyCard?> _myCart;
+  late List<LineInMyCart?> _myCart;
 
   void addToCart({
-    required LinesInMyCard oneLine,
+    required LineInMyCart oneLine,
   }) {
     _myCart.add(oneLine);
   }
@@ -31,8 +31,8 @@ class MyCartTab extends StatelessWidget {
     required int amount,
     required int index,
   }) {
-    LinesInMyCard newLine = LinesInMyCard(
-      card: _myCart[index]!.card,
+    LineInMyCart newLine = LineInMyCart(
+      myCart: _myCart[index]!.myCart,
       product: _myCart[index]!.product,
       amount: amount,
       totalLinePrice: _myCart[index]!.product.price * amount,
@@ -77,7 +77,7 @@ class MyCartTab extends StatelessWidget {
                   return const ErrorConnection(
                       title: "", message: "No Card Yiet");
                 } else {
-                  _myCart = snapshot.data![0]!.linesInMyCard;
+                  _myCart = snapshot.data![0]!.LineInMyCart;
                   return ListView.separated(
                     shrinkWrap: true,
                     separatorBuilder: (context, index) {

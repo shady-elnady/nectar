@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import '../../domain/Entities/my_cart.dart';
-import 'lines_in_my_card_model.dart';
+import 'lines_in_my_cart_model.dart';
 import 'promo_code_model.dart';
 
 class MyCartModel extends MyCart {
   const MyCartModel({
     required super.url,
-    required super.linesInMyCard,
+    required super.lineInMyCart,
     super.paymentMethod,
     super.promoCode,
     required super.isFinished,
@@ -18,8 +18,8 @@ class MyCartModel extends MyCart {
 
   factory MyCartModel.fromMap(Map<String, dynamic> data) => MyCartModel(
         url: data['url'] as String,
-        linesInMyCard: (data['Lines_In_Card'] as List<dynamic>)
-            .map((e) => LinesInMyCardModel.fromMap(e as Map<String, dynamic>))
+        lineInMyCart: (data['Line_In_My_Cart'] as List<dynamic>)
+            .map((e) => LineInMyCartModel.fromMap(e as Map<String, dynamic>))
             .toList(),
         paymentMethod: data['payment_method'] as String?,
         promoCode: data['promo_code'] == null

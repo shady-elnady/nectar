@@ -11,7 +11,7 @@ abstract class MyCartLocalDataSource {
   Future<Unit> cacheMyCarts(List<MyCartModel> myCartsList);
 }
 
-const cachedMyCart = "CACHED_MYCARTS";
+const cachedMyCart = "CACHED_MY_CARTS";
 
 class MyCartLocalDataSourceImpl implements MyCartLocalDataSource {
   final SharedPreferences sharedPreferences;

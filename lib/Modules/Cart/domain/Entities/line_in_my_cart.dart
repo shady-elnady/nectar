@@ -3,16 +3,17 @@ import 'dart:convert';
 import 'package:nectar_mac/App/Entities/original_entity.dart';
 
 import '../../../Product/domain/Entities/product.dart';
+import 'my_cart.dart';
 
-class LinesInMyCard extends OriginalEntity {
-  final String card;
+class LineInMyCart extends OriginalEntity {
+  final MyCart myCart;
   final Product product;
   final int amount;
   final double totalLinePrice;
 
-  const LinesInMyCard({
+  const LineInMyCart({
     required super.url,
-    required this.card,
+    required this.myCart,
     required this.product,
     required this.amount,
     required this.totalLinePrice,
@@ -21,13 +22,13 @@ class LinesInMyCard extends OriginalEntity {
 
   @override
   String toString() {
-    return 'LinesInCard(url: $url, card: $card, product: $product, amount: $amount, totalLinePrice: $totalLinePrice, slug: $slug)';
+    return 'LineInMyCart(url: $url, myCart: $myCart, product: $product, amount: $amount, totalLinePrice: $totalLinePrice, slug: $slug)';
   }
 
   @override
   Map<String, dynamic> toMap() => {
         'url': url,
-        'card': card,
+        'my_cart': myCart.toMap(),
         'product': product.toMap(),
         'amount': amount,
         'total_line_price': totalLinePrice,
@@ -36,21 +37,21 @@ class LinesInMyCard extends OriginalEntity {
 
   /// `dart:convert`
   ///
-  /// Converts [LinesInMyCard] to a JSON string.
+  /// Converts [LineInMyCart] to a JSON string.
   @override
   String toJson() => json.encode(toMap());
 
-  LinesInMyCard copyWith({
+  LineInMyCart copyWith({
     required String url,
-    required String card,
+    required String myCart,
     required Product product,
     required int amount,
     required double totalLinePrice,
     required String slug,
   }) {
-    return LinesInMyCard(
+    return LineInMyCart(
       url: this.url,
-      card: this.card,
+      myCart: this.myCart,
       product: this.product,
       amount: this.amount,
       totalLinePrice: this.totalLinePrice,
@@ -59,5 +60,12 @@ class LinesInMyCard extends OriginalEntity {
   }
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [
+        url,
+        myCart,
+        product,
+        amount,
+        totalLinePrice,
+        slug,
+      ];
 }

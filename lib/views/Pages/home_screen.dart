@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../Modules/Cart/domain/Entities/lines_in_my_card.dart';
 import '../widgets/icons/my_cart_icon.dart';
 import '../../Modules/Department/presentation/Pages/shop_tab.dart';
 import 'model/page_model.dart';
@@ -14,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  static List<LinesInMyCard?> myCart = [];
+  static List<LineInMyCart?> myCart = [];
 
   @override
   void initState() {

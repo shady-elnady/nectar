@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:nectar_mac/App/Entities/original_entity.dart';
 
-import 'lines_in_my_card.dart';
+import 'line_in_my_cart.dart';
 import 'promo_code.dart';
 
 class MyCart extends OriginalEntity {
-  final List<LinesInMyCard?> linesInMyCard;
+  final List<LineInMyCart?> lineInMyCart;
   final String? paymentMethod;
   final PromoCode? promoCode;
   final bool isFinished;
@@ -15,7 +15,7 @@ class MyCart extends OriginalEntity {
 
   const MyCart({
     required super.url,
-    required this.linesInMyCard,
+    required this.lineInMyCart,
     this.paymentMethod,
     this.promoCode,
     required this.isFinished,
@@ -26,7 +26,7 @@ class MyCart extends OriginalEntity {
 
   @override
   String toString() {
-    return 'MyCart(url: $url, linesInMyCard: $linesInMyCard, paymentMethod: $paymentMethod, promoCode: $promoCode, isFinished: $isFinished, createdAt: $createdAt, totalCost: $totalCost, slug: $slug)';
+    return 'MyCart(url: $url, lineInMyCart: $lineInMyCart, paymentMethod: $paymentMethod, promoCode: $promoCode, isFinished: $isFinished, createdAt: $createdAt, totalCost: $totalCost, slug: $slug)';
   }
 
   /// `dart:convert`
@@ -38,7 +38,7 @@ class MyCart extends OriginalEntity {
   @override
   Map<String, dynamic> toMap() => {
         'url': url,
-        'Lines_In_Card': linesInMyCard.map((e) => e!.toMap()).toList(),
+        'Line_In_My_Cart': lineInMyCart.map((e) => e!.toMap()).toList(),
         'payment_method': paymentMethod,
         'promo_code': promoCode?.toMap(),
         'is_finished': isFinished,
@@ -49,7 +49,7 @@ class MyCart extends OriginalEntity {
 
   MyCart copyWith({
     required String url,
-    required List<LinesInMyCard?> linesInMyCard,
+    required List<LineInMyCart?> lineInMyCart,
     String? paymentMethod,
     PromoCode? promoCode,
     required bool isFinished,
@@ -59,7 +59,7 @@ class MyCart extends OriginalEntity {
   }) {
     return MyCart(
       url: this.url,
-      linesInMyCard: this.linesInMyCard,
+      lineInMyCart: this.lineInMyCart,
       paymentMethod: paymentMethod ?? this.paymentMethod,
       promoCode: promoCode ?? this.promoCode,
       isFinished: this.isFinished,
@@ -72,7 +72,7 @@ class MyCart extends OriginalEntity {
   @override
   List<Object?> get props => [
         url,
-        linesInMyCard,
+        lineInMyCart,
         paymentMethod,
         promoCode,
         isFinished,
