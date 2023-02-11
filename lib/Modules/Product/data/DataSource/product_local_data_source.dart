@@ -4,8 +4,8 @@ import 'package:dartz/dartz.dart';
 import 'package:nectar_mac/App/Exceptions/exceptions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../domain/UseCases/get_searched_product_usecase.dart';
 import '../Models/product_model.dart';
-import '../../domain/UseCases/get_product_search_usecase.dart';
 
 abstract class ProductLocalDataSource {
   Future<List<ProductModel>> getCachedSearchedProducts({

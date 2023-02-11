@@ -19,12 +19,14 @@ class MyCartBloc extends Bloc<MyCartEvent, MyCartState> {
       if (event is GetMyCartsEvent) {
         emit(LoadingMyCartsState());
 
-        final failureOrPosts = await getAllMyCarts(const NoParameters());
+        final failureOrPosts =
+            await getAllMyCarts(parameters: const NoParameters());
         emit(_mapFailureOrPostsToState(failureOrPosts));
       } else if (event is RefreshMyCartsEvent) {
         emit(LoadingMyCartsState());
 
-        final failureOrPosts = await getAllMyCarts(const NoParameters());
+        final failureOrPosts =
+            await getAllMyCarts(parameters: const NoParameters());
         emit(_mapFailureOrPostsToState(failureOrPosts));
       }
     });

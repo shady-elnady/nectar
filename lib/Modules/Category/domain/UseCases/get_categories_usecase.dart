@@ -13,7 +13,9 @@ class GetAllCategoryesUseCase
   GetAllCategoryesUseCase(this.categoryRepository);
 
   @override
-  Future<Either<Failure, List<Category>>> call(NoParameters parameters) async {
+  Future<Either<Failure, List<Category>>> call({
+    required NoParameters parameters,
+  }) async {
     return await categoryRepository.getAllCategories();
   }
 }

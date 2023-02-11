@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:nectar_mac/App/Exceptions/failure.dart';
 import 'package:nectar_mac/App/Models/base_usecase.dart';
-import 'package:nectar_mac/App/Utils/Strings/messages.dart';
 
 import '../../domain/Entities/department.dart';
 import '../../domain/UseCases/get_departments_usecase.dart';
@@ -20,12 +19,14 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
       if (event is GetDepartmentsEvent) {
         emit(LoadingDepartmentsState());
 
-        final failureOrPosts = await getAllDepartments(const NoParameters());
+        final failureOrPosts =
+            await getAllDepartments(parameters: const NoParameters());
         emit(_mapFailureOrPostsToState(failureOrPosts));
       } else if (event is RefreshDepartmentsEvent) {
         emit(LoadingDepartmentsState());
 
-        final failureOrPosts = await getAllDepartments(const NoParameters());
+        final failureOrPosts =
+            await getAllDepartments(parameters: const NoParameters());
         emit(_mapFailureOrPostsToState(failureOrPosts));
       }
     });

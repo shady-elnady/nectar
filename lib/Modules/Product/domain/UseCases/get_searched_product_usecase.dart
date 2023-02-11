@@ -7,15 +7,16 @@ import 'package:nectar_mac/App/Models/base_usecase.dart';
 import '../Entities/product.dart';
 import '../Repository/base_product_repository.dart';
 
-class GetSearchProductsUseCase
+class GetSearchedProductsUseCase
     extends BaseUseCase<List<Product>, SearchProductsParameters> {
   final BaseProductRepository baseProductRepository;
 
-  GetSearchProductsUseCase(this.baseProductRepository);
+  GetSearchedProductsUseCase(this.baseProductRepository);
 
   @override
-  Future<Either<Failure, List<Product>>> call(
-      SearchProductsParameters parameters) async {
+  Future<Either<Failure, List<Product>>> call({
+    required SearchProductsParameters parameters,
+  }) async {
     return await baseProductRepository.getSearchProducts(
       searchProductsParameters: parameters,
     );

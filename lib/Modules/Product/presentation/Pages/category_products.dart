@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:nectar_mac/Modules/Product/presentation/Pages/Components/slider_product_item.dart';
+import 'package:nectar_mac/views/Utils/loading_widget.dart';
 import 'package:nectar_mac/views/widgets/index.dart';
 
 import '../../../../../views/widgets/Utils/error_widget.dart';
-import '../../domain/Entities/product.dart';
+import '../Bloc/searched_products_bloc/searched_products_bloc.dart';
 
 class CategoryProducts extends StatelessWidget {
   const CategoryProducts({
@@ -45,41 +47,42 @@ class CategoryProducts extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: UtilsWidget.edgeInsetsVH20,
-          child: FutureBuilder<List<Product>>(
-            future:
-                ProductApi().getCategoryProducts(categoryName: categoryName),
-            builder:
-                (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
-              switch (snapshot.connectionState) {
-                case ConnectionState.none:
-                case ConnectionState.waiting:
-                  return const Center(child: CircularProgressIndicator());
-                default:
-                  if (snapshot.hasError) {
-                    return ErrorConnection(message: "${snapshot.error}");
-                  } else if (snapshot.data!.isEmpty) {
-                    return const ErrorConnection(
-                        title: "", message: "No Product Yiet");
-                  } else {
-                    return GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 175,
-                        mainAxisExtent: 250,
-                        childAspectRatio: 3 / 2,
-                        crossAxisSpacing: 15,
-                        mainAxisSpacing: 15,
-                      ),
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (BuildContext ctx, index) {
-                        return SliderProductItem(
-                          product: snapshot.data![index],
-                          heroTag: categoryName,
-                        );
-                      },
-                    );
-                  }
+          child: BlocBuilder<SearchedProductBloc, SearchedProductState>(
+            // buildWhen: (previous, current) =>
+            //     previous.DepartmentState != current.DepartmentState,
+            builder: (context, state) {
+              if (state is LoadingSearchedProductsState) {
+                return const LoadingWidget();
+              } else if (state is LoadedSearchedProductsByCategoryState) {
+                return RefreshIndicator(
+                  onRefresh: () async =>
+                      BlocProvider.of<SearchedProductBloc>(context).add(
+                    RefreshSearchedProductsByCategoryEvent(
+                      // TODO
+                      searchWord: categoryName,
+                    ),
+                  ),
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 175,
+                      mainAxisExtent: 250,
+                      childAspectRatio: 3 / 2,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 15,
+                    ),
+                    itemCount: state.searchedProducts.length,
+                    itemBuilder: (BuildContext context, index) =>
+                        SliderProductItem(
+                      product: state.searchedProducts[index],
+                      heroTag: categoryName,
+                    ),
+                  ),
+                );
+              } else if (state is ErrorSearchedProductsState) {
+                return ErrorConnection(message: state.message);
               }
+              return const LoadingWidget();
             },
           ),
         ),

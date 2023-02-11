@@ -12,7 +12,9 @@ class GetAllProductUseCase extends BaseUseCase<List<Product>, NoParameters> {
   GetAllProductUseCase(this.baseProductRepository);
 
   @override
-  Future<Either<Failure, List<Product>>> call(NoParameters parameters) async {
+  Future<Either<Failure, List<Product>>> call({
+    required NoParameters parameters,
+  }) async {
     return await baseProductRepository.getAllProducts();
   }
 }

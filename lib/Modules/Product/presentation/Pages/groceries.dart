@@ -6,23 +6,23 @@ import 'package:nectar_mac/views/widgets/Utils/error_widget.dart';
 import 'package:nectar_mac/Modules/Product/presentation/Pages/Components/slider_product_item.dart';
 
 import '../../domain/Entities/product.dart';
-import '../Bloc/product_bloc.dart';
+import '../Bloc/all_products_bloc/all_products_bloc.dart';
 
 class Groceries extends StatelessWidget {
   const Groceries({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductBloc, ProductState>(
+    return BlocBuilder<AllProductBloc, AllProductState>(
       // buildWhen: (previous, current) =>
       //     previous.DepartmentState != current.DepartmentState,
       builder: (context, state) {
-        if (state is LoadingProductsState) {
+        if (state is LoadingAllProductsState) {
           return const LoadingWidget();
-        } else if (state is LoadedProductsState) {
+        } else if (state is LoadedAllProductsState) {
           return RefreshIndicator(
-            onRefresh: () async => BlocProvider.of<ProductBloc>(context)
-                .add(RefreshProductsEvent()),
+            onRefresh: () async => BlocProvider.of<AllProductBloc>(context)
+                .add(RefreshAllProductsEvent()),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -105,7 +105,7 @@ class Groceries extends StatelessWidget {
               ],
             ),
           );
-        } else if (state is ErrorProductsState) {
+        } else if (state is ErrorAllProductsState) {
           return ErrorConnection(message: state.message);
         }
         return const LoadingWidget();

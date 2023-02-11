@@ -6,7 +6,7 @@ import 'package:nectar_mac/views/widgets/Utils/error_widget.dart';
 import 'package:nectar_mac/views/widgets/index.dart';
 import 'package:nectar_mac/views/widgets/textFields/search_field.dart';
 
-import '../Bloc/category_bloc.dart';
+import '../Bloc/Category/category_bloc.dart';
 import '../../../Product/presentation/Pages/category_products.dart';
 
 class Categories extends StatelessWidget {

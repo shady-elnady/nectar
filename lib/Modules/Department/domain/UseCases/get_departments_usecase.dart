@@ -13,8 +13,9 @@ class GetAllDepartmentUseCase
   GetAllDepartmentUseCase(this.baseDepartmentRepository);
 
   @override
-  Future<Either<Failure, List<Department>>> call(
-      NoParameters parameters) async {
+  Future<Either<Failure, List<Department>>> call({
+    required NoParameters parameters,
+  }) async {
     return await baseDepartmentRepository.getAllDepartments();
   }
 }

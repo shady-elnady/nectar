@@ -6,8 +6,8 @@ import 'package:nectar_mac/views/Utils/loading_widget.dart';
 import 'package:nectar_mac/views/widgets/Buttons/main_button.dart';
 import 'package:nectar_mac/views/widgets/Utils/error_widget.dart';
 
-import '../Bloc/brands_bloc.dart';
-import '../Bloc/category_bloc.dart';
+import '../Bloc/Brands/brands_bloc.dart';
+import '../Bloc/Category/category_bloc.dart';
 
 class Filter extends StatelessWidget {
   const Filter({

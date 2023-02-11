@@ -4,8 +4,8 @@ import 'package:equatable/equatable.dart';
 import 'package:nectar_mac/App/Exceptions/failure.dart';
 import 'package:nectar_mac/App/Models/base_usecase.dart';
 
-import '../../domain/Entities/brand.dart';
-import '../../domain/UseCases/get_brands_usecase.dart';
+import '../../../domain/Entities/brand.dart';
+import '../../../domain/UseCases/get_brands_usecase.dart';
 
 part 'brands_event.dart';
 part 'brands_state.dart';
@@ -19,12 +19,14 @@ class BrandBloc extends Bloc<BrandsEvent, BrandsState> {
       if (event is GetBrandsEvent) {
         emit(LoadingBrandsState());
 
-        final failureOrPosts = await getAllBrands(const NoParameters());
+        final failureOrPosts =
+            await getAllBrands(parameters: const NoParameters());
         emit(_mapFailureOrPostsToState(failureOrPosts));
       } else if (event is RefreshBrandsEvent) {
         emit(LoadingBrandsState());
 
-        final failureOrPosts = await getAllBrands(const NoParameters());
+        final failureOrPosts =
+            await getAllBrands(parameters: const NoParameters());
         emit(_mapFailureOrPostsToState(failureOrPosts));
       }
     });

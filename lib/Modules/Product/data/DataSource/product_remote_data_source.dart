@@ -5,7 +5,7 @@ import 'package:nectar_mac/App/API/error_message_model.dart';
 import 'package:nectar_mac/App/Exceptions/exceptions.dart';
 import 'package:nectar_mac/App/Models/body_model.dart';
 
-import '../../domain/UseCases/get_product_search_usecase.dart';
+import '../../domain/UseCases/get_searched_product_usecase.dart';
 import '../Models/product_model.dart';
 
 abstract class BaseProductRemoteDataSource {

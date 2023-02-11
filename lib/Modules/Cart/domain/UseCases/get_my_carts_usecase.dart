@@ -12,7 +12,9 @@ class GetAllMyCartUseCase extends BaseUseCase<List<MyCart>, NoParameters> {
   GetAllMyCartUseCase(this.baseMyCartRepository);
 
   @override
-  Future<Either<Failure, List<MyCart>>> call(NoParameters parameters) async {
+  Future<Either<Failure, List<MyCart>>> call({
+    required NoParameters parameters,
+  }) async {
     return await baseMyCartRepository.getAllMyCarts();
   }
 }

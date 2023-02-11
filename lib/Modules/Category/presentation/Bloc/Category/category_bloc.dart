@@ -4,8 +4,8 @@ import 'package:equatable/equatable.dart';
 import 'package:nectar_mac/App/Exceptions/failure.dart';
 import 'package:nectar_mac/App/Models/base_usecase.dart';
 
-import '../../domain/Entities/category.dart';
-import '../../domain/UseCases/get_categories_usecase.dart';
+import '../../../domain/Entities/category.dart';
+import '../../../domain/UseCases/get_categories_usecase.dart';
 
 part 'category_event.dart';
 part 'category_state.dart';
@@ -19,12 +19,14 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
       if (event is GetCategoriesEvent) {
         emit(LoadingCategoriesState());
 
-        final failureOrPosts = await getAllCategorys(const NoParameters());
+        final failureOrPosts =
+            await getAllCategorys(parameters: const NoParameters());
         emit(_mapFailureOrPostsToState(failureOrPosts));
       } else if (event is RefreshCategoriesEvent) {
         emit(LoadingCategoriesState());
 
-        final failureOrPosts = await getAllCategorys(const NoParameters());
+        final failureOrPosts =
+            await getAllCategorys(parameters: const NoParameters());
         emit(_mapFailureOrPostsToState(failureOrPosts));
       }
     });

@@ -1,4 +1,4 @@
-part of 'all_product_bloc.dart';
+part of 'all_products_bloc.dart';
 
 abstract class AllProductEvent extends Equatable {
   const AllProductEvent();

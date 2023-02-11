@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nectar_mac/views/Utils/loading_widget.dart';
 import 'package:nectar_mac/views/widgets/Utils/error_widget.dart';
 
-import '../Bloc/product_bloc.dart';
+import '../Bloc/searched_products_bloc/searched_products_bloc.dart';
 import 'Components/slider_product_item.dart';
 import '../../../../../../views/widgets/textFields/search_field.dart';
 
@@ -67,17 +67,20 @@ class ExplorerTab extends StatelessWidget {
                   ),
                 ),
               )
-            : BlocBuilder<ProductBloc, ProductState>(
+            : BlocBuilder<SearchedProductBloc, SearchedProductState>(
                 // buildWhen: (previous, current) =>
                 //     previous.DepartmentState != current.DepartmentState,
                 builder: (context, state) {
-                  if (state is LoadingProductsState) {
+                  if (state is LoadingSearchedProductsState) {
                     return const LoadingWidget();
-                  } else if (state is LoadedProductsState) {
+                  } else if (state is LoadedSearchedProductsByNameState) {
                     return RefreshIndicator(
                       onRefresh: () async =>
-                          BlocProvider.of<ProductBloc>(context)
-                              .add(RefreshProductsEvent()),
+                          BlocProvider.of<SearchedProductBloc>(context).add(
+                        RefreshSearchedProductsByNameEvent(
+                          searchWord: productSearchControl.text,
+                        ),
+                      ),
                       child: GridView.builder(
                         gridDelegate:
                             const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -87,15 +90,15 @@ class ExplorerTab extends StatelessWidget {
                           crossAxisSpacing: 15,
                           mainAxisSpacing: 15,
                         ),
-                        itemCount: state.products.length,
+                        itemCount: state.searchedProducts.length,
                         itemBuilder: (BuildContext context, index) =>
                             SliderProductItem(
-                          product: state.products[index],
+                          product: state.searchedProducts[index],
                           heroTag: searchWord ?? "ExplorerPage",
                         ),
                       ),
                     );
-                  } else if (state is ErrorProductsState) {
+                  } else if (state is ErrorSearchedProductsState) {
                     return ErrorConnection(message: state.message);
                   }
                   return const LoadingWidget();
