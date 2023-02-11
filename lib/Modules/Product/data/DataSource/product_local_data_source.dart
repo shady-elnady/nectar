@@ -4,18 +4,18 @@ import 'package:dartz/dartz.dart';
 import 'package:nectar_mac/App/Exceptions/exceptions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../domain/UseCases/product_search_by_name_usecase.dart';
 import '../Models/product_model.dart';
+import '../../domain/UseCases/get_product_search_usecase.dart';
 
 abstract class ProductLocalDataSource {
+  Future<List<ProductModel>> getCachedSearchedProducts({
+    required SearchProductsParameters searchProductsParameters,
+  });
   //
   Future<List<ProductModel>> getCachedProducts();
   //
   Future<Unit> cacheProducts(List<ProductModel> productsList);
   //
-  Future<List<ProductModel>> getCachedProductsByName({
-    required SearchProductsByNameParameters searchProductsByNameParameters,
-  });
 }
 
 const cachedProducts = "CACHED_PRODUCTS";
@@ -49,19 +49,30 @@ class ProductLocalDataSourceImpl implements ProductLocalDataSource {
   }
 
   @override
-  Future<List<ProductModel>> getCachedProductsByName({
-    required SearchProductsByNameParameters searchProductsByNameParameters,
+  Future<List<ProductModel>> getCachedSearchedProducts({
+    required SearchProductsParameters searchProductsParameters,
   }) {
     final jsonString = sharedPreferences.getString(cachedProducts);
     if (jsonString != null) {
       List<Map<String, dynamic>> decodeJsonData = json.decode(jsonString);
-      List<Map<String, dynamic>> jsonToSearchedProducts = decodeJsonData
-          .where(
-            (jsonProduct) => jsonProduct["name"]
-                .name
-                .contains(searchProductsByNameParameters.searchName),
-          )
-          .toList();
+      List<Map<String, dynamic>> jsonToSearchedProducts = [];
+      if (searchProductsParameters.searchMap["contain_name"] != null) {
+        jsonToSearchedProducts = decodeJsonData
+            .where(
+              (jsonProduct) => jsonProduct["name"]
+                  .contains(searchProductsParameters.searchMap["contain_name"]),
+            )
+            .toList();
+      }
+      if (searchProductsParameters.searchMap["category_name"] != null) {
+        jsonToSearchedProducts = decodeJsonData
+            .where(
+              (jsonProduct) => jsonProduct["category"]["name"].contains(
+                  searchProductsParameters.searchMap["category_name"]),
+            )
+            .toList();
+      }
+
       List<ProductModel> jsonToProductsModel = jsonToSearchedProducts
           .map<ProductModel>(
             (jsonProduct) => ProductModel.fromMap(jsonProduct),

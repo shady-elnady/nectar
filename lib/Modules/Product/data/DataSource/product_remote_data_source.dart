@@ -5,15 +5,15 @@ import 'package:nectar_mac/App/API/error_message_model.dart';
 import 'package:nectar_mac/App/Exceptions/exceptions.dart';
 import 'package:nectar_mac/App/Models/body_model.dart';
 
-import '../../domain/UseCases/product_search_by_name_usecase.dart';
+import '../../domain/UseCases/get_product_search_usecase.dart';
 import '../Models/product_model.dart';
 
 abstract class BaseProductRemoteDataSource {
   // Get All Products
   Future<List<ProductModel>> getAllProducts();
   // Search on Products by name
-  Future<List<ProductModel>> searchProductsByName({
-    required SearchProductsByNameParameters searchProductsByNameParameters,
+  Future<List<ProductModel>> searchProducts({
+    required SearchProductsParameters searchProductsParameters,
   });
   // Get One Product
   Future<ProductModel> getOneProduct({required String slug});
@@ -56,12 +56,12 @@ class ProductRemoteDataSource implements BaseProductRemoteDataSource {
 
   // Search on Products by name
   @override
-  Future<List<ProductModel>> searchProductsByName({
-    required SearchProductsByNameParameters searchProductsByNameParameters,
+  Future<List<ProductModel>> searchProducts({
+    required SearchProductsParameters searchProductsParameters,
   }) async {
     http.Response response = await client.get(
       Uri.parse(
-        "${ApiConstance.productsURL}?contain_name=${searchProductsByNameParameters.searchName}",
+        "${ApiConstance.productsURL}?${searchProductsParameters.searchMap.keys}=${searchProductsParameters.searchMap.values}",
       ),
       headers: {"Content-Type": "application/json"},
     );

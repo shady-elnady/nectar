@@ -1,34 +1,34 @@
-// part of 'brands_bloc.dart';
+part of 'brands_bloc.dart';
 
-// abstract class BrandsState extends Equatable {
-//   const BrandsState();
+abstract class BrandsState extends Equatable {
+  const BrandsState();
 
-//   @override
-//   List<Object> get props => [];
-// }
+  @override
+  List<Object> get props => [];
+}
 
-// class InitialBrandsState extends BrandsState {}
+class InitialBrandsState extends BrandsState {}
 
-// class LoadingBrandsState extends BrandsState {}
+class LoadingBrandsState extends BrandsState {}
 
-// class LoadedBrandsState extends BrandsState {
-//   final List<Brands> brands;
+class LoadedBrandsState extends BrandsState {
+  final List<Brand> brands;
 
-//   const LoadedBrandsState({required this.brands});
+  const LoadedBrandsState({required this.brands});
 
-//   @override
-//   List<Object> get props => [
-//         brands,
-//       ];
-// }
+  @override
+  List<Object> get props => [
+        brands,
+      ];
+}
 
-// class ErrorBrandsState extends BrandsState {
-//   final String message;
+class ErrorBrandsState extends BrandsState {
+  final String message;
 
-//   const ErrorBrandsState({required this.message});
+  const ErrorBrandsState({required this.message});
 
-//   @override
-//   List<Object> get props => [
-//         message,
-//       ];
-// }
+  @override
+  List<Object> get props => [
+        message,
+      ];
+}

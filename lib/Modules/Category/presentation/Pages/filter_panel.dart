@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:nectar_mac/views/Utils/constant.dart';
+import 'package:nectar_mac/views/Utils/loading_widget.dart';
+import 'package:nectar_mac/views/widgets/Buttons/main_button.dart';
+import 'package:nectar_mac/views/widgets/Utils/error_widget.dart';
+
+import '../Bloc/brands_bloc.dart';
+import '../Bloc/category_bloc.dart';
 
 class Filter extends StatelessWidget {
   const Filter({
@@ -62,36 +70,38 @@ class Filter extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 height: 150,
-                child: FutureBuilder<List<Category?>>(
-                  future: CategoryApi().getAll(),
-                  builder: (BuildContext context,
-                      AsyncSnapshot<List<Category?>> snapshot) {
-                    switch (snapshot.connectionState) {
-                      case ConnectionState.none:
-                      case ConnectionState.waiting:
-                        return const Center(child: CircularProgressIndicator());
-                      default:
-                        if (snapshot.hasError) {
-                          return ErrorConnection(message: "${snapshot.error}");
-                        } else {
-                          return ListView.builder(
-                            itemCount: snapshot.data!.length,
-                            itemBuilder: (context, index) => CheckboxListTile(
-                              title: Text(
-                                snapshot.data![index]!.name,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .copyWith(fontSize: 16),
-                              ),
-                              value: index == 0,
-                              onChanged: (bool? value) {},
-                              controlAffinity: ListTileControlAffinity.leading,
-                              activeColor: Theme.of(context).primaryColor,
+                child: BlocBuilder<CategoryBloc, CategoryState>(
+                  // buildWhen: (previous, current) =>
+                  //     previous.DepartmentState != current.DepartmentState,
+                  builder: (context, state) {
+                    if (state is LoadingCategoriesState) {
+                      return const LoadingWidget();
+                    } else if (state is LoadedCategoriesState) {
+                      return RefreshIndicator(
+                        onRefresh: () async =>
+                            BlocProvider.of<CategoryBloc>(context)
+                                .add(RefreshCategoriesEvent()),
+                        child: ListView.builder(
+                          itemCount: state.categories.length,
+                          itemBuilder: (context, index) => CheckboxListTile(
+                            title: Text(
+                              state.categories[index].name,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(fontSize: 16),
                             ),
-                          );
-                        }
+                            value: index == 0,
+                            onChanged: (bool? value) {},
+                            controlAffinity: ListTileControlAffinity.leading,
+                            activeColor: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                      );
+                    } else if (state is ErrorCategoriesState) {
+                      return ErrorConnection(message: state.message);
                     }
+                    return const LoadingWidget();
                   },
                 ),
               ),
@@ -115,43 +125,83 @@ class Filter extends StatelessWidget {
                 ],
               ),
               //
+              // SizedBox(
+              //   width: double.infinity,
+              //   height: 150,
+              //   child: FutureBuilder<List<Brand?>>(
+              //     future: BrandApi().getAll(),
+              //     builder: (BuildContext context,
+              //         AsyncSnapshot<List<Brand?>> snapshot) {
+              //       switch (snapshot.connectionState) {
+              //         case ConnectionState.none:
+              //         case ConnectionState.waiting:
+              //           return const Center(child: CircularProgressIndicator());
+              //         default:
+              //           if (snapshot.hasError) {
+              //             return ErrorConnection(message: "${snapshot.error}");
+              //           } else {
+              //             return ListView.builder(
+              //               itemCount: snapshot.data!.length,
+              //               itemBuilder: (context, index) => CheckboxListTile(
+              //                 title: Text(
+              //                   snapshot.data![index]!.name,
+              //                   style: Theme.of(context)
+              //                       .textTheme
+              //                       .titleMedium!
+              //                       .copyWith(fontSize: 16),
+              //                 ),
+              //                 value: index == 1,
+              //                 onChanged: (bool? value) {},
+              //                 controlAffinity: ListTileControlAffinity.leading,
+              //                 activeColor: Theme.of(context).primaryColor,
+              //               ),
+              //             );
+              //           }
+              //       }
+              //     },
+              //   ),
+              // ),
+
+              //
+
               SizedBox(
                 width: double.infinity,
                 height: 150,
-                child: FutureBuilder<List<Brand?>>(
-                  future: BrandApi().getAll(),
-                  builder: (BuildContext context,
-                      AsyncSnapshot<List<Brand?>> snapshot) {
-                    switch (snapshot.connectionState) {
-                      case ConnectionState.none:
-                      case ConnectionState.waiting:
-                        return const Center(child: CircularProgressIndicator());
-                      default:
-                        if (snapshot.hasError) {
-                          return ErrorConnection(message: "${snapshot.error}");
-                        } else {
-                          return ListView.builder(
-                            itemCount: snapshot.data!.length,
-                            itemBuilder: (context, index) => CheckboxListTile(
-                              title: Text(
-                                snapshot.data![index]!.name,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .copyWith(fontSize: 16),
-                              ),
-                              value: index == 1,
-                              onChanged: (bool? value) {},
-                              controlAffinity: ListTileControlAffinity.leading,
-                              activeColor: Theme.of(context).primaryColor,
+                child: BlocBuilder<BrandBloc, BrandsState>(
+                  // buildWhen: (previous, current) =>
+                  //     previous.DepartmentState != current.DepartmentState,
+                  builder: (context, state) {
+                    if (state is LoadingBrandsState) {
+                      return const LoadingWidget();
+                    } else if (state is LoadedBrandsState) {
+                      return RefreshIndicator(
+                        onRefresh: () async =>
+                            BlocProvider.of<BrandBloc>(context)
+                                .add(RefreshBrandsEvent()),
+                        child: ListView.builder(
+                          itemCount: state.brands.length,
+                          itemBuilder: (context, index) => CheckboxListTile(
+                            title: Text(
+                              state.brands[index].name,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(fontSize: 16),
                             ),
-                          );
-                        }
+                            value: index == 0,
+                            onChanged: (bool? value) {},
+                            controlAffinity: ListTileControlAffinity.leading,
+                            activeColor: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                      );
+                    } else if (state is ErrorBrandsState) {
+                      return ErrorConnection(message: state.message);
                     }
+                    return const LoadingWidget();
                   },
                 ),
               ),
-              //
             ],
           ),
         ),

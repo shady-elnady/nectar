@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nectar_mac/views/Utils/loading_widget.dart';
+import 'package:nectar_mac/views/widgets/Utils/error_widget.dart';
 
+import '../Bloc/product_bloc.dart';
 import 'Components/slider_product_item.dart';
 import '../../../../../../views/widgets/textFields/search_field.dart';
-import '../../domain/Entities/product.dart';
 
 class ExplorerTab extends StatelessWidget {
   const ExplorerTab({
@@ -64,39 +67,38 @@ class ExplorerTab extends StatelessWidget {
                   ),
                 ),
               )
-            : FutureBuilder<List<Product>>(
-                future:
-                    ProductApi().getOneByName(name: productSearchControl.text),
-                builder: (BuildContext context,
-                    AsyncSnapshot<List<Product>> snapshot) {
-                  return GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 175,
-                      mainAxisExtent: 250,
-                      childAspectRatio: 3 / 2,
-                      crossAxisSpacing: 15,
-                      mainAxisSpacing: 15,
-                    ),
-                    itemCount: snapshot.data?.length,
-                    itemBuilder: (BuildContext ctx, index) {
-                      switch (snapshot.connectionState) {
-                        case ConnectionState.none:
-                        case ConnectionState.waiting:
-                          return const Center(
-                              child: CircularProgressIndicator());
-                        default:
-                          if (snapshot.hasError) {
-                            return Text('Error: ${snapshot.error}');
-                          } else {
-                            return SliderProductItem(
-                              product: snapshot.data![index],
-                              heroTag: searchWord ?? "ExplorerPage",
-                            );
-                          }
-                      }
-                    },
-                  );
+            : BlocBuilder<ProductBloc, ProductState>(
+                // buildWhen: (previous, current) =>
+                //     previous.DepartmentState != current.DepartmentState,
+                builder: (context, state) {
+                  if (state is LoadingProductsState) {
+                    return const LoadingWidget();
+                  } else if (state is LoadedProductsState) {
+                    return RefreshIndicator(
+                      onRefresh: () async =>
+                          BlocProvider.of<ProductBloc>(context)
+                              .add(RefreshProductsEvent()),
+                      child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithMaxCrossAxisExtent(
+                          maxCrossAxisExtent: 175,
+                          mainAxisExtent: 250,
+                          childAspectRatio: 3 / 2,
+                          crossAxisSpacing: 15,
+                          mainAxisSpacing: 15,
+                        ),
+                        itemCount: state.products.length,
+                        itemBuilder: (BuildContext context, index) =>
+                            SliderProductItem(
+                          product: state.products[index],
+                          heroTag: searchWord ?? "ExplorerPage",
+                        ),
+                      ),
+                    );
+                  } else if (state is ErrorProductsState) {
+                    return ErrorConnection(message: state.message);
+                  }
+                  return const LoadingWidget();
                 },
               ),
       ),

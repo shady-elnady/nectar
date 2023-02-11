@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:nectar_mac/Modules/Product/presentation/Pages/Components/slider_product_item.dart';
 import 'package:nectar_mac/views/widgets/index.dart';
 
 import '../../../../../views/widgets/Utils/error_widget.dart';
-import '../../../Product/domain/Entities/product.dart';
+import '../../domain/Entities/product.dart';
 
 class CategoryProducts extends StatelessWidget {
   const CategoryProducts({

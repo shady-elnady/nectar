@@ -4,7 +4,7 @@ import 'package:nectar_mac/App/Exceptions/exceptions.dart';
 import 'package:nectar_mac/App/Exceptions/failure.dart';
 import 'package:nectar_mac/App/Services/network_services.dart';
 import 'package:nectar_mac/App/Utils/Strings/messages.dart';
-import 'package:nectar_mac/Modules/Product/domain/UseCases/product_search_by_name_usecase.dart';
+import 'package:nectar_mac/Modules/Product/domain/UseCases/get_product_search_usecase.dart';
 import 'package:nectar_mac/Modules/Product/domain/Entities/product.dart';
 
 import '../../domain/Repository/base_product_repository.dart';
@@ -50,14 +50,13 @@ class ProductRepository extends BaseProductRepository {
   }
 
   @override
-  Future<Either<Failure, List<Product>>> searchProductsByName({
-    required SearchProductsByNameParameters searchProductsParameters,
+  Future<Either<Failure, List<Product>>> getSearchProducts({
+    required SearchProductsParameters searchProductsParameters,
   }) async {
     if (await networkService.isConnected) {
       try {
-        List<ProductModel> remoteSearchProducts =
-            await remoteProductDataSource.searchProductsByName(
-                searchProductsByNameParameters: searchProductsParameters);
+        List<ProductModel> remoteSearchProducts = await remoteProductDataSource
+            .searchProducts(searchProductsParameters: searchProductsParameters);
         return Right(remoteSearchProducts);
       } on ServerException catch (failure) {
         return Left(ServerFailure(failure.errorMessageModel.statusMessage));
@@ -65,8 +64,8 @@ class ProductRepository extends BaseProductRepository {
     } else {
       try {
         List<ProductModel> localSearchProducts =
-            await localProductDataSource.getCachedProductsByName(
-                searchProductsByNameParameters: searchProductsParameters);
+            await localProductDataSource.getCachedSearchedProducts(
+                searchProductsParameters: searchProductsParameters);
         return Right(localSearchProducts);
       } on EmptyCacheException {
         return const Left(

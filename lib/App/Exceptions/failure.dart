@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import '../Utils/Strings/messages.dart';
+
 abstract class Failure extends Equatable {
   final String message;
 
@@ -23,4 +25,20 @@ class OfflineFailure extends Failure {
 
 class EmptyCacheFailure extends Failure {
   const EmptyCacheFailure(super.message);
+}
+
+@override
+class FailureToMessage {
+  static String call(Failure failure) {
+    switch (failure.runtimeType) {
+      case ServerFailure:
+        return Meassages.serverFailure;
+      case EmptyCacheFailure:
+        return Meassages.emptyCacheData;
+      case OfflineFailure:
+        return Meassages.offLineConnection;
+      default:
+        return "Unexpected Error , Please try again later .";
+    }
+  }
 }

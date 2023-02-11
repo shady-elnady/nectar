@@ -7,28 +7,30 @@ import 'package:nectar_mac/App/Models/base_usecase.dart';
 import '../Entities/product.dart';
 import '../Repository/base_product_repository.dart';
 
-class SearchProductsByNameUseCase
-    extends BaseUseCase<List<Product>, SearchProductsByNameParameters> {
+class GetSearchProductsUseCase
+    extends BaseUseCase<List<Product>, SearchProductsParameters> {
   final BaseProductRepository baseProductRepository;
 
-  SearchProductsByNameUseCase(this.baseProductRepository);
+  GetSearchProductsUseCase(this.baseProductRepository);
 
   @override
   Future<Either<Failure, List<Product>>> call(
-      SearchProductsByNameParameters parameters) async {
-    return await baseProductRepository.searchProductsByName(
+      SearchProductsParameters parameters) async {
+    return await baseProductRepository.getSearchProducts(
       searchProductsParameters: parameters,
     );
   }
 }
 
-class SearchProductsByNameParameters extends Equatable {
-  final String searchName;
+class SearchProductsParameters extends Equatable {
+  final Map<String, dynamic> searchMap;
 
-  const SearchProductsByNameParameters({required this.searchName});
+  const SearchProductsParameters({
+    required this.searchMap,
+  });
 
   @override
   List<Object> get props => [
-        searchName,
+        searchMap,
       ];
 }

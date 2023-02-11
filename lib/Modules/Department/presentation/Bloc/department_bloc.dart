@@ -35,23 +35,10 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
       Either<Failure, List<Department>> either) {
     return either.fold(
       (failure) =>
-          ErrorDepartmentsState(message: _mapFailureToMessage(failure)),
+          ErrorDepartmentsState(message: FailureToMessage.call(failure)),
       (departments) => LoadedDepartmentsState(
         departments: departments,
       ),
     );
-  }
-
-  String _mapFailureToMessage(Failure failure) {
-    switch (failure.runtimeType) {
-      case ServerFailure:
-        return Meassages.serverFailure;
-      case EmptyCacheFailure:
-        return Meassages.emptyCacheData;
-      case OfflineFailure:
-        return Meassages.offLineConnection;
-      default:
-        return "Unexpected Error , Please try again later .";
-    }
   }
 }
