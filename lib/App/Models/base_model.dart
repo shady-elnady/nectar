@@ -32,3 +32,18 @@ abstract class BaseModel extends OriginalEntity {
         'slug': slug,
       };
 }
+
+class MySuperClass {
+  final String s;
+  MySuperClass._internal(this.s);
+
+  factory MySuperClass(int a) {
+    return MySuperClass._internal(a.toString());
+  }
+}
+
+class MySubClass extends MySuperClass {
+  final int b;
+
+  MySubClass(int a, this.b) : super._internal(a.toString());
+}

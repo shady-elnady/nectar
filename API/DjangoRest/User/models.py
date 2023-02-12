@@ -7,8 +7,6 @@ from PIL import Image
 from datetime import date
 import calendar
 
-
-
 from .managers import FollowingManager, UsersManager
 from Nectar.models import BaseModel, BaseModelImageOnly, Genders
 from Language.models import Language

@@ -4,7 +4,6 @@ from User.ViewsSet import (
     UserViewSet, GroupViewSet,
     FollowingViewSet, MyProfileViewSet,
 )
-# from Card.ViewsSet import CardViewSet, CouponViewSet, LineInCardViewSet
 from Cart.ViewsSet import MyCartViewSet, CouponViewSet, LineInMyCartViewSet
 from Category.ViewsSet import CategoryViewSet, BrandViewSet 
 from Department.ViewsSet import DepartmentViewSet
@@ -19,6 +18,7 @@ from Location.ViewsSet import (
     GeoViewSet, CountryViewSet,
 )
 from Order.ViewsSet import RefundViewSet, OrderViewSet
+from MyBasket.ViewsSet import MyBasketViewSet, MyBasketItemViewSet
 
 
 ## User App
@@ -28,10 +28,7 @@ router.register('groups', GroupViewSet)
 router.register('followings', FollowingViewSet)
 router.register('my_profiles', MyProfileViewSet)
 
-# ## Card App
-# router.register('cards', CardViewSet)
-# router.register('coupons', CouponViewSet)
-# router.register('linesInCard', LineInCardViewSet)
+
 
 ## Cart App
 router.register('my_carts', MyCartViewSet)
@@ -66,6 +63,10 @@ router.register('units', UnitViewSet)
 ## Order App
 router.register('orders', OrderViewSet)
 router.register('refunds', RefundViewSet)
+
+## My Basket App
+router.register('my_baskets', MyBasketViewSet)
+router.register('my_basket_items', MyBasketItemViewSet)
 
 ## Loction App
 router.register('streets', StreetViewSet)

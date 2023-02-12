@@ -3,14 +3,12 @@ from rest_framework.serializers import (
     HyperlinkedModelSerializer,
     EmailField,
     CharField,
-    RelatedField,
-)
+ )
 
 from .models import User, Following, Profile
 from Language.Serializer import LanguageSerializer
 from Location.Serializer import AddressSerializer
 from Product.Serializer import ProductSerializer
-
 
 # Serializers define the API representation.
 
@@ -54,7 +52,6 @@ class FollowingSerializer(HyperlinkedModelSerializer):
 
 
 class MyProfileSerializer(HyperlinkedModelSerializer):
-    # user = UserSerializer(many= False)
     language = LanguageSerializer(many= False)
     address = AddressSerializer(many= False)
     favorites_products = ProductSerializer(many= True)
@@ -63,7 +60,6 @@ class MyProfileSerializer(HyperlinkedModelSerializer):
         fields = [
             "url",
             "image",
-            # "user",
             "phone_number",
             "full_name",
             "family_name",

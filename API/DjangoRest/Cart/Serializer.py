@@ -53,8 +53,8 @@ class MyCartSerializer(HyperlinkedModelSerializer):
     
     def create(self, validated_data):
         tracks_data = validated_data.pop('lines_in_cart')
-        card = Cart.objects.create(**validated_data)
+        cart = Cart.objects.create(**validated_data)
         for track_data in tracks_data:
-            LineInCart.objects.create(album=card, **track_data)
-        return card
+            LineInCart.objects.create(album=cart, **track_data)
+        return cart
 

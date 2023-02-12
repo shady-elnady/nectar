@@ -1,0 +1,255 @@
+{
+  "url": "http://127.0.0.1:8000/api/my_baskets/1/",
+  "My_Basket_Items": [
+    {
+      "url": "http://127.0.0.1:8000/api/my_basket_items/1/",
+      "my_basket": "http://127.0.0.1:8000/api/my_baskets/1/",
+      "product": {
+        "url": "http://127.0.0.1:8000/api/products/Organic%20Bananas/",
+        "name": "Organic Bananas",
+        "image": "http://127.0.0.1:8000/media/images/Product/Organic_Bananas.png",
+        "nutritions": "100gr",
+        "amount": 7.0,
+        "reviews": 5.0,
+        "brand": {
+          "url": "http://127.0.0.1:8000/api/brands/Individual%20Callection/",
+          "name": "Individual Callection",
+          "image": "http://127.0.0.1:8000/media/images/Brand/Individual_Callection.png",
+          "slug": "individual-callection"
+        },
+        "category": {
+          "url": "http://127.0.0.1:8000/api/categories/Fruits/",
+          "name": "Fruits",
+          "image": "http://127.0.0.1:8000/media/images/Category/Fruits.png",
+          "category_parent": {
+            "url": "http://127.0.0.1:8000/api/categories/Frash%20Fruits%20&%20Vegetable/",
+            "name": "Frash Fruits & Vegetable",
+            "image": "http://127.0.0.1:8000/media/images/Category/Frash_Fruits__Vegetable.png",
+            "category_parent": null,
+            "slug": "frash-fruits-vegetable"
+          },
+          "slug": "fruits"
+        },
+        "unit": {
+          "url": "http://127.0.0.1:8000/api/units/pcs/",
+          "name": "pcs",
+          "native": "قطعه",
+          "symbol": "pcs",
+          "prefix": null,
+          "base_unit": null,
+          "measurement": "P",
+          "slug": "pcs"
+        },
+        "serial": "3",
+        "currency": {
+          "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+          "name": "Dolar",
+          "native": "دولار",
+          "code": "$",
+          "emoji": "💲",
+          "slug": "dolar"
+        },
+        "price": 4.999,
+        "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+        "is_favorite": false,
+        "product_images": [
+          {
+            "url": "http://127.0.0.1:8000/api/productImages/7/",
+            "product": "http://127.0.0.1:8000/api/products/Organic%20Bananas/",
+            "image": "http://127.0.0.1:8000/media/images/ProductImage/None_lqQGQrb.png",
+            "slug": "7"
+          },
+          {
+            "url": "http://127.0.0.1:8000/api/productImages/8/",
+            "product": "http://127.0.0.1:8000/api/products/Organic%20Bananas/",
+            "image": "http://127.0.0.1:8000/media/images/ProductImage/None_iSKQzB3.png",
+            "slug": "8"
+          },
+          {
+            "url": "http://127.0.0.1:8000/api/productImages/9/",
+            "product": "http://127.0.0.1:8000/api/products/Organic%20Bananas/",
+            "image": "http://127.0.0.1:8000/media/images/ProductImage/None_8WG1L3v.png",
+            "slug": "9"
+          }
+        ],
+        "slug": "organic-bananas"
+      },
+      "amount": 1,
+      "total_item_price": 4.999,
+      "created_date": "2023-02-11T22:35:34.415210Z",
+      "last_updated": "2023-02-11T22:35:34.415227Z",
+      "slug": "shady-organic-bananas"
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/my_basket_items/2/",
+      "my_basket": "http://127.0.0.1:8000/api/my_baskets/1/",
+      "product": {
+        "url": "http://127.0.0.1:8000/api/products/Diet%20Coke/",
+        "name": "Diet Coke",
+        "image": "http://127.0.0.1:8000/media/images/Product/Diet_Coke.png",
+        "nutritions": "100gr",
+        "amount": 355.0,
+        "reviews": 5.0,
+        "brand": {
+          "url": "http://127.0.0.1:8000/api/brands/Cocola/",
+          "name": "Cocola",
+          "image": "http://127.0.0.1:8000/media/images/Brand/Cocola.png",
+          "slug": "cocola"
+        },
+        "category": {
+          "url": "http://127.0.0.1:8000/api/categories/Soda/",
+          "name": "Soda",
+          "image": "http://127.0.0.1:8000/media/images/Category/Soda.png",
+          "category_parent": {
+            "url": "http://127.0.0.1:8000/api/categories/Beverages/",
+            "name": "Beverages",
+            "image": "http://127.0.0.1:8000/media/images/Category/Beverages.png",
+            "category_parent": null,
+            "slug": "beverages"
+          },
+          "slug": "soda"
+        },
+        "unit": {
+          "url": "http://127.0.0.1:8000/api/units/MilLiter/",
+          "name": "MilLiter",
+          "native": "ملي لتر",
+          "symbol": "mL",
+          "prefix": null,
+          "base_unit": {
+            "url": "http://127.0.0.1:8000/api/units/Liter/",
+            "name": "Liter",
+            "native": "لتر",
+            "symbol": "L",
+            "prefix": null,
+            "base_unit": null,
+            "measurement": "V",
+            "slug": "liter"
+          },
+          "measurement": "V",
+          "slug": "milliter"
+        },
+        "serial": "7",
+        "currency": {
+          "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+          "name": "Dolar",
+          "native": "دولار",
+          "code": "$",
+          "emoji": "💲",
+          "slug": "dolar"
+        },
+        "price": 1.49,
+        "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+        "is_favorite": true,
+        "product_images": [
+          {
+            "url": "http://127.0.0.1:8000/api/productImages/19/",
+            "product": "http://127.0.0.1:8000/api/products/Diet%20Coke/",
+            "image": "http://127.0.0.1:8000/media/images/ProductImage/None_rXPxJ5F.png",
+            "slug": "19"
+          },
+          {
+            "url": "http://127.0.0.1:8000/api/productImages/20/",
+            "product": "http://127.0.0.1:8000/api/products/Diet%20Coke/",
+            "image": "http://127.0.0.1:8000/media/images/ProductImage/None_DFxdqgy.png",
+            "slug": "20"
+          },
+          {
+            "url": "http://127.0.0.1:8000/api/productImages/21/",
+            "product": "http://127.0.0.1:8000/api/products/Diet%20Coke/",
+            "image": "http://127.0.0.1:8000/media/images/ProductImage/None_RCuLAxY.png",
+            "slug": "21"
+          }
+        ],
+        "slug": "diet-coke"
+      },
+      "amount": 1,
+      "total_item_price": 1.49,
+      "created_date": "2023-02-11T22:35:34.416051Z",
+      "last_updated": "2023-02-11T22:35:34.416065Z",
+      "slug": "shady-diet-coke"
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/my_basket_items/3/",
+      "my_basket": "http://127.0.0.1:8000/api/my_baskets/1/",
+      "product": {
+        "url": "http://127.0.0.1:8000/api/products/Egg%20Chicken%20Red/",
+        "name": "Egg Chicken Red",
+        "image": "http://127.0.0.1:8000/media/images/Product/Egg_Chicken_Red.png",
+        "nutritions": "100gr",
+        "amount": 1.0,
+        "reviews": 4.0,
+        "brand": {
+          "url": "http://127.0.0.1:8000/api/brands/Kazi%20Farmas/",
+          "name": "Kazi Farmas",
+          "image": "http://127.0.0.1:8000/media/images/Brand/Kazi_Farmas.png",
+          "slug": "kazi-farmas"
+        },
+        "category": {
+          "url": "http://127.0.0.1:8000/api/categories/Egg/",
+          "name": "Egg",
+          "image": "http://127.0.0.1:8000/media/images/Category/Egg.png",
+          "category_parent": {
+            "url": "http://127.0.0.1:8000/api/categories/Dairy%20&%20Eggs/",
+            "name": "Dairy & Eggs",
+            "image": "http://127.0.0.1:8000/media/images/Category/Dairy__Eggs.png",
+            "category_parent": null,
+            "slug": "dairy-eggs"
+          },
+          "slug": "egg"
+        },
+        "unit": {
+          "url": "http://127.0.0.1:8000/api/units/pcs/",
+          "name": "pcs",
+          "native": "قطعه",
+          "symbol": "pcs",
+          "prefix": null,
+          "base_unit": null,
+          "measurement": "P",
+          "slug": "pcs"
+        },
+        "serial": "13",
+        "currency": {
+          "url": "http://127.0.0.1:8000/api/Currencies/Dolar/",
+          "name": "Dolar",
+          "native": "دولار",
+          "code": "$",
+          "emoji": "💲",
+          "slug": "dolar"
+        },
+        "price": 1.99,
+        "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+        "is_favorite": false,
+        "product_images": [
+          {
+            "url": "http://127.0.0.1:8000/api/productImages/34/",
+            "product": "http://127.0.0.1:8000/api/products/Egg%20Chicken%20Red/",
+            "image": "http://127.0.0.1:8000/media/images/ProductImage/None_EOPHyZH.png",
+            "slug": "34"
+          },
+          {
+            "url": "http://127.0.0.1:8000/api/productImages/35/",
+            "product": "http://127.0.0.1:8000/api/products/Egg%20Chicken%20Red/",
+            "image": "http://127.0.0.1:8000/media/images/ProductImage/None_csFhsmf.png",
+            "slug": "35"
+          },
+          {
+            "url": "http://127.0.0.1:8000/api/productImages/36/",
+            "product": "http://127.0.0.1:8000/api/products/Egg%20Chicken%20Red/",
+            "image": "http://127.0.0.1:8000/media/images/ProductImage/None_cxWVwHj.png",
+            "slug": "36"
+          }
+        ],
+        "slug": "egg-chicken-red"
+      },
+      "amount": 1,
+      "total_item_price": 1.99,
+      "created_date": "2023-02-11T22:35:34.416239Z",
+      "last_updated": "2023-02-11T22:35:34.416255Z",
+      "slug": "shady-egg-chicken-red"
+    }
+  ],
+  "Total_My_Basket_Cost": 8.479,
+  "created_date": "2023-02-11T22:35:34.414620Z",
+  "last_updated": "2023-02-11T22:35:34.414639Z",
+  "slug": "1-shady"
+}
