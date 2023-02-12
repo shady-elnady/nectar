@@ -12,7 +12,17 @@ class MyBasket extends Equatable {
   final DateTime? lastUpdated;
   final String? slug;
 
-  const MyBasket({
+  // const MyBasket({
+  //   this.url,
+  //   required this.myBasketItems,
+  //   this.totalMyBasketCost,
+  //   this.createdDate,
+  //   this.lastUpdated,
+  //   this.slug,
+  // });
+/////////////////
+  ///
+  const MyBasket._({
     this.url,
     required this.myBasketItems,
     this.totalMyBasketCost,
@@ -20,6 +30,31 @@ class MyBasket extends Equatable {
     this.lastUpdated,
     this.slug,
   });
+
+  static MyBasket? _instance;
+
+  static void initialize({
+    String? url,
+    required List<MyBasketItem?> myBasketItems,
+    double? totalMyBasketCost,
+    DateTime? createdDate,
+    DateTime? lastUpdated,
+    String? slug,
+  }) {
+    _instance = MyBasket._(
+      url: url,
+      myBasketItems: myBasketItems,
+      totalMyBasketCost: totalMyBasketCost,
+      createdDate: createdDate,
+      lastUpdated: lastUpdated,
+      slug: slug,
+    );
+  }
+
+  static MyBasket get instance =>
+      _instance!; // throw an "initialize first" error
+
+/////////////////
 
   Map<String, dynamic> toMap() => {
         'url': url,
@@ -43,7 +78,7 @@ class MyBasket extends Equatable {
     DateTime? lastUpdated,
     String? slug,
   }) {
-    return MyBasket(
+    return MyBasket._(
       url: url ?? this.url,
       myBasketItems: this.myBasketItems,
       totalMyBasketCost: totalMyBasketCost ?? this.totalMyBasketCost,
