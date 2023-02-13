@@ -1,4 +1,7 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:convert';
+import 'package:collection/collection.dart';
 
 import 'package:equatable/equatable.dart';
 
@@ -7,59 +10,46 @@ import 'my_basket_item.dart';
 class MyBasket extends Equatable {
   final String? url;
   final List<MyBasketItem?> myBasketItems;
-  final double? totalMyBasketCost;
   final DateTime? createdDate;
   final DateTime? lastUpdated;
   final String? slug;
 
-  // const MyBasket({
-  //   this.url,
-  //   required this.myBasketItems,
-  //   this.totalMyBasketCost,
-  //   this.createdDate,
-  //   this.lastUpdated,
-  //   this.slug,
-  // });
-/////////////////
-  ///
-  const MyBasket._({
+  const MyBasket.initialize({
     this.url,
-    required this.myBasketItems,
-    this.totalMyBasketCost,
+    this.myBasketItems = const [],
     this.createdDate,
     this.lastUpdated,
     this.slug,
   });
 
+  double? get totalMyBasketCost => myBasketItems
+      .map(
+        (MyBasketItem? item) => item!.amount * item.product.price,
+      )
+      .sum;
+
   static MyBasket? _instance;
 
-  static void initialize({
+  factory MyBasket({
     String? url,
     required List<MyBasketItem?> myBasketItems,
     double? totalMyBasketCost,
     DateTime? createdDate,
     DateTime? lastUpdated,
     String? slug,
-  }) {
-    _instance = MyBasket._(
-      url: url,
-      myBasketItems: myBasketItems,
-      totalMyBasketCost: totalMyBasketCost,
-      createdDate: createdDate,
-      lastUpdated: lastUpdated,
-      slug: slug,
-    );
-  }
-
-  static MyBasket get instance =>
-      _instance!; // throw an "initialize first" error
-
-/////////////////
+  }) =>
+      _instance = _instance ??
+          MyBasket.initialize(
+            url: url,
+            myBasketItems: myBasketItems,
+            createdDate: createdDate,
+            lastUpdated: lastUpdated,
+            slug: slug,
+          );
 
   Map<String, dynamic> toMap() => {
         'url': url,
         'My_Basket_Items': myBasketItems.map((e) => e!.toMap()).toList(),
-        'Total_My_Basket_Cost': totalMyBasketCost,
         'created_date': createdDate?.toIso8601String(),
         'last_updated': lastUpdated?.toIso8601String(),
         'slug': slug,
@@ -78,10 +68,9 @@ class MyBasket extends Equatable {
     DateTime? lastUpdated,
     String? slug,
   }) {
-    return MyBasket._(
+    return MyBasket.initialize(
       url: url ?? this.url,
       myBasketItems: this.myBasketItems,
-      totalMyBasketCost: totalMyBasketCost ?? this.totalMyBasketCost,
       createdDate: createdDate ?? this.createdDate,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       slug: slug ?? this.slug,
@@ -96,7 +85,6 @@ class MyBasket extends Equatable {
     return [
       url,
       myBasketItems,
-      totalMyBasketCost,
       createdDate,
       lastUpdated,
       slug,

@@ -33,17 +33,17 @@ abstract class BaseModel extends OriginalEntity {
       };
 }
 
-class MySuperClass {
-  final String s;
-  MySuperClass._internal(this.s);
+// class MySuperClass {
+//   final String s;
+//   MySuperClass._internal(this.s);
 
-  factory MySuperClass(int a) {
-    return MySuperClass._internal(a.toString());
-  }
-}
+//   factory MySuperClass(int a) {
+//     return MySuperClass._internal(a.toString());
+//   }
+// }
 
-class MySubClass extends MySuperClass {
-  final int b;
+// class MySubClass extends MySuperClass {
+//   final int b;
 
-  MySubClass(int a, this.b) : super._internal(a.toString());
-}
+//   MySubClass(int a, this.b) : super._internal(a.toString());
+// }

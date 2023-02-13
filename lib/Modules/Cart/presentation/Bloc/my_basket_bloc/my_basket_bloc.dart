@@ -3,7 +3,10 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:nectar_mac/App/Exceptions/failure.dart';
 
+import '../../../../Product/domain/Entities/product.dart';
 import '../../../domain/Entities/line_in_my_cart.dart';
+import '../../../domain/Entities/my_basket.dart';
+import '../../../domain/Entities/my_basket_item.dart';
 
 part 'my_basket_event.dart';
 part 'my_basket_state.dart';

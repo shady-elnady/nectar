@@ -7,18 +7,16 @@ class MyBasketModel extends MyBasket {
   const MyBasketModel({
     super.url,
     required super.myBasketItems,
-    super.totalMyBasketCost,
     super.createdDate,
     super.lastUpdated,
     super.slug,
-  });
+  }) : super.initialize();
 
   factory MyBasketModel.fromMap(Map<String, dynamic> data) => MyBasketModel(
         url: data['url'] as String?,
         myBasketItems: (data['My_Basket_Items'] as List<dynamic>?)!
             .map((e) => MyBasketItemModel.fromMap(e as Map<String, dynamic>))
             .toList(),
-        totalMyBasketCost: (data['Total_My_Basket_Cost'] as num?)?.toDouble(),
         createdDate: data['created_date'] == null
             ? null
             : DateTime.parse(data['created_date'] as String),
@@ -34,7 +32,4 @@ class MyBasketModel extends MyBasket {
   factory MyBasketModel.fromJson(String data) {
     return MyBasketModel.fromMap(json.decode(data) as Map<String, dynamic>);
   }
-
-  @override
-  bool get stringify => true;
 }
