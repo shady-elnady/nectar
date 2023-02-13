@@ -2,10 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:nectar_mac/App/Exceptions/failure.dart';
 
 import '../../Entities/my_basket_item.dart';
-import '../../Repository/base_my_basket_repository.dart';
+import '../../Repository/base_my_basket_item_repository.dart';
 
 class UpdateMyBasketItemUsecase {
-  final BaseMyBasketRepository myBasketRepository;
+  final BaseMyBasketItemRepository myBasketRepository;
   UpdateMyBasketItemUsecase(this.myBasketRepository);
 
   Future<Either<Failure, Unit>> call({

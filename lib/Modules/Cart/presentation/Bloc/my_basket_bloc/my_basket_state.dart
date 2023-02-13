@@ -14,9 +14,7 @@ class LoadingMyBasketState extends MyBasketState {}
 class LoadedMyBasketState extends MyBasketState {
   final MyBasket myBasket;
 
-  const LoadedMyBasketState({
-    required this.myBasket,
-  });
+  const LoadedMyBasketState({required this.myBasket});
 
   @override
   List<Object> get props => [
@@ -27,22 +25,7 @@ class LoadedMyBasketState extends MyBasketState {
 class ErrorMyBasketState extends MyBasketState {
   final String message;
 
-  const ErrorMyBasketState({
-    required this.message,
-  });
-
-  @override
-  List<Object> get props => [
-        message,
-      ];
-}
-
-class MessageMyBasketState extends MyBasketState {
-  final String message;
-
-  const MessageMyBasketState({
-    required this.message,
-  });
+  const ErrorMyBasketState({required this.message});
 
   @override
   List<Object> get props => [

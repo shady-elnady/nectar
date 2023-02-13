@@ -1,7 +1,7 @@
 class Meassages {
-  static const deleteSuccess = "Product Deleted Successfully";
-  static const updateSuccess = "Product Updated Successfully";
   static const addSuccess = "Product Added Successfully";
+  static const updateSuccess = "Product Updated Successfully";
+  static const deleteSuccess = "Product Deleted Successfully";
 
   // FailureMeassage
   static const String serverFailure = 'Please try again later .';

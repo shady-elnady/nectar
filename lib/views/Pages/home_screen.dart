@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  static List<LineInMyCart?> myCart = [];
+  static List<LineInMyCar?> myBasket = [];
 
   @override
   void initState() {
