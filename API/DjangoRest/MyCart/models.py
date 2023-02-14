@@ -41,6 +41,10 @@ class Coupon(BaseModel):
 
 
 class MyCart(BaseModel):
+    id = models.AutoField(
+        primary_key= True,
+        verbose_name= _("ID"),
+    )
     customer = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete= models.CASCADE,
@@ -120,13 +124,13 @@ class MyCartItem(BaseModel):
     
     @property
     def slug(self):
-        return slugify(f"{self.my_cart.pk}-{self.my_cart.customer.username}->{self.product.name}")
+        return slugify(f"{self.my_cart.id}-{self.my_cart.customer.username}->{self.product.name}")
 
     def __str__(self) -> str:
-        return f"{self.my_cart.pk}-{self.my_cart.customer.username}->{self.product.name}"
+        return f"{self.my_cart.id}-{self.my_cart.customer.username}->{self.product.name}"
 
     def __decode__(self) -> str:
-        return f"{self.my_cart.pk}-{self.my_cart.customer.username}->{self.product.name}"
+        return f"{self.my_cart.id}-{self.my_cart.customer.username}->{self.product.name}"
     
     class Meta:
         unique_together = [
