@@ -4,8 +4,8 @@ import 'package:equatable/equatable.dart';
 import 'package:nectar_mac/App/Exceptions/failure.dart';
 import 'package:nectar_mac/App/Models/base_usecase.dart';
 
-import '../../../domain/Entities/my_cart.dart';
-import '../../../domain/UseCases/my_carts_use_case/get_all_my_carts_usecase.dart';
+import '../../domain/Entities/my_cart.dart';
+import '../../domain/UseCases/get_all_my_carts_usecase.dart';
 
 part 'all_my_carts_event.dart';
 part 'all_my_carts_state.dart';

@@ -12,6 +12,7 @@ from Nectar.models import BaseModel, BaseModelImageOnly, Genders
 from Language.models import Language
 from Location.models import Address
 from Product.models import Product
+from MyCart.models import MyCart
 
 
 
@@ -150,6 +151,15 @@ class Profile(BaseModelImageOnly):
         null=True,
         blank=True,
         verbose_name= _("Address"),
+    )
+    my_basket = models.OneToOneField(
+        MyCart,
+        null= True,
+        blank= True,
+        limit_choices_to= {"is_finished": False},
+        on_delete=models.CASCADE,
+        related_name= _("Profile"),
+        verbose_name= _("My Basket"),
     )
     favorites_products = models.ManyToManyField(
         Product,

@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
+from Nectar.models import BaseModel
 
 from Nectar.models import PaymentMethod
 from Product.models import Product
@@ -10,13 +11,18 @@ from Product.models import Product
 
 
 
-class Coupon(models.Model):
+class Coupon(BaseModel):
     promo_code = models.CharField(
         primary_key= True,
         max_length=15,
     )
     discount = models.FloatField(
         verbose_name= _("Discount"),
+    )
+    end_time = models.DateTimeField(
+        blank=True,
+        null=True,
+        verbose_name=_("Last Update"),
     )
 
     def __str__(self):
@@ -34,17 +40,18 @@ class Coupon(models.Model):
         verbose_name_plural= _("Coupons")
 
 
-class Cart(models.Model):
+class MyCart(BaseModel):
     customer = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete= models.CASCADE,
         to_field= 'username',
+        related_name= _ ("My_Carts"),
         verbose_name= _("Customer"),
     ) 
-    lines_in_cart = models.ManyToManyField(
+    my_cart_items = models.ManyToManyField(
         Product,
-        through= "LineInCart",
-        verbose_name= _("Lines In Cart"),
+        through= "MyCartItem",
+        verbose_name= _("My Cart Items"),
     )
     payment_method= models.CharField(
         max_length= 2,
@@ -64,16 +71,12 @@ class Cart(models.Model):
         default= False,
         verbose_name= _("is Finished"),
     )
-    created_at = models.DateTimeField(
-        auto_now_add= True,
-        verbose_name=_("Cearted At"),
-    )
     
     @property
-    def Total_Cost(self) -> float:
+    def Total_MyCart_Cost(self) -> float:
         total = 0
-        for lineInCart in self.Lines_In_Cart.all():
-            total += lineInCart.total_line_price
+        for myCartItem in self.my_cart_items.all():
+            total += myCartItem.my_cart_item_price
         if self.promo_code:
             total -= self.promo_code.discount
         return total
@@ -89,21 +92,21 @@ class Cart(models.Model):
         return f"{self.pk}_{self.customer.username}"
     
     class Meta:
-        verbose_name= _("Cart")
-        verbose_name_plural= _("Carts")
+        verbose_name= _("My Cart")
+        verbose_name_plural= _("My Carts")
 
 
-class LineInCart(models.Model):
-    cart= models.ForeignKey(
-        Cart,
+class MyCartItem(BaseModel):
+    my_cart= models.ForeignKey(
+        MyCart,
         on_delete= models.CASCADE,
-        related_name= "Lines_In_Cart",
-        verbose_name= _("Cart"),
+        related_name= "My_Cart_Items",
+        verbose_name= _("My Cart"),
     )
     product= models.ForeignKey(
         Product,
         on_delete= models.CASCADE,
-        related_name= "Lines_In_Carts",
+        related_name= "My_Carts_Products",
         verbose_name= _("Product"),
     ) 
     amount = models.SmallIntegerField(
@@ -111,25 +114,25 @@ class LineInCart(models.Model):
     )
 
     @property
-    def total_line_price(self) -> float:
+    def my_cart_item_price(self) -> float:
         return self.product.price * self.amount
     
     @property
     def slug(self):
-        return slugify(f"{self.cart.pk}_{self.product.name}")
+        return slugify(f"{self.my_cart.pk}_{self.product.name}")
 
     def __str__(self) -> str:
-        return f"{self.cart.pk}_{self.product.name}"
+        return f"{self.my_cart.pk}_{self.product.name}"
 
     def __decode__(self) -> str:
-        return f"{self.cart.pk}_{self.product.name}"
+        return f"{self.my_cart.pk}_{self.product.name}"
     
     class Meta:
         unique_together = [
             [
-                "cart",
+                "my_cart",
                 "product",
             ]
         ]
-        verbose_name= _("Line In Cart")
-        verbose_name_plural= _("Lines In Cart")
+        verbose_name= _("My Cart Item")
+        verbose_name_plural= _("My Cart Items")

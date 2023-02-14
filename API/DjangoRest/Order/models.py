@@ -1,9 +1,10 @@
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
+from Nectar.models import BaseModel
 
 from Location.models import Address
-from Cart.models import Cart
+from MyCart.models import MyCart
 
 # Create your models here.
 
@@ -14,11 +15,11 @@ class Order(models.Model):
         primary_key= True,
         verbose_name= _("Serial Number"),
     )
-    cart = models.OneToOneField(
-        Cart,
+    my_cart = models.OneToOneField(
+        MyCart,
         on_delete= models.CASCADE,
         related_name= _("Order"),
-        verbose_name= _("Cart"),
+        verbose_name= _("My Cart"),
     )
     received_date = models.DateTimeField(
         auto_now_add= True,
@@ -70,14 +71,16 @@ class Order(models.Model):
         verbose_name_plural= _("Orders")
 
 
-class Refund(models.Model):
+class Refund(BaseModel):
     order = models.ForeignKey(
         Order,
         on_delete=models.CASCADE,
-        related_name= _("Refunds"),
+        related_name= _("Refund"),
         verbose_name= _("Order"),
     )
     reason = models.TextField(
+        null= True,
+        blank= True,
         verbose_name= _("Reason"),
     )
     is_accepted = models.BooleanField(
@@ -85,9 +88,16 @@ class Refund(models.Model):
         verbose_name= _("is Accepted"),
     )
 
+    @property
+    def slug(self):
+        return slugify(f"{self.serial_no}_{self.cart.customer.username}")
+
+    def __str__(self) -> str:
+        return f"{self.serial_no}_{self.cart.customer.username}"
+
     def __str__(self):
-        return f"{self.pk}"
-    
+        return f"{self.serial_no}_{self.cart.customer.username}"
+
     class Meta:
         verbose_name= _("Refund")
         verbose_name_plural= _("Refunds")

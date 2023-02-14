@@ -9,6 +9,7 @@ from .models import User, Following, Profile
 from Language.Serializer import LanguageSerializer
 from Location.Serializer import AddressSerializer
 from Product.Serializer import ProductSerializer
+from MyCart.Serializer import MyCartSerializer
 
 # Serializers define the API representation.
 
@@ -54,6 +55,7 @@ class FollowingSerializer(HyperlinkedModelSerializer):
 class MyProfileSerializer(HyperlinkedModelSerializer):
     language = LanguageSerializer(many= False)
     address = AddressSerializer(many= False)
+    my_basket = MyCartSerializer(many= False)
     favorites_products = ProductSerializer(many= True)
     class Meta:
         model = Profile
@@ -68,6 +70,7 @@ class MyProfileSerializer(HyperlinkedModelSerializer):
             "language",
             "address",
             "age",
+            "my_basket",
             "favorites_products",
             "slug",
         ]

@@ -4,7 +4,7 @@ import 'package:nectar_mac/App/Exceptions/exceptions.dart';
 import 'package:nectar_mac/App/Exceptions/failure.dart';
 import 'package:nectar_mac/App/Services/network_services.dart';
 import 'package:nectar_mac/App/Utils/Strings/messages.dart';
-import 'package:nectar_mac/Modules/Cart/domain/Entities/my_basket.dart';
+import 'package:nectar_mac/Modules/MyBasket/domain/Entities/my_basket.dart';
 
 import '../../domain/Repository/base_my_basket_repository.dart';
 import '../DataSource/my_basket_local_data_source.dart';
