@@ -16,7 +16,7 @@ from Location.ViewsSet import (
     GovernorateViewSet, AddressViewSet,
     GeoViewSet, CountryViewSet,
 )
-from Order.ViewsSet import RefundViewSet, OrderViewSet
+from Orders.ViewsSet import RefundViewSet, OrderViewSet
 from MyCart.ViewsSet import MyCartViewSet, MyCartItemViewSet, CouponViewSet
 
 

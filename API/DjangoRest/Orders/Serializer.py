@@ -21,7 +21,7 @@ class RefundSerializer(HyperlinkedModelSerializer):
 
 
 class OrderSerializer(HyperlinkedModelSerializer):
-    Refunds =RefundSerializer(many= True) 
+    Refund =RefundSerializer(many= False) 
     my_cart =MyCartSerializer(many= False) 
     shipping_address =AddressSerializer(many= False) 
     billing_address =AddressSerializer(many= False) 
@@ -37,5 +37,6 @@ class OrderSerializer(HyperlinkedModelSerializer):
             "is_refund_granted",
             "shipping_address",
             "billing_address",
+            "Refund",
             "slug",
         ]

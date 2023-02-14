@@ -58,13 +58,13 @@ class Order(models.Model):
     
     @property
     def slug(self):
-        return slugify(f"{self.serial_no}_{self.cart.customer.username}")
+        return slugify(f"{self.serial_no}_{self.my_cart.customer.username}")
 
     def __str__(self) -> str:
-        return f"{self.serial_no}_{self.cart.customer.username}"
+        return f"{self.serial_no}_{self.my_cart.customer.username}"
 
     def __str__(self):
-        return f"{self.serial_no}_{self.cart.customer.username}"
+        return f"{self.serial_no}_{self.my_cart.customer.username}"
 
     class Meta:
         verbose_name= _("Order")
@@ -72,7 +72,7 @@ class Order(models.Model):
 
 
 class Refund(BaseModel):
-    order = models.ForeignKey(
+    order = models.OneToOneField(
         Order,
         on_delete=models.CASCADE,
         related_name= _("Refund"),
@@ -90,13 +90,13 @@ class Refund(BaseModel):
 
     @property
     def slug(self):
-        return slugify(f"{self.serial_no}_{self.cart.customer.username}")
+        return slugify(f"Refund -> {self.order.serial_no}")
 
     def __str__(self) -> str:
-        return f"{self.serial_no}_{self.cart.customer.username}"
+        return f"Refund -> {self.order.serial_no}"
 
     def __str__(self):
-        return f"{self.serial_no}_{self.cart.customer.username}"
+        return f"Refund -> {self.order.serial_no}"
 
     class Meta:
         verbose_name= _("Refund")

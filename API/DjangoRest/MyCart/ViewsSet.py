@@ -35,4 +35,4 @@ class MyCartItemViewSet(viewsets.ModelViewSet):
         serializer.save(my_cart=MyCart.objects.get(customer=self.request.user))
     
     def get_queryset(self):
-        return MyCartItem.objects.filter(my_cart= MyCart.objects.get(customer=self.request.user))
+        return MyCartItem.objects.filter(my_cart__in= MyCart.objects.filter(customer=self.request.user))

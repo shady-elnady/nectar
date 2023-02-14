@@ -10,11 +10,10 @@ from Product.models import Product
 # Create your models here.
 
 
-
 class Coupon(BaseModel):
-    promo_code = models.CharField(
+    promo_code = models.AutoField(
         primary_key= True,
-        max_length=15,
+        verbose_name= _("Promo Coupon Code"),
     )
     discount = models.FloatField(
         verbose_name= _("Discount"),
@@ -22,11 +21,12 @@ class Coupon(BaseModel):
     end_time = models.DateTimeField(
         blank=True,
         null=True,
-        verbose_name=_("Last Update"),
+        editable= True,
+        verbose_name=_("End Time"),
     )
 
     def __str__(self):
-        return self.promo_code
+        return f"{self.promo_code}"
     
     @property
     def slug(self):
@@ -83,13 +83,13 @@ class MyCart(BaseModel):
     
     @property
     def slug(self):
-        return slugify(f"{self.pk}_{self.customer.username}")
+        return slugify(f"{self.id}_{self.customer.username}")
 
     def __str__(self) -> str:
-        return f"{self.pk}_{self.customer.username}"
+        return f"{self.id}_{self.customer.username}"
 
     def __decode__(self) -> str:
-        return f"{self.pk}_{self.customer.username}"
+        return f"{self.id}_{self.customer.username}"
     
     class Meta:
         verbose_name= _("My Cart")
@@ -106,10 +106,11 @@ class MyCartItem(BaseModel):
     product= models.ForeignKey(
         Product,
         on_delete= models.CASCADE,
-        related_name= "My_Carts_Products",
+        related_name= "my_cart",
         verbose_name= _("Product"),
     ) 
-    amount = models.SmallIntegerField(
+    amount = models.PositiveSmallIntegerField(
+        default= 1,
         verbose_name= _("Amount"),
     )
 
@@ -119,13 +120,13 @@ class MyCartItem(BaseModel):
     
     @property
     def slug(self):
-        return slugify(f"{self.my_cart.pk}_{self.product.name}")
+        return slugify(f"{self.my_cart.pk}-{self.my_cart.customer.username}->{self.product.name}")
 
     def __str__(self) -> str:
-        return f"{self.my_cart.pk}_{self.product.name}"
+        return f"{self.my_cart.pk}-{self.my_cart.customer.username}->{self.product.name}"
 
     def __decode__(self) -> str:
-        return f"{self.my_cart.pk}_{self.product.name}"
+        return f"{self.my_cart.pk}-{self.my_cart.customer.username}->{self.product.name}"
     
     class Meta:
         unique_together = [
