@@ -27,7 +27,7 @@ class MyCartItemSerializer(HyperlinkedModelSerializer):
 
 class MyCartSerializer(HyperlinkedModelSerializer):
     My_Cart_Items = MyCartItemSerializer(many= True) 
-    order = OrderSerializer(many= False) 
+    Order = OrderSerializer(many= False) 
     
     class Meta:
         model = MyCart
@@ -36,7 +36,7 @@ class MyCartSerializer(HyperlinkedModelSerializer):
             "My_Cart_Items",
             "is_finished",
             "Total_MyCart_Cost",
-            "order",
+            "Order",
             "created_date",
             "last_updated",
             "slug",

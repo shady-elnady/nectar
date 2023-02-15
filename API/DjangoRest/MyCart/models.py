@@ -22,13 +22,13 @@ class MyCart(BaseModel):
     #     through= "MyCartItem",
     #     verbose_name= _("My Cart Items"),
     # )
-    order= models.OneToOneField(
-        Order,
-        on_delete= models.CASCADE,
-        null= True,
-        blank= True,
-        verbose_name= _("Order"),
-    )
+    # order= models.OneToOneField(
+    #     Order,
+    #     on_delete= models.CASCADE,
+    #     null= True,
+    #     blank= True,
+    #     verbose_name= _("Order"),
+    # )
     is_finished = models.BooleanField(
         default= False,
         verbose_name= _("is Finished"),
@@ -38,7 +38,7 @@ class MyCart(BaseModel):
     def Total_MyCart_Cost(self):
         total = 0
         for myCartItem in self.My_Cart_Items.all():
-            total += myCartItem.My_Cart_Item_Price()
+            total += myCartItem.My_Cart_Item_Price
         return total
     
     @property
@@ -69,7 +69,7 @@ class MyCartItem(BaseModel):
         related_name= "my_cart",
         verbose_name= _("Product"),
     ) 
-    amount = models.PositiveSmallIntegerField(
+    amount = models.FloatField(
         default= 1,
         verbose_name= _("Amount"),
     )

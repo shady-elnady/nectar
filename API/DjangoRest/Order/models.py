@@ -47,8 +47,7 @@ class Delivery(models.Model):
         verbose_name= _("Delivery Method"),
     )    
     delivery_cost = models.FloatField(
-        null= True,
-        blank= True,
+        default = 0,
         verbose_name= _("Delivery Cost"),
     )
 
@@ -115,17 +114,14 @@ class Order(models.Model):
         verbose_name= _("Billing Address")
     ) # عنوان وصول الفواتير
     total_order_cost = models.FloatField(
+        default = 0,
         editable= False,
         verbose_name= _("Total Order Cost"),
     )
     delvirey_cost = models.FloatField(
         editable= False,
+        default= 0,
         verbose_name= _("Delivery Cost"),
-    )
-    payments = models.ManyToManyField(
-        PaymentMethod,
-        through= "Payment",
-        verbose_name= _("Payments"),
     )
     received_date = models.DateTimeField(
         auto_now_add= True,
@@ -139,6 +135,13 @@ class Order(models.Model):
         return self.total_order_cost-(self.total_order_cost * 100 / self.promo_code.discount)-self.delvirey_cost
     
     @property
+    def Total_amounts_Paid(self) :
+        all_payments = 0
+        for payment in self.Payments.all():
+            all_payments += payment.amount
+        return all_payments
+    
+    @property
     def slug(self):
         return slugify(f"{self.pk}_{self.my_cart.customer.username}")
 
@@ -147,7 +150,7 @@ class Order(models.Model):
     
     def save(self, *args, **kwargs):
         self.delvirey_cost = self.delivery.delivery_cost
-        self.total_order_cost = self.my_cart.Total_MyCart_Cost()
+        self.total_order_cost = self.my_cart.Total_MyCart_Cost
         super(Order, self).save(*args, **kwargs)
     
     class Meta:
@@ -160,11 +163,13 @@ class Payment(models.Model):
     order= models.ForeignKey(
         Order,
         on_delete= models.CASCADE,
+        related_name= _("Payments"),
         verbose_name= _("Order"),
     )
     payment_method= models.ForeignKey(
         PaymentMethod,
         on_delete= models.CASCADE,
+        related_name= _("Payments"),
         verbose_name= _("Payment Method"),
     )
     charge_id= models.CharField(

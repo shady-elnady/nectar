@@ -47,7 +47,7 @@ router.register('platforms', PlatformViewSet)
 router.register('applications', ApplicationViewSet)
 
 ## Payment App
-router.register('Currencies', CurrencyViewSet)
+router.register('currencies', CurrencyViewSet)
 router.register('payment_methods', PaymentMethodViewSet)
 
 ## Product App
