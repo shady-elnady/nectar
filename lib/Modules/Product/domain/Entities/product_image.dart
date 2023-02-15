@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:nectar_mac/App/Entities/original_entity.dart';
+import 'package:nectar_mac/App/Entities/sub_base_entity.dart';
 
-class ProductImage extends OriginalEntity {
+class ProductImage extends SubBaseEntity {
   final String image;
   final String product;
 

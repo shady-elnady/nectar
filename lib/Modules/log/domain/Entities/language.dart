@@ -1,9 +1,10 @@
 import 'dart:convert';
 
-import '../../../../App/Entities/base_entity.dart';
+import 'package:nectar_mac/App/Entities/base_entity_name.dart';
+
 import 'applicatins.dart';
 
-class Language extends BaseEntity {
+class Language extends BaseEntityWithName {
   final String native;
   final String iso6391;
   final String? emoji;

@@ -1,11 +1,10 @@
 import 'dart:convert';
 
-import '../Entities/original_entity.dart';
+import '../Entities/base_entity.dart';
 
-abstract class BaseModel extends OriginalEntity {
+abstract class BaseModel extends BaseEntity {
   const BaseModel({
     required super.url,
-    required super.slug,
   });
 
   // factory BaseModel.fromMap(Map<String, dynamic> data) => BaseModel(
@@ -29,7 +28,6 @@ abstract class BaseModel extends OriginalEntity {
   @override
   Map<String, dynamic> toMap() => {
         'url': url,
-        'slug': slug,
       };
 }
 

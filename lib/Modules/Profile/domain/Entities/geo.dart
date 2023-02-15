@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:nectar_mac/App/Entities/original_entity.dart';
+import 'package:nectar_mac/App/Entities/sub_base_entity.dart';
 
-class Geo extends OriginalEntity {
+class Geo extends SubBaseEntity {
   final double lat;
   final double lang;
 

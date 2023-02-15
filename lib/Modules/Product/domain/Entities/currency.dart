@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:nectar_mac/App/Entities/base_entity.dart';
+import 'package:nectar_mac/App/Entities/base_entity_name.dart';
 
-class Currency extends BaseEntity {
+class Currency extends BaseEntityWithName {
   final String? native;
   final String code;
   final String? emoji;
@@ -23,9 +23,11 @@ class Currency extends BaseEntity {
 
   /// `dart:convert`
   ///
-  /// Converts [CurrencyModel] to a JSON string.
+  /// Converts [Currency] to a JSON string.
+  @override
   String toJson() => json.encode(toMap());
 
+  @override
   Map<String, dynamic> toMap() => {
         'url': url,
         'name': name,

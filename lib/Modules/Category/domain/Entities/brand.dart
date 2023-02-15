@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:nectar_mac/App/Entities/base_entity.dart';
+import 'package:nectar_mac/App/Entities/base_entity_name.dart';
 
-class Brand extends BaseEntity {
+class Brand extends BaseEntityWithName {
   final String? image;
 
   const Brand({

@@ -6,7 +6,6 @@ class ApiConstance {
   static const productsURL = "$_appBaseUrl/products";
   static const profilesURL = "$_appBaseUrl/profiles";
   static const myCartsURL = "$_appBaseUrl/my_carts";
-  static const myBasketsURL = "$_appBaseUrl/my_baskets";
-  static const myBasketItemsURL = "$_appBaseUrl/my_basket_items";
+  static const myCartItemsURL = "$_appBaseUrl/my_cart_items";
   static const brandsURL = "$_appBaseUrl/brands";
 }

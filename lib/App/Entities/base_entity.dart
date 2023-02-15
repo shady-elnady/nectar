@@ -1,25 +1,21 @@
-import 'original_entity.dart';
+import 'package:equatable/equatable.dart';
 
-abstract class BaseEntity extends OriginalEntity {
-  final String name;
+abstract class BaseEntity extends Equatable {
+  final String url;
 
   const BaseEntity({
-    required super.url,
-    required this.name,
-    required super.slug,
+    required this.url,
   });
 
   @override
   String toString() {
-    return 'BaseEntity(url: $url, name: $name, slug: $slug)';
+    return 'OriginalEntity(url: $url)';
   }
 
   /// `dart:convert`
   /// Converts [BaseEntity] to a JSON string.
-  @override
   String toJson();
 
-  @override
   Map<String, dynamic> toMap();
 
   @override
@@ -28,7 +24,5 @@ abstract class BaseEntity extends OriginalEntity {
   @override
   List<Object?> get props => [
         url,
-        name,
-        slug,
       ];
 }

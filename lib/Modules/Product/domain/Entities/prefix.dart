@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import '../../../../App/Entities/base_entity.dart';
+import 'package:nectar_mac/App/Entities/base_entity_name.dart';
 
-class Prefix extends BaseEntity {
+class Prefix extends BaseEntityWithName {
   final String native;
   final String symbol;
   final double power;

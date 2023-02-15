@@ -1,9 +1,10 @@
 import 'dart:convert';
 
-import '../../../../App/Entities/base_entity.dart';
+import 'package:nectar_mac/App/Entities/base_entity_name.dart';
+
 import 'city.dart';
 
-class Region extends BaseEntity {
+class Region extends BaseEntityWithName {
   final String native;
   final City city;
 

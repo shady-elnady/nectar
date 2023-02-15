@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:nectar_mac/App/Entities/original_entity.dart';
+import 'package:nectar_mac/App/Entities/sub_base_entity.dart';
 
 import '../../../Product/domain/Entities/product.dart';
 import '../../../log/domain/Entities/language.dart';
 import 'address.dart';
 import 'age.dart';
 
-class MyProfile extends OriginalEntity {
+class MyProfile extends SubBaseEntity {
   final String? image;
   final String? phoneNumber;
   final String? fullName;

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import '../../../../App/Entities/base_entity.dart';
+import 'package:nectar_mac/App/Entities/base_entity_name.dart';
 
-class Category extends BaseEntity {
+class Category extends BaseEntityWithName {
   final String image;
   final Category? categoryParent;
 

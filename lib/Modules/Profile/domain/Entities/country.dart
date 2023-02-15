@@ -1,10 +1,11 @@
 import 'dart:convert';
 
-import '../../../../App/Entities/base_entity.dart';
+import 'package:nectar_mac/App/Entities/base_entity_name.dart';
+
 import '../../../Product/domain/Entities/currency.dart';
 import '../../../log/domain/Entities/language.dart';
 
-class Country extends BaseEntity {
+class Country extends BaseEntityWithName {
   final String? native;
   final String? svgImg;
   final String? continent;

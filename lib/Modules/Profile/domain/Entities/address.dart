@@ -1,10 +1,11 @@
 import 'dart:convert';
 
-import '../../../../App/Entities/base_entity.dart';
+import 'package:nectar_mac/App/Entities/base_entity_name.dart';
+
 import 'geo.dart';
 import 'street.dart';
 
-class Address extends BaseEntity {
+class Address extends BaseEntityWithName {
   final String? native;
   final Street? street;
   final Geo? geo;

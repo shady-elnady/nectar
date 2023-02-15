@@ -1,13 +1,14 @@
 import 'dart:convert';
 
-import '../../../../App/Entities/base_entity.dart';
+import 'package:nectar_mac/App/Entities/base_entity_name.dart';
+
 import '../../../Category/domain/Entities/brand.dart';
 import '../../../Category/domain/Entities/category.dart';
 import 'currency.dart';
 import 'product_image.dart';
 import 'unit.dart';
 
-class Product extends BaseEntity {
+class Product extends BaseEntityWithName {
   final String image;
   final String? nutritions;
   final double amount;
