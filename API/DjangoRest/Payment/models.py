@@ -1,8 +1,9 @@
 from django.db import models
 from django.conf import settings
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
-from Nectar.models import BaseModelNative, PaymentMethod
+from Nectar.models import BaseModelNative, BaseModelName
 
 # Create your models here.
 
@@ -28,38 +29,18 @@ class Currency(BaseModelNative):
         verbose_name_plural= _("Currencies")
 
 
+class PaymentMethod(BaseModelNative):
+    emoji = models.CharField(
+        max_length= 2,
+        unique= True,
+        null= True,
+        blank= True,
+        verbose_name= _("Emoji"),
+    )
+    class Meta:
+        verbose_name= _("Payment")
+        verbose_name_plural= _("Payments")
 
-# class Payment(models.Model):
-    
-#     payment_method= models.CharField(
-#         max_length= 2,
-#         choices= PaymentMethod.choices,
-#         verbose_name= _("Payment Method"),
-#     )
-#     charge_id= models.CharField(
-#         max_length=50,
-#         unique= True,
-#         verbose_name= _("Charge ID"),
-#     )
-#     currency= models.ForeignKey(
-#         Currency,
-#         default= settings.DEFAULT_CURRENCY,
-#         on_delete= models.CASCADE,
-#         related_name= _("Payments"),
-#         verbose_name= _("Currency"),
-#     )
-#     amount= models.FloatField(
-#         verbose_name= _("Amount"),
-#     )
-#     payment_time= models.DateTimeField(
-#         auto_now_add= True,
-#         editable= False,
-#         verbose_name= _("Payment Time"),
-#     )
-    
-#     class Meta:
-#         verbose_name= _("Payment")
-#         verbose_name_plural= _("Payments")
 
 
 # TODO PAYMENT

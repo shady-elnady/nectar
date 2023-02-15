@@ -8,7 +8,7 @@ from Category.ViewsSet import CategoryViewSet, BrandViewSet
 from Department.ViewsSet import DepartmentViewSet
 from Language.ViewsSet import LanguageViewSet
 from Application.ViewsSet import ApplicationViewSet, PlatformViewSet
-from Payment.ViewsSet import CurrencyViewSet
+from Payment.ViewsSet import CurrencyViewSet, PaymentMethodViewSet
 from Product.ViewsSet import ProductViewSet, ProductImageViewSet
 from Unit.ViewsSet import PrefixViewSet, UnitViewSet
 from Location.ViewsSet import (
@@ -16,7 +16,10 @@ from Location.ViewsSet import (
     GovernorateViewSet, AddressViewSet,
     GeoViewSet, CountryViewSet,
 )
-from Orders.ViewsSet import RefundViewSet, OrderViewSet
+from Order.ViewsSet import (
+    RefundViewSet, PromoCodeViewSet,
+    OrderViewSet,PaymentViewSet, DeliveryViewSet,
+)
 from MyCart.ViewsSet import MyCartViewSet, MyCartItemViewSet, CouponViewSet
 
 
@@ -45,6 +48,7 @@ router.register('applications', ApplicationViewSet)
 
 ## Payment App
 router.register('Currencies', CurrencyViewSet)
+router.register('payment_methods', PaymentMethodViewSet)
 
 ## Product App
 router.register('products', ProductViewSet)
@@ -55,8 +59,11 @@ router.register('prefixes', PrefixViewSet)
 router.register('units', UnitViewSet)
 
 ## Order App
-router.register('orders', OrderViewSet)
 router.register('refunds', RefundViewSet)
+router.register('promo_codes', PromoCodeViewSet)
+router.register('payments', PaymentViewSet)
+router.register('deliveriess', DeliveryViewSet)
+router.register('orders', OrderViewSet)
 
 ## MyCart App
 router.register('coupons', CouponViewSet)

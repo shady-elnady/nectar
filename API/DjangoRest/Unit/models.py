@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
-from Nectar.models import BaseModelNative, Measurements
+from Nectar.models import BaseModelNative 
 
 # Create your models here.
 
@@ -23,6 +23,20 @@ class Prefix(BaseModelNative):
 
 
 class Unit(BaseModelNative):
+
+    class Measurements(models.TextChoices):
+        Package = "P", _("Package")
+        Volume = "V", _("Volume")
+        Area = "A", _("Area")
+        Length = "L", _("Length")
+        Mass = "M", _("Mass")
+        Concentation = "C", _("Concentation")
+        Speed = "S", _("Speed")
+        Time = "T", _("Time")
+        Direction = "D", _("Direction")
+        Temperature = "Te", _("Temperature")
+        ElectricCurrent = "EC", _("Electric Current")
+        LuminousIntensity = "LI", _("Luminous Intensity")
     
     symbol= models.CharField(
         max_length= 5,

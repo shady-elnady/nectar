@@ -1,15 +1,8 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
-from .models import MyCart, MyCartItem, Coupon
+from .models import MyCart, MyCartItem
 from .Serializer import MyCartSerializer, MyCartItemSerializer, CouponSerializer
-
-
-
-class CouponViewSet(viewsets.ModelViewSet):
-    queryset = Coupon.objects.all()
-    serializer_class = CouponSerializer
-    permission_classes = [ IsAuthenticated, IsAdminUser ]
 
 
 

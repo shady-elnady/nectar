@@ -141,54 +141,6 @@ class WeekDays(models.TextChoices):
     Friday= "Fri", _(calendar.day_name[6])
 
 
-class DayParts(models.TextChoices):
-    Morning= "AM", _("Morning")
-    Evening= "PM", _("Evening")
-
-
-class Genders(models.TextChoices):
-    Male= "M", _("Male")
-    FeMale= "F", _("FeMale")
-
-
-# #    نوع الفاتور
-# class InvoiceType(models.TextChoices): 
-#     Revenue= "R", _("Revenue")      # وارد
-#     # Departed= "D", _("Departed")    # منصرف
-#     Bounce= "B", _("Bounce")        # مترجع
-#     Quote= "Q", _("Quote")          # عرض اسعار
-
-
-# class PaymentType(models.TextChoices): 
-#     Revenue= "R", _("Revenue")      # وارد
-#     Expenses= "E", _("Expenses")    # منصرف
-#     Bounce= "B", _("Bounce")        # مترجع
-
-
-class FacilityTypes(models.TextChoices):
-    Laboratory= "L", _("Laboratory")
-    MainLaboratory= "ML", _("Main Laboratory")
-    Association="A",  _("Association")
-    Dispensary= "D", _("Dispensary")
-    ScientificCompany= "SC", _("Scientific Company")
-    PharmaceuticalCompany= "P", _("Pharmaceutical Company")
-    Supplier= "S", _("Supplier")
-    DentalClinic= "DC", _("Dental Clinic")
-    PrivateClinic= "PC", _("Private Clinic")
-    Butcher= "B", _("Butcher")
-    Grocery= "G", _("Grocery")
-    Barber= "Ba", _("Barber")
-    Pharmacy= "Ph", _("Pharmacy")
-    MedicalFacility= "MF", _("Medical Facility")
-    Dispensary_Associations= "DA", _("Dispensary & Associations")
-
-
-class PaymentMethod(models.TextChoices):
-    check= "Ch", _("Check")
-    PayPal= "P", _("PayPal")
-    Stripe= "S", _("Stripe")
-    Cach= "Ca", _("Cach")
-
 
 class Scores(models.TextChoices):
     A= "A", "⭐"
@@ -208,35 +160,5 @@ class Scores(models.TextChoices):
     O= "O", "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐"
 
 
-class Runs(models.TextChoices):
-    SameDay= "SD", _("Same Day")
-    NextDay= "ND", _("Next Day")
-    After2Days= "2D", _("After 2Days")
-    After4Days= "4D", _("After 4Days")
-    After10Days= "10D", _("After 10Days")
-    AfterWeek= "AW", _("After Week")
-    AfterMonth= "AM", _("After Month")
-    Saturday= "Sat", _(calendar.day_name[0])
-    Sunday= "Sun", _(calendar.day_name[1])
-    Monday= "Mon", _(calendar.day_name[2])
-    Tuesday= "Tue", _(calendar.day_name[3])
-    Wednesday= "Wed", _(calendar.day_name[4])
-    Thursday= "Thu", _(calendar.day_name[5])
-    Friday= "Fri", _(calendar.day_name[6])
-
-
-class Measurements(models.TextChoices):
-        Package = "P", _("Package")
-        Volume = "V", _("Volume")
-        Area = "A", _("Area")
-        Length = "L", _("Length")
-        Mass = "M", _("Mass")
-        Concentation = "C", _("Concentation")
-        Speed = "S", _("Speed")
-        Time = "T", _("Time")
-        Direction = "D", _("Direction")
-        Temperature = "Te", _("Temperature")
-        ElectricCurrent = "EC", _("Electric Current")
-        LuminousIntensity = "LI", _("Luminous Intensity")
 
 

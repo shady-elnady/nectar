@@ -11,8 +11,6 @@ class DepartmentViewSet(ModelViewSet):
     serializer_class = DepartmentSerializer
     permission_classes = [IsAuthenticated]
 
-
-
     def get_queryset(self):
         queryset = Department.objects.all()
         name = self.request.query_params.get('name')

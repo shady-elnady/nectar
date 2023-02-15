@@ -8,7 +8,7 @@ from datetime import date
 import calendar
 
 from .managers import FollowingManager, UsersManager
-from Nectar.models import BaseModel, BaseModelImageOnly, Genders
+from Nectar.models import BaseModel, BaseModelImageOnly
 from Language.models import Language
 from Location.models import Address
 from Product.models import Product
@@ -95,6 +95,10 @@ class Following(BaseModel):
 
 
 class Profile(BaseModelImageOnly):
+    class Genders(models.TextChoices):
+        male = "M", _("Male")
+        female = "F", _("Female")
+    
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,

@@ -62,7 +62,7 @@ MY_APP= [
     "User",
     "Product",
     "MyCart",
-    "Orders",
+    "Order",
     "Utils",
     # "API",
     "GraphQL",
