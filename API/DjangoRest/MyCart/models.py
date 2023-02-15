@@ -5,7 +5,7 @@ from django.conf import settings
 from Nectar.models import BaseModel
 
 from Product.models import Product
-
+from Order.models import Order
 # Create your models here.
 
 
@@ -17,28 +17,28 @@ class MyCart(BaseModel):
         related_name= _ ("My_Carts"),
         verbose_name= _("Customer"),
     ) 
-    my_cart_items = models.ManyToManyField(
-        Product,
-        through= "MyCartItem",
-        verbose_name= _("My Cart Items"),
-    )
-    # order= models.OneToOneField(
-    #     Order,
-    #     on_delete= models.CASCADE,
-    #     null= True,
-    #     blank= True,
-    #     verbose_name= _("Order"),
+    # my_cart_items = models.ManyToManyField(
+    #     Product,
+    #     through= "MyCartItem",
+    #     verbose_name= _("My Cart Items"),
     # )
+    order= models.OneToOneField(
+        Order,
+        on_delete= models.CASCADE,
+        null= True,
+        blank= True,
+        verbose_name= _("Order"),
+    )
     is_finished = models.BooleanField(
         default= False,
         verbose_name= _("is Finished"),
     )
     
     @property
-    def Total_MyCart_Cost(self) -> float:
+    def Total_MyCart_Cost(self):
         total = 0
-        for myCartItem in self.my_cart_items.all():
-            total += myCartItem.my_cart_item_price()
+        for myCartItem in self.My_Cart_Items.all():
+            total += myCartItem.My_Cart_Item_Price()
         return total
     
     @property
@@ -75,7 +75,7 @@ class MyCartItem(BaseModel):
     )
 
     @property
-    def my_cart_item_price(self) -> float:
+    def My_Cart_Item_Price(self) :
         return self.product.price * self.amount
     
     @property

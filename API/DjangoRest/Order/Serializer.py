@@ -1,7 +1,7 @@
 from rest_framework.serializers import HyperlinkedModelSerializer
 
 from .models import Order, Refund, Delivery, Payment, PromoCode
-from MyCart.Serializer import MyCartSerializer
+# from MyCart.Serializer import MyCartSerializer
 from Location.Serializer import AddressSerializer
 from Payment.Serializer import CurrencySerializer, PaymentMethodSerializer
 # Serializers define the API representation.
@@ -68,7 +68,7 @@ class DeliverySerializer(HyperlinkedModelSerializer):
 
 class OrderSerializer(HyperlinkedModelSerializer):
     Refund =RefundSerializer(many= False) 
-    my_cart =MyCartSerializer(many= False) 
+    # my_cart =MyCartSerializer(many= False) 
     promo_code = PromoCodeSerializer(many= False)
     delivery = DeliverySerializer(many= False)
     payments = PaymentSerializer(many= True)

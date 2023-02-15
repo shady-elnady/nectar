@@ -65,10 +65,8 @@ class Product(BaseModelImage):
         verbose_name= _("Currency"),
     )
     price= models.FloatField(
-        blank=True,
-        null=True,
         verbose_name= _("Price"),
-    )    
+    ) 
     detail= models.TextField(
         blank= True,
         null= True,

@@ -6,7 +6,6 @@ from django.utils.translation import gettext_lazy as _
 from Nectar.models import BaseModel
 from Location.models import Address
 from Payment.models import Currency, PaymentMethod
-from MyCart.models import MyCart
 
 # Create your models here.
 
@@ -71,7 +70,7 @@ class Delivery(models.Model):
 
 class Order(models.Model):
     my_cart = models.OneToOneField(
-        MyCart,
+        to= "MyCart.MyCart",
         on_delete= models.CASCADE,
         related_name= _("Order"),
         verbose_name= _("My Cart"),
@@ -125,7 +124,7 @@ class Order(models.Model):
     )
     payments = models.ManyToManyField(
         PaymentMethod,
-        through= _("Payment"),
+        through= "Payment",
         verbose_name= _("Payments"),
     )
     received_date = models.DateTimeField(
@@ -136,14 +135,14 @@ class Order(models.Model):
     ) # تاريخ الاستلام
 
     @property
-    def Final_Order_Cost(self) -> float:
+    def Final_Order_Cost(self) :
         return self.total_order_cost-(self.total_order_cost * 100 / self.promo_code.discount)-self.delvirey_cost
     
     @property
     def slug(self):
         return slugify(f"{self.pk}_{self.my_cart.customer.username}")
 
-    def __str__(self) -> str:
+    def __str__(self) :
         return f"{self.pk}_{self.my_cart.customer.username}"
     
     def save(self, *args, **kwargs):

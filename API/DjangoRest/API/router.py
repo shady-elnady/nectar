@@ -20,7 +20,7 @@ from Order.ViewsSet import (
     RefundViewSet, PromoCodeViewSet,
     OrderViewSet,PaymentViewSet, DeliveryViewSet,
 )
-from MyCart.ViewsSet import MyCartViewSet, MyCartItemViewSet, CouponViewSet
+from MyCart.ViewsSet import MyCartViewSet, MyCartItemViewSet 
 
 
 ## User App
@@ -66,7 +66,6 @@ router.register('deliveriess', DeliveryViewSet)
 router.register('orders', OrderViewSet)
 
 ## MyCart App
-router.register('coupons', CouponViewSet)
 router.register('my_carts', MyCartViewSet)
 router.register('my_cart_items', MyCartItemViewSet)
 

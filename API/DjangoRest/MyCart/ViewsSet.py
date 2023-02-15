@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from .models import MyCart, MyCartItem
-from .Serializer import MyCartSerializer, MyCartItemSerializer, CouponSerializer
+from .Serializer import MyCartSerializer, MyCartItemSerializer 
 
 
 
