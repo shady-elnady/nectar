@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:nectar_mac/App/Exceptions/failure.dart';
 
 import '../../../domain/Entities/product.dart';
-import '../../../domain/UseCases/get_searched_product_usecase.dart';
+import '../../../domain/UseCases/product_usecase/get_searched_product_usecase.dart';
 
 part 'searched_products_event.dart';
 part 'searched_products_state.dart';

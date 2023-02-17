@@ -1,0 +1,74 @@
+{
+  "url": "http://127.0.0.1:8000/api/favorite_products/5/",
+  "product": {
+    "url": "http://127.0.0.1:8000/api/products/Ginger/",
+    "name": "Ginger",
+    "image": "http://127.0.0.1:8000/media/images/Product/Ginger.png",
+    "nutritions": "100gr",
+    "amount": 250.0,
+    "reviews": 5.0,
+    "brand": {
+      "url": "http://127.0.0.1:8000/api/brands/Kazi%20Farmas/",
+      "name": "Kazi Farmas",
+      "image": "http://127.0.0.1:8000/media/images/%7Binstance.__class__.__name__%7D/default.jpg",
+      "slug": "kazi-farmas"
+    },
+    "category": {
+      "url": "http://127.0.0.1:8000/api/categories/Frash%20Fruits%20&%20Vegetable/",
+      "name": "Frash Fruits & Vegetable",
+      "image": "http://127.0.0.1:8000/media/images/Category/Frash_Fruits__Vegetable.png",
+      "category_parent": {
+        "url": "http://127.0.0.1:8000/api/categories/Foods/",
+        "name": "Foods",
+        "image": "http://127.0.0.1:8000/media/images/%7Binstance.__class__.__name__%7D/default.jpg",
+        "category_parent": null,
+        "slug": "foods"
+      },
+      "slug": "frash-fruits-vegetable"
+    },
+    "unit": {
+      "url": "http://127.0.0.1:8000/api/units/Gram/",
+      "name": "Gram",
+      "native": "جرام",
+      "symbol": "g",
+      "prefix": null,
+      "base_unit": null,
+      "measurement": "M",
+      "slug": "gram"
+    },
+    "serial": "4",
+    "currency": {
+      "url": "http://127.0.0.1:8000/api/currencies/Dolar/",
+      "name": "Dolar",
+      "native": "دولار",
+      "code": "$",
+      "emoji": "$",
+      "slug": "dolar"
+    },
+    "price": 2.99,
+    "detail": "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+    "is_favorite": false,
+    "product_images": [
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/22/",
+        "product": "http://127.0.0.1:8000/api/products/Ginger/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_iiD6Y1M.png",
+        "slug": "22"
+      },
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/23/",
+        "product": "http://127.0.0.1:8000/api/products/Ginger/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_Cv9gxUe.jpeg",
+        "slug": "23"
+      },
+      {
+        "url": "http://127.0.0.1:8000/api/productImages/24/",
+        "product": "http://127.0.0.1:8000/api/products/Ginger/",
+        "image": "http://127.0.0.1:8000/media/images/ProductImage/None_7MOE6MK.jpeg",
+        "slug": "24"
+      }
+    ],
+    "slug": "ginger"
+  },
+  "slug": "5"
+}

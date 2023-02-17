@@ -1,9 +1,9 @@
 from rest_framework.serializers import HyperlinkedModelSerializer
 
-from .models import Product, ProductImage
-from Category.Serializer import CategorySerializer, BrandSerializer
+from .models import Product, ProductImage, FavoriteProduct
 from Unit.Serializer import UnitSerializer
 from Payment.Serializer import CurrencySerializer
+from Category.Serializer import CategorySerializer, BrandSerializer
 # Serializers define the API representation.
 
 
@@ -17,6 +17,7 @@ class ProductImageSerializer(HyperlinkedModelSerializer):
             "image",
             "slug",
         ] 
+
 
 
 
@@ -44,5 +45,16 @@ class ProductSerializer(HyperlinkedModelSerializer):
             "detail",
             "is_favorite",
             "product_images",
+            "slug",
+        ]
+
+
+class FavoriteProductSerializer(HyperlinkedModelSerializer):
+    product = ProductSerializer(many= False)
+    class Meta:
+        model = FavoriteProduct
+        fields = [
+            "url",
+            "product",
             "slug",
         ] 

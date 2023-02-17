@@ -1,6 +1,7 @@
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 from django.conf import settings
+from django.utils.text import slugify
+from django.utils.translation import gettext_lazy as _
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -97,6 +98,39 @@ class ProductImage(BaseModelImageOnly):
     class Meta:
         verbose_name = _("Product Image")
         verbose_name_plural = _("Product Images")
+
+
+class FavoriteProduct(models.Model):
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name= _("Favorite_products"),
+        verbose_name=_("Product"),
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name= _("Favorite_products"),
+        verbose_name= _("User"),
+    )
+
+    @property
+    def slug(self) -> str:
+        return slugify(f"{self.pk}")
+
+    def __str__(self) -> str:
+        return f"{self.user.username} > {self.product.name}"
+
+    def __decode__(self) -> str:
+        return f"{self.user.username} > {self.product.name}"
+
+    class Meta:
+        unique_together = (
+            "product",
+            "user",
+        )
+        verbose_name = _("Favorite Product")
+        verbose_name_plural = _("Favorite Products")
 
 
 

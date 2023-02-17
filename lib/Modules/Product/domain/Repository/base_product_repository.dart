@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:nectar_mac/App/Exceptions/failure.dart';
 
 import '../Entities/product.dart';
-import '../UseCases/get_searched_product_usecase.dart';
+import '../UseCases/product_usecase/get_searched_product_usecase.dart';
 
 abstract class BaseProductRepository {
   //

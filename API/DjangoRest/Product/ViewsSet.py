@@ -3,8 +3,8 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 # from rest_framework import filters
 
-from .models import Product, ProductImage
-from .Serializer import ProductSerializer, ProductImageSerializer
+from .models import Product, ProductImage, FavoriteProduct
+from .Serializer import ProductSerializer, ProductImageSerializer, FavoriteProductSerializer
 
 
 class ProductViewSet(ModelViewSet):
@@ -31,4 +31,13 @@ class ProductImageViewSet(ModelViewSet):
     # filter_backends = (filters.DjangoFilterBackend,)
     permission_classes = [IsAuthenticated]
 
+
+
+class FavoriteProductViewSet(ModelViewSet):
+    queryset = FavoriteProduct.objects.all()
+    serializer_class = FavoriteProductSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return FavoriteProduct.objects.all().filter(user=self.request.user)
 

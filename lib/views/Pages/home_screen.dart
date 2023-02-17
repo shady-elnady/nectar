@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../Modules/MyCart/domain/Entities/my_cart_item.dart';
 import '../widgets/icons/my_cart_icon.dart';
 import '../../Modules/Department/presentation/Pages/shop_tab.dart';
 import 'model/page_model.dart';
@@ -13,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  static List<LineInMyCar?> myBasket = [];
+  static List<MyCartItem?> myBasket = [];
 
   @override
   void initState() {
@@ -48,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
         // widget: MyCartTab(),
         widget: const Icon(Icons.search_outlined),
         icon: MyCartIcon(
-          count: myCart.length,
+          count: myBasket.length,
         ),
         label: "Cart",
       ),

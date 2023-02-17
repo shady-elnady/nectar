@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:nectar_mac/App/Entities/sub_base_entity.dart';
 
+import '../../../MyCart/domain/Entities/my_cart.dart';
 import '../../../Product/domain/Entities/product.dart';
 import '../../../log/domain/Entities/language.dart';
 import 'address.dart';
@@ -13,11 +14,12 @@ class MyProfile extends SubBaseEntity {
   final String? fullName;
   final String? familyName;
   final String? birthDate;
-  final String gender;
+  final String? gender;
   final Language? language;
   final Address? address;
   final Age? age;
-  final List<Product?> favoritesProducts;
+  final MyCart? myBasket;
+  final List<Product>? favoritesProducts;
 
   const MyProfile({
     required super.url,
@@ -26,24 +28,14 @@ class MyProfile extends SubBaseEntity {
     this.fullName,
     this.familyName,
     this.birthDate,
-    required this.gender,
+    this.gender,
     this.language,
     this.address,
     this.age,
-    required this.favoritesProducts,
+    this.myBasket,
+    this.favoritesProducts,
     required super.slug,
   });
-
-  @override
-  String toString() {
-    return 'MyProfile(url: $url, image: $image, phoneNumber: $phoneNumber, fullName: $fullName, familyName: $familyName, birthDate: $birthDate, gender: $gender, language: $language, address: $address, age: $age, favoritesProducts: $favoritesProducts, slug: $slug)';
-  }
-
-  /// `dart:convert`
-  ///
-  /// Converts [MyProfile] to a JSON string.
-  @override
-  String toJson() => json.encode(toMap());
 
   @override
   Map<String, dynamic> toMap() => {
@@ -57,53 +49,68 @@ class MyProfile extends SubBaseEntity {
         'language': language?.toMap(),
         'address': address?.toMap(),
         'age': age?.toMap(),
-        'favorites_products': favoritesProducts.map((e) => e!.toMap()).toList(),
+        'my_basket': myBasket?.toMap(),
+        'favorites_products': favoritesProducts?.map((e) => e.toMap()).toList(),
         'slug': slug,
       };
 
+  /// `dart:convert`
+  ///
+  /// Converts [MyProfile] to a JSON string.
+  @override
+  String toJson() => json.encode(toMap());
+
   MyProfile copyWith({
-    required String url,
+    String? url,
     String? image,
     String? phoneNumber,
     String? fullName,
     String? familyName,
     String? birthDate,
-    required String gender,
+    String? gender,
     Language? language,
     Address? address,
     Age? age,
-    required List<Product?> favoritesProducts,
-    required String slug,
+    MyCart? myBasket,
+    List<Product>? favoritesProducts,
+    String? slug,
   }) {
     return MyProfile(
-      url: this.url,
+      url: url ?? this.url,
       image: image ?? this.image,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       fullName: fullName ?? this.fullName,
       familyName: familyName ?? this.familyName,
       birthDate: birthDate ?? this.birthDate,
-      gender: this.gender,
+      gender: gender ?? this.gender,
       language: language ?? this.language,
       address: address ?? this.address,
       age: age ?? this.age,
-      favoritesProducts: this.favoritesProducts,
-      slug: this.slug,
+      myBasket: myBasket ?? this.myBasket,
+      favoritesProducts: favoritesProducts ?? this.favoritesProducts,
+      slug: slug ?? this.slug,
     );
   }
 
   @override
-  List<Object?> get props => [
-        url,
-        image,
-        phoneNumber,
-        fullName,
-        familyName,
-        birthDate,
-        gender,
-        language,
-        address,
-        age,
-        favoritesProducts,
-        slug,
-      ];
+  bool get stringify => true;
+
+  @override
+  List<Object?> get props {
+    return [
+      url,
+      image,
+      phoneNumber,
+      fullName,
+      familyName,
+      birthDate,
+      gender,
+      language,
+      address,
+      age,
+      myBasket,
+      favoritesProducts,
+      slug,
+    ];
+  }
 }

@@ -5,7 +5,7 @@ import 'package:nectar_mac/App/Exceptions/failure.dart';
 import 'package:nectar_mac/App/Models/base_usecase.dart';
 
 import '../../../domain/Entities/product.dart';
-import '../../../domain/UseCases/get_all_products_usecase.dart';
+import '../../../domain/UseCases/product_usecase/get_all_products_usecase.dart';
 
 part 'all_products_event.dart';
 part 'all_products_state.dart';

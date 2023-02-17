@@ -7,7 +7,7 @@ import 'package:nectar_mac/App/Utils/Strings/messages.dart';
 import 'package:nectar_mac/Modules/Product/domain/Entities/product.dart';
 
 import '../../domain/Repository/base_product_repository.dart';
-import '../../domain/UseCases/get_searched_product_usecase.dart';
+import '../../domain/UseCases/product_usecase/get_searched_product_usecase.dart';
 import '../DataSource/Product_local_data_source.dart';
 import '../DataSource/product_remote_data_source.dart';
 import '../Models/product_model.dart';

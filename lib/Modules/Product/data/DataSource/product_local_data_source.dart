@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:nectar_mac/App/Exceptions/exceptions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../domain/UseCases/get_searched_product_usecase.dart';
+import '../../domain/UseCases/product_usecase/get_searched_product_usecase.dart';
 import '../Models/product_model.dart';
 
 abstract class ProductLocalDataSource {

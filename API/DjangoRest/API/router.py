@@ -9,7 +9,7 @@ from Department.ViewsSet import DepartmentViewSet
 from Language.ViewsSet import LanguageViewSet
 from Application.ViewsSet import ApplicationViewSet, PlatformViewSet
 from Payment.ViewsSet import CurrencyViewSet, PaymentMethodViewSet
-from Product.ViewsSet import ProductViewSet, ProductImageViewSet
+from Product.ViewsSet import ProductViewSet, ProductImageViewSet, FavoriteProductViewSet
 from Unit.ViewsSet import PrefixViewSet, UnitViewSet
 from Location.ViewsSet import (
     StreetViewSet, RegionViewSet, CityViewSet,
@@ -52,6 +52,7 @@ router.register('payment_methods', PaymentMethodViewSet)
 
 ## Product App
 router.register('products', ProductViewSet)
+router.register('favorite_products', FavoriteProductViewSet)
 router.register('productImages', ProductImageViewSet)
 
 ## Unit App

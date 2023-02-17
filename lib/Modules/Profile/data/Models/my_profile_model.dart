@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import '../../../MyCart/data/Models/my_cart_model.dart';
 import '../../../Product/data/Models/product_model.dart';
 import '../../../log/data/Models/language_model.dart';
 import '../../domain/Entities/my_profile.dart';
@@ -14,11 +15,12 @@ class MyProfileModel extends MyProfile {
     super.fullName,
     super.familyName,
     super.birthDate,
-    required super.gender,
+    super.gender,
     super.language,
     super.address,
     super.age,
-    required super.favoritesProducts,
+    super.myBasket,
+    super.favoritesProducts,
     required super.slug,
   });
 
@@ -29,7 +31,7 @@ class MyProfileModel extends MyProfile {
         fullName: data['full_name'] as String?,
         familyName: data['family_name'] as String?,
         birthDate: data['birth_date'] as String?,
-        gender: data['gender'] as String,
+        gender: data['gender'] as String?,
         language: data['language'] == null
             ? null
             : LanguageModel.fromMap(data['language'] as Map<String, dynamic>),
@@ -39,8 +41,11 @@ class MyProfileModel extends MyProfile {
         age: data['age'] == null
             ? null
             : AgeModel.fromMap(data['age'] as Map<String, dynamic>),
-        favoritesProducts: (data['favorites_products'] as List<dynamic>)
-            .map((e) => ProductModel.fromMap(e as Map<String, dynamic>))
+        myBasket: data['my_basket'] == null
+            ? null
+            : MyCartModel.fromMap(data['my_basket'] as Map<String, dynamic>),
+        favoritesProducts: (data['favorites_products'] as List<dynamic>?)
+            ?.map((e) => ProductModel.fromMap(e as Map<String, dynamic>))
             .toList(),
         slug: data['slug'] as String,
       );

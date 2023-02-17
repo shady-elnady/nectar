@@ -3,6 +3,8 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import RegexValidator
+from django.conf import settings
+
 from PIL import Image
 from datetime import date
 import calendar
@@ -100,7 +102,7 @@ class Profile(BaseModelImageOnly):
         female = "F", _("Female")
     
     user = models.OneToOneField(
-        User,
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name= _("Profile"),
         verbose_name= _("User"),
@@ -164,10 +166,6 @@ class Profile(BaseModelImageOnly):
         on_delete=models.CASCADE,
         related_name= _("Profile"),
         verbose_name= _("My Basket"),
-    )
-    favorites_products = models.ManyToManyField(
-        Product,
-        verbose_name= _("Favorite Products"),
     )
 
     @property
