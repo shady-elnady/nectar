@@ -23,8 +23,9 @@ class AddDeleteUpdateToCartBloc
       if (event is AddFavoriteProductEvent) {
         emit(LoadingAddDeleteFavoriteProductState());
 
-        final failureOrDoneMessage =
-            await addFavoriteProduct(productURL: event.productURL);
+        final failureOrDoneMessage = await addFavoriteProduct(
+          productURL: event.productURL,
+        );
 
         emit(
           _eitherDoneMessageOrErrorState(
@@ -35,8 +36,9 @@ class AddDeleteUpdateToCartBloc
       } else if (event is DeleteFavoriteProductEvent) {
         emit(LoadingAddDeleteFavoriteProductState());
 
-        final failureOrDoneMessage =
-            await deleteFavoriteProduct(productURL: event.productURL);
+        final failureOrDoneMessage = await deleteFavoriteProduct(
+          favoriteProductURL: event.favoriteProductURL,
+        );
 
         emit(
           _eitherDoneMessageOrErrorState(
@@ -49,10 +51,14 @@ class AddDeleteUpdateToCartBloc
   }
 
   AddDeleteFavoriteProductState _eitherDoneMessageOrErrorState(
-      Either<Failure, Unit> either, String message) {
+    Either<Failure, Unit> either,
+    String message,
+  ) {
     return either.fold(
       (failure) => ErrorAddDeleteFavoriteProductState(
-        message: FailureToMessage.call(failure),
+        message: FailureToMessage.call(
+          failure: failure,
+        ),
       ),
       (_) => MessageAddDeleteFavoriteProductState(
         message: message,

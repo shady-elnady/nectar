@@ -32,7 +32,11 @@ class MyCartItemRepository extends BaseMyCartItemRepository {
             myCartItemsList: remoteMyCartItems);
         return Right(remoteMyCartItems);
       } on ServerException catch (failure) {
-        return Left(ServerFailure(failure.errorMessageModel.statusMessage));
+        return Left(
+          ServerFailure(
+            message: failure.errorMessageModel.statusMessage,
+          ),
+        );
       }
     } else {
       try {
@@ -42,7 +46,7 @@ class MyCartItemRepository extends BaseMyCartItemRepository {
       } on EmptyCacheException {
         return const Left(
           EmptyCacheFailure(
-            Meassages.emptyCacheData,
+            message: Meassages.emptyCacheData,
           ),
         );
       }

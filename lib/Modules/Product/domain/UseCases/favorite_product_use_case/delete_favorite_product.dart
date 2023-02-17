@@ -8,10 +8,10 @@ class DeleteFavoriteProductUsecase {
   DeleteFavoriteProductUsecase(this.favoriteProductRepository);
 
   Future<Either<Failure, Unit>> call({
-    required String productURL,
+    required String favoriteProductURL,
   }) async {
     return await favoriteProductRepository.deleteFavoriteProduct(
-      productURL: productURL,
+      favoriteProductURL: favoriteProductURL,
     );
   }
 }

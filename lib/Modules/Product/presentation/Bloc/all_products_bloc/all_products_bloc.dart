@@ -35,8 +35,10 @@ class AllProductBloc extends Bloc<AllProductEvent, AllProductState> {
   AllProductState _mapFailureOrProductsToState(
       Either<Failure, List<Product>> either) {
     return either.fold(
-      (failure) =>
-          ErrorAllProductsState(message: FailureToMessage.call(failure)),
+      (failure) => ErrorAllProductsState(
+          message: FailureToMessage.call(
+        failure: failure,
+      )),
       (products) => LoadedAllProductsState(
         products: products,
       ),

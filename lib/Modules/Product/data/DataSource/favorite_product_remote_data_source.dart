@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:nectar_mac/App/API/api_constance.dart';
 
@@ -5,6 +6,7 @@ import 'package:nectar_mac/App/API/error_message_model.dart';
 import 'package:nectar_mac/App/Exceptions/exceptions.dart';
 import 'package:nectar_mac/App/Models/body_model.dart';
 
+import '../../domain/Entities/product.dart';
 import '../Models/favorite_product_model.dart';
 
 abstract class BaseFavoriteProductRemoteDataSource {
@@ -13,6 +15,14 @@ abstract class BaseFavoriteProductRemoteDataSource {
   // Get OnFavoriteProducte
   Future<FavoriteProductModel> getOneFavoriteProduct({
     required String slug,
+  });
+  // Add Favorite Product
+  Future<Unit> addFavoriteProduct({
+    required Product product,
+  });
+  // Delete Favorite Product
+  Future<Unit> deleteFavoriteProduct({
+    required String favoriteProductURL,
   });
 }
 
@@ -65,6 +75,43 @@ class FavoriteProductRemoteDataSource
     );
     if (res.statusCode == 200) {
       return FavoriteProductModel.fromJson(res.body);
+    } else {
+      throw "Unable to retrieve FavoriteProducts.";
+    }
+  }
+
+  @override
+  Future<Unit> addFavoriteProduct({
+    required Product product,
+  }) async {
+    Map<String, dynamic> body = {
+      "product": product,
+    };
+
+    http.Response res = await client.post(
+      Uri.parse(
+        ApiConstance.favoriteProductsURL,
+      ),
+      body: body,
+    );
+    if (res.statusCode == 200) {
+      return Future.value(unit);
+    } else {
+      throw "Unable to retrieve FavoriteProducts.";
+    }
+  }
+
+  @override
+  Future<Unit> deleteFavoriteProduct({
+    required String favoriteProductURL,
+  }) async {
+    http.Response res = await client.delete(
+      Uri.parse(
+        favoriteProductURL,
+      ),
+    );
+    if (res.statusCode == 200) {
+      return Future.value(unit);
     } else {
       throw "Unable to retrieve FavoriteProducts.";
     }

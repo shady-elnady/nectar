@@ -30,7 +30,11 @@ class CategoriesRepository extends BaseCategoryRepository {
         localCategoriesDataSource.cacheCategories(remoteCategories);
         return Right(remoteCategories);
       } on ServerException catch (failure) {
-        return Left(ServerFailure(failure.errorMessageModel.statusMessage));
+        return Left(
+          ServerFailure(
+            message: failure.errorMessageModel.statusMessage,
+          ),
+        );
       }
     } else {
       try {
@@ -40,7 +44,7 @@ class CategoriesRepository extends BaseCategoryRepository {
       } on EmptyCacheException {
         return const Left(
           EmptyCacheFailure(
-            Meassages.emptyCacheData,
+            message: Meassages.emptyCacheData,
           ),
         );
       }

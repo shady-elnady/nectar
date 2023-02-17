@@ -35,8 +35,10 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   CategoryState _mapFailureOrPostsToState(
       Either<Failure, List<Category>> either) {
     return either.fold(
-      (failure) =>
-          ErrorCategoriesState(message: FailureToMessage.call(failure)),
+      (failure) => ErrorCategoriesState(
+          message: FailureToMessage.call(
+        failure: failure,
+      )),
       (categories) => LoadedCategoriesState(
         categories: categories,
       ),

@@ -26,7 +26,11 @@ class MyCartBloc extends Bloc<MyCartEvent, MyCartState> {
 
   MyCartState _mapFailureOrMyCartToState(Either<Failure, MyCart> either) {
     return either.fold(
-      (failure) => ErrorMyCartState(message: FailureToMessage.call(failure)),
+      (failure) => ErrorMyCartState(
+        message: FailureToMessage.call(
+          failure: failure,
+        ),
+      ),
       (myCart) => LoadedMyCartState(
         myCart: myCart,
       ),

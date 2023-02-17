@@ -50,7 +50,9 @@ class SearchedProductBloc
       Either<Failure, List<Product>> either) {
     return either.fold(
       (failure) => ErrorSearchedProductsState(
-        message: FailureToMessage.call(failure),
+        message: FailureToMessage.call(
+          failure: failure,
+        ),
       ),
       (searchedProducts) => LoadedSearchedProductsByNameState(
         searchedProducts: searchedProducts,
@@ -62,7 +64,9 @@ class SearchedProductBloc
       Either<Failure, List<Product>> either) {
     return either.fold(
       (failure) => ErrorSearchedProductsState(
-        message: FailureToMessage.call(failure),
+        message: FailureToMessage.call(
+          failure: failure,
+        ),
       ),
       (searchedProducts) => LoadedSearchedProductsByCategoryState(
         searchedProducts: searchedProducts,

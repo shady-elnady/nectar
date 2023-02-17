@@ -64,7 +64,9 @@ class AddDeleteUpdateToCartBloc extends Bloc<MyCartItemEvent, MyCartItemState> {
       Either<Failure, Unit> either, String message) {
     return either.fold(
       (failure) => ErrorMyCartItemState(
-        message: FailureToMessage.call(failure),
+        message: FailureToMessage.call(
+          failure: failure,
+        ),
       ),
       (_) => MessageMyCartItemState(
         message: message,

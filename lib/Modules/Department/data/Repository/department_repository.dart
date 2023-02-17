@@ -31,7 +31,11 @@ class DepartmentRepository extends BaseDepartmentRepository {
         localDepartmentDataSource.cacheDepartments(remoteDepartments);
         return Right(remoteDepartments);
       } on ServerException catch (failure) {
-        return Left(ServerFailure(failure.errorMessageModel.statusMessage));
+        return Left(
+          ServerFailure(
+            message: failure.errorMessageModel.statusMessage,
+          ),
+        );
       }
     } else {
       try {
@@ -41,7 +45,7 @@ class DepartmentRepository extends BaseDepartmentRepository {
       } on EmptyCacheException {
         return const Left(
           EmptyCacheFailure(
-            Meassages.emptyCacheData,
+            message: Meassages.emptyCacheData,
           ),
         );
       }

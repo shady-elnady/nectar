@@ -32,7 +32,9 @@ class AllFavoriteProductsBloc
       Either<Failure, List<FavoriteProduct>> either) {
     return either.fold(
       (failure) => ErrorAllFavoriteProductsState(
-          message: FailureToMessage.call(failure)),
+          message: FailureToMessage.call(
+        failure: failure,
+      )),
       (favoriteProducts) => LoadedAllFavoriteProductsState(
         favoriteProducts: favoriteProducts,
       ),

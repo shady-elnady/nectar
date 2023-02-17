@@ -3,8 +3,10 @@ import 'package:dartz/dartz.dart';
 import 'package:nectar_mac/App/Exceptions/exceptions.dart';
 import 'package:nectar_mac/App/Exceptions/failure.dart';
 import 'package:nectar_mac/App/Services/network_services.dart';
+import 'package:nectar_mac/App/Types/delete_update_add_type.dart';
 import 'package:nectar_mac/App/Utils/Strings/messages.dart';
 
+import '../../domain/Entities/product.dart';
 import '../../domain/Repository/base_favorite_product_repository.dart';
 import '../DataSource/favorite_product_local_data_source.dart';
 import '../DataSource/favorite_product_remote_data_source.dart';
@@ -32,7 +34,11 @@ class FavoriteProductRepository extends BaseFavoriteProductRepository {
             favoriteProductsList: remoteFavoriteProducts);
         return Right(remoteFavoriteProducts);
       } on ServerException catch (failure) {
-        return Left(ServerFailure(failure.errorMessageModel.statusMessage));
+        return Left(
+          ServerFailure(
+            message: failure.errorMessageModel.statusMessage,
+          ),
+        );
       }
     } else {
       try {
@@ -42,7 +48,7 @@ class FavoriteProductRepository extends BaseFavoriteProductRepository {
       } on EmptyCacheException {
         return const Left(
           EmptyCacheFailure(
-            Meassages.emptyCacheData,
+            message: Meassages.emptyCacheData,
           ),
         );
       }
@@ -50,17 +56,47 @@ class FavoriteProductRepository extends BaseFavoriteProductRepository {
   }
 
   @override
-  Future<Either<Failure, Unit>> addFavoriteProduct({
-    required String productURL,
-  }) {
-    throw UnimplementedError();
+  Future<Either<Failure, Unit>> deleteFavoriteProduct({
+    required String favoriteProductURL,
+  }) async {
+    return await _getMessage(() {
+      return remoteFavoriteProductDataSource.deleteFavoriteProduct(
+        favoriteProductURL: favoriteProductURL,
+      );
+    });
   }
 
   @override
-  Future<Either<Failure, Unit>> deleteFavoriteProduct({
-    required String productURL,
-  }) {
-    // TODO: implement deletFavoriteProducte
-    throw UnimplementedError();
+  Future<Either<Failure, Unit>> addFavoriteProduct({
+    required Product product,
+  }) async {
+    return await _getMessage(() {
+      return remoteFavoriteProductDataSource.addFavoriteProduct(
+        product: product,
+      );
+    });
+  }
+
+  Future<Either<Failure, Unit>> _getMessage(
+    DeleteOrUpdateOrAddType deleteOrAddFavoriteProduct,
+  ) async {
+    if (await networkService.isConnected) {
+      try {
+        await deleteOrAddFavoriteProduct();
+        return const Right(unit);
+      } on ServerException {
+        return const Left(
+          ServerFailure(
+            message: Meassages.serverFailure,
+          ),
+        );
+      }
+    } else {
+      return const Left(
+        OfflineFailure(
+          message: Meassages.offLineConnection,
+        ),
+      );
+    }
   }
 }

@@ -32,7 +32,11 @@ class ProductRepository extends BaseProductRepository {
         localProductDataSource.cacheProducts(remoteProducts);
         return Right(remoteProducts);
       } on ServerException catch (failure) {
-        return Left(ServerFailure(failure.errorMessageModel.statusMessage));
+        return Left(
+          ServerFailure(
+            message: failure.errorMessageModel.statusMessage,
+          ),
+        );
       }
     } else {
       try {
@@ -42,7 +46,7 @@ class ProductRepository extends BaseProductRepository {
       } on EmptyCacheException {
         return const Left(
           EmptyCacheFailure(
-            Meassages.emptyCacheData,
+            message: Meassages.emptyCacheData,
           ),
         );
       }
@@ -59,7 +63,11 @@ class ProductRepository extends BaseProductRepository {
             .searchProducts(searchProductsParameters: searchProductsParameters);
         return Right(remoteSearchProducts);
       } on ServerException catch (failure) {
-        return Left(ServerFailure(failure.errorMessageModel.statusMessage));
+        return Left(
+          ServerFailure(
+            message: failure.errorMessageModel.statusMessage,
+          ),
+        );
       }
     } else {
       try {
@@ -70,7 +78,7 @@ class ProductRepository extends BaseProductRepository {
       } on EmptyCacheException {
         return const Left(
           EmptyCacheFailure(
-            Meassages.emptyCacheData,
+            message: Meassages.emptyCacheData,
           ),
         );
       }

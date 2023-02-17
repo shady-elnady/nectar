@@ -34,7 +34,10 @@ class BrandBloc extends Bloc<BrandsEvent, BrandsState> {
 
   BrandsState _mapFailureOrPostsToState(Either<Failure, List<Brand>> either) {
     return either.fold(
-      (failure) => ErrorBrandsState(message: FailureToMessage.call(failure)),
+      (failure) => ErrorBrandsState(
+          message: FailureToMessage.call(
+        failure: failure,
+      )),
       (brands) => LoadedBrandsState(
         brands: brands,
       ),

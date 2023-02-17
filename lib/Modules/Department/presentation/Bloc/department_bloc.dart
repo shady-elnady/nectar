@@ -35,8 +35,10 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
   DepartmentState _mapFailureOrPostsToState(
       Either<Failure, List<Department>> either) {
     return either.fold(
-      (failure) =>
-          ErrorDepartmentsState(message: FailureToMessage.call(failure)),
+      (failure) => ErrorDepartmentsState(
+          message: FailureToMessage.call(
+        failure: failure,
+      )),
       (departments) => LoadedDepartmentsState(
         departments: departments,
       ),

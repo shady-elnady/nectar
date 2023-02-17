@@ -5,31 +5,43 @@ import '../Utils/Strings/messages.dart';
 abstract class Failure extends Equatable {
   final String message;
 
-  const Failure(this.message);
+  const Failure({
+    required this.message,
+  });
 
   @override
   List<Object> get props => [message];
 }
 
 class ServerFailure extends Failure {
-  const ServerFailure(super.message);
+  const ServerFailure({
+    required super.message,
+  });
 }
 
 class DatabaseFailure extends Failure {
-  const DatabaseFailure(super.message);
+  const DatabaseFailure({
+    required super.message,
+  });
 }
 
 class OfflineFailure extends Failure {
-  const OfflineFailure(super.message);
+  const OfflineFailure({
+    required super.message,
+  });
 }
 
 class EmptyCacheFailure extends Failure {
-  const EmptyCacheFailure(super.message);
+  const EmptyCacheFailure({
+    required super.message,
+  });
 }
 
 @override
 class FailureToMessage {
-  static String call(Failure failure) {
+  static String call({
+    required Failure failure,
+  }) {
     switch (failure.runtimeType) {
       case ServerFailure:
         return Meassages.serverFailure;
