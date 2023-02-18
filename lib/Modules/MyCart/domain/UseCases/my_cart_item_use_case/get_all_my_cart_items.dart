@@ -8,7 +8,9 @@ import '../../Repository/base_my_cart_item_repository.dart';
 class GetAllMyCartItemsUsecase {
   final BaseMyCartItemRepository myCartItemRepository;
 
-  GetAllMyCartItemsUsecase(this.myCartItemRepository);
+  GetAllMyCartItemsUsecase({
+    required this.myCartItemRepository,
+  });
 
   Future<Either<Failure, List<MyCartItem>>> call() {
     return myCartItemRepository.getAllMyCartItems();

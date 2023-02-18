@@ -9,7 +9,9 @@ import '../../Repository/base_product_repository.dart';
 class GetAllProductUseCase extends BaseUseCase<List<Product>, NoParameters> {
   final BaseProductRepository baseProductRepository;
 
-  GetAllProductUseCase(this.baseProductRepository);
+  GetAllProductUseCase({
+    required this.baseProductRepository,
+  });
 
   @override
   Future<Either<Failure, List<Product>>> call({

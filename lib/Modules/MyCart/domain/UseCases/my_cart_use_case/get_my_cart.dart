@@ -7,7 +7,9 @@ import 'package:dartz/dartz.dart';
 class GetMyCartUsecase {
   final BaseMyCartRepository myCartRepository;
 
-  GetMyCartUsecase(this.myCartRepository);
+  GetMyCartUsecase({
+    required this.myCartRepository,
+  });
 
   Future<Either<Failure, MyCart>> call() async {
     return await myCartRepository.getMyCart();

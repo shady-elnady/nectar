@@ -8,7 +8,9 @@ import '../../Repository/base_favorite_product_repository.dart';
 class GetAllFavoriteProductsUsecase {
   final BaseFavoriteProductRepository favoriteProductRepository;
 
-  GetAllFavoriteProductsUsecase(this.favoriteProductRepository);
+  GetAllFavoriteProductsUsecase({
+    required this.favoriteProductRepository,
+  });
 
   Future<Either<Failure, List<FavoriteProduct>>> call() {
     return favoriteProductRepository.getAllFavoriteProducts();

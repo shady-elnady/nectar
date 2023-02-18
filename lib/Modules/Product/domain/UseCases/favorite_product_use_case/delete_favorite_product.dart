@@ -5,7 +5,9 @@ import '../../Repository/base_favorite_product_repository.dart';
 
 class DeleteFavoriteProductUsecase {
   final BaseFavoriteProductRepository favoriteProductRepository;
-  DeleteFavoriteProductUsecase(this.favoriteProductRepository);
+  DeleteFavoriteProductUsecase({
+    required this.favoriteProductRepository,
+  });
 
   Future<Either<Failure, Unit>> call({
     required String favoriteProductURL,

@@ -5,7 +5,9 @@ import '../../Repository/base_my_cart_item_repository.dart';
 
 class DeleteMyCartItemUsecase {
   final BaseMyCartItemRepository myCartItemRepository;
-  DeleteMyCartItemUsecase(this.myCartItemRepository);
+  DeleteMyCartItemUsecase({
+    required this.myCartItemRepository,
+  });
 
   Future<Either<Failure, Unit>> call({
     required String myCartItemURL,

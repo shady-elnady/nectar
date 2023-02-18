@@ -12,11 +12,11 @@ import '../../../domain/UseCases/favorite_product_use_case/delete_favorite_produ
 part 'add_delete_favorite_product_event.dart';
 part 'add_delete_favorite_product_state.dart';
 
-class AddDeleteUpdateToCartBloc
+class AddDeleteFavoriteProductCartBloc
     extends Bloc<AddDeleteFavoriteProductEvent, AddDeleteFavoriteProductState> {
   final AddFavoriteProductUsecase addFavoriteProduct;
   final DeleteFavoriteProductUsecase deleteFavoriteProduct;
-  AddDeleteUpdateToCartBloc({
+  AddDeleteFavoriteProductCartBloc({
     required this.addFavoriteProduct,
     required this.deleteFavoriteProduct,
   }) : super(InitialAddDeleteFavoriteProductState()) {

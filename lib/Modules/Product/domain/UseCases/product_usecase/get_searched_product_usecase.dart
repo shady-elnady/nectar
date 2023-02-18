@@ -11,7 +11,9 @@ class GetSearchedProductsUseCase
     extends BaseUseCase<List<Product>, SearchProductsParameters> {
   final BaseProductRepository baseProductRepository;
 
-  GetSearchedProductsUseCase(this.baseProductRepository);
+  GetSearchedProductsUseCase({
+    required this.baseProductRepository,
+  });
 
   @override
   Future<Either<Failure, List<Product>>> call({
