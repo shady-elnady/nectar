@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:nectar_mac/App/Exceptions/failure.dart';
 import 'package:nectar_mac/App/Utils/Strings/messages.dart';
 
+import '../../../domain/Entities/product.dart';
 import '../../../domain/UseCases/favorite_product_use_case/add_favorite_product.dart';
 import '../../../domain/UseCases/favorite_product_use_case/delete_favorite_product.dart';
 
@@ -24,7 +25,7 @@ class AddDeleteUpdateToCartBloc
         emit(LoadingAddDeleteFavoriteProductState());
 
         final failureOrDoneMessage = await addFavoriteProduct(
-          productURL: event.productURL,
+          product: event.product,
         );
 
         emit(

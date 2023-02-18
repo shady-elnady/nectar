@@ -4,10 +4,10 @@ import 'package:nectar_mac/App/Exceptions/failure.dart';
 import 'package:nectar_mac/App/Models/base_usecase.dart';
 
 import '../Entities/brand.dart';
-import '../Repository/base_brands_repository.dart';
+import '../Repository/base_brand_repository.dart';
 
 class GetAllBrandsUseCase extends BaseUseCase<List<Brand>, NoParameters> {
-  final BaseBrandsRepository baseBrandsRepository;
+  final BaseBrandRepository baseBrandsRepository;
 
   GetAllBrandsUseCase(this.baseBrandsRepository);
 

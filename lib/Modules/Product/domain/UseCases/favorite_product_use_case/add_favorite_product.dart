@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:nectar_mac/App/Exceptions/failure.dart';
 
+import '../../Entities/product.dart';
 import '../../Repository/base_favorite_product_repository.dart';
 
 class AddFavoriteProductUsecase {
@@ -10,10 +11,10 @@ class AddFavoriteProductUsecase {
   });
 
   Future<Either<Failure, Unit>> call({
-    required String productURL,
+    required Product product,
   }) async {
     return await favoriteProductRepository.addFavoriteProduct(
-      productURL: productURL,
+      product: product,
     );
   }
 }

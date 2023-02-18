@@ -48,6 +48,8 @@ SITE_ID = 1
 THIRD_LIBRARIES= [
     'rest_framework',
     'rest_framework_simplejwt',
+    #  "rest_framework.authtoken",
+    'drf_yasg',
 ]
 
 MY_APP= [
@@ -63,6 +65,7 @@ MY_APP= [
     "Product",
     "Order",
     "MyCart",
+    "Notifecation",
     "Utils",
     # "API",
     "GraphQL",
@@ -236,12 +239,15 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [
+    #     'rest_framework.authentication.TokenAuthentication',
+    # ],
     ## for Simple JWT
     # 'DEFAULT_AUTHENTICATION_CLASSES': (
     #     'rest_framework_simplejwt.authentication.JWTAuthentication',
     # ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
+    'PAGE_SIZE': 2,
 }
 
 

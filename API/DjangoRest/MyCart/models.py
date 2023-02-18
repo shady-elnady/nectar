@@ -1,11 +1,12 @@
 from django.db import models
-from django.utils.text import slugify
-from django.utils.translation import gettext_lazy as _
 from django.conf import settings
-from Nectar.models import BaseModel
+from django.utils.text import slugify
+from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
 
+from Nectar.models import BaseModel
 from Product.models import Product
-from Order.models import Order
+
 # Create your models here.
 
 
@@ -14,21 +15,10 @@ class MyCart(BaseModel):
         settings.AUTH_USER_MODEL,
         on_delete= models.CASCADE,
         to_field= 'username',
+        # default= get_user_model(),
         related_name= _ ("My_Carts"),
         verbose_name= _("Customer"),
     ) 
-    # my_cart_items = models.ManyToManyField(
-    #     Product,
-    #     through= "MyCartItem",
-    #     verbose_name= _("My Cart Items"),
-    # )
-    # order= models.OneToOneField(
-    #     Order,
-    #     on_delete= models.CASCADE,
-    #     null= True,
-    #     blank= True,
-    #     verbose_name= _("Order"),
-    # )
     is_finished = models.BooleanField(
         default= False,
         verbose_name= _("is Finished"),

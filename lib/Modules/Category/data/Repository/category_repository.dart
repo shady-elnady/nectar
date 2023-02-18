@@ -9,10 +9,11 @@ import '../../domain/Entities/category.dart';
 import '../../domain/Repository/base_category_repository.dart';
 import '../DataSource/category_local_data_source.dart';
 import '../DataSource/category_remote_data_source.dart';
+import '../Models/category_model.dart';
 
 class CategoriesRepository extends BaseCategoryRepository {
   final BaseCategoryRemoteDataSource remoteCategoriesDataSource;
-  final CategoriesLocalDataSourceImpl localCategoriesDataSource;
+  final BaseCategoryLocalDataSource localCategoriesDataSource;
   final NetworkService networkService;
 
   CategoriesRepository({
@@ -25,9 +26,11 @@ class CategoriesRepository extends BaseCategoryRepository {
   Future<Either<Failure, List<Category>>> getAllCategories() async {
     if (await networkService.isConnected) {
       try {
-        List<Category> remoteCategories =
+        List<CategoryModel> remoteCategories =
             await remoteCategoriesDataSource.getAllCategories();
-        localCategoriesDataSource.cacheCategories(remoteCategories);
+        localCategoriesDataSource.cacheCategories(
+          categoriesList: remoteCategories,
+        );
         return Right(remoteCategories);
       } on ServerException catch (failure) {
         return Left(

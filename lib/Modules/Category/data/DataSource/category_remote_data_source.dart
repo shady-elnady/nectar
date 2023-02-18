@@ -16,8 +16,14 @@ abstract class BaseCategoryRemoteDataSource {
 
 class CategoriesRemoteDataSource implements BaseCategoryRemoteDataSource {
   final http.Client client;
+  CategoriesRemoteDataSource({
+    required this.client,
+  });
 
-  CategoriesRemoteDataSource({required this.client});
+  Map<String, String>? headers = {
+    "Content-Type": "application/json",
+    // "Authorization": "Bearer ${}",
+  };
 
   // Get All Departments Implementation
   @override
@@ -26,7 +32,7 @@ class CategoriesRemoteDataSource implements BaseCategoryRemoteDataSource {
       Uri.parse(
         ApiConstance.categoriesURL,
       ),
-      headers: {"Content-Type": "application/json"},
+      headers: headers,
     );
 
     if (response.statusCode == 200) {

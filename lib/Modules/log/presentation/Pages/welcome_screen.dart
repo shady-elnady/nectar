@@ -5,7 +5,7 @@ import 'package:nectar_mac/views/Utils/constant.dart';
 import 'package:nectar_mac/views/widgets/Buttons/animated_button.dart';
 import 'package:nectar_mac/views/widgets/Buttons/main_button.dart';
 
-import '../Widgets/botom_sheet.dart';
+import 'Widgets/botom_sheet.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);

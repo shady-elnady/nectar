@@ -4,6 +4,8 @@ from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import RegexValidator
 from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.db.models import Q
 
 from PIL import Image
 from datetime import date
@@ -13,8 +15,8 @@ from .managers import FollowingManager, UsersManager
 from Nectar.models import BaseModel, BaseModelImageOnly
 from Language.models import Language
 from Location.models import Address
-from Product.models import Product
 from MyCart.models import MyCart
+from Order.models import PromoCard
 
 
 
@@ -23,20 +25,20 @@ class User(AbstractBaseUser, BaseModel, PermissionsMixin):
     REQUIRED_FIELDS = ["username"]
 
     objects = UsersManager()
-
-    username = models.CharField(
-        max_length=30,
-        unique=True,
-        null=False,
-        blank=False,
-        verbose_name= _("User Name"),
-    )
+    
     email = models.EmailField(
         max_length=200,
         unique=True,
         null=False,
         blank=False,
         verbose_name= _("E-Mail"),
+    )
+    username = models.CharField(
+        max_length=30,
+        unique=True,
+        null=False,
+        blank=False,
+        verbose_name= _("User Name"),
     )
     is_active = models.BooleanField(
         default=True,
@@ -105,6 +107,8 @@ class Profile(BaseModelImageOnly):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name= _("Profile"),
+        to_field= "email",
+        default= get_user_model(),
         verbose_name= _("User"),
     )
     phone_regex = RegexValidator(
@@ -151,23 +155,43 @@ class Profile(BaseModelImageOnly):
         default="en",
         verbose_name= _("Language"),
     )
-    address = models.ForeignKey(
-        Address,
-        on_delete=models.SET("Deleted"),
-        null=True,
-        blank=True,
-        verbose_name= _("Address"),
-    )
-    my_basket = models.OneToOneField(
-        MyCart,
-        null= True,
+    promo_card = models.ForeignKey(
+        PromoCard,
+        on_delete=models.SET_NULL,
         blank= True,
-        limit_choices_to= {"is_finished": False},
-        on_delete=models.CASCADE,
-        related_name= _("Profile"),
-        verbose_name= _("My Basket"),
+        null= True,
+        verbose_name= _("Promo Card"),
     )
+    delivery_address = models.ForeignKey(
+        Address,
+        related_name= _('+'),
+        on_delete= models.SET_NULL,
+        blank= True,
+        null= True,
+        verbose_name= _("Delivery Address")
+    ) # عنوان الشحن
+    billing_address = models.ForeignKey(
+        Address,
+        related_name= _('+'),
+        on_delete= models.SET_NULL,
+        blank= True,
+        null= True,
+        verbose_name= _("Billing Address")
+    ) # عنوان وصول الفواتير
+    # my_basket = models.OneToOneField(
+    #     MyCart,
+    #     null= True,
+    #     blank= True,
+    #     limit_choices_to= {"is_finished": False},
+    #     on_delete=models.CASCADE,
+    #     related_name= _("Profile"),
+    #     verbose_name= _("My Basket"),
+    # )
 
+    @property
+    def my_basket(self):
+        return MyCart.objects.filter(Q(customer=get_user_model()) & Q(is_finished= False))
+    
     @property
     def age(self) -> dict:
         born = self.birth_date
@@ -207,16 +231,14 @@ class Profile(BaseModelImageOnly):
 
     def __decode__(self):
         return f"{self.user.username}"
-    
-    def save(self):
-        super().save()
 
-        img = Image.open(self.image.path)
-
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+    # def save(self):
+    #     super().save()
+    #     img = Image.open(self.image.path)
+    #     if img.height > 300 or img.width > 300:
+    #         output_size = (300,300)
+    #         img.thumbnail(output_size)
+    #         img.save(self.image.path)
 
     class Meta:
         verbose_name = _("Profile")

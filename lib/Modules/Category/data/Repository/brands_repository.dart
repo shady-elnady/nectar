@@ -6,14 +6,14 @@ import 'package:nectar_mac/App/Services/network_services.dart';
 import 'package:nectar_mac/App/Utils/Strings/messages.dart';
 
 import '../../domain/Entities/brand.dart';
-import '../../domain/Repository/base_brands_repository.dart';
+import '../../domain/Repository/base_brand_repository.dart';
 import '../DataSource/brands_local_data_source.dart';
 import '../DataSource/brands_remote_data_source.dart';
 import '../Models/brand_model.dart';
 
-class BrandsRepository extends BaseBrandsRepository {
+class BrandsRepository implements BaseBrandRepository {
   final BaseBrandsRemoteDataSource remoteBrandsDataSource;
-  final BrandsLocalDataSource localBrandsDataSource;
+  final BaseBrandLocalDataSource localBrandsDataSource;
   final NetworkService networkService;
 
   BrandsRepository({

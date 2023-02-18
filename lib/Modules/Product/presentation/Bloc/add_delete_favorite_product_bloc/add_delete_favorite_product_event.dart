@@ -7,14 +7,14 @@ abstract class AddDeleteFavoriteProductEvent extends Equatable {
 }
 
 class AddFavoriteProductEvent extends AddDeleteFavoriteProductEvent {
-  final String productURL;
+  final Product product;
 
   const AddFavoriteProductEvent({
-    required this.productURL,
+    required this.product,
   });
   @override
   List<Object> get props => [
-        productURL,
+        product,
       ];
 }
 

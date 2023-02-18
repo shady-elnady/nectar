@@ -17,11 +17,11 @@ from Location.ViewsSet import (
     GeoViewSet, CountryViewSet,
 )
 from Order.ViewsSet import (
-    RefundViewSet, PromoCodeViewSet,
+    RefundViewSet, PromoCardViewSet,
     OrderViewSet,PaymentViewSet, DeliveryViewSet,
 )
 from MyCart.ViewsSet import MyCartViewSet, MyCartItemViewSet 
-
+from Notifecation.ViewsSet import NotifecationViewSet
 
 ## User App
 router = routers.DefaultRouter()
@@ -38,6 +38,9 @@ router.register('categories', CategoryViewSet)
 
 ## Department App
 router.register('departments', DepartmentViewSet)
+
+## Notifecation App
+router.register('notifecations', NotifecationViewSet)
 
 ## Language App
 router.register('languages', LanguageViewSet)
@@ -61,7 +64,7 @@ router.register('units', UnitViewSet)
 
 ## Order App
 router.register('refunds', RefundViewSet)
-router.register('promo_codes', PromoCodeViewSet)
+router.register('promo_cards', PromoCardViewSet)
 router.register('payments', PaymentViewSet)
 router.register('deliveriess', DeliveryViewSet)
 router.register('orders', OrderViewSet)

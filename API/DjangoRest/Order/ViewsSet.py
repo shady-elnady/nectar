@@ -3,11 +3,11 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from .models import (
     Order, Refund, Delivery,
-    Payment, PromoCode,
+    Payment, PromoCard,
 )
 from .Serializer import ( 
     RefundSerializer,
-    PromoCodeSerializer, OrderSerializer,
+    PromoCardSerializer, OrderSerializer,
     PaymentSerializer, DeliverySerializer
 )
 
@@ -19,9 +19,9 @@ class RefundViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated, IsAdminUser]
 
 
-class PromoCodeViewSet(ModelViewSet):
-    queryset = PromoCode.objects.all()
-    serializer_class = PromoCodeSerializer
+class PromoCardViewSet(ModelViewSet):
+    queryset = PromoCard.objects.all()
+    serializer_class = PromoCardSerializer
     permission_classes = [IsAuthenticated, IsAdminUser]
 
 

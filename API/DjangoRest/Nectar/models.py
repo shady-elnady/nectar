@@ -80,7 +80,7 @@ class BaseModelImage(BaseModelName):  ##########
 class BaseModelImageOnly(models.Model):
     image= models.ImageField(
         upload_to= upload_to,
-        default= "images/{instance.__class__.__name__}/default.jpg",
+        # default= "images/{instance.__class__.__name__}/default.jpg",
         null= True,
         blank= True,
         verbose_name= _("Image"),

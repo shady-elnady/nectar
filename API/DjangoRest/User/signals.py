@@ -8,28 +8,25 @@ from django.test import override_settings
 from .models import User, Profile
 
 
+# @override_settings(
+#     AUTH_USER_MODEL = 'User.User'
+# )
+
+# @receiver(setting_changed)
+# def user_model_swapped(**kwargs):
+#     if kwargs['setting'] == 'AUTH_USER_MODEL':
+#         apps.clear_cache()
+#         from .models import User
+#         User = get_user_model()
+
+
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
+def create_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
-        Profile.save()
+        profile = Profile.objects.create(user=instance)
+        profile.save()
 
 
-@override_settings(
-    AUTH_USER_MODEL = 'User.User'
-)
-
-@receiver(setting_changed)
-def user_model_swapped(**kwargs):
-    if kwargs['setting'] == 'AUTH_USER_MODEL':
-        apps.clear_cache()
-        from .models import User
-        User = get_user_model()
-
-
-## Other Method
-# def create_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         Profile.objects.create(user=instance)
-
-# post_save.connect(create_user_profile, sender=User)
+# @receiver(post_save, sender=User)
+# def save_profile(sender, instance, **kwargs):
+#     instance.Profile.save()

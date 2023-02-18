@@ -9,7 +9,7 @@ from django.views.generic.edit import CreateView, UpdateView
 
 from .models import User, Profile
 from .forms import (
-    SignUpForm,
+    UserRegisterForm,
     UserLoginForm,
 )
 
@@ -68,7 +68,7 @@ class LogView(auth_views.LoginView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["sign_up_form"] = SignUpForm() 
+        context["sign_up_form"] = UserRegisterForm() 
         return context
 
 

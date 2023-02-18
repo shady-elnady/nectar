@@ -8,6 +8,14 @@ class ServerException implements Exception {
   });
 }
 
+class LogException implements Exception {
+  final ErrorMessageModel errorMessageModel;
+
+  const LogException({
+    required this.errorMessageModel,
+  });
+}
+
 class LocalDatabaseException implements Exception {
   final String message;
 
@@ -17,5 +25,7 @@ class LocalDatabaseException implements Exception {
 }
 
 class EmptyCacheException implements Exception {}
+
+class EmptyCacheTokenException implements Exception {}
 
 class OfflineException implements Exception {}

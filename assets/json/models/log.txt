@@ -1,0 +1,21 @@
+/**
+   curl \
+    -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"username": "davidattenborough", "password": "boatymcboatface"}' \
+    http://localhost:8000/api/token/
+
+
+
+
+    curl \
+      -X POST \
+      -H "Content-Type: application/json" \
+      -d '{"refresh":"eyJhbGciOiJImNvbGRfc3R1Zm5ZjE1YWRt7Rh4"}' \
+      http://localhost:8000/api/token/refresh/
+
+    ...
+    {"access":"exs1eMLXiR17dIDBVxeT-w"}
+
+
+ */

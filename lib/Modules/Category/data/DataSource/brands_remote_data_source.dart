@@ -44,7 +44,10 @@ class BrandsRemoteDataSource implements BaseBrandsRemoteDataSource {
     } else {
       throw ServerException(
         errorMessageModel: ErrorMessageModel.fromJson(
-            const {"ServerException": "ServerException"}),
+          const {
+            "ServerException": "ServerException",
+          },
+        ),
       );
     }
   }

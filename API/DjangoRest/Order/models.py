@@ -9,7 +9,7 @@ from Payment.models import Currency, PaymentMethod
 
 # Create your models here.
 
-class PromoCode(BaseModel):
+class PromoCard(BaseModel):
     coupon = models.AutoField(
         primary_key= True,
         verbose_name= _("Coupon"),
@@ -35,8 +35,8 @@ class PromoCode(BaseModel):
         return f"{self.coupon}"
     
     class Meta:
-        verbose_name= _("Promo Code")
-        verbose_name_plural= _("Promo Codes")
+        verbose_name= _("Promo Card")
+        verbose_name_plural= _("Promo Cards")
 
 
 
@@ -71,15 +71,9 @@ class Order(models.Model):
     my_cart = models.OneToOneField(
         to= "MyCart.MyCart",
         on_delete= models.CASCADE,
+        limit_choices_to= {"is_finished": True},
         related_name= _("Order"),
         verbose_name= _("My Cart"),
-    )
-    promo_code = models.ForeignKey(
-        PromoCode,
-        on_delete=models.SET_NULL,
-        blank= True,
-        null= True,
-        verbose_name= _("Promo Code"),
     )
     is_refund_requested = models.BooleanField(
         default= False,
@@ -89,14 +83,6 @@ class Order(models.Model):
         default= False,
         verbose_name= _("is Refund Granted"),
     ) # تم رد الأموال الممنوحة
-    shipping_address = models.ForeignKey(
-        Address,
-        related_name= _('Shipping_Orders'),
-        on_delete= models.SET_NULL,
-        blank= True,
-        null= True,
-        verbose_name= _("Shipping Address")
-    ) # عنوان الشحن
     delivery = models.ForeignKey(
         Delivery,
         on_delete= models.SET_NULL,
@@ -105,14 +91,6 @@ class Order(models.Model):
         null= True,
         verbose_name= _("Delivery")
     )
-    billing_address = models.ForeignKey(
-        Address,
-        related_name= _('Billing_Orders'),
-        on_delete= models.SET_NULL,
-        blank= True,
-        null= True,
-        verbose_name= _("Billing Address")
-    ) # عنوان وصول الفواتير
     total_order_cost = models.FloatField(
         default = 0,
         editable= False,
@@ -132,7 +110,7 @@ class Order(models.Model):
 
     @property
     def Final_Order_Cost(self) :
-        return self.total_order_cost-(self.total_order_cost * 100 / self.promo_code.discount)-self.delvirey_cost
+        return self.total_order_cost-(self.total_order_cost * 100 / self.promo_card.discount)-self.delvirey_cost
     
     @property
     def Total_amounts_Paid(self) :

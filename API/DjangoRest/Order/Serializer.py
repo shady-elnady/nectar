@@ -1,7 +1,7 @@
 from rest_framework.serializers import HyperlinkedModelSerializer
 
 # from MyCart.Serializer import MyCartSerializer
-from .models import Order, Refund, Delivery, Payment, PromoCode
+from .models import Order, Refund, Delivery, Payment, PromoCard
 from Location.Serializer import AddressSerializer
 from Payment.Serializer import CurrencySerializer, PaymentMethodSerializer
 
@@ -22,10 +22,10 @@ class RefundSerializer(HyperlinkedModelSerializer):
             "slug",
         ]
 
-class PromoCodeSerializer(HyperlinkedModelSerializer):
+class PromoCardSerializer(HyperlinkedModelSerializer):
     
     class Meta:
-        model = PromoCode
+        model = PromoCard
         fields = [
             "url",
             "coupon",
@@ -69,22 +69,17 @@ class DeliverySerializer(HyperlinkedModelSerializer):
 
 class OrderSerializer(HyperlinkedModelSerializer):
     Refund =RefundSerializer(many= False) 
-    promo_code = PromoCodeSerializer(many= False)
     delivery = DeliverySerializer(many= False)
     Payments = PaymentSerializer(many= True)
-    shipping_address =AddressSerializer(many= False) 
-    billing_address =AddressSerializer(many= False) 
+    
     class Meta:
         model = Order
         fields = [
             "url",
             "my_cart",
-            "promo_code",
             "is_refund_requested",
             "is_refund_granted",
-            "shipping_address",
             "delivery",
-            "billing_address",
             "total_order_cost",
             "delvirey_cost",
             "Payments",
