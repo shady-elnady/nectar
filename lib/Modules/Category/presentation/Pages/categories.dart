@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nectar_mac/App/Services/services_locator.dart';
 import 'package:nectar_mac/views/Utils/loading_widget.dart';
 
 import 'package:nectar_mac/views/widgets/Utils/error_widget.dart';
@@ -40,74 +41,82 @@ class Categories extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
-          child: BlocBuilder<CategoryBloc, CategoryState>(
-            // buildWhen: (previous, current) =>
-            //     previous.DepartmentState != current.DepartmentState,
-            builder: (context, state) {
-              if (state is LoadingCategoriesState) {
-                return const LoadingWidget();
-              } else if (state is LoadedCategoriesState) {
-                return RefreshIndicator(
-                  onRefresh: () async => BlocProvider.of<CategoryBloc>(context)
-                      .add(RefreshCategoriesEvent()),
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 170,
-                      mainAxisExtent: 180,
-                      childAspectRatio: 3 / 2,
-                      crossAxisSpacing: 15,
-                      mainAxisSpacing: 15,
+          child: BlocProvider(
+            create: (BuildContext context) => sl<CategoryBloc>()
+              ..add(
+                GetCategoriesEvent(),
+              ),
+            child: BlocBuilder<CategoryBloc, CategoryState>(
+              // buildWhen: (previous, current) =>
+              //     previous.DepartmentState != current.DepartmentState,
+              builder: (context, state) {
+                if (state is LoadingCategoriesState) {
+                  return const LoadingWidget();
+                } else if (state is LoadedCategoriesState) {
+                  return RefreshIndicator(
+                    onRefresh: () async =>
+                        BlocProvider.of<CategoryBloc>(context)
+                            .add(RefreshCategoriesEvent()),
+                    child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 170,
+                        mainAxisExtent: 180,
+                        childAspectRatio: 3 / 2,
+                        crossAxisSpacing: 15,
+                        mainAxisSpacing: 15,
+                      ),
+                      itemCount: state.categories.length,
+                      itemBuilder: (BuildContext ctx, index) {
+                        // Color color = Color((Random().nextDouble() * 0xFFDE598).toInt());
+                        return InkWell(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  CategoryProducts(
+                                categoryName: state.categories[index].name,
+                              ),
+                            ),
+                          ),
+                          child: Container(
+                            alignment: Alignment.bottomCenter,
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 20, horizontal: 30),
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                alignment: const Alignment(0, -0.5),
+                                image:
+                                    NetworkImage(state.categories[index].image),
+                                scale: 4,
+                              ),
+                              color: const Color.fromRGBO(83, 177, 117, 0.1),
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(
+                                color: const Color.fromRGBO(83, 177, 117, 0.7),
+                              ),
+                            ),
+                            child: Text(
+                              state.categories[index].name,
+                              maxLines: 2,
+                              textAlign: TextAlign.center,
+                              softWrap: true,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(fontSize: 16),
+                            ),
+                          ),
+                        );
+                      },
                     ),
-                    itemCount: state.categories.length,
-                    itemBuilder: (BuildContext ctx, index) {
-                      // Color color = Color((Random().nextDouble() * 0xFFDE598).toInt());
-                      return InkWell(
-                        onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => CategoryProducts(
-                              categoryName: state.categories[index].name,
-                            ),
-                          ),
-                        ),
-                        child: Container(
-                          alignment: Alignment.bottomCenter,
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 20, horizontal: 30),
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              alignment: const Alignment(0, -0.5),
-                              image:
-                                  NetworkImage(state.categories[index].image),
-                              scale: 4,
-                            ),
-                            color: const Color.fromRGBO(83, 177, 117, 0.1),
-                            borderRadius: BorderRadius.circular(18),
-                            border: Border.all(
-                              color: const Color.fromRGBO(83, 177, 117, 0.7),
-                            ),
-                          ),
-                          child: Text(
-                            state.categories[index].name,
-                            maxLines: 2,
-                            textAlign: TextAlign.center,
-                            softWrap: true,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(fontSize: 16),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                );
-              } else if (state is ErrorCategoriesState) {
-                return ErrorConnection(message: state.message);
-              }
-              return const LoadingWidget();
-            },
+                  );
+                } else if (state is ErrorCategoriesState) {
+                  return ErrorConnection(message: state.message);
+                }
+                return const LoadingWidget();
+              },
+            ),
           ),
         ),
       ),

@@ -24,8 +24,10 @@ class Street extends BaseEntityWithName {
   /// `dart:convert`
   ///
   /// Converts [Street] to a JSON string.
+  @override
   String toJson() => json.encode(toMap());
 
+  @override
   Map<String, dynamic> toMap() => {
         'url': url,
         'name': name,

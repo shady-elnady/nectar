@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nectar_mac/App/Services/services_locator.dart';
 import 'package:nectar_mac/App/Utils/Assets/app_images.dart';
 import 'package:nectar_mac/views/Utils/constant.dart';
+import 'package:nectar_mac/views/Utils/loading_widget.dart';
+import 'package:nectar_mac/views/Utils/snackbar_message.dart';
 import 'package:nectar_mac/views/widgets/Buttons/main_button.dart';
 import 'package:nectar_mac/views/widgets/text/custom_text.dart';
 import 'package:nectar_mac/views/widgets/textFields/custom_text_field.dart';
 
 import '../../../../Routes/index.dart';
+import '../../domain/Entities/log.dart';
+import '../bloc/log_bloc.dart';
 
-class LogingScreen extends StatelessWidget {
+class LogingScreen extends StatefulWidget {
   const LogingScreen({super.key});
+
+  @override
+  State<LogingScreen> createState() => _LogingScreenState();
+}
+
+class _LogingScreenState extends State<LogingScreen> {
+  // final _logInFormKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +50,9 @@ class LogingScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Column(
+            child: Form(
+                // key: _logInFormKey,
+                child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -43,11 +60,14 @@ class LogingScreen extends StatelessWidget {
                 const CustomText(),
                 UtilsWidget.sizedBox35,
                 // E-mail Field
-                const CustomTextField(),
+                CustomTextField(
+                  controller: _emailController,
+                ),
                 //
                 UtilsWidget.sizedBox35,
                 // Password Field
-                const CustomTextField(
+                CustomTextField(
+                  controller: _passwordController,
                   label: "Password",
                 ),
                 //Forgot Password?
@@ -65,14 +85,9 @@ class LogingScreen extends StatelessWidget {
                   ),
                 ),
                 //
-                const InkWell(
-                  // onTap: () => Navigator.pushReplacement(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => const HomeScreen(),
-                  //   ),
-                  // ),
-                  child: MainButton(
+                InkWell(
+                  onTap: validateFormThenLogIn,
+                  child: const MainButton(
                     title: "Sgin In",
                     margin: 0,
                   ),
@@ -105,10 +120,29 @@ class LogingScreen extends StatelessWidget {
                   ),
                 )
               ],
-            ),
+            )),
           ),
         ],
       ),
     );
+  }
+
+  void validateFormThenLogIn() {
+    // final isValid = _logInFormKey.currentState!.validate();
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      RoutePages.homeScreen,
+      (route) => false,
+    );
+    // if (true) {
+    //   final Log logInParameter = Log(
+    //     email: _emailController.text,
+    //     password: _passwordController.text,
+    //   );
+    //   BlocProvider.of<LogBloc>(context).add(
+    //     LogInEvent(
+    //       logParameter: logInParameter,
+    //     ),
+    //   );
+    // }
   }
 }

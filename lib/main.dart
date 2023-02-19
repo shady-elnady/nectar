@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:nectar_mac/Modules/Department/presentation/Bloc/department_bloc.dart';
+import 'package:nectar_mac/Modules/log/presentation/bloc/log_bloc.dart';
 
 import 'App/Services/services_locator.dart';
 import 'Config/app_localizations.dart';
@@ -27,33 +30,41 @@ class MyApp extends StatelessWidget {
       if (user == null) {
       } else {}
     });
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: AppTheme.appName,
-      initialRoute: RoutePages.intial,
-      onGenerateRoute: Routes.onGenerateRoute,
-      theme: AppTheme.lightTheme,
-      scrollBehavior: MyCustomScrollBehavior(),
-      supportedLocales: AppLocalizations.supportedLocales,
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => sl<LogBloc>()),
+        BlocProvider(
+          create: (_) => sl<DepartmentBloc>(),
+        ),
       ],
-      localeResolutionCallback: (deviceLocale, supportedLocales) {
-        if (AppLocalizations.defaultLocale != null) {
-          return AppLocalizations.defaultLocale;
-        } else {
-          for (var locale in supportedLocales) {
-            if (deviceLocale != null &&
-                deviceLocale.languageCode == locale.languageCode) {
-              return deviceLocale;
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: AppTheme.appName,
+        initialRoute: RoutePages.intial,
+        onGenerateRoute: Routes.onGenerateRoute,
+        theme: AppTheme.lightTheme,
+        scrollBehavior: MyCustomScrollBehavior(),
+        supportedLocales: AppLocalizations.supportedLocales,
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate
+        ],
+        localeResolutionCallback: (deviceLocale, supportedLocales) {
+          if (AppLocalizations.defaultLocale != null) {
+            return AppLocalizations.defaultLocale;
+          } else {
+            for (var locale in supportedLocales) {
+              if (deviceLocale != null &&
+                  deviceLocale.languageCode == locale.languageCode) {
+                return deviceLocale;
+              }
             }
+            return supportedLocales.first;
           }
-          return supportedLocales.first;
-        }
-      },
+        },
+      ),
     );
   }
 }

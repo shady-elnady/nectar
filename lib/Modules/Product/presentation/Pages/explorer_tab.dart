@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nectar_mac/App/Services/services_locator.dart';
 import 'package:nectar_mac/views/Utils/loading_widget.dart';
 import 'package:nectar_mac/views/widgets/Utils/error_widget.dart';
 
@@ -7,16 +8,22 @@ import '../Bloc/searched_products_bloc/searched_products_bloc.dart';
 import 'Components/slider_product_item.dart';
 import '../../../../../../views/widgets/textFields/search_field.dart';
 
-class ExplorerTab extends StatelessWidget {
+class ExplorerTab extends StatefulWidget {
   const ExplorerTab({
     super.key,
     this.searchWord,
   });
   final String? searchWord;
+
+  @override
+  State<ExplorerTab> createState() => _ExplorerTabState();
+}
+
+class _ExplorerTabState extends State<ExplorerTab> {
   @override
   Widget build(BuildContext context) {
     TextEditingController productSearchControl = TextEditingController(
-      text: searchWord,
+      text: widget.searchWord,
     );
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -56,7 +63,7 @@ class ExplorerTab extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25),
-        child: productSearchControl.text == null
+        child: widget.searchWord == null
             ? Center(
                 child: Text(
                   "Enter Search Word",
@@ -67,42 +74,50 @@ class ExplorerTab extends StatelessWidget {
                   ),
                 ),
               )
-            : BlocBuilder<SearchedProductBloc, SearchedProductState>(
-                // buildWhen: (previous, current) =>
-                //     previous.DepartmentState != current.DepartmentState,
-                builder: (context, state) {
-                  if (state is LoadingSearchedProductsState) {
+            : BlocProvider(
+                create: (BuildContext context) => sl<SearchedProductBloc>()
+                  ..add(
+                    GetSearchedProductsByNameEvent(
+                      searchWord: widget.searchWord!,
+                    ),
+                  ),
+                child: BlocBuilder<SearchedProductBloc, SearchedProductState>(
+                  // buildWhen: (previous, current) =>
+                  //     previous.DepartmentState != current.DepartmentState,
+                  builder: (context, state) {
+                    if (state is LoadingSearchedProductsState) {
+                      return const LoadingWidget();
+                    } else if (state is LoadedSearchedProductsByNameState) {
+                      return RefreshIndicator(
+                        onRefresh: () async =>
+                            BlocProvider.of<SearchedProductBloc>(context).add(
+                          RefreshSearchedProductsByNameEvent(
+                            searchWord: productSearchControl.text,
+                          ),
+                        ),
+                        child: GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 175,
+                            mainAxisExtent: 250,
+                            childAspectRatio: 3 / 2,
+                            crossAxisSpacing: 15,
+                            mainAxisSpacing: 15,
+                          ),
+                          itemCount: state.searchedProducts.length,
+                          itemBuilder: (BuildContext context, index) =>
+                              SliderProductItem(
+                            product: state.searchedProducts[index],
+                            heroTag: widget.searchWord ?? "ExplorerPage",
+                          ),
+                        ),
+                      );
+                    } else if (state is ErrorSearchedProductsState) {
+                      return ErrorConnection(message: state.message);
+                    }
                     return const LoadingWidget();
-                  } else if (state is LoadedSearchedProductsByNameState) {
-                    return RefreshIndicator(
-                      onRefresh: () async =>
-                          BlocProvider.of<SearchedProductBloc>(context).add(
-                        RefreshSearchedProductsByNameEvent(
-                          searchWord: productSearchControl.text,
-                        ),
-                      ),
-                      child: GridView.builder(
-                        gridDelegate:
-                            const SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 175,
-                          mainAxisExtent: 250,
-                          childAspectRatio: 3 / 2,
-                          crossAxisSpacing: 15,
-                          mainAxisSpacing: 15,
-                        ),
-                        itemCount: state.searchedProducts.length,
-                        itemBuilder: (BuildContext context, index) =>
-                            SliderProductItem(
-                          product: state.searchedProducts[index],
-                          heroTag: searchWord ?? "ExplorerPage",
-                        ),
-                      ),
-                    );
-                  } else if (state is ErrorSearchedProductsState) {
-                    return ErrorConnection(message: state.message);
-                  }
-                  return const LoadingWidget();
-                },
+                  },
+                ),
               ),
       ),
     );

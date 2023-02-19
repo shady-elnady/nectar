@@ -24,8 +24,10 @@ class Region extends BaseEntityWithName {
   /// `dart:convert`
   ///
   /// Converts [Region] to a JSON string.
+  @override
   String toJson() => json.encode(toMap());
 
+  @override
   Map<String, dynamic> toMap() => {
         'url': url,
         'name': name,

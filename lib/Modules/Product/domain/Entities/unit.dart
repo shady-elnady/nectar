@@ -29,9 +29,11 @@ class Unit extends BaseEntityWithName {
 
   /// `dart:convert`
   ///
-  /// Converts [UnitModel] to a JSON string.
+  /// Converts [Unit] to a JSON string.
+  @override
   String toJson() => json.encode(toMap());
 
+  @override
   Map<String, dynamic> toMap() => {
         'url': url,
         'name': name,

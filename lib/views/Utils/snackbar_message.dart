@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 class SnackBarMessage {
-  void showSuccessSnackBar(
-      {required String message, required BuildContext context}) {
+  void showSuccessSnackBar({
+    required String message,
+    required BuildContext context,
+  }) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
           message,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.green,
+        backgroundColor: Theme.of(context).primaryColor,
       ),
     );
   }
@@ -20,7 +22,7 @@ class SnackBarMessage {
       SnackBar(
         content: Text(
           message,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.redAccent,
       ),

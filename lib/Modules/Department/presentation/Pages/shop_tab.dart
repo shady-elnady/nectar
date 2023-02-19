@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nectar_mac/App/Services/services_locator.dart';
 
 import 'package:nectar_mac/App/Utils/Assets/app_images.dart';
 import 'package:nectar_mac/Modules/Department/domain/Entities/department.dart';
@@ -63,32 +64,38 @@ class DepartmentsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DepartmentBloc, DepartmentState>(
-      // buildWhen: (previous, current) =>
-      //     previous.DepartmentState != current.DepartmentState,
-      builder: (context, state) {
-        if (state is LoadingDepartmentsState) {
-          return const LoadingWidget();
-        } else if (state is LoadedDepartmentsState) {
-          return RefreshIndicator(
-            onRefresh: () async => BlocProvider.of<DepartmentBloc>(context)
-                .add(RefreshDepartmentsEvent()),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ...state.departments.map(
-                  (Department department) => DepartmentContainer(
-                    department: department,
+    return BlocProvider(
+      create: (BuildContext context) => sl<DepartmentBloc>()
+        ..add(
+          GetDepartmentsEvent(),
+        ),
+      child: BlocBuilder<DepartmentBloc, DepartmentState>(
+        // buildWhen: (previous, current) =>
+        //     previous.DepartmentState != current.DepartmentState,
+        builder: (context, state) {
+          if (state is LoadingDepartmentsState) {
+            return const LoadingWidget();
+          } else if (state is LoadedDepartmentsState) {
+            return RefreshIndicator(
+              onRefresh: () async => BlocProvider.of<DepartmentBloc>(context)
+                  .add(RefreshDepartmentsEvent()),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ...state.departments.map(
+                    (Department department) => DepartmentContainer(
+                      department: department,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          );
-        } else if (state is ErrorDepartmentsState) {
-          return ErrorConnection(message: state.message);
-        }
-        return const LoadingWidget();
-      },
+                ],
+              ),
+            );
+          } else if (state is ErrorDepartmentsState) {
+            return ErrorConnection(message: state.message);
+          }
+          return const LoadingWidget();
+        },
+      ),
     );
   }
 }

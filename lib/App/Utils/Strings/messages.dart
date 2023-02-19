@@ -2,7 +2,7 @@ class Meassages {
   // Log Meassages
   static const logInSuccess = "Log In Successfully";
   static const logUpSuccess = "Log Up Successfully";
-  static const isAuthenticayedUser = "You Are Authenticated User";
+  static const isAuthenticatedUser = "Wellcome";
   static const logOutSuccess = "Log Out Successfully";
   // CRUD Meassages
   static const addSuccess = "Product Added Successfully";

@@ -56,6 +56,12 @@ class LogRepository extends BaseLogRepository {
             message: Meassages.emptyCacheData,
           ),
         );
+      } on EmptyCacheTokenException {
+        return const Left(
+          EmptyCacheTokenFailure(
+            message: Meassages.emptyCacheData,
+          ),
+        );
       }
     }
   }

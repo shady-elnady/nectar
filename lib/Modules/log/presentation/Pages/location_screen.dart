@@ -20,9 +20,10 @@ class LocationScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.keyboard_arrow_left_outlined,
-            size: 45,
+            size: 35,
+            color: Theme.of(context).primaryColorDark.withOpacity(0.8),
           ),
           onPressed: () => Navigator.pop(context),
         ),
@@ -70,7 +71,7 @@ class LocationScreen extends StatelessWidget {
                 UtilsWidget.sizedBox35,
 
                 InkWell(
-                  onTap: () => Navigator.pushNamed(
+                  onTap: () => Navigator.pushReplacementNamed(
                     context,
                     RoutePages.logingScreen,
                   ),

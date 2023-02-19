@@ -28,7 +28,7 @@ class LogBloc extends Bloc<LogEvent, LogState> {
         emit(
           _eitherDoneMessageOrErrorState(
             failureOrDoneMessage,
-            Meassages.isAuthenticayedUser,
+            Meassages.isAuthenticatedUser,
           ),
         );
       } else if (event is LogInEvent) {
@@ -61,7 +61,9 @@ class LogBloc extends Bloc<LogEvent, LogState> {
     });
   }
   LogState _eitherDoneMessageOrErrorState(
-      Either<Failure, Unit> either, String message) {
+    Either<Failure, Unit> either,
+    String message,
+  ) {
     return either.fold(
       (failure) => ErrorLogState(
         message: FailureToMessage.call(

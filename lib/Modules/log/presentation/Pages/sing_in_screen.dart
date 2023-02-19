@@ -90,7 +90,7 @@ class SingInScreen extends StatelessWidget {
                   ),
                   //
                   InkWell(
-                    onTap: () => Navigator.pushReplacementNamed(
+                    onTap: () => Navigator.pushNamed(
                       context,
                       RoutePages.numberScreen,
                     ),

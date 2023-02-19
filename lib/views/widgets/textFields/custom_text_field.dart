@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class CustomTextField extends StatefulWidget {
+  final TextEditingController controller;
   final String label, hint;
   final Icon? icon;
   final FocusNode? foucNode;
@@ -12,6 +13,7 @@ class CustomTextField extends StatefulWidget {
     this.hint = "imshuvo97@gmail.com",
     this.icon,
     this.foucNode,
+    required this.controller,
   });
 
   @override
@@ -33,6 +35,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
         // UtilsWidget.sizedBox15,
         TextField(
+          controller: widget.controller,
           focusNode: widget.foucNode,
           autofocus: widget.foucNode != null,
           style: Theme.of(context).inputDecorationTheme.hintStyle,

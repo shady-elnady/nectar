@@ -6,8 +6,15 @@ import 'package:nectar_mac/views/widgets/textFields/custom_text_field.dart';
 
 import '../../../../Routes/index.dart';
 
-class VerificationScreen extends StatelessWidget {
+class VerificationScreen extends StatefulWidget {
   const VerificationScreen({super.key});
+
+  @override
+  State<VerificationScreen> createState() => _VerificationScreenState();
+}
+
+class _VerificationScreenState extends State<VerificationScreen> {
+  final TextEditingController _codeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -15,18 +22,7 @@ class VerificationScreen extends StatelessWidget {
     FocusNode inputFocusNode = FocusNode();
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.keyboard_arrow_left_outlined,
-            size: 45,
-          ),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      // appBar:
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,13 +31,32 @@ class VerificationScreen extends StatelessWidget {
           IntroHeader(
             height: size.height / 4.5,
             // width: size.width / 1.6,
-            aligment: Alignment.bottomLeft,
+            aligment: Alignment.centerLeft,
             child: Padding(
               padding: const EdgeInsets.all(25.0),
-              child: Text(
-                "Enter your 4-digit code",
-                textAlign: TextAlign.left,
-                style: Theme.of(context).textTheme.titleLarge,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  InkWell(
+                    child: Icon(
+                      Icons.keyboard_arrow_left_outlined,
+                      size: 35,
+                      color:
+                          Theme.of(context).primaryColorDark.withOpacity(0.8),
+                    ),
+                    onTap: () => Navigator.pop(context),
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  Text(
+                    "Enter your 4-digit code",
+                    textAlign: TextAlign.left,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ],
               ),
             ),
           ),
@@ -49,6 +64,7 @@ class VerificationScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(25.0, 0, 25, 25),
             child: CustomTextField(
+              controller: _codeController,
               label: "Code",
               hint: "- - - -",
               foucNode: inputFocusNode,

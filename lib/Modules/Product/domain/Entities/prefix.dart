@@ -23,9 +23,11 @@ class Prefix extends BaseEntityWithName {
 
   /// `dart:convert`
   ///
-  /// Converts [PrefixModel] to a JSON string.
+  /// Converts [Prefix] to a JSON string.
+  @override
   String toJson() => json.encode(toMap());
 
+  @override
   Map<String, dynamic> toMap() => {
         'url': url,
         'name': name,

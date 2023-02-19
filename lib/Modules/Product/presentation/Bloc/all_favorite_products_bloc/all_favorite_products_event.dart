@@ -9,9 +9,4 @@ abstract class AllFavoriteProductsEvent extends Equatable {
 
 class RefreshAllFavoriteProductsEvent extends AllFavoriteProductsEvent {}
 
-class GetAllFavoriteProductsEvent extends AllFavoriteProductsEvent {
-  const GetAllFavoriteProductsEvent();
-
-  @override
-  List<Object> get props => [];
-}
+class GetAllFavoriteProductsEvent extends AllFavoriteProductsEvent {}

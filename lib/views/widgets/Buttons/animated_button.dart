@@ -102,7 +102,7 @@ class _AnimatedTransButtonState extends State<AnimatedTransButton>
                 firstController.dispose();
                 Navigator.pushReplacementNamed(
                   context,
-                  RoutePages.wellcome,
+                  RoutePages.singInScreen,
                 );
               }
             }
