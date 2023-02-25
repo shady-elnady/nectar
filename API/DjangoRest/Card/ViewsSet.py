@@ -15,7 +15,7 @@ class CardViewSet(ModelViewSet):
     serializer_class = CardSerializer
     # filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
     ordering_fields = ('created_at')
-    permission_classes = [ IsAuthenticated]
+    # permission_classes = [ IsAuthenticated]
 
     # def perform_create(self, serializer):
     #     serializer.save(user_id=self.request.user)
@@ -33,13 +33,13 @@ class CardViewSet(ModelViewSet):
 class CouponViewSet(ModelViewSet):
     queryset = Coupon.objects.all()
     serializer_class = CouponSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
 class LineInCardViewSet(ModelViewSet):
     queryset = LineInCard.objects.all()
     serializer_class = LineInCardSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     
     def update(self, request, pk=None, *args, **kwargs):
         instance = self.get_object()

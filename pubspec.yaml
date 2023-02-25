@@ -9,14 +9,14 @@ dependencies:
         sdk: flutter
     flutter_localizations: # Add this line
         sdk: flutter         # Add this line
-    intl: ^0.17.0 # Add this line
+    intl:
     cupertino_icons: ^1.0.2
-    firebase_core: ^2.4.1
-    firebase_auth: ^4.2.4
-    intl_phone_field: ^3.1.0
+    firebase_core:
+    firebase_auth:
+    intl_phone_field:
     # banner_carousel: ^1.2.1
-    http: ^0.13.5
-    sliding_up_panel2: ^3.2.2
+    http:
+    sliding_up_panel2:
 dev_dependencies:
     flutter_test:
         sdk: flutter

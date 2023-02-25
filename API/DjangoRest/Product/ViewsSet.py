@@ -11,7 +11,7 @@ class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     # filter_backends = (filters.DjangoFilterBackend,)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         queryset = Product.objects.all()
@@ -29,6 +29,6 @@ class ProductImageViewSet(ModelViewSet):
     queryset = ProductImage.objects.all()
     serializer_class = ProductImageSerializer
     # filter_backends = (filters.DjangoFilterBackend,)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
