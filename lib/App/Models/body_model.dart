@@ -22,9 +22,8 @@ class BodyModel {
         //     .map((Map<String, dynamic>? e) =>
         //         T.fromMap(e as Map<String, dynamic>))
         //     .toList(),
-        results: (data['results'])
-            .map((Map<String, dynamic>? e) => e as Map<String, dynamic>)
-            .toList(),
+        results:
+            (data['results']).map((e) => e as Map<String, dynamic>).toList(),
       );
 
   Map<String, dynamic> toMap() => {

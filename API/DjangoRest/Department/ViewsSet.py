@@ -9,7 +9,7 @@ class DepartmentViewSet(ModelViewSet):
   
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         queryset = Department.objects.all()
